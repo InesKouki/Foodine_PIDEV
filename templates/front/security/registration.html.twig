@@ -1,0 +1,67 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+
+
+
+{% block content %}
+<!-- Start Page Banner -->
+<div class="page-banner-area item-bg4">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="page-banner-content">
+                    <h2>Register</h2>
+                    <ul>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>Inscription</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+            {{ form_start(f) }}
+   <section class="register-area ptb-100">
+            <div class="container">
+                <div class="register-form">
+                    <h2>Register</h2>
+                      <div class="form-group">
+             {{ form_row(f.Nom,{'attr': {'class':'form-control'}}) }}
+              </div>
+
+             <div class="form-group">
+            {{ form_row(f.Prenom,{'attr': {'class':'form-control'}}) }}
+             </div>
+             <div class="form-group">
+            {{ form_row(f.Username,{'attr': {'class':'form-control'}}) }}
+              </div>
+            <div class="form-group">
+            {{ form_row(f.Email,{'attr': {'class':'form-control'}}) }}
+             </div>
+             <div class="form-group">
+            {{ form_row(f.Password,{'attr': {'class':'form-control'}}) }}
+              </div>
+         <div class="form-group">
+            {{ form_row(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
+              </div>
+            <div class="form-group">
+             {{ form_row(f.file,{'attr': {'class':'form-control'}}) }}
+               </div>
+               <div class="form-group">
+
+                <button type="submit" class="default-btn">Register</button>
+            </div>       
+            </div>
+            </div>
+        </section>
+            {{ form_end(f) }}
+            
+
+{% endblock  %}
