@@ -192,11 +192,14 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
                                 Compte
                                 <i class='bx bx-chevron-down'></i>
                             </a>
-
-                            <ul class=\"dropdown-menu\">
+                            ";
+        // line 148
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 148, $this->source); })()), "user", [], "any", false, false, false, 148)) {
+            // line 149
+            echo "                            <ul class=\"dropdown-menu\">
 
                                 <li class=\"nav-item\">
-                                    <a href=\"/connexion\" class=\"nav-link\">
+                                    <a href=\"/login\" class=\"nav-link\">
                                         Se connecter
                                     </a>
                                 </li>
@@ -209,6 +212,29 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 
 
                             </ul>
+                            ";
+        } else {
+            // line 166
+            echo "                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href=\"/profil\" class=\"nav-link\">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"/logout\" class=\"nav-link\">
+                                       Déconnexion
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                            ";
+        }
+        // line 183
+        echo "
                         </li>
 
                     </ul>
@@ -413,9 +439,9 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 
 <!-- Start Main Banner Area -->
 ";
-        // line 368
+        // line 387
         $this->displayBlock('content', $context, $blocks);
-        // line 371
+        // line 390
         echo "<!-- End Main Banner Area -->
 
 <!-- Start Footer Area -->
@@ -759,7 +785,7 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 
     }
 
-    // line 368
+    // line 387
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -769,7 +795,7 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 369
+        // line 388
         echo "
 ";
         
@@ -785,9 +811,14 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
         return "baseFront.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  773 => 369,  763 => 368,  745 => 35,  419 => 371,  417 => 368,  83 => 36,  81 => 35,  45 => 1,);
+        return array (  799 => 388,  789 => 387,  771 => 35,  445 => 390,  443 => 387,  237 => 183,  218 => 166,  199 => 149,  197 => 148,  83 => 36,  81 => 35,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -939,11 +970,11 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
                                 Compte
                                 <i class='bx bx-chevron-down'></i>
                             </a>
-
+                            {% if not app.user %}
                             <ul class=\"dropdown-menu\">
 
                                 <li class=\"nav-item\">
-                                    <a href=\"/connexion\" class=\"nav-link\">
+                                    <a href=\"/login\" class=\"nav-link\">
                                         Se connecter
                                     </a>
                                 </li>
@@ -956,6 +987,25 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 
 
                             </ul>
+                            {% else %}
+                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href=\"/profil\" class=\"nav-link\">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"/logout\" class=\"nav-link\">
+                                       Déconnexion
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                            {% endif %}
+
                         </li>
 
                     </ul>

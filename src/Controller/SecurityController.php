@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
@@ -31,12 +32,39 @@ class SecurityController extends AbstractController
 
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
-
+                $user->setRoles(['ROLE_USER']);
                 $em->persist($user);
                 $em->flush();
+                return $this->redirectToRoute('login');
             }
             return $this->render('/front/security/registration.html.twig',[
                 'f'=>$form->createView()
             ]);
     }
+
+    /**
+     * 
+     *@Route("/login",name="login")
+     * 
+     */
+    public function login(AuthenticationUtils $authenticationUtils){
+
+       // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
+
+
+
+         return $this->render('/front/security/login.html.twig',
+            ['lastUsername'=>$lastUsername,'error' => $error]);
+
+    }
+     /**
+     * @Route("/logout",name="logout")
+     */
+    public function logout()
+    {}
+
+
 }

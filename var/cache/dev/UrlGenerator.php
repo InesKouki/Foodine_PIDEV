@@ -17,6 +17,10 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\BackController::index'], [], [['text', '/admin']], [], []],
     'categorie' => [[], ['_controller' => 'App\\Controller\\CategorieController::indexFront'], [], [['text', '/categorie']], [], []],
+    'profil' => [[], ['_controller' => 'App\\Controller\\ClientController::prfile'], [], [['text', '/profil']], [], []],
+    'profilup' => [[], ['_controller' => 'App\\Controller\\ClientController::update'], [], [['text', '/profilup']], [], []],
+    'showClients' => [[], ['_controller' => 'App\\Controller\\ClientController::show'], [], [['text', '/showClients']], [], []],
+    'deleteClient' => [['id'], ['_controller' => 'App\\Controller\\ClientController::deleteUser'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/deleteClient']], [], []],
     'event' => [[], ['_controller' => 'App\\Controller\\EvenementController::indexFront'], [], [['text', '/evenements']], [], []],
     'evenement' => [[], ['_controller' => 'App\\Controller\\EvenementController::indexBack'], [], [['text', '/admin-evenements']], [], []],
     'addEvenement' => [[], ['_controller' => 'App\\Controller\\EvenementController::addEvenement'], [], [['text', '/admin-addEvenement']], [], []],
@@ -29,4 +33,6 @@ return [
     'recette' => [[], ['_controller' => 'App\\Controller\\RecetteController::index'], [], [['text', '/admin-recette']], [], []],
     'reservation' => [[], ['_controller' => 'App\\Controller\\ReservationController::index'], [], [['text', '/reservation']], [], []],
     'registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/registration']], [], []],
+    'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];

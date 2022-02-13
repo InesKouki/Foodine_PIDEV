@@ -15,6 +15,9 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\BackController::index'], null, null, null, false, false, null]],
         '/categorie' => [[['_route' => 'categorie', '_controller' => 'App\\Controller\\CategorieController::indexFront'], null, null, null, false, false, null]],
+        '/profil' => [[['_route' => 'profil', '_controller' => 'App\\Controller\\ClientController::prfile'], null, null, null, false, false, null]],
+        '/profilup' => [[['_route' => 'profilup', '_controller' => 'App\\Controller\\ClientController::update'], null, null, null, false, false, null]],
+        '/showClients' => [[['_route' => 'showClients', '_controller' => 'App\\Controller\\ClientController::show'], null, null, null, false, false, null]],
         '/evenements' => [[['_route' => 'event', '_controller' => 'App\\Controller\\EvenementController::indexFront'], null, null, null, false, false, null]],
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::indexBack'], null, null, null, false, false, null]],
         '/admin-addEvenement' => [[['_route' => 'addEvenement', '_controller' => 'App\\Controller\\EvenementController::addEvenement'], null, null, null, false, false, null]],
@@ -27,6 +30,8 @@ return [
         '/admin-recette' => [[['_route' => 'recette', '_controller' => 'App\\Controller\\RecetteController::index'], null, null, null, false, false, null]],
         '/reservation' => [[['_route' => 'reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
         '/registration' => [[['_route' => 'registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -45,6 +50,7 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/deleteClient/([^/]++)(*:191)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -54,8 +60,9 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        191 => [
+            [['_route' => 'deleteClient', '_controller' => 'App\\Controller\\ClientController::deleteUser'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

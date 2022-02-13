@@ -21,7 +21,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 null,
             ],
             'message' => [
-                1 => 'l adresse  n est pas valide',
+                1 => 'votre Email n\'est pas valide',
             ],
             'groups' => [
                 1 => [

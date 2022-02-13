@@ -6,9 +6,10 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"Username"},message="Username déjà existant !")
  */
 class User implements UserInterface
 {
@@ -36,7 +37,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(message="l adresse  n est pas valide")
+     * @Assert\Email(message="votre Email n'est pas valide")
      */
     private $Email;
 
@@ -47,7 +48,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min = 8 minMessage = "Votre mot de passe doit comporter au minimum 8 caractères")
+     * @Assert\Length(min ="8", minMessage = "Votre mot de passe doit comporter au minimum 8 caractères")
      */
     private $Password;
     
@@ -115,7 +116,7 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        return $this->Roles;
+        return ['ROLE_USER'];
     }
 
     public function setRoles(array $Roles): self
