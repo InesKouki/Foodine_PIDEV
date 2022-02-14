@@ -13,6 +13,9 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/back' => [[['_route' => 'back_index', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
+        '/back/chef' => [[['_route' => 'back_chef', '_controller' => 'App\\Controller\\AdminController::show'], null, null, null, false, false, null]],
+        '/back/showEmployes' => [[['_route' => 'back_showEmployes', '_controller' => 'App\\Controller\\AdminController::showEmployes'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\BackController::index'], null, null, null, false, false, null]],
         '/categorie' => [[['_route' => 'categorie', '_controller' => 'App\\Controller\\CategorieController::indexFront'], null, null, null, false, false, null]],
         '/profil' => [[['_route' => 'profil', '_controller' => 'App\\Controller\\ClientController::prfile'], null, null, null, false, false, null]],
@@ -50,7 +53,8 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/deleteClient/([^/]++)(*:191)'
+                .'|/back/ModifierEmploye/([^/]++)(*:199)'
+                .'|/deleteClient/([^/]++)(*:229)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -61,7 +65,8 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        191 => [
+        199 => [[['_route' => 'back_ModifierEmploye', '_controller' => 'App\\Controller\\AdminController::ModifierEmploye'], ['id'], null, null, false, true, null]],
+        229 => [
             [['_route' => 'deleteClient', '_controller' => 'App\\Controller\\ClientController::deleteUser'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

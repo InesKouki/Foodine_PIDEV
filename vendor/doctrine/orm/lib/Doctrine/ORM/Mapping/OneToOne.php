@@ -15,7 +15,7 @@ use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 final class OneToOne implements Annotation
 {
-    /** @var class-string|null */
+    /** @var string|null */
     public $targetEntity;
 
     /** @var string|null */
@@ -39,7 +39,6 @@ final class OneToOne implements Annotation
     public $orphanRemoval = false;
 
     /**
-     * @param class-string|null  $targetEntity
      * @param array<string>|null $cascade
      */
     public function __construct(

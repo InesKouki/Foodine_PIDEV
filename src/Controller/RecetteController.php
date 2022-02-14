@@ -13,7 +13,7 @@ class RecetteController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('back/recette/ajoutRecette.html.twig', [
+        return $this->render('admin/recette/ajoutRecette.html.twig', [
             'controller_name' => 'RecetteController',
         ]);
     }

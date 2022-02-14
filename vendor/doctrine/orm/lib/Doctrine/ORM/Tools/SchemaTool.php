@@ -781,18 +781,12 @@ class SchemaTool
      */
     private function gatherColumnOptions(array $mapping): array
     {
-        $mappingOptions = $mapping['options'] ?? [];
-
-        if (isset($mapping['enumType'])) {
-            $mappingOptions['enumType'] = $mapping['enumType'];
-        }
-
-        if (empty($mappingOptions)) {
+        if (! isset($mapping['options'])) {
             return [];
         }
 
-        $options                        = array_intersect_key($mappingOptions, array_flip(self::KNOWN_COLUMN_OPTIONS));
-        $options['customSchemaOptions'] = array_diff_key($mappingOptions, $options);
+        $options                        = array_intersect_key($mapping['options'], array_flip(self::KNOWN_COLUMN_OPTIONS));
+        $options['customSchemaOptions'] = array_diff_key($mapping['options'], $options);
 
         return $options;
     }

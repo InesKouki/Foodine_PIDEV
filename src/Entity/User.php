@@ -60,6 +60,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $file;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $Created_at;
 
     public function getId(): ?int
     {
@@ -116,7 +120,9 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        return ['ROLE_USER'];
+        $roles = $this->Roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
     public function setRoles(array $Roles): self
@@ -167,5 +173,17 @@ class User implements UserInterface
     }
     public function eraseCredentials() {}
     public function getSalt() {}
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->Created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $Created_at): self
+    {
+        $this->Created_at = $Created_at;
+
+        return $this;
+    }
 
 }

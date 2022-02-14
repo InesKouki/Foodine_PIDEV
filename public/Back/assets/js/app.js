@@ -14,8 +14,8 @@ $(function() {
 		}))
 	}), $(document).ready(function() {
 		$(window).on("scroll", function() {
-			$(this).scrollTop() > 300 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut()
-		}), $(".back-to-top").on("click", function() {
+			$(this).scrollTop() > 300 ? $(".admin-to-top").fadeIn() : $(".admin-to-top").fadeOut()
+		}), $(".admin-to-top").on("click", function() {
 			return $("html, body").animate({
 				scrollTop: 0
 			}, 600), !1
@@ -32,7 +32,7 @@ $(function() {
 					$('.nav-container').removeClass('bg-dark');
 				}
 			});
-			$('.back-to-top').on("click", function () {
+			$('.admin-to-top').on("click", function () {
 				$("html, body").animate({
 					scrollTop: 0
 				}, 600);

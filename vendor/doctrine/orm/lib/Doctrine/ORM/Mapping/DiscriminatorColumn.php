@@ -15,13 +15,13 @@ use Doctrine\Common\Annotations\Annotation\NamedArgumentConstructor;
 #[Attribute(Attribute::TARGET_CLASS)]
 final class DiscriminatorColumn implements Annotation
 {
-    /** @var string|null */
+    /** @var string */
     public $name;
 
-    /** @var string|null */
+    /** @var string */
     public $type;
 
-    /** @var int|null */
+    /** @var int */
     public $length;
 
     /**

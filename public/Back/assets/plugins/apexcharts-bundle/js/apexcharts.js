@@ -8438,12 +8438,12 @@
 
         if (config.chart.group && config.yaxis[0].labels.minWidth === 0) {
           console.warn('It looks like you have multiple charts in synchronization. You must provide yaxis.labels.minWidth which must be EQUAL for all grouped charts to prevent incorrect behaviour.');
-        } // if user supplied array for stroke width, it will only be applicable to line/area charts, for any other charts, revert back to Number
+        } // if user supplied array for stroke width, it will only be applicable to line/area charts, for any other charts, revert admin to Number
 
 
         if (Array.isArray(config.stroke.width)) {
           if (config.chart.type !== 'line' && config.chart.type !== 'area') {
-            console.warn('stroke.width option accepts array only for line and area charts. Reverted back to Number');
+            console.warn('stroke.width option accepts array only for line and area charts. Reverted admin to Number');
             config.stroke.width = config.stroke.width[0];
           }
         }
@@ -8578,7 +8578,7 @@
           isExecCalled: false,
           // whether user updated the chart through the exec method
           initialConfig: null,
-          // we will store the first config user has set to go back when user finishes interactions like zooming and come out of it
+          // we will store the first config user has set to go admin when user finishes interactions like zooming and come out of it
           initialSeries: [],
           lastXAxis: [],
           lastYAxis: [],
@@ -11090,7 +11090,7 @@
           var scale = (max - min) / (yMax - yMin);
           var logVal = Math.pow(base, min + scale * (niceNumber - min));
           return Math.round(logVal / Utils.roundToBase(logVal, base)) * Utils.roundToBase(logVal, base);
-        }); // Math.floor may have rounded the value to 0, revert back to 1
+        }); // Math.floor may have rounded the value to 0, revert admin to 1
 
         if (logs[0] === 0) logs[0] = 1;
         return {
@@ -22951,7 +22951,7 @@
     }
   })(typeof window !== 'undefined' ? window : undefined, function (window, document) {
     // Find global reference - uses 'this' by default when available,
-    // falls back to 'window' otherwise (for bundlers like Webpack)
+    // falls admin to 'window' otherwise (for bundlers like Webpack)
     var globalRef = typeof this !== 'undefined' ? this : window; // The main wrapping element
 
     var SVG = globalRef.SVG = function (element) {
@@ -25161,7 +25161,7 @@
           } // remove defs reference
 
 
-          delete this._defs; // add back parser
+          delete this._defs; // add admin parser
 
           if (SVG.parser.draw && !SVG.parser.draw.parentNode) {
             this.node.appendChild(SVG.parser.draw);
@@ -27097,7 +27097,7 @@
 
       }
 
-      // copy back arrays
+      // copy admin arrays
       this.value = startArr;
       this.destination = new SVG.PathArray();
       this.destination.value = destArr;
@@ -28370,7 +28370,7 @@
                   // s.a.
                   this.calc = function (diffX, diffY) {
 
-                      // yes this is kinda stupid but we need the mouse coords back...
+                      // yes this is kinda stupid but we need the mouse coords admin...
                       var current = {x: diffX + this.parameters.p.x, y: diffY + this.parameters.p.y};
 
                       // start minus middle

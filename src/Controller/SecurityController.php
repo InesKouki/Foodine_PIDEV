@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
+
 class SecurityController extends AbstractController
 {
     /**
@@ -26,13 +28,13 @@ class SecurityController extends AbstractController
                 $image = $form->get('file')->getData();
                  
                 $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                $image->move(
-                $this->getParameter('upload_directory'),$filename);
+                $image->move($this->getParameter('upload_directory'),$filename);
                 $user->setFile($filename);
 
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
-                $user->setRoles(['ROLE_USER']);
+                //$user->setRoles(['ROLE_USER']);
+                $user->setCreatedAt(new \DateTime('now'));
                 $em->persist($user);
                 $em->flush();
                 return $this->redirectToRoute('login');
@@ -64,7 +66,8 @@ class SecurityController extends AbstractController
      * @Route("/logout",name="logout")
      */
     public function logout()
-    {}
-
+    {
+        return $this->redirectToRoute('login');
+    }
 
 }

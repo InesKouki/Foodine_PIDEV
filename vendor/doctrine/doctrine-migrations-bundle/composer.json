@@ -12,11 +12,11 @@
         },
         {
             "name": "Doctrine Project",
-            "homepage": "https://www.doctrine-project.org"
+            "homepage": "http://www.doctrine-project.org"
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://symfony.com/contributors"
+            "homepage": "http://symfony.com/contributors"
         }
     ],
     "require": {
@@ -25,6 +25,7 @@
         "doctrine/doctrine-bundle": "~1.0|~2.0",
         "doctrine/migrations": "^3.2"
     },
+    "minimum-stability": "beta",
     "require-dev": {
         "phpunit/phpunit": "^8.0|^9.0",
         "doctrine/coding-standard": "^8.0",
@@ -44,10 +45,5 @@
     },
     "autoload-dev": {
         "psr-4": { "Doctrine\\Bundle\\MigrationsBundle\\Tests\\": "Tests" }
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
     }
 }

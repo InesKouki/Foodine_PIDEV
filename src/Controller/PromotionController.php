@@ -23,7 +23,7 @@ class PromotionController extends AbstractController
      */
     public function indexBack(): Response
     {
-        return $this->render('back/promotion/index.html.twig', [
+        return $this->render('admin/promotion/index.html.twig', [
             'controller_name' => 'PromotionController',
         ]);
     }
@@ -33,7 +33,7 @@ class PromotionController extends AbstractController
      */
     public function addPromotion(): Response
     {
-        return $this->render('back/promotion/addPromotion.html.twig', [
+        return $this->render('admin/promotion/addPromotion.html.twig', [
             'controller_name' => 'PromotionController',
         ]);
     }

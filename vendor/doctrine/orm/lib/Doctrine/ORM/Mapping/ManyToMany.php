@@ -16,7 +16,7 @@ use Doctrine\Deprecations\Deprecation;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 final class ManyToMany implements Annotation
 {
-    /** @var class-string|null */
+    /** @var string|null */
     public $targetEntity;
 
     /** @var string|null */
@@ -43,8 +43,7 @@ final class ManyToMany implements Annotation
     public $indexBy;
 
     /**
-     * @param class-string|null $targetEntity
-     * @param string[]|null     $cascade
+     * @param string[]|null $cascade
      */
     public function __construct(
         ?string $targetEntity = null,
