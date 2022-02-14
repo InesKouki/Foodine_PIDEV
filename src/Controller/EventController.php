@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategorieController extends AbstractController
+class EventController extends AbstractController
 {
     /**
-     * @Route("/categorie", name="categorie")
+     * @Route("/event", name="event")
      */
     public function index(): Response
     {
-        return $this->render('categorie/homeFront.html.twig', [
-            'controller_name' => 'CategorieController',
+        return $this->render('event/homeFront.html.twig', [
+            'controller_name' => 'EventController',
         ]);
     }
 }

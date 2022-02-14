@@ -1,0 +1,59 @@
+{% extends 'baseChef.html.twig' %}
+{% block title %}
+    Planning
+{% endblock %}
+{% block content %}
+    <div class="page-wrapper">
+        <div class="page-content">
+
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">Modifier Planning</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-event"></i></a>
+                            </li>
+
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+            <!--end breadcrumb-->
+
+            <div class="card">
+                <div class="card-body p-4">
+                    <hr/>
+                    <div class="form-body mt-4">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="border border-3 p-4 rounded">
+                                    {{ form_start(f) }}
+                                    <div class="mb-3">
+                                        {{ form_label(f.datedebut,"Date Debut",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f.datedebut,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{ form_label(f.datefin,"Date Fin",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f.datefin,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{ form_label(f.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-light">Modifier</button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(f) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
