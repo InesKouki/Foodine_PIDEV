@@ -17,4 +17,13 @@ class ReservationController extends AbstractController
             'controller_name' => 'ReservationController',
         ]);
     }
+    /**
+     * @Route("/admin-reservation", name="reservationback")
+     */
+    public function indexBack(): Response
+    {
+        return $this->render('back/reservation/index.html.twig', [
+            'controller_name' => 'ReservationController',
+        ]);
+    }
 }
