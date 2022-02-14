@@ -6,21 +6,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="Back/assets/images/icon.png" type="image/png" />
+    <link rel="icon" href="{{ asset('Back/assets/images/icon.png') }}" type="image/png" />
     <!--plugins-->
-    <link href="Back/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="Back/assets/plugins/highcharts/css/highcharts-white.css" rel="stylesheet" />
-    <link href="Back/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link href="Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link  href="{{ asset('Back/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/highcharts/css/highcharts-white.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <!-- loader-->
-    <link href="Back/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="Back/assets/js/pace.min.js"></script>
+    <link href="{{ asset('Back/assets/css/pace.min.css') }}"  rel="stylesheet" />
+    <script src="{{ asset('Back/assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link href="Back/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="Back/assets/css/app.css" rel="stylesheet">
-    <link href="Back/assets/css/icons.css" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap') }}" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/icons.css') }}" rel="stylesheet">
 
     <title>
         Foodine | {% block title %}{% endblock %}
@@ -358,7 +359,7 @@
         <nav class="topbar-nav">
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="table-prod.html" class="">
+                    <a href="{{ path('productlist') }}" class="">
                         <div class="parent-icon"><i class='bx bx-package'></i>
                         </div>
                         <div class="menu-title">Produits</div>
@@ -366,10 +367,10 @@
 
 
                 <li>
-                    <a href="table-categ.html" class="">
+                    <a href="{{ path('categorylist') }}" class="">
                         <div class="parent-icon"><i class="bx bx-category"></i>
                         </div>
-                        <div class="menu-title">Catégories</div>
+                        <div class="menu-title"> Catégories</div>
                     </a>
 
                 </li>

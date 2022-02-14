@@ -80,35 +80,17 @@
 
                             <ul class="dropdown-menu">
 
-                                <li class="nav-item">
-                                    <a href="/categorie" class="nav-link">
-                                        Pizza
-                                    </a>
-                                </li>
+                                {% for a in cat %}
 
                                 <li class="nav-item">
-                                    <a href="/categorie" class="nav-link">
-                                        Sandwich
-                                    </a>
-                                </li>
+                                    <a href="{{ path('products') }}" class="nav-link">
 
-                                <li class="nav-item">
-                                    <a href="/categorie" class="nav-link">
-                                        Burger
-                                    </a>
-                                </li>
 
-                                <li class="nav-item">
-                                    <a href="/categorie" class="nav-link">
-                                        Plats
-                                    </a>
-                                </li>
 
-                                <li class="nav-item">
-                                    <a href="/categorie" class="nav-link">
-                                        Salade
+                                        {{ a.name }}
                                     </a>
                                 </li>
+                                {% endfor %}
 
                             </ul>
                         </li>
