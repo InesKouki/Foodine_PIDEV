@@ -35,7 +35,7 @@
 }
 </style>
 
-            
+
             {{ form_start(f) }}
    <section class="register-area ptb-100">
             <div class="container">
@@ -47,18 +47,44 @@
 
              <div class="form-group">
             {{ form_row(f.Prenom,{'attr': {'class':'form-control'}}) }}
+
              </div>
              <div class="form-group">
-            {{ form_row(f.Username,{'attr': {'class':'form-control'}}) }}
+                 {% if form_errors(f.Username) %}
+                 <div class="alert alert-danger"
+                 {{ form_errors(f.Username) }}
+             </div>
+                    {% endif %}
+                    {{ form_label(f.Username,'Username') }}
+            {{ form_widget(f.Username,{'attr': {'class':'form-control'}}) }}
               </div>
             <div class="form-group">
-            {{ form_row(f.Email,{'attr': {'class':'form-control'}}) }}
+                {% if form_errors(f.Email) %}
+                <div class="alert alert-danger"
+                {{ form_errors(f.Email) }}
+            </div>
+                    {% endif %}
+                {{ form_label(f.Email,'Email') }}
+            {{ form_widget(f.Email,{'attr': {'class':'form-control'}}) }}
+
              </div>
              <div class="form-group">
-            {{ form_row(f.Password,{'attr': {'class':'form-control'}}) }}
+                 {% if form_errors(f.Password) %}
+                 <div class="alert alert-danger"
+                 {{ form_errors(f.Password) }}
+             </div>
+       {% endif %}
+                 {{ form_label(f.Password,'Password') }}
+            {{ form_widget(f.Password,{'attr': {'class':'form-control'}}) }}
               </div>
          <div class="form-group">
-            {{ form_row(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
+             {% if form_errors(f.Confirm_password) %}
+             <div class="alert alert-danger"
+             {{ form_errors(f.Confirm_password) }}
+         </div>
+       {% endif %}
+             {{ form_label(f.Confirm_password,'Confirm_password') }}
+            {{ form_widget(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
               </div>
             <div class="form-group">
              {{ form_row(f.file,{'attr': {'class':'form-control'}}) }}

@@ -4,8 +4,24 @@
     <list default="true" id="54f23d0d-7971-4c8b-9889-8bfdcd8902d6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/security/registration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/registration.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/0/E/KsJCqLWzrVjBUK-HRmEg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/0/E/KsJCqLWzrVjBUK-HRmEg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/2/1/5wYIDNMnJTl2kk3g2tAQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/2/1/5wYIDNMnJTl2kk3g2tAQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/5/B/JeCY7Sv4sNI+q9sQ3LAA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/5/B/JeCY7Sv4sNI+q9sQ3LAA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/8/gbD4BHXcbOGI7+61bHfQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/8/gbD4BHXcbOGI7+61bHfQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/B/V/UhNoabbVo+FPLEngz-yw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/B/V/UhNoabbVo+FPLEngz-yw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/F/9/6E9mC4l9LavL8N4nm7QA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/F/9/6E9mC4l9LavL8N4nm7QA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/F/M/5Sq-6nhPxW4IZd1hG38A" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/F/M/5Sq-6nhPxW4IZd1hG38A" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/L/V/wua6dVWW0zmyrK7dmRtg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/L/V/wua6dVWW0zmyrK7dmRtg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/5/xCBIyb-AQCkdOKGEF9XQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/5/xCBIyb-AQCkdOKGEF9XQ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/D/MmRLNm5xfvcjnurf+8Ag" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/D/MmRLNm5xfvcjnurf+8Ag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/H/jyBek4ud1MbZKxZUpiOw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/H/jyBek4ud1MbZKxZUpiOw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +205,8 @@
       <workItem from="1644872866563" duration="8207000" />
       <workItem from="1644923557882" duration="4365000" />
       <workItem from="1644944460708" duration="4033000" />
-      <workItem from="1644948572941" duration="3338000" />
+      <workItem from="1644948572941" duration="4907000" />
+      <workItem from="1644957109256" duration="3914000" />
     </task>
     <servers />
   </component>

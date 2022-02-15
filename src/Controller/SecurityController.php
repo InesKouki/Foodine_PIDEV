@@ -24,16 +24,16 @@ class SecurityController extends AbstractController
             $form->handleRequest($request); 
             if($form->isSubmitted() && $form->isValid()) {
                 $em =$this->getDoctrine()->getManager();
-
+            // on recupère l'image et on le met dans le dossier public/uploads
                 $image = $form->get('file')->getData();
-                 
                 $filename = md5(uniqid()) . '.' . $image->guessExtension();
                 $image->move($this->getParameter('upload_directory'),$filename);
                 $user->setFile($filename);
-
+            // encoder le mot de passe
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
-                //$user->setRoles(['ROLE_USER']);
+             // on genere le token d'activation
+
                 $user->setCreatedAt(new \DateTime('now'));
                 $em->persist($user);
                 $em->flush();
