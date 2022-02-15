@@ -49,4 +49,22 @@ class UserRepository extends ServiceEntityRepository
     }
     */
 
+    public function findClient()
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.Roles =:val')
+            ->setParameter('val', '[]')
+            ->getQuery()
+            ->getResult();
+    }
+
+        public function findEmploye()
+        {
+            return $this->createQueryBuilder('u')
+                ->where('u.Roles =:val')
+                ->setParameter('val','["ROLE_CHEF"]')
+                #->setParameter('vall','["ROLE_CHEF"]')
+                ->getQuery()
+                ->getResult();
+        }
 }

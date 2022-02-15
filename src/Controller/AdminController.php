@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\User;
 /**
- * @Route("/back", name="back_")
+ * @Route("/admin", name="admin_")
  */
 
 class AdminController extends AbstractController
@@ -39,7 +39,7 @@ class AdminController extends AbstractController
      */
     public function showEmployes(){
         $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findAll();
+        $user=$repository->findEmploye();
         return $this->render("/back/employes/employe.html.twig",[
             'user' => $user
         ]);
@@ -60,7 +60,7 @@ class AdminController extends AbstractController
             $em->persist($user);
             $em->flush();
             $this->addFlash('message','Role attribué avec succès');
-            return $this->redirectToRoute('back_showEmployes');
+            return $this->redirectToRoute('admin_showEmployes');
         }
         return $this->render('/back/employes/ModifierEmploye.html.Twig',[
             'f'=>$form->createView()

@@ -13,11 +13,14 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/back' => [[['_route' => 'back_index', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
-        '/back/chef' => [[['_route' => 'back_chef', '_controller' => 'App\\Controller\\AdminController::show'], null, null, null, false, false, null]],
-        '/back/showEmployes' => [[['_route' => 'back_showEmployes', '_controller' => 'App\\Controller\\AdminController::showEmployes'], null, null, null, false, false, null]],
-        '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\BackController::index'], null, null, null, false, false, null]],
+        '/admin' => [
+            [['_route' => 'admin_index', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null],
+            [['_route' => 'admin', '_controller' => 'App\\Controller\\BackController::index'], null, null, null, false, false, null],
+        ],
+        '/admin/chef' => [[['_route' => 'admin_chef', '_controller' => 'App\\Controller\\AdminController::show'], null, null, null, false, false, null]],
+        '/admin/showEmployes' => [[['_route' => 'admin_showEmployes', '_controller' => 'App\\Controller\\AdminController::showEmployes'], null, null, null, false, false, null]],
         '/categorie' => [[['_route' => 'categorie', '_controller' => 'App\\Controller\\CategorieController::indexFront'], null, null, null, false, false, null]],
+        '/chef' => [[['_route' => 'chef_index', '_controller' => 'App\\Controller\\ChefController::index'], null, null, null, true, false, null]],
         '/profil' => [[['_route' => 'profil', '_controller' => 'App\\Controller\\ClientController::prfile'], null, null, null, false, false, null]],
         '/profilup' => [[['_route' => 'profilup', '_controller' => 'App\\Controller\\ClientController::update'], null, null, null, false, false, null]],
         '/showClients' => [[['_route' => 'showClients', '_controller' => 'App\\Controller\\ClientController::show'], null, null, null, false, false, null]],
@@ -25,6 +28,7 @@ return [
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::indexBack'], null, null, null, false, false, null]],
         '/admin-addEvenement' => [[['_route' => 'addEvenement', '_controller' => 'App\\Controller\\EvenementController::addEvenement'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'front', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
+        '/livreur' => [[['_route' => 'livreur', '_controller' => 'App\\Controller\\LivreurController::index'], null, null, null, false, false, null]],
         '/planning' => [[['_route' => 'planning', '_controller' => 'App\\Controller\\PlanningController::index'], null, null, null, false, false, null]],
         '/ajouterplanning' => [[['_route' => 'ajouterplanning', '_controller' => 'App\\Controller\\PlanningController::ajouterplanning'], null, null, null, false, false, null]],
         '/promotions' => [[['_route' => 'deal', '_controller' => 'App\\Controller\\PromotionController::indexFront'], null, null, null, false, false, null]],
@@ -53,8 +57,8 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/back/ModifierEmploye/([^/]++)(*:199)'
-                .'|/deleteClient/([^/]++)(*:229)'
+                .'|/admin/ModifierEmploye/([^/]++)(*:200)'
+                .'|/deleteClient/([^/]++)(*:230)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -65,8 +69,8 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        199 => [[['_route' => 'back_ModifierEmploye', '_controller' => 'App\\Controller\\AdminController::ModifierEmploye'], ['id'], null, null, false, true, null]],
-        229 => [
+        200 => [[['_route' => 'admin_ModifierEmploye', '_controller' => 'App\\Controller\\AdminController::ModifierEmploye'], ['id'], null, null, false, true, null]],
+        230 => [
             [['_route' => 'deleteClient', '_controller' => 'App\\Controller\\ClientController::deleteUser'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

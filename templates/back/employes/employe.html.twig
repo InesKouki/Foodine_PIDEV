@@ -51,15 +51,12 @@
                                 <td>{{ user.Prenom}}</td>
                                 <td>{{ user.Username}}</td>
                                 <td>
-                                {% for role in [user.roles] %}
-
-
-                                    {% if role=="ROLE_CHEF" and  role != "ROLE_ADMIN" %}
-
-                                    Chef
-                                    {% elseif role=="ROLE_LIVREUR" and  role != "ROLE_ADMIN" %}
-                                    Livreur
-                                        {% endif %}
+                                {% for role in user.Roles %}
+                                    {% if role=="ROLE_CHEF" %}
+                                   chef
+                                        {% elseif role=="ROLE_LIVREUR" %}
+                                        livreur
+                                    {% endif %}
 
                                     {% endfor %}
                                 </td>

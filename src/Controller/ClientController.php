@@ -41,7 +41,7 @@ class ClientController extends AbstractController
      */
     public function show(){
         $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findAll();
+        $user=$repository->findClient();
         return $this->render("/back/client.html.twig",[
             'user' => $user
         ]);
