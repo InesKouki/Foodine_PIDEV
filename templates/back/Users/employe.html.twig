@@ -29,7 +29,7 @@
                     <div class="card radius-15">
                         <div class="card-body text-center">
                             <div class="p-4 border radius-15">
-                                <img rc="{{ asset('uploads/' ~ user.file ) }}" width="110" height="110" class="rounded-circle shadow" alt="">
+                                <img src="{{ asset('uploads/' ~ user.file ) }}" width="110" height="110" class="rounded-circle shadow" alt="">
                                 <h5 class="mb-0 mt-5">{{ user.Nom}}</h5>
                                 <p class="mb-3">
                                     {% for role in user.Roles %}
