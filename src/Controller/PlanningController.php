@@ -48,7 +48,7 @@ class PlanningController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('AffichePlanning');
         }
-        return $this->render('back/planning/ModifierPlanning.html.twig',['f'=>$form->createView()]);
+        return $this->render('back/planning/ModifierPlanning.html.twig',['f1'=>$form->createView()]);
     }
     /**
      * @param PlanningRepository $rep

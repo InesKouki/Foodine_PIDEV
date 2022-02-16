@@ -4317,3 +4317,7 @@ body.bg-theme15 {
 	}
 
 }
+
+.custom-error{
+	color: red;
+}
