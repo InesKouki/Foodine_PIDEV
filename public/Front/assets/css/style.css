@@ -1386,7 +1386,7 @@ Main Banner Area CSS
 }
 
 .main-banner-item {
-  background-image: url(../../assets/img/main-banner-bg-1.jpg);
+  background-image: url(../../assets/img/banner.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1396,7 +1396,7 @@ Main Banner Area CSS
 }
 
 .main-banner-item.banner-item-two {
-  background-image: url(../../assets/img/main-banner-bg-2.jpg);
+  background-image: url(../../assets/img/banner.jpg);
   padding-top: 50px;
   padding-bottom: 0;
   overflow: hidden;
