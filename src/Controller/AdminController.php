@@ -35,12 +35,12 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/showEmployes", name="showEmployes")
+     * @Route("/showUsers", name="showUsers")
      */
-    public function showEmployes(){
+    public function showUsers(){
         $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findEmploye();
-        return $this->render("/back/employes/employe.html.twig",[
+        $user=$repository->findUsers();
+        return $this->render("/back/Users/employe.html.twig",[
             'user' => $user
         ]);
     }
@@ -48,10 +48,10 @@ class AdminController extends AbstractController
     /**
      * @param Request $request
      * @param $id
-     * @Route("/ModifierEmploye/{id}", name="ModifierEmploye")
+     * @Route("/ModifierUser/{id}", name="ModifierUser")
      */
 
-    public function ModifierEmploye(Request $request,$id){
+    public function ModifierUser(Request $request,$id){
         $user=$this->getDoctrine()->getRepository(User::class)->find($id);
         $form = $this->createForm(EditEmployeType::class,$user);
         $form->handleRequest($request);
@@ -60,26 +60,16 @@ class AdminController extends AbstractController
             $em->persist($user);
             $em->flush();
             $this->addFlash('message','Role attribué avec succès');
-            return $this->redirectToRoute('admin_showEmployes');
+            return $this->redirectToRoute('admin_showUsers');
         }
-        return $this->render('/back/employes/ModifierEmploye.html.Twig',[
+        return $this->render('/back/Users/ModifierEmploye.html.Twig',[
             'f'=>$form->createView()
         ]);
     }
 
-    /**
-     * @Route("/showClients", name="showClients")
-     */
-    public function showClient(){
-        $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findClient();
-        return $this->render("/back/client.html.twig",[
-            'user' => $user
-        ]);
-    }
 
     /**
-     * @Route("/deleteClient/{id}", name="deleteClient")
+     * @Route("/deleteUser/{id}", name="deleteUser")
      */
     public function deleteUser($id) {
 
@@ -87,7 +77,7 @@ class AdminController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
-        return $this->redirectToRoute('showClients');
+        return $this->redirectToRoute('admin_showUsers');
     }
 
 

@@ -36,7 +36,19 @@
             <nav class="navbar navbar-expand">
                 <div class="topbar-logo-header">
                     <div class="">
-                        <a href="/back" ><img src="/back/assets/images/logo-white.png" class="logo-icon" alt="logo icon"></a>
+                        {% for role in app.user.Roles %}
+
+
+                            {% if role=="ROLE_CHEF" %}
+                                <a href="/chef" ><img src="/back/assets/images/logo-white.png" class="logo-icon" alt="logo icon"></a>
+                            {% elseif role=="ROLE_LIVREUR" %}
+                                <a href="/livreur" ><img src="/back/assets/images/logo-white.png" class="logo-icon" alt="logo icon"></a>
+                            {% elseif role=="ROLE_ADMIN" %}
+                                <a href="/admin" ><img src="/back/assets/images/logo-white.png" class="logo-icon" alt="logo icon"></a>
+                            {% endif %}
+
+                        {% endfor %}
+
                     </div>
                     <div class="">
                         <!--<h4 class="logo-text">Foodine</h4>-->
@@ -410,10 +422,10 @@
 
                 </li>
                 <li>
-                    <a class="" href="{{ path('admin_showEmployes') }}">
+                    <a class="" href="{{ path('admin_showUsers') }}">
                         <div class="parent-icon"><i class="bx bxs-user-badge"></i>
                         </div>
-                        <div class="menu-title">Employés</div>
+                        <div class="menu-title">Utilisateurs</div>
                     </a>
 
                 </li>
@@ -453,14 +465,7 @@
                     </a>
 
                 </li>
-                <li>
-                    <a class="" href="{{ path('showClients') }}">
-                        <div class="parent-icon icon-color-6"> <i class="bx bxs-user-account"></i>
-                        </div>
-                        <div class="menu-title">Clients</div>
-                    </a>
 
-                </li>
             </ul>
         </nav>
         {% elseif is_granted("ROLE_CHEF") %}

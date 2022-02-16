@@ -36,34 +36,19 @@ class UserRepository extends ServiceEntityRepository
 
     */
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 
-    public function findClient()
+    public function findUsers()
     {
         return $this->createQueryBuilder('u')
-            ->where('u.Roles =:val')
-            ->setParameter('val', '[]')
+            ->Where('u.Roles NOT LIKE :val')
+            ->setParameter('val','["ROLE_ADMIN"]')
             ->getQuery()
             ->getResult();
+
+        ;
     }
 
-        public function findEmploye()
-        {
-            return $this->createQueryBuilder('u')
-                ->where('u.Roles =:val')
-                ->setParameter('val','["ROLE_CHEF"]')
-                #->setParameter('vall','["ROLE_CHEF"]')
-                ->getQuery()
-                ->getResult();
-        }
+
+
+
 }
