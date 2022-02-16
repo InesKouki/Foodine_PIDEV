@@ -70,6 +70,17 @@ class User implements UserInterface
      */
     private $activation_token;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(min ="8", minMessage = "Votre numéro doit comporter au minimum 8 chiffres")
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Address;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -199,6 +210,30 @@ class User implements UserInterface
     public function setActivationToken(?string $activation_token): self
     {
         $this->activation_token = $activation_token;
+
+        return $this;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(int $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->Address;
+    }
+
+    public function setAddress(?string $Address): self
+    {
+        $this->Address = $Address;
 
         return $this;
     }

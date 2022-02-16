@@ -67,5 +67,28 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/showClients", name="showClients")
+     */
+    public function showClient(){
+        $repository=$this->getDoctrine()->getRepository(User::class);
+        $user=$repository->findClient();
+        return $this->render("/back/client.html.twig",[
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * @Route("/deleteClient/{id}", name="deleteClient")
+     */
+    public function deleteUser($id) {
+
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+        return $this->redirectToRoute('showClients');
+    }
+
 
 }

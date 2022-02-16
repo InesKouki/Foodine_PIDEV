@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54f23d0d-7971-4c8b-9889-8bfdcd8902d6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/front/Client/modifierprofile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/security/registration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/registration.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EditClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EditClientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseFront.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/client/profil.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/0/E/KsJCqLWzrVjBUK-HRmEg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/0/E/KsJCqLWzrVjBUK-HRmEg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/2/1/5wYIDNMnJTl2kk3g2tAQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/2/1/5wYIDNMnJTl2kk3g2tAQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/5/B/JeCY7Sv4sNI+q9sQ3LAA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/5/B/JeCY7Sv4sNI+q9sQ3LAA" afterDir="false" />
@@ -22,6 +28,11 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,6 +190,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -187,6 +199,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\Foodine_PIDEV\templates" />
       <recent name="C:\Users\ASUS\Desktop\Foodine_PIDEV\templates\back" />
       <recent name="C:\Users\ASUS\Desktop\Foodine_PIDEV\templates\front" />
     </key>
@@ -207,6 +220,9 @@
       <workItem from="1644944460708" duration="4033000" />
       <workItem from="1644948572941" duration="4907000" />
       <workItem from="1644957109256" duration="3914000" />
+      <workItem from="1645027857719" duration="5460000" />
+      <workItem from="1645033398097" duration="1005000" />
+      <workItem from="1645034735430" duration="6064000" />
     </task>
     <servers />
   </component>
@@ -224,5 +240,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

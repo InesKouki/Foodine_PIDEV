@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,10 +14,25 @@ class EditClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom')
-            ->add('Prenom')
-            ->add('Email')
-            ->add('Password')
+            ->add('Nom',null,array(
+            'attr' => array(
+                'placeholder' => 'Nom..')))
+            ->add('Prenom',null,array(
+                'attr' => array(
+                    'placeholder' => 'Prenom..')))
+            ->add('Email',null,array(
+                'attr' => array(
+                    'placeholder' => 'username@gmail.com..')))
+            ->add('Address',null,[
+                'required' =>false])
+            ->add('Phone',null,[
+                'required' =>false])
+            ->add('file', FileType::class, [
+                'label' => 'Choisissez votre image' ,
+                'mapped' => false,
+                'required' =>false])
+            ->add('Password',PasswordType::class,[
+                'required' =>true])
         ;
     }
 
