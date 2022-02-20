@@ -25,6 +25,7 @@ return [
     'chef_index' => [[], ['_controller' => 'App\\Controller\\ChefController::index'], [], [['text', '/chef/']], [], []],
     'client_profil' => [[], ['_controller' => 'App\\Controller\\ClientController::profile'], [], [['text', '/client/profil']], [], []],
     'client_profilup' => [['id'], ['_controller' => 'App\\Controller\\ClientController::modifier'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/client/profilup']], [], []],
+    'client_editPass' => [['id'], ['_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/client/editPass']], [], []],
     'event' => [[], ['_controller' => 'App\\Controller\\EvenementController::indexFront'], [], [['text', '/evenements']], [], []],
     'evenement' => [[], ['_controller' => 'App\\Controller\\EvenementController::indexBack'], [], [['text', '/admin-evenements']], [], []],
     'addEvenement' => [[], ['_controller' => 'App\\Controller\\EvenementController::addEvenement'], [], [['text', '/admin-addEvenement']], [], []],
@@ -39,5 +40,7 @@ return [
     'reservation' => [[], ['_controller' => 'App\\Controller\\ReservationController::index'], [], [['text', '/reservation']], [], []],
     'registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/registration']], [], []],
     'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'access_denied' => [[], ['_controller' => 'App\\Controller\\SecurityController::accessDenied'], [], [['text', '/access_denied']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
+    'activation' => [['token'], ['_controller' => 'App\\Controller\\SecurityController::activation'], [], [['variable', '/', '[^/]++', 'token'], ['text', '/activation']], [], []],
 ];

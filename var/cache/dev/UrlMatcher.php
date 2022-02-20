@@ -36,6 +36,7 @@ return [
         '/reservation' => [[['_route' => 'reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
         '/registration' => [[['_route' => 'registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/access_denied' => [[['_route' => 'access_denied', '_controller' => 'App\\Controller\\SecurityController::accessDenied'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -55,11 +56,17 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/admin/(?'
-                    .'|ModifierUser/([^/]++)(*:200)'
-                    .'|deleteUser/([^/]++)(*:227)'
+                .'|/a(?'
+                    .'|dmin/(?'
+                        .'|ModifierUser/([^/]++)(*:203)'
+                        .'|deleteUser/([^/]++)(*:230)'
+                    .')'
+                    .'|ctivation/([^/]++)(*:257)'
                 .')'
-                .'|/client/profilup/([^/]++)(*:261)'
+                .'|/client/(?'
+                    .'|profilup/([^/]++)(*:294)'
+                    .'|editPass/([^/]++)(*:319)'
+                .')'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -70,10 +77,12 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        200 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
-        227 => [[['_route' => 'admin_deleteUser', '_controller' => 'App\\Controller\\AdminController::deleteUser'], ['id'], null, null, false, true, null]],
-        261 => [
-            [['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null],
+        203 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
+        230 => [[['_route' => 'admin_deleteUser', '_controller' => 'App\\Controller\\AdminController::deleteUser'], ['id'], null, null, false, true, null]],
+        257 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
+        294 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
+        319 => [
+            [['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

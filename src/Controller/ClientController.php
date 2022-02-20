@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\EditClientType;
+use App\Form\EditPasswordType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,20 +33,44 @@ class ClientController extends AbstractController
      * @param Request $request
      * @Route("/profilup/{id}",name="profilup")
      */
-    public function modifier(Request  $request ,UserRepository $repository,$id,UserPasswordEncoderInterface $encoder){
+    public function modifier(Request  $request ,UserRepository $repository,$id){
 
         $user=$repository->find($id);
         $form= $this->createForm(EditClientType::class,$user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $em =$this->getDoctrine()->getManager();
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('client_profil');
         }
         return $this->render('/front/Client/modifierprofile.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $repository
+     * @param $id
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @Route("/editPass/{id}",name="editPass")
+     */
+    public function modifierMotdepasse(Request  $request ,UserRepository $repository,$id,UserPasswordEncoderInterface $encoder){
+
+        $user=$repository->find($id);
+        $form= $this->createForm(EditPasswordType::class,$user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em =$this->getDoctrine()->getManager();
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            //$em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('client_profil');
+        }
+        return $this->render('/front/Client/editpass.html.twig',[
             'form'=>$form->createView()
         ]);
     }

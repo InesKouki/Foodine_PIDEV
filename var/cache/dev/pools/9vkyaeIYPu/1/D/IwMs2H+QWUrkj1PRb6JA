@@ -20,11 +20,20 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'scale' => [
                 null,
             ],
+            'maxMessage' => [
+                1 => 'Votre mot de passe contenir au plus 20 caracteres',
+            ],
             'minMessage' => [
-                1 => 'Votre mot de passe doit comporter au minimum 8 caractères',
+                1 => 'Votre mot de passe doit contenir au moins 8 caracteres',
+            ],
+            'max' => [
+                1 => 20,
             ],
             'min' => [
-                1 => '8',
+                1 => 8,
+            ],
+            'allowEmptyString' => [
+                1 => false,
             ],
             'groups' => [
                 1 => [

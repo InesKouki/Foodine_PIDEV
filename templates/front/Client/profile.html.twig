@@ -22,7 +22,8 @@
                                             <h5>#{{app.user.Username }} </h5>
                                             <p class="font-size-sm"></p>
                                             <a href="{{path('client_profilup',{'id':app.user.id})}}"> <button type="submit" class="default-btn">Modifier les informations</button> </a>
-
+                                            <hr>
+                                            <a href="{{path('client_editPass',{'id':app.user.id})}}"> <button type="submit" class="default-btn">Modifier Mot de passe</button> </a>
                                         </div>
                                     </div>
                                     <hr class="my-4" />

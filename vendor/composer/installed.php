@@ -629,6 +629,15 @@
             'reference' => 'a2bffca41974d1c968557b343e269a60a8d5ffa4',
             'dev_requirement' => false,
         ),
+        'swiftmailer/swiftmailer' => array(
+            'pretty_version' => 'v6.3.0',
+            'version' => '6.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../swiftmailer/swiftmailer',
+            'aliases' => array(),
+            'reference' => '8a5d5072dca8f48460fce2f4131fcc495eec654c',
+            'dev_requirement' => false,
+        ),
         'symfony/asset' => array(
             'pretty_version' => 'v4.4.37',
             'version' => '4.4.37.0',
@@ -1194,6 +1203,15 @@
             'install_path' => __DIR__ . '/../symfony/stopwatch',
             'aliases' => array(),
             'reference' => 'ad652049cc8d62417a33373f5d69edde4cbb29d5',
+            'dev_requirement' => false,
+        ),
+        'symfony/swiftmailer-bundle' => array(
+            'pretty_version' => 'v3.5.4',
+            'version' => '3.5.4.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/swiftmailer-bundle',
+            'aliases' => array(),
+            'reference' => '9daab339f226ac958192bf89836cb3378cc0e652',
             'dev_requirement' => false,
         ),
         'symfony/translation' => array(

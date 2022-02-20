@@ -22,11 +22,16 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez entre votre nom")
+     * @Assert\Type(type={"alpha", "digit"}, message="Votre nom doit contenir seulement des lettres alphabétiques")
      */
+
     private $Nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez entre votre prenom")
+     * @Assert\Type(type={"alpha", "digit"},message="Votre prénom doit contenir seulement des lettres alphabétiques" )
      */
     private $Prenom;
 
@@ -37,7 +42,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Email(message="votre Email n'est pas valide")
+     * @Assert\Email(message=" Email n'est pas valide")
      */
     private $Email;
 
@@ -48,13 +53,21 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min ="8", minMessage = "Votre mot de passe doit comporter au minimum 8 caractères")
+     *@Assert\Length(
+     * min = 8,
+     * max = 20,
+     * minMessage = "Votre mot de passe doit contenir au moins 8 caracteres",
+     * maxMessage = "Votre mot de passe contenir au plus 20 caracteres",
+     * allowEmptyString = false
+     *  )
      */
     private $Password;
-    
-    /*
-    * @Assert\EqualTo(propertyPath = "password",message="Vous n'avez pas saisi le même mot de passe !" )
-    */
+
+    /**
+     * @Assert\EqualTo(propertyPath ="Password",
+     * message="Vous n'avez pas saisi le même mot de passe." )
+     */
+
     private $confirm_password;
     /**
      * @ORM\Column(type="string", length=255)
@@ -72,7 +85,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Assert\Length(min ="8", minMessage = "Votre numéro doit comporter au minimum 8 chiffres")
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 8,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $phone;
 

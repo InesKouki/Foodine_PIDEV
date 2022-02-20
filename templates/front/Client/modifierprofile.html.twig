@@ -62,16 +62,28 @@
                                             </div>
 
                                         <div class="form-group">
+                                            {% if form_errors(form.Phone) %}
+                                            <div class="alert alert-danger"
+                                            {{ form_errors(form.Phone) }}
+                                        </div>
+                                        {% endif %}
+                                        <h6 class="mb-0"> {{ form_label(form.Phone,'Phone') }}</h6>
+
+                                        {{ form_widget(form.Phone,{'attr': {'class':'form-control'}}) }}
+
+                                    </div>
+
+                                        <div class="form-group">
                                             {% if form_errors(form.Email) %}
                                             <div class="alert alert-danger"
                                             {{ form_errors(form.Email) }}
+                                            </div>
+                                            {% endif %}
+                                            <h6 class="mb-0"> {{ form_label(form.Email,'Email') }}</h6>
+
+                                            {{ form_widget(form.Email,{'attr': {'class':'form-control'}}) }}
+
                                         </div>
-                                        {% endif %}
-                                        <h6 class="mb-0"> {{ form_label(form.Email,'Email') }}</h6>
-
-                                        {{ form_widget(form.Email,{'attr': {'class':'form-control'}}) }}
-
-                                    </div>
 
                                     <div class="form-group">
                                         {% if form_errors(form.Address) %}
@@ -85,37 +97,19 @@
 
                                 </div>
 
-                                <div class="form-group">
-                                    {% if form_errors(form.Phone) %}
-                                    <div class="alert alert-danger"
-                                    {{ form_errors(form.Phone) }}
+
+
+
+
+
+
+                        {{ form_row(form.file) }}
+
                                 </div>
-                                {% endif %}
-                                <h6 class="mb-0"> {{ form_label(form.Phone,'Phone') }}</h6>
-
-                                {{ form_widget(form.Phone,{'attr': {'class':'form-control'}}) }}
-
-                            </div>
-
-                            <div class="form-group">
-                                {% if form_errors(form.Password) %}
-                                <div class="alert alert-danger"
-                                {{ form_errors(form.Password) }}
-                            </div>
-                            {% endif %}
-                            <h6 class="mb-0"> {{ form_label(form.Password,'Mot de passe ') }}</h6>
-
-                            {{ form_widget(form.Password,{'attr': {'class':'form-control'}}) }}
-
-                        </div>
-
-                        {{ form_row(form.file) }}
 
 
 
 
-
-                                        </div>
 
 
 
@@ -126,9 +120,11 @@
                                                     <button type="submit" class="default-btn">Enregistrer les modifications</button>
 
 
-                                                {{ form_end(form) }}
+
 
                                             </div>
+                                {{ form_end(form) }}
+                    <br>
                                         </div>
                                     </div>
                             </div>

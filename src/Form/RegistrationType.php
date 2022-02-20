@@ -3,11 +3,15 @@
 namespace App\Form;
 
 use App\Entity\User;
+use http\Message;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use function PHPUnit\Framework\equalTo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class RegistrationType extends AbstractType
 {
@@ -16,7 +20,9 @@ class RegistrationType extends AbstractType
         $builder
             ->add('Nom',null,array(
                 'attr' => array(
-                     'placeholder' => 'Nom..')))
+                     'placeholder' => 'Nom..',
+                'required'=> true,
+                    )))
             ->add('Prenom',null,array(
                 'attr' => array(
                      'placeholder' => 'Prenom..')))
@@ -32,6 +38,7 @@ class RegistrationType extends AbstractType
             ->add('file', FileType::class, [
                 'label' => 'Choisissez votre image' ,
                 'mapped' => false,
+                'required' => true
 
 
             ])
