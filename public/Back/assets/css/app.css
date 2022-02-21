@@ -2296,7 +2296,7 @@ a {
 
 .email-star {
 
-	color: ##ffffff;
+	color: #ffffff;
 
 }
 
@@ -4316,4 +4316,10 @@ body.bg-theme15 {
 
 	}
 
+}
+
+.custom-error ul{
+	margin-left: -60px;
+	list-style-type: none;
+	color: red;
 }

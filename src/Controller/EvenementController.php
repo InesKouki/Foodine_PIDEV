@@ -7,6 +7,7 @@ use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class EvenementController extends AbstractController
 {
@@ -24,7 +25,7 @@ class EvenementController extends AbstractController
      */
     public function afficheBack(EvenementRepository $repo)
     {
-        $event=$repo->findAll();
+        $event=$repo->orderByDateDescQB();
         return $this->render('back/evenement/index.html.twig', ['backEvents' => $event]);
     }
 
@@ -57,7 +58,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/admin-updateEvenement/{id}", name="updateEvenement")
+     * @Route("/admin-updateEvenement-{id}", name="updateEvenement")
      */
     public function updateEvenement(Request $request, EvenementRepository $repo, $id)
     {
@@ -67,11 +68,13 @@ class EvenementController extends AbstractController
         $file = $form['image']->getData();
 
         if ($form->isSubmitted() && $form->isValid()){
-            $upload_dir = $this->getParameter('uploads_directory');
-            $filename = md5(uniqid())   . '.' .   $file->guessExtension();
-            $file->move($upload_dir,$filename);
+            if ($file) {
+                $upload_dir = $this->getParameter('uploads_directory');
+                $filename = md5(uniqid())   . '.' .   $file->guessExtension();
+                $file->move($upload_dir,$filename);
 
-            $event->setImage($filename);
+                $event->setImage($filename);
+            }
 
             $em=$this->getDoctrine()->getManager();
             $em->flush();
@@ -84,7 +87,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/admin-deleteEvenement/{id}", name="deleteEvenement")
+     * @Route("/admin-deleteEvenement-{id}", name="deleteEvenement")
      */
     public function deleteEvenement(EvenementRepository $repo, $id)
     {
@@ -94,6 +97,33 @@ class EvenementController extends AbstractController
             $em->remove($event);
             $em->flush();
             return $this->redirectToRoute('evenement');
+    }
+
+    /**
+     * @Route("/admin-evenements-sortbynameasc", name="evenementSortByNameAsc")
+     */
+    public function sortBackByNameAsc(EvenementRepository $repo)
+    {
+        $event=$repo->orderByNameAscQB();
+        return $this->render('back/evenement/index.html.twig', ['backEvents' => $event]);
+    }
+
+    /**
+     * @Route("/admin-evenements-sortbynamedesc", name="evenementSortByNameDesc")
+     */
+    public function sortBackByNameDesc(EvenementRepository $repo)
+    {
+        $event=$repo->orderByNameDescQB();
+        return $this->render('back/evenement/index.html.twig', ['backEvents' => $event]);
+    }
+
+    /**
+     * @Route("/admin-evenements-sortbydateasc", name="evenementSortByDateAsc")
+     */
+    public function sortBackByDateAsc(EvenementRepository $repo)
+    {
+        $event=$repo->orderByDateAscQB();
+        return $this->render('back/evenement/index.html.twig', ['backEvents' => $event]);
     }
 
 }

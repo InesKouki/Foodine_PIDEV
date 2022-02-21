@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -21,21 +22,26 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir le nom")
      */
     private $name;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotNull(message="Veuillez saisir la date de début")
+     * @Assert\LessThan(propertyPath="dateFin", message="La date de début est invalide")
      */
     private $dateDeb;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotNull(message="Veuillez saisir la date de fin")
      */
     private $dateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir la description")
      */
     private $description;
 
@@ -48,16 +54,6 @@ class Evenement
      * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="evenement")
      */
     private $promotions;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $fixed;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $day;
 
     public function __construct()
     {
@@ -74,33 +70,9 @@ class Evenement
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDateDeb(): ?\DateTimeInterface
-    {
-        return $this->dateDeb;
-    }
-
-    public function setDateDeb(\DateTimeInterface $dateDeb): self
-    {
-        $this->dateDeb = $dateDeb;
-
-        return $this;
-    }
-
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->dateFin;
-    }
-
-    public function setDateFin(\DateTimeInterface $dateFin): self
-    {
-        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -113,6 +85,30 @@ class Evenement
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDateDeb(): ?\DateTimeInterface
+    {
+        return $this->dateDeb;
+    }
+
+    public function setDateDeb(\DateTimeInterface $dateDeb = null): self
+    {
+        $this->dateDeb = $dateDeb;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin = null): self
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -155,30 +151,6 @@ class Evenement
                 $promotion->setEvenement(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getFixed(): ?bool
-    {
-        return $this->fixed;
-    }
-
-    public function setFixed(bool $fixed): self
-    {
-        $this->fixed = $fixed;
-
-        return $this;
-    }
-
-    public function getDay(): ?string
-    {
-        return $this->day;
-    }
-
-    public function setDay(string $day): self
-    {
-        $this->day = $day;
 
         return $this;
     }

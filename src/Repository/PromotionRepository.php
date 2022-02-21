@@ -19,6 +19,44 @@ class PromotionRepository extends ServiceEntityRepository
         parent::__construct($registry, Promotion::class);
     }
 
+    function orderByNameAscQB(){
+        return $this->createQueryBuilder('pr')
+            ->join('pr.evenement','ev')
+            -> orderBy('ev.name','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNameDescQB(){
+        return $this->createQueryBuilder('pr')
+            ->join('pr.evenement','ev')
+            -> orderBy('ev.name','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPourcentageAscQB(){
+        return $this->createQueryBuilder('pr')
+            -> orderBy('pr.pourcentage','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPourcentageDescQB(){
+        return $this->createQueryBuilder('pr')
+            -> orderBy('pr.pourcentage','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function searchByEvent($id){
+        return $this->createQueryBuilder('s')
+            ->join('s.evenement','c')
+            ->addSelect('c')
+            ->where('c.id=:id')
+            ->setParameter('id',$id)
+//            ->orderBy('s.date','ASC')
+            ->getQuery()->getResult();
+    }
+
+
+
     // /**
     //  * @return Promotion[] Returns an array of Promotion objects
     //  */

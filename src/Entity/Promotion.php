@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PromotionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,9 +26,14 @@ class Promotion
 
     /**
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="promotions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
      */
     private $evenement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="promotion")
+     */
+    private $produit;
 
     public function getId(): ?int
     {
@@ -56,4 +63,18 @@ class Promotion
 
         return $this;
     }
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+
 }

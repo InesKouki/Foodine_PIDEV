@@ -19,6 +19,37 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
+    function orderByDateDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.dateDeb','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByDateAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.dateDeb','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNameAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNameDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function getActiveEvents(){
+        return $this->createQueryBuilder('ev')
+            ->where('ev.dateDeb < CURRENT_DATE() AND ev.dateFin > CURRENT_DATE()')
+            -> getQuery()->getResult();
+    }
+
+
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */
