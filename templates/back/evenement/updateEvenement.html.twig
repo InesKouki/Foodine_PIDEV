@@ -9,13 +9,13 @@
 
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Modifier Evènement</div>
+                <div class="breadcrumb-title pe-3">Dashboard</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-event"></i></a>
                             </li>
-
+                            <li class="breadcrumb-item active" aria-current="page">Modifier événement</li>
                         </ol>
                     </nav>
                 </div>
@@ -28,51 +28,58 @@
 
                     <hr/>
 
-                    {{ form_start(eventForm) }}
+                    {{ form_start(eventForm , {'attr' : {'novalidate' : 'novalidate'} }) }}
                     <div class="form-body mt-4">
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-6">
                                 <div class="border border-3 p-4 rounded">
 
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Image de
                                             l'événement</label>
                                         {{ form_widget(eventForm.image) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(eventForm.image) }}
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="inputPrice" class="form-label">Description</label>
+                                        {{ form_widget(eventForm.description) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(eventForm.description) }}
+                                        </ul>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="border border-3 p-4 rounded">
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            {#                                             {{ form_label (eventForm.name) }} #}
-                                            <label for="inputPrice" class="form-label">Nom de l'evenement</label>
-                                            {{ form_widget(eventForm.name,{'attr':{
-                                                'class':'form-control'
-                                            }}) }}
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="inputPrice" class="form-label">Description</label>
-                                            {{ form_widget(eventForm.description,{'attr':{
-                                                'class':'form-control'
-                                            }}) }}
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Date début:</label>
-                                            {{ form_widget(eventForm.dateDeb) }}
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Date fin:</label>
-                                            {{ form_widget(eventForm.dateFin) }}
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="inputPrice" class="form-label">Nom de l'événement</label>
+                                        {{ form_widget(eventForm.name) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(eventForm.name) }}
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Date début:</label>
+                                        {{ form_widget(eventForm.dateDeb) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(eventForm.dateDeb) }}
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Date fin:</label>
+                                        {{ form_widget(eventForm.dateFin) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(eventForm.dateFin) }}
+                                        </ul>
+                                    </div>
 
 
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-light">Modifier</button>
-                                            </div>
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-light">Modifier</button>
                                         </div>
                                     </div>
                                 </div>
