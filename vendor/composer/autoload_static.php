@@ -133,6 +133,8 @@ class ComposerStaticInit04c04f72f4934c7d5b43cf6b1f812650
         ),
         'G' => 
         array (
+            'Gregwar\\CaptchaBundle\\' => 22,
+            'Gregwar\\' => 8,
             'Gedmo\\' => 6,
         ),
         'E' => 
@@ -511,6 +513,14 @@ class ComposerStaticInit04c04f72f4934c7d5b43cf6b1f812650
         'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
+        ),
+        'Gregwar\\CaptchaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gregwar/captcha-bundle',
+        ),
+        'Gregwar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
         ),
         'Gedmo\\' => 
         array (

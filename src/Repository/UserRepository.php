@@ -48,6 +48,17 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findEmail($data)
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.email=:val')
+            ->setParameter('val',$data)
+            ->getQuery()
+            ->getResult();
+
+        ;
+    }
+
 
 
 

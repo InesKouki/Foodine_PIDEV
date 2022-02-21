@@ -38,6 +38,7 @@ return [
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/access_denied' => [[['_route' => 'access_denied', '_controller' => 'App\\Controller\\SecurityController::accessDenied'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/oubliPass' => [[['_route' => 'oubliPass', '_controller' => 'App\\Controller\\SecurityController::forgottenPass'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -55,18 +56,20 @@ return [
                         .')'
                         .'|(*:159)'
                     .')'
+                    .'|gcb/generate\\-captcha/([^/]++)(*:198)'
                 .')'
                 .'|/a(?'
                     .'|dmin/(?'
-                        .'|ModifierUser/([^/]++)(*:203)'
-                        .'|deleteUser/([^/]++)(*:230)'
+                        .'|ModifierUser/([^/]++)(*:241)'
+                        .'|deleteUser/([^/]++)(*:268)'
                     .')'
-                    .'|ctivation/([^/]++)(*:257)'
+                    .'|ctivation/([^/]++)(*:295)'
                 .')'
                 .'|/client/(?'
-                    .'|profilup/([^/]++)(*:294)'
-                    .'|editPass/([^/]++)(*:319)'
+                    .'|profilup/([^/]++)(*:332)'
+                    .'|editPass/([^/]++)(*:357)'
                 .')'
+                .'|/resetPassword([^/]++)(*:388)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -77,12 +80,14 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        203 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
-        230 => [[['_route' => 'admin_deleteUser', '_controller' => 'App\\Controller\\AdminController::deleteUser'], ['id'], null, null, false, true, null]],
-        257 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
-        294 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
-        319 => [
-            [['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null],
+        198 => [[['_route' => 'gregwar_captcha.generate_captcha', '_controller' => 'Gregwar\\CaptchaBundle\\Controller\\CaptchaController::generateCaptchaAction'], ['key'], null, null, false, true, null]],
+        241 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
+        268 => [[['_route' => 'admin_deleteUser', '_controller' => 'App\\Controller\\AdminController::deleteUser'], ['id'], null, null, false, true, null]],
+        295 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
+        332 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
+        357 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
+        388 => [
+            [['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

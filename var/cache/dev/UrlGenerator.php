@@ -43,4 +43,7 @@ return [
     'access_denied' => [[], ['_controller' => 'App\\Controller\\SecurityController::accessDenied'], [], [['text', '/access_denied']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'activation' => [['token'], ['_controller' => 'App\\Controller\\SecurityController::activation'], [], [['variable', '/', '[^/]++', 'token'], ['text', '/activation']], [], []],
+    'oubliPass' => [[], ['_controller' => 'App\\Controller\\SecurityController::forgottenPass'], [], [['text', '/oubliPass']], [], []],
+    'resetPassword' => [['token'], ['_controller' => 'App\\Controller\\SecurityController::resetPass'], [], [['variable', '', '[^/]++', 'token'], ['text', '/resetPassword']], [], []],
+    'gregwar_captcha.generate_captcha' => [['key'], ['_controller' => 'Gregwar\\CaptchaBundle\\Controller\\CaptchaController::generateCaptchaAction'], [], [['variable', '/', '[^/]++', 'key'], ['text', '/_gcb/generate-captcha']], [], []],
 ];

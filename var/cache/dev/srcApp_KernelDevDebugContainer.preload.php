@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerFu2oI3z/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerF2sker1/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -26,6 +26,7 @@ $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
 $classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle';
+$classes[] = 'Gregwar\CaptchaBundle\GregwarCaptchaBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -51,6 +52,7 @@ $classes[] = 'App\Form\EditClientType';
 $classes[] = 'App\Form\EditEmployeType';
 $classes[] = 'App\Form\EditPasswordType';
 $classes[] = 'App\Form\RegistrationType';
+$classes[] = 'App\Form\ResetPassType';
 $classes[] = 'App\Repository\PlanningRepository';
 $classes[] = 'App\Repository\UserRepository';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController';
@@ -248,6 +250,12 @@ $classes[] = 'Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser';
 $classes[] = 'Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener';
+$classes[] = 'Gregwar\Captcha\CaptchaBuilder';
+$classes[] = 'Gregwar\CaptchaBundle\Controller\CaptchaController';
+$classes[] = 'Gregwar\CaptchaBundle\Generator\CaptchaGenerator';
+$classes[] = 'Gregwar\CaptchaBundle\Generator\ImageFileHandler';
+$classes[] = 'Gregwar\Captcha\PhraseBuilder';
+$classes[] = 'Gregwar\CaptchaBundle\Type\CaptchaType';
 $classes[] = 'Symfony\Component\HttpKernel\HttpKernel';
 $classes[] = 'Symfony\Component\HttpKernel\Controller\TraceableControllerResolver';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver';
@@ -365,8 +373,8 @@ $classes[] = 'Symfony\Component\Security\Http\Firewall\ChannelListener';
 $classes[] = 'Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint';
 $classes[] = 'Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand';
 $classes[] = 'Symfony\Component\Security\Http\Firewall\ContextListener';
-$classes[] = 'Symfony\Component\Security\Csrf\CsrfTokenManager';
 $classes[] = 'Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator';
+$classes[] = 'Symfony\Component\Security\Csrf\CsrfTokenManager';
 $classes[] = 'Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage';
 $classes[] = 'Symfony\Component\Security\Core\Encoder\EncoderFactory';
 $classes[] = 'Symfony\Bundle\SecurityBundle\Security\FirewallMap';

@@ -22,7 +22,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez entre votre nom")
+     *
      * @Assert\Type(type={"alpha", "digit"}, message="Votre nom doit contenir seulement des lettres alphabétiques")
      */
 
@@ -30,7 +30,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez entre votre prenom")
+     *
      * @Assert\Type(type={"alpha", "digit"},message="Votre prénom doit contenir seulement des lettres alphabétiques" )
      */
     private $Prenom;
@@ -44,7 +44,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message=" Email n'est pas valide")
      */
-    private $Email;
+    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -99,6 +99,11 @@ class User implements UserInterface
      */
     private $Address;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $reset_token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,12 +147,12 @@ class User implements UserInterface
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
@@ -252,6 +257,18 @@ class User implements UserInterface
     public function setAddress(?string $Address): self
     {
         $this->Address = $Address;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
 
         return $this;
     }

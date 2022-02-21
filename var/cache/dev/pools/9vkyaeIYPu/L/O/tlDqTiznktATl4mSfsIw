@@ -3,7 +3,6 @@
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
-        clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
         clone ($p['Symfony\\Component\\Validator\\Constraints\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Type')),
     ],
     null,
@@ -11,7 +10,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         'stdClass' => [
             'type' => [
                 'string',
-                2 => [
+                [
                     'alpha',
                     'digit',
                 ],
@@ -26,14 +25,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 null,
             ],
             'message' => [
-                1 => 'Veuillez entre votre nom',
-                'Votre nom doit contenir seulement des lettres alphabétiques',
+                1 => 'Votre nom doit contenir seulement des lettres alphabétiques',
             ],
             'groups' => [
                 1 => [
-                    'Default',
-                ],
-                [
                     'Default',
                 ],
             ],
@@ -42,7 +37,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         $o[0],
         $o[1],
-        $o[2],
     ],
     []
 ); }];

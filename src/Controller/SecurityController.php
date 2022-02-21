@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\EditPasswordType;
+use App\Form\NewPassType;
 use App\Form\RegistrationType;
+use App\Form\ResetPassType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 
@@ -83,7 +87,7 @@ class SecurityController extends AbstractController
         {
             $lastUsername = $authenticationUtils->getLastUsername();
             $user = $userRepository->findOneBy(['Username' => $lastUsername]);
-            dump($user);
+
             if($user){
                 if($user->getActivationToken() != null ){
 
@@ -125,6 +129,7 @@ class SecurityController extends AbstractController
 
         // On supprime le token
         $user->setActivationToken(null);
+
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
@@ -135,6 +140,94 @@ class SecurityController extends AbstractController
         // On retourne à l'accueil
         return $this->redirectToRoute('front');
     }
+
+    /**
+     * @Route("/oubliPass", name="oubliPass")
+     */
+    public function forgottenPass(Request $request, UserRepository $userRepository,\Swift_Mailer $mailer,
+    TokenGeneratorInterface $tokenGenerator){
+        $form=$this->createForm(ResetPassType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&&$form->isValid()){
+            $data=$form->getData();
+
+            $user=$userRepository->findOneByEmail($data['email']);
+             if($user == NULL){
+                 $this->addFlash('danger','Adresse Email non existante');
+                 return $this->redirectToRoute('oubliPass');
+             }
+             $token =$tokenGenerator->generateToken();
+             try {
+                 $user->setResetToken($token);
+                 $em =$this->getDoctrine()->getManager();
+                 $em->persist($user);
+                 $em->flush();
+             }catch(\Exception $e) {
+                 $this->addFlash('Warning', 'Une erreur est survenue:'.$e->getMessage());
+                 //return $this->redirectToRoute('login');
+            }
+            $url = $this->generateUrl('resetPassword',['token'=>$token]);
+            $message = (new \Swift_Message('Mot de passe oublié'))
+                ->setFrom('foodine01@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody($this->renderView(
+                    '/front/security/ForgottenPassEmail.html.twig', ['token' => $token]
+                ),
+                    'text/html');
+            $mailer->send($message);
+            $this->addFlash('message','Un email de reinitialisation de mot de passe vous a été envoyé ');
+            return $this->redirectToRoute('login');
+        }
+        return $this->render('/front/security/ForgottenPass.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/resetPassword{token}" , name="resetPassword")
+     */
+    public function resetPass($token ,Request $request,UserPasswordEncoderInterface $encoder,UserRepository $userRepository){
+        $user=$userRepository->findOneBy(['reset_token'=>$token]);
+
+         if(!$user){
+            $this->addFlash('danger','Token inconnu');
+            return $this->redirectToRoute('login');
+
+        }
+  
+        $form=$this->createForm(EditPasswordType::class,$user);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&&$form->isValid()) {
+            $user->setResetToken(null);
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // On génère un message
+             $this->addFlash('message', 'Utilisateur activé avec succès');
+             return $this->redirectToRoute('login');
+        }
+            return $this->render('front/security/resetPass.html.twig', ['token'=>$token,
+                'form'=>$form->createView()]);
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
 
