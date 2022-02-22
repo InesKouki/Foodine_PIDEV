@@ -23,57 +23,71 @@
             <!--end breadcrumb-->
 
             <div class="card">
-
-
                 <div class="card-body p-4">
                     <h5 class="card-title">Ajouter Recette</h5>
                     <hr/>
+                    {{ form_start (f1,{ 'attr' : {'novalidate':'novalidate'} }) }}
                     <div class="form-body mt-4">
                         <div class="row">
-
-
-                            <div class="col-lg-4">
-                                {{ form_start (f1) }}
-
+                            <div class="col-lg-6">
                                 <div class="border border-3 p-4 rounded">
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            {{ form_label(f1.nom,"Nom",{'attr':{'class':'form-label'}}) }}
-                                            {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
-                                        </div>
-                                        <div class="col-12">
-                                            {{ form_label(f1.description,"description",{'attr':{'class':'form-label'}}) }}
-                                            {{ form_widget(f1.description,{'attr':{'class':'form-control'}}) }}
-                                        </div>
-                                        <div class="col-12">
-                                            {{ form_label(f1.planningid,"planning",{'attr':{'class':'form-label'}}) }}
-                                            {{ form_widget(f1.planningid,{'attr':{'class':'form-control'}}) }}
 
-                                        </div>
-                                        <div class="col-12">
-                                            {{ form_widget(f1.imagerecette,{'attr':{'class':'form-control'}}) }}
+                                    <div class="mb-3">
+                                        <label for="inputProductDescription" class="form-label">Image de
+                                            Recette</label>
+                                        {{ form_widget(f1.imagerecette,{'attr':{'class':'form-control'}}) }}
 
-                                        </div>
-                                        <div class="card-body">
-
-                                                <div class="mb-3">
-
-
-                                                       {{ form_widget(f1.ingredient,{'attr':{  'multiple data-role':'tagsinput'}}) }}
-                                                </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-primary"> Ajouter</button>
-                                        </div>
+                                        <ul class="custom-error">
+                                            {{ form_errors(f1.imagerecette) }}
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="inputPrice" class="form-label">Description</label>
+                                        {{ form_widget(f1.description,{'attr':{'class':'form-control'}}) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(f1.description) }}
+                                        </ul>
                                     </div>
 
                                 </div>
-                                {{ form_end(f1) }}
-
                             </div>
+                            <div class="col-lg-6">
+                                <div class="border border-3 p-4 rounded">
+                                    <div class="mb-3">
+                                        <label for="inputPrice" class="form-label">Nom du Recette</label>
+                                        {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(f1.nom) }}
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Planning:</label>
+                                        {{ form_widget(f1.planningid) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(f1.planningid) }}
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Ingredients:</label>
+                                        {{ form_widget(f1.ingredient,{'attr':{'multiple data-role':'tagsinput'}}) }}
+                                        <ul class="custom-error">
+                                            {{ form_errors(f1.ingredient) }}
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-light">Ajouter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div><!--end row-->
                     </div>
+                    {{ form_end(f1) }}
                 </div>
 
             </div>

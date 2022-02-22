@@ -34,53 +34,22 @@
             <div class="col">
                 <div class="card">
 
-                    <img src="assets/images/gallery/05.png" class="card-img-top" alt="...">
+                    <img width="300" height="250" src="{{ asset('../../../../uploads/' ~ r.imagerecette)}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ r.nom }}</h5>
                         <p class="card-text">{{ r.description }}</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{  }}</li>
+                        <li class="list-group-item">Les ingredients: {{ r.ingredient }}</li>
                     </ul>
-                    <div class="card-body">	<a href="#" class="card-link">Modifier</a>
-                        <a href="#" class="card-link">Supprimer</a>
+                    <div class="card-body">
+                        <a href={{path ('modifierrecette', {id:r.id })}} class="card-link">Modifier</a>
+                        <a href={{path ('supprimerrecette', {id:r.id })}} class="card-link">Supprimer</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            <div class="col">
-                <div class="card">
-                    <img src="assets/images/gallery/05.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom de la recette</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Ingredient 1</li>
-                        <li class="list-group-item">Ingredient 2</li>
-                        <li class="list-group-item">Ingredient 3</li>
-                    </ul>
-                    <div class="card-body">	<a href="#" class="card-link">Modifier</a>
-                        <a href="#" class="card-link">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="assets/images/gallery/05.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Nom de la recette</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Ingredient 1</li>
-                        <li class="list-group-item">Ingredient 2</li>
-                        <li class="list-group-item">Ingredient 3</li>
-                    </ul>
-                    <div class="card-body">	<a href="#" class="card-link">Modifier</a>
-                        <a href="#" class="card-link">Supprimer</a>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!--end row-->

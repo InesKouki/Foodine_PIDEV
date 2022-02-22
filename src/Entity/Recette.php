@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=RecetteRepository::class)
@@ -19,11 +21,13 @@ class Recette
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Entrez le nom du recette ")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Entrez le description du votre recette ")
      */
     private $description;
 
@@ -36,12 +40,14 @@ class Recette
 
     /**
      * @ORM\ManyToOne(targetEntity=Planning::class, inversedBy="recettes")
+     * @Assert\NotBlank(message="choisir le planning ")
      */
 
     private $planningid;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Entrez les ingredients de votre recette ")
      */
     private $ingredient;
 
