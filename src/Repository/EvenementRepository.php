@@ -45,7 +45,7 @@ class EvenementRepository extends ServiceEntityRepository
 
     function getActiveEvents(){
         return $this->createQueryBuilder('ev')
-            ->where('ev.dateDeb < CURRENT_DATE() AND ev.dateFin > CURRENT_DATE()')
+            ->where('ev.dateDeb <= CURRENT_DATE() AND ev.dateFin > CURRENT_DATE()')
             -> getQuery()->getResult();
     }
 
