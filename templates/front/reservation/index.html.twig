@@ -10,12 +10,12 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-banner-content">
-                    <h2>Checkout</h2>
+                    <h2>Reservation</h2>
                     <ul>
                         <li>
                             <a href="index.html">Home</a>
                         </li>
-                        <li>Checkout</li>
+                        <li>Reservation</li>
                     </ul>
                 </div>
             </div>
@@ -37,99 +37,39 @@
                 </div>
             </div>
         </div>
-        <form>
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="billing-details">
-                        <h3 class="title">Billing Details</h3>
+                        <h3 class="title">Reservation</h3>
+                        {{ form_start(form,{ 'attr' : {'novalidate':'novalidate'} }) }}
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <label>Country <span class="required">*</span></label>
-                                    <div class="select-box">
-                                        <select class="form-control">
-                                            <option value="5">United Arab Emirates</option>
-                                            <option value="1">China</option>
-                                            <option value="2">United Kingdom</option>
-                                            <option value="0">Germany</option>
-                                            <option value="3">France</option>
-                                            <option value="4">Japan</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                {{ form_label(form.nom,"Votre nom et prenom*",{'attr':{'class':'form-label'}}) }}
+                                {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.nom) }}
                             </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>First Name <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="col-lg-6 col-md-12">
+                                {{ form_label(form.mobile,"votre numero",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
+                                {{ form_widget(form.mobile,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.mobile) }}
                             </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Last Name <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="col-lg-6 col-md-12">
+                                {{ form_label(form.datereservation,"date_reservation*",{'attr':{'class':'form-label'}}) }}
+                                {{ form_widget(form.datereservation)}}
                             </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
+
+                            <div class="col-lg-6 col-md-12">
+                                {{ form_label(form.tableid,"le numero du table",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
+                                {{ form_widget(form.tableid,{'attr':{'class':'form-control'}}) }}
                             </div>
-                            <div class="col-lg-12 col-md-6">
-                                <div class="form-group">
-                                    <label>Address <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <div class="col-lg-6 col-md-12">
+                                {{ form_label(form.email,"votre email",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
+                                {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+                                {{ form_errors(form.email) }}
                             </div>
-                            <div class="col-lg-12 col-md-6">
-                                <div class="form-group">
-                                    <label>Town / City <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>State / County <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Email Address<span class="required">*</span></label>
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Phone <span class="required">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="create-an-account">
-                                    <label class="form-check-label" for="create-an-account">Create an account?</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="ship-different-address">
-                                    <label class="form-check-label" for="ship-different-address">Ship to a different address?</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group">
-                                    <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Order Notes" class="form-control"></textarea>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-light">Reserver</button>
                         </div>
+                        {{ form_end (form) }}
                     </div>
                 </div>
 
@@ -137,72 +77,35 @@
                     <div class="order-details">
                         <h3 class="title">Your Order</h3>
                         <div class="order-table table-responsive">
+
                             <table class="table table-bordered">
+
                                 <thead>
                                 <tr>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Total</th>
+                                    <th scope="col">Numéro</th>
+                                    <th scope="col">Image</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for i in r %}
+
                                 <tr>
+                                   {% if i.etat=='disponible' %}
                                     <td class="product-name">
-                                        <a href="shop-details.html">Darling Oranges</a>
+                                        {{ i.numerotable }}
                                     </td>
                                     <td class="product-total">
-                                        <span class="subtotal-amount">$455.00</span>
+                                    <img height="120" width="200" src="{{ asset('uploads/') ~ i.imagetable  }}" alt="image"   >
+
+
                                     </td>
+                                    {% endif %}
                                 </tr>
-                                <tr>
-                                    <td class="product-name">
-                                        <a href="shop-details.html">Strawberry</a>
-                                    </td>
-                                    <td class="product-total">
-                                        <span class="subtotal-amount">$541.50</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-name">
-                                        <a href="shop-details.html">Cabbage</a>
-                                    </td>
-                                    <td class="product-total">
-                                        <span class="subtotal-amount">$140.50</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-name">
-                                        <a href="shop-details.html">Nectarine</a>
-                                    </td>
-                                    <td class="product-total">
-                                        <span class="subtotal-amount">$547.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-subtotal">
-                                        <span>Seasoned Tomatoes</span>
-                                    </td>
-                                    <td class="order-subtotal-price">
-                                        <span class="order-subtotal-amount">$1683.50</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-shipping">
-                                        <span>Seasoned Carrot</span>
-                                    </td>
-                                    <td class="shipping-price">
-                                        <span>$30.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="total-price">
-                                        <span>Order Total</span>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="subtotal-amount">$1713.50</span>
-                                    </td>
-                                </tr>
+                                {% endfor %}
+
                                 </tbody>
                             </table>
+
                         </div>
 
                         <div class="payment-box">
@@ -228,7 +131,6 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </section>
 <!-- End Checkout Area -->

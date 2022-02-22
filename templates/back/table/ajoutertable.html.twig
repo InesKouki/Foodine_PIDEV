@@ -396,7 +396,7 @@
                     </li>
 
                     <li>
-                        <a class="" href="table-reservation.html">
+                        <a class="" href="/admin-reservation">
                             <div class="parent-icon"><i class='bx bx-calendar'></i>
                             </div>
                             <div class="menu-title">Réservations</div>
@@ -405,7 +405,7 @@
                     </li>
 
                     <li>
-                        <a class="" href="table-table.html">
+                        <a class="" href="/admin-table">
                             <div class="parent-icon"><i class='bx bx-chair'></i>
                             </div>
                             <div class="menu-title">Tables</div>
@@ -452,10 +452,17 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="border border-3 p-4 rounded">
-                                        {{ form_start (form) }}
+                                        {{ form_start (form,{ 'attr' : {'novalidate':'novalidate'} }) }}
                                         <div class="mb-3">
                                             {{ form_label(form.imagetable,"image_table",{'attr':{'class':'form-label'}}) }}
                                             {{ form_widget(form.imagetable,{'attr':{'class':'form-control'}}) }}
+                                          <style>
+                                              .custom-error { color: #c13584 }
+
+                                          </style>
+                                           <div class="custom-error">
+                                               {{ form_errors(form.imagetable) }}
+                                           </div>
                                         </div>
                                         </div>
                                     </div>
@@ -467,6 +474,7 @@
                                                 <div class="mb-3">
                                                     {{ form_label(form.nbplacetable,"nombre de place",{'attr':{'class':'form-label'}}) }}
                                                     {{ form_widget(form.nbplacetable,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.nbplacetable) }}
                                                 </div>
 
                                             </div>
@@ -477,10 +485,19 @@
                                                 <div class="mb-3">
                                                     {{ form_label(form.numerotable,"numero de la table",{'attr':{'class':'form-label'}}) }}
                                                     {{ form_widget(form.numerotable,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.numerotable) }}
                                                 </div>
 
                                             </div>
 
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ form_label(form.etat,"etat de la table",{'attr':{'class':'form-label'}}) }}
+                                                    {{ form_widget(form.etat,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.numerotable) }}
+                                                </div>
+
+                                            </div>
 
 
                                             <div class="col-12">

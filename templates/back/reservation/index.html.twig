@@ -392,7 +392,7 @@
                     </li>
 
                     <li>
-                        <a class="" href="table-reservation.html">
+                        <a class="" href="/admin-reservation">
                             <div class="parent-icon"><i class='bx bx-calendar'></i>
                             </div>
                             <div class="menu-title">Réservations</div>
@@ -401,7 +401,7 @@
                     </li>
 
                     <li>
-                        <a class="" href="table-table.html">
+                        <a class="" href="/admin-table">
                             <div class="parent-icon"><i class='bx bx-chair'></i>
                             </div>
                             <div class="menu-title">Tables</div>
@@ -447,41 +447,32 @@
                                 <thead>
                                 <tr>
                                     <th>Nom du client </th>
-                                    <th>Date debut</th>
-                                    <th>Date fin </th>
-                                    <th>Numéro de la table</th>
+                                    <th>Date reservation</th>
+                                    <th>Numero Portable</th>
+                                    <th>Numero de la table</th>
+                                    <th>Email</th>
+                                    <th>image de la table</th>
+
                                     <th>Supprimer</th>
+                                    <th>Modifier</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Joe</td>
-                                    <td>01-02-22</td>
-                                    <td>02-02-22</td>
-                                    <td> 1</td>
-                                    <td><a href="javascript:;" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
-                                </tr>
-                                ody>
-                                <tr>
-                                    <td>Joe</td>
-                                    <td>01-02-22</td>
-                                    <td>02-02-22</td>
-                                    <td> 1</td>
-                                    <td><a href="javascript:;" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
-                                </tr>
+                                {% for i in r %}
+                                    <tr>
+                                        <td>{{ i.nom }}</td>
+                                        <td>{{ i.datereservation|date }}</td>
+                                        <td>{{ i.mobile }}</td>
+                                        <td>{{ i.tableid.numerotable }}</td>
+                                        <td>{{ i.email }}</td>
+                                        <td><img height="120" width="200" src="{{ asset('uploads/') ~ i.tableid.imagetable  }}" alt="image"   ></td>
+                                        <td><a href="{{ path('ddd',{'id':i.id} ) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
+                                        <td><a href="{{ path('dddd',{'id':i.id} ) }}" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit' ></i></a></td>
+                                    </tr>
+                                {% endfor %}
 
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                <tr>
-                                    <th>Nom du client </th>
-                                    <th>Date debut</th>
-                                    <th>Date fin </th>
-                                    <th>Numéro de la table</th>
-                                    <th>Supprimer</th>
-                                </tr>
-                                </tr>
-                                </tfoot>
+
                             </table>
                         </div>
                     </div>

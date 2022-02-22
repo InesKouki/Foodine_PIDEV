@@ -22,15 +22,7 @@ class TableController extends AbstractController
             'controller_name' => 'TableController',
         ]);
     }
-    /**
-     * @Route("/admin-table2", name="tableback")
-     */
-    public function indexBack(): Response
-    {
-        return $this->render('back/table/index.html.twig', [
-            'controller_name' => 'TableController',
-        ]);
-    }
+
     /**
 
      * @route("/admin-table",name="affichertable")
@@ -47,9 +39,8 @@ class TableController extends AbstractController
     {$table=$t->find($id);
         $em=$this->getDoctrine()->getManager();
         $em->remove($table);
-        $em->flush();
+       $em->flush();
         return $this->redirectToRoute('affichertable');
-
     }
 
     /**
