@@ -69,14 +69,28 @@ class AdminController extends AbstractController
 
 
     /**
-     * @Route("/deleteUser/{id}", name="deleteUser")
+     * @Route("/blockUser/{id}", name="blockUser")
      */
-    public function deleteUser($id) {
+    public function blockUser($id) {
 
         $user=$this->getDoctrine()->getRepository(User::class)->find($id);
         $em=$this->getDoctrine()->getManager();
-        $em->remove($user);
+        $user->setEtat(0);
         $em->flush();
+        $this->addFlash('message','Utilisateur désactivé avec succès');
+        return $this->redirectToRoute('admin_showUsers');
+    }
+
+    /**
+     * @Route("/unblockUser/{id}", name="unblockUser")
+     */
+    public function unblockUser($id) {
+
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $user->setEtat(1);
+        $em->flush();
+        $this->addFlash('message','Utilisateur activé avec succès');
         return $this->redirectToRoute('admin_showUsers');
     }
 

@@ -55,11 +55,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      *@Assert\Length(
      * min = 8,
-     * max = 20,
      * minMessage = "Votre mot de passe doit contenir au moins 8 caracteres",
-     * maxMessage = "Votre mot de passe contenir au plus 20 caracteres",
-     * allowEmptyString = false
-     *  )
+     * allowEmptyString = false)
      */
     private $Password;
 
@@ -103,6 +100,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $reset_token;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Etat=0;
 
     public function getId(): ?int
     {
@@ -269,6 +271,18 @@ class User implements UserInterface
     public function setResetToken(?string $reset_token): self
     {
         $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->Etat;
+    }
+
+    public function setEtat(int $Etat): self
+    {
+        $this->Etat = $Etat;
 
         return $this;
     }

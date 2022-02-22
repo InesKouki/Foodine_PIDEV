@@ -30,7 +30,7 @@
                         <div class="card-body text-center">
                             <div class="p-4 border radius-15">
                                 <img src="{{ asset('uploads/' ~ user.file ) }}" width="110" height="110" class="rounded-circle shadow" alt="">
-                                <h5 class="mb-0 mt-5">{{ user.Nom}}</h5>
+                                <h5 class="mb-0 mt-5">{{ user.Nom}} {{ user.Prenom}} </h5>
                                 <p class="mb-3">
                                     {% for role in user.Roles %}
                                         {% if role=="ROLE_CHEF" %}
@@ -47,9 +47,15 @@
                                     <a href="{{path('admin_ModifierUser',{'id':user.id})}}"class="btn btn-light radius-15">Attribuer Role</a>
                                 </div>
                             </br>
+                                {% if user.Etat==1 %}
                                 <div class="d-grid">
-                                    <a href="{{path('admin_deleteUser',{'id':user.id})}}"class="btn btn-light radius-15">Supprimer</a>
+                                    <a href="{{path('admin_blockUser',{'id':user.id})}}"class="btn btn-light radius-15">Bloquer</a>
                                 </div>
+                                    {% elseif user.Etat==0 %}
+                                    <div class="d-grid">
+                                        <a href="{{path('admin_unblockUser',{'id':user.id})}}"class="btn btn-light radius-15">Débloquer</a>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

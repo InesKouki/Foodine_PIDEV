@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerF2sker1/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerINVxiuN/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -359,13 +359,15 @@ $classes[] = 'Symfony\Component\Security\Http\Firewall\AccessListener';
 $classes[] = 'Symfony\Component\Security\Http\AccessMap';
 $classes[] = 'Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener';
 $classes[] = 'Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener';
-$classes[] = 'Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy';
 $classes[] = 'Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler';
 $classes[] = 'Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler';
+$classes[] = 'Symfony\Component\Security\Http\Firewall\RememberMeListener';
 $classes[] = 'Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager';
 $classes[] = 'Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider';
 $classes[] = 'Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider';
-$classes[] = 'Symfony\Component\Security\Core\User\UserChecker';
+$classes[] = 'Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider';
+$classes[] = 'Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices';
+$classes[] = 'Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy';
 $classes[] = 'Symfony\Component\Security\Core\Authentication\AuthenticationTrustResolver';
 $classes[] = 'Symfony\Component\Security\Http\Authentication\AuthenticationUtils';
 $classes[] = 'Symfony\Component\Security\Core\Authorization\AuthorizationChecker';
@@ -395,6 +397,7 @@ $classes[] = 'Symfony\Component\Security\Core\Authentication\Token\Storage\Usage
 $classes[] = 'Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage';
 $classes[] = 'Symfony\Bridge\Doctrine\Security\User\EntityUserProvider';
 $classes[] = 'Symfony\Component\Security\Core\User\InMemoryUserProvider';
+$classes[] = 'Symfony\Component\Security\Core\User\UserChecker';
 $classes[] = 'Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\EventListener\HttpCacheListener';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener';

@@ -129,7 +129,7 @@ class SecurityController extends AbstractController
 
         // On supprime le token
         $user->setActivationToken(null);
-
+        $user->setEtat(1);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
@@ -152,7 +152,7 @@ class SecurityController extends AbstractController
             $data=$form->getData();
 
             $user=$userRepository->findOneByEmail($data['email']);
-             if($user == NULL){
+             if(!$user){
                  $this->addFlash('danger','Adresse Email non existante');
                  return $this->redirectToRoute('oubliPass');
              }
@@ -194,7 +194,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('login');
 
         }
-  
+
         $form=$this->createForm(EditPasswordType::class,$user);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()) {
