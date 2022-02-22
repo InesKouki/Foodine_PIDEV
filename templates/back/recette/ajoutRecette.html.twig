@@ -23,63 +23,59 @@
             <!--end breadcrumb-->
 
             <div class="card">
+
+
                 <div class="card-body p-4">
                     <h5 class="card-title">Ajouter Recette</h5>
                     <hr/>
                     <div class="form-body mt-4">
                         <div class="row">
-                            <div class="col-lg-8">
-                                <div class="border border-3 p-4 rounded">
-                                    <div class="mb-3">
-                                        <label for="inputProductDescription" class="form-label">Image de la recette</label>
-                                        <input id="image-uploadify" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple>
-                                    </div>
-                                </div>
-                            </div>
+
+
                             <div class="col-lg-4">
+                                {{ form_start (f1) }}
+
                                 <div class="border border-3 p-4 rounded">
                                     <div class="row g-3">
-
-
                                         <div class="col-12">
-                                            <label for="inputProductType" class="form-label">Nom De la recette</label>
-                                            <input type="text" class="form-control" id="inputProductTags" placeholder="Nom recette">
+                                            {{ form_label(f1.nom,"Nom",{'attr':{'class':'form-label'}}) }}
+                                            {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
                                         </div>
                                         <div class="col-12">
-                                            <label for="inputVendor" class="form-label">Nom de du planning</label>
-                                            <select class="form-select" id="inputVendor">
-                                                <option></option>
-                                                <option value="1">One</option>
-                                            </select>
+                                            {{ form_label(f1.description,"description",{'attr':{'class':'form-label'}}) }}
+                                            {{ form_widget(f1.description,{'attr':{'class':'form-control'}}) }}
                                         </div>
+                                        <div class="col-12">
+                                            {{ form_label(f1.planningid,"planning",{'attr':{'class':'form-label'}}) }}
+                                            {{ form_widget(f1.planningid,{'attr':{'class':'form-control'}}) }}
 
+                                        </div>
+                                        <div class="col-12">
+                                            {{ form_widget(f1.imagerecette,{'attr':{'class':'form-control'}}) }}
+
+                                        </div>
                                         <div class="card-body">
-                                            <form>
 
                                                 <div class="mb-3">
-                                                    <label class="form-label">Ingrédients</label>
-                                                    <select multiple data-role="tagsinput">
-                                                        <option value="Amsterdam">Ingredient1</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
 
-                                        <div class="col-12">
-                                            <label for="inputProductTags" class="form-label">Description</label>
-                                            <input type="text" class="form-control" id="inputProductTags" placeholder="Enter Product Tags">
+
+                                                       {{ form_widget(f1.ingredient,{'attr':{  'multiple data-role':'tagsinput'}}) }}
+                                                </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="d-grid">
-                                                <button type="button" class="btn btn-light">Ajouter</button>
-                                            </div>
+                                            <button type="submit" class="btn btn-primary"> Ajouter</button>
                                         </div>
                                     </div>
+
                                 </div>
+                                {{ form_end(f1) }}
+
                             </div>
+
                         </div><!--end row-->
                     </div>
                 </div>
+
             </div>
 
         </div>

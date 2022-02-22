@@ -30,28 +30,27 @@
                             <div class="col-lg-8">
                                 <div class="border border-3 p-4 rounded">
                                     {{ form_start (f1,{ 'attr' : {'novalidate':'novalidate'} }) }}
-                                    {% if form_errors(f1.datefin) %}
-                                        <div class="alert alert-danger">
-                                            {{form_errors(f1.datefin)}}
-                                        </div>
-                                    {% endif %}
+
                                     <div class="mb-3">
                                         {{ form_label(f1.datedebut,"Date Debut",{'attr':{'class':'form-label'}}) }}
                                         {{ form_widget(f1.datedebut,{'attr':{'class':'form-control'}}) }}
+                                        <div class="custom-error">
+                                            {{form_errors(f1.datedebut)}}
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         {{ form_label(f1.datefin,"Date Fin",{'attr':{'class':'form-label'}}) }}
                                         {{ form_widget(f1.datefin,{'attr':{'class':'form-control'}}) }}
+                                        <div class="custom-error">
+                                            {{form_errors(f1.datefin)}}
+                                        </div>
                                     </div>
                                     <div class="mb-3">
-                                        {% if form_errors(f1.nom) %}
-                                            <div class="alert alert-danger">
-                                                {{form_errors(f1.nom)}}
-                                            </div>
-                                        {% endif %}
                                         {{ form_label(f1.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
                                         {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
-
+                                        <div class="custom-error">
+                                            {{form_errors(f1.nom)}}
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">

@@ -22,11 +22,13 @@ class Planning
 
     /**
      * @ORM\Column(type="datetime",nullable=false)
+     * @Assert\NotBlank (message="Entrer la date")
      */
     private $datedebut;
 
     /**
      * @ORM\Column(type="datetime",nullable=false)
+     * @Assert\NotBlank (message="Entrer la date ")
      * @Assert\GreaterThan(propertyPath="datedebut",message="Vérifiez la date")
      */
     private $datefin;
@@ -47,6 +49,9 @@ class Planning
         $this->recettes = new ArrayCollection();
     }
 
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,7 +62,7 @@ class Planning
         return $this->datedebut;
     }
 
-    public function setDatedebut(\DateTimeInterface $datedebut): self
+    public function setDatedebut(\DateTimeInterface $datedebut=null): self
     {
         $this->datedebut = $datedebut;
 
@@ -69,7 +74,7 @@ class Planning
         return $this->datefin;
     }
 
-    public function setDatefin(\DateTimeInterface $datefin): self
+    public function setDatefin(\DateTimeInterface $datefin=null): self
     {
         $this->datefin = $datefin;
 

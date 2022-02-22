@@ -31,27 +31,27 @@
                             <div class="border border-3 p-4 rounded">
 
                                 {{ form_start (f,{ 'attr' : {'novalidate':'novalidate'} }) }}
-                                {% if form_errors(f.datefin) %}
-                                    <div class="alert alert-danger">
-                                        {{form_errors(f.datefin)}}
-                                    </div>
-                                {% endif %}
                                 <div class="mb-3">
                                     {{ form_label(f.datedebut,"Date Debut",{'attr':{'class':'form-label'}}) }}
                                     {{ form_widget(f.datedebut) }}
+                                    <div class="custom-error">
+                                        {{form_errors(f.datedebut)}}
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     {{ form_label(f.datefin,"Date Fin",{'attr':{'class':'form-label'}}) }}
                                     {{ form_widget(f.datefin) }}
+                                    <div class="custom-error">
+                                        {{form_errors(f.datefin)}}
+                                    </div>
                                 </div>
                                 <div class="mb-3">
-                                    {% if form_errors(f.nom) %}
-                                        <div class="alert alert-danger">
-                                            {{form_errors(f.nom)}}
-                                        </div>
-                                    {% endif %}
+
                                     {{ form_label(f.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
                                     {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                                    <div class="custom-error">
+                                        {{form_errors(f.nom)}}
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">

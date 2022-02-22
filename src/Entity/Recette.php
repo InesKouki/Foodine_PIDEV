@@ -27,21 +27,23 @@ class Recette
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255 , nullable="true")
+     */
+    private $imagerecette;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Planning::class, inversedBy="recettes")
      */
+
     private $planningid;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ImageRecette;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $ingredients = [];
+    private $ingredient;
 
     public function getId(): ?int
     {
@@ -72,14 +74,14 @@ class Recette
         return $this;
     }
 
-    public function getIngredients(): ?string
+    public function getImagerecette(): ?string
     {
-        return $this->ingredients;
+        return $this->imagerecette;
     }
 
-    public function setIngredients(string $ingredients): self
+    public function setImagerecette(string $imagerecette): self
     {
-        $this->ingredients = $ingredients;
+        $this->imagerecette = $imagerecette;
 
         return $this;
     }
@@ -96,15 +98,17 @@ class Recette
         return $this;
     }
 
-    public function getImageRecette(): ?string
+    public function getIngredient(): ?string
     {
-        return $this->ImageRecette;
+        return $this->ingredient;
     }
 
-    public function setImageRecette(string $ImageRecette): self
+    public function setIngredient(string $ingredient): self
     {
-        $this->ImageRecette = $ImageRecette;
+        $this->ingredient = $ingredient;
 
         return $this;
     }
+
+
 }
