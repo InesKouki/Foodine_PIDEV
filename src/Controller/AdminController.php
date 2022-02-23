@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Reclamation;
 use App\Form\EditEmployeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -113,6 +114,22 @@ class AdminController extends AbstractController
         return $this->render("/back/Users/employe.html.twig",[
             'user' => $user
         ]);
+    }
+
+    /**
+     * @return Response
+     * @Route ("/show_rec" , name="show_rec")
+     */
+    public function showReclamation (){
+        $repository=$this->getDoctrine()->getRepository(Reclamation::class);
+        $rec=$repository->findAll();
+        return $this->render("/back/homeBack.html.twig",[
+            'rec' => $rec
+        ]);
+    }
+
+    public function traiterRec(){
+
     }
 
 

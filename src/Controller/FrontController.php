@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Reclamation;
 use App\Entity\User;
+use App\Form\AddReclamationType;
+use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,7 +36,7 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("show_chef/{id}", name="show_chef")
+     * @Route("/show_chef/{id}", name="show_chef")
      */
     public function afficherDetailsChef($id,UserRepository $repository){
         $chef=$repository->find($id);
@@ -40,4 +44,24 @@ class FrontController extends AbstractController
             'chef'=>$chef
         ]);
     }
+
+    /**
+     * @Route("add_rec/", name="add_rec")
+     */
+    public function add(ReclamationRepository $repository,Request $request){
+        $reclamation = new Reclamation();
+        $form=$this->createForm(AddReclamationType::class,$reclamation);
+        $form->handleRequest();
+        if ($form->isSubmitted() and $form->isValid()) {
+            $reclamation->setUser($this->getUser()->getId());
+            $reclamation->setCreatedAt(new \DateTime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reclamation);
+            $em->flush();
+            return $this->redirectToRoute('reclamation');
+        }
+        return $this->render("front/reclamation/add.html.twig", array('form' => $form->createView()));
+    }
+
+
 }
