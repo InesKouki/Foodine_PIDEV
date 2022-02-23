@@ -1544,7 +1544,7 @@
       <argument type="service" id="property_info"/>
       <argument type="service" id="property_info"/>
       <argument type="service" id="property_info"/>
-      <argument>null</argument>
+      <argument>{^App\\Entity\\}</argument>
     </service>
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator" public="false">
       <tag name="kernel.locale_aware"/>
@@ -4405,7 +4405,7 @@
     <service id="doctrine.orm.default_entity_manager.validator_loader" class="Symfony\Bridge\Doctrine\Validator\DoctrineLoader">
       <tag name="validator.auto_mapper" priority="-100"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <argument>null</argument>
+      <argument>{^App\\Entity\\}</argument>
     </service>
     <service id="doctrine.migrations.dependency_factory" class="Doctrine\Migrations\DependencyFactory" public="false">
       <argument type="service" id="doctrine.migrations.configuration_loader"/>
@@ -5124,7 +5124,7 @@
       <argument>main</argument>
       <argument>security.authentication.form_entry_point.main</argument>
       <argument>null</argument>
-      <argument>/access_denied</argument>
+      <argument>null</argument>
       <argument type="collection">
         <argument>form_login</argument>
         <argument>remember_me</argument>
@@ -5187,8 +5187,8 @@
       <call method="setOptions">
         <argument type="collection">
           <argument key="login_path">login</argument>
-          <argument key="always_use_default_target_path">false</argument>
-          <argument key="default_target_path">/</argument>
+          <argument key="default_target_path">login_success</argument>
+          <argument key="always_use_default_target_path">true</argument>
           <argument key="target_path_parameter">_target_path</argument>
           <argument key="use_referer">false</argument>
         </argument>
@@ -5291,7 +5291,7 @@
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
       <argument type="service" id="security.authentication.form_entry_point.main"/>
-      <argument>/access_denied</argument>
+      <argument>null</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
@@ -5856,13 +5856,6 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.KeQUp0X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
-        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.1UuH9tO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5884,31 +5877,21 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.XXMbYmx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="token" type="service_closure" id=".errored..service_locator.XXMbYmx.Symfony\Component\Security\Core\Authentication\Token\TokenInterface"/>
-      </argument>
-    </service>
-    <service id=".service_locator.3T4N40h" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.UWhPgyf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ClientController::modifier" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\ClientController::modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
-        <argument key="App\Controller\SecurityController::accessDenied" type="service_closure" id=".service_locator.KeQUp0X"/>
         <argument key="App\Controller\SecurityController::activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController::forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\SecurityController::onAuthenticationSuccess" type="service_closure" id=".service_locator.XXMbYmx"/>
         <argument key="App\Controller\SecurityController::registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController::resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
         <argument key="App\Controller\ClientController:modifier" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\ClientController:modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
-        <argument key="App\Controller\SecurityController:accessDenied" type="service_closure" id=".service_locator.KeQUp0X"/>
         <argument key="App\Controller\SecurityController:activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController:forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\SecurityController:onAuthenticationSuccess" type="service_closure" id=".service_locator.XXMbYmx"/>
         <argument key="App\Controller\SecurityController:registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController:resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
       </argument>
@@ -6434,12 +6417,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.3T4N40h"/>
+      <argument type="service" id=".service_locator.UWhPgyf"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.3T4N40h"/>
+      <argument type="service" id=".service_locator.UWhPgyf"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6449,7 +6432,6 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
-    <service id=".errored..service_locator.XXMbYmx.Symfony\Component\Security\Core\Authentication\Token\TokenInterface" class="Symfony\Component\Security\Core\Authentication\Token\TokenInterface"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.MrSgT.u"/>
       <argument type="collection">
@@ -6857,7 +6839,7 @@
     <service id="Gregwar\CaptchaBundle\Controller\CaptchaController" alias="gregwar_captcha.controller" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.3T4N40h"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.UWhPgyf"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

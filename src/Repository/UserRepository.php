@@ -47,6 +47,18 @@ class UserRepository extends ServiceEntityRepository
 
         ;
     }
+   /* public function findClients()
+    {
+
+        return $this->createQueryBuilder('u')
+
+            ->Where('u.Roles LIKE :val')
+            ->setParameter('val','[]')
+            ->getQuery()
+            ->getResult();
+
+        ;
+    }*/
 
     public function findEmail($data)
     {
@@ -57,6 +69,39 @@ class UserRepository extends ServiceEntityRepository
             ->getResult();
 
         ;
+    }
+
+    public function trierNomASC(){
+       $em=$this->getEntityManager();
+       $query=$em->createQueryBuilder('SELECT u FROM App\Entity\User u WHERE u.nom ASC');
+       return $query->getQuery();
+    }
+
+    public function nbsClient(){
+       return $this->createQueryBuilder('u')
+           ->select('count(u.id)')
+           ->where('u.Roles LIKE :val')
+           ->setParameter('val','[]')
+           ->getQuery()
+           ->getSingleScalarResult();
+    }
+
+    public function nbsChef(){
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->where('u.Roles LIKE :val')
+            ->setParameter('val','["ROLE_CHEF"]')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function nbsLivreur(){
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->where('u.Roles LIKE :val')
+            ->setParameter('val','["ROLE_LIVREUR"]')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
 

@@ -22,7 +22,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @Assert\Type(type={"alpha", "digit"}, message="Votre nom doit contenir seulement des lettres alphabétiques")
      */
 
@@ -30,7 +29,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @Assert\Type(type={"alpha", "digit"},message="Votre prénom doit contenir seulement des lettres alphabétiques" )
      */
     private $Prenom;
@@ -61,8 +59,7 @@ class User implements UserInterface
     private $Password;
 
     /**
-     * @Assert\EqualTo(propertyPath ="Password",
-     * message="Vous n'avez pas saisi le même mot de passe." )
+     * @Assert\EqualTo(propertyPath ="Password",message="Vous n'avez pas saisi le même mot de passe." )
      */
 
     private $confirm_password;
@@ -213,7 +210,9 @@ class User implements UserInterface
         $this->confirm_password = $confirm_password;
     }
     public function eraseCredentials() {}
-    public function getSalt() {}
+    public function getSalt() {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

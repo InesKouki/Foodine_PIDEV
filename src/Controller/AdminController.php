@@ -20,8 +20,16 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
+        //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
+        $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
+        $nbchef=$this->getDoctrine()->getRepository(User::class)->nbsChef();
+        $nblivreur=$this->getDoctrine()->getRepository(User::class)->nbsLivreur();
+        $ntot=$nbchef+$nblivreur;
         return $this->render('/back/homeBack.html.twig', [
             'controller_name' => 'AdminController',
+            'n'=>$nbclient,
+            'ntot'=>$ntot,
+            //'users'=>$users
         ]);
     }
     /**
@@ -38,6 +46,7 @@ class AdminController extends AbstractController
      * @Route("/showUsers", name="showUsers")
      */
     public function showUsers(){
+
         $repository=$this->getDoctrine()->getRepository(User::class);
         $user=$repository->findUsers();
         return $this->render("/back/Users/employe.html.twig",[
@@ -90,9 +99,23 @@ class AdminController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $user->setEtat(1);
         $em->flush();
-        $this->addFlash('message','Utilisateur activé avec succès');
+
         return $this->redirectToRoute('admin_showUsers');
+        $this->addFlash('message','Utilisateur activé avec succès');
     }
+
+    /**
+     * @return Response
+     * @Route("/trierNomASC" , name="trierNomASC")
+     */
+    public function trierNomASC(){
+        $user=$this->getDoctrine()->getRepository(User::class)->trierNomASC();
+        return $this->render("/back/Users/employe.html.twig",[
+            'user' => $user
+        ]);
+    }
+
+
 
 
 }

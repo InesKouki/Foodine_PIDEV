@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SecurityController extends AbstractController
 {
@@ -66,44 +66,31 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils)
     {
-
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('/front/security/login.html.twig',
-            ['lastUsername' => $lastUsername, 'error' => $error]);
-    }
-        /**
-         * @param AuthenticationUtils $authenticationUtils
-         * @param UserRepository $userRepository
-         * @param Request $request
-         * @return Response
-         * @Route("access_denied", name="access_denied")
-         */
-        public function accessDenied(AuthenticationUtils $authenticationUtils,UserRepository $userRepository,Request  $request
-       )
-        {
+       $error = $authenticationUtils->getLastAuthenticationError();
             $lastUsername = $authenticationUtils->getLastUsername();
-            $user = $userRepository->findOneBy(['Username' => $lastUsername]);
+        return $this->render('/front/security/login.html.twig',
+            ['lastUsername' => $lastUsername, 'error' => $error
+                ]);
+    }
 
-            if($user){
-                if($user->getActivationToken() != null ){
-
-                    return $this->render('/front/security/login.html.twig');
-
-                }
-
-            }
-            return $this->render('/front/security/homeFront.html.twig');
-
-
-        }
-
-
-
-
+    /**
+     * @Route("/login_success", name="login_success")
+     */
+    public function loginSuccess(){
+        $user=$this->getUser();
+        $etat=$user->getEtat();
+        if ( $this->isGranted('ROLE_ADMIN')  )
+            $redirection = $this->redirectToRoute('admin_index');
+       else if ( $this->isGranted('ROLE_CHEF')&& $etat==1)
+            $redirection = $this->redirectToRoute('chef_index');
+        else if ( $this->isGranted('ROLE_LIVREUR')&& $etat==1)
+            $redirection = $this->redirectToRoute('livreur_index');
+        else if  ( $this->isGranted('ROLE_USER')&& $etat==1)
+            $redirection = $this->redirectToRoute('front');
+        else
+            $redirection=$this->redirectToRoute('logout');
+        return $redirection;
+    }
 
      /**
      * @Route("/logout",name="logout")
@@ -120,7 +107,6 @@ class SecurityController extends AbstractController
     {
         // On recherche si un utilisateur avec ce token existe dans la base de données
         $user = $userRepository->findOneBy(['activation_token' => $token]);
-
         // Si aucun utilisateur n'est associé à ce token
         if(!$user){
             // On renvoie une erreur 404
@@ -194,7 +180,6 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('login');
 
         }
-
         $form=$this->createForm(EditPasswordType::class,$user);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()) {
@@ -210,41 +195,6 @@ class SecurityController extends AbstractController
         }
             return $this->render('front/security/resetPass.html.twig', ['token'=>$token,
                 'form'=>$form->createView()]);
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
-    {
-
-            // Get list of roles for current user
-            $roles = $token->getRoles();
-            // Tranform this list in array
-            // Tranform this list in array
-            $rolesTab = array_map(function($role){
-                return $role->getRole();
-            }, $roles);
-            // If is a admin or super admin we redirect to the backoffice area
-            if (in_array('ROLE_ADMIN', $rolesTab, true))
-                $redirection = new RedirectResponse($this->urlGenerator->generate('admin'));
-            else
-                $redirection = new RedirectResponse($this->router->generate('client'));
-
-            return $redirection;
 
     }
 

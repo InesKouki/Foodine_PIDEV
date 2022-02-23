@@ -3,37 +3,33 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Egulias\EmailValidator\EmailValidator;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 use http\Message;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use function PHPUnit\Framework\equalTo;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom',null,array(
-                'attr' => array(
-                     'placeholder' => 'Nom..',
-                'required'=> true,
-                    )))
-            ->add('Prenom',null,array(
-                'attr' => array(
-                     'placeholder' => 'Prenom..')))
-            ->add('Username',null,array(
-                'attr' => array(
-                     'placeholder' => 'Username..')))
-            ->add('Email',null,array(
-                'attr' => array(
-                     'placeholder' => 'username@gmail.com..')))
-            
+            ->add('Nom',null,[
+                'constraints' => [
+                    new NotBlank()]])
+            ->add('Prenom',null,[
+                'constraints' => [
+                    new NotBlank()]])
+            ->add('Username')
+            ->add('Email')
+
             ->add('Password',PasswordType::class)
             ->add('Confirm_password',PasswordType::class)
             ->add('file', FileType::class, [
