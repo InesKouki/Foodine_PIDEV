@@ -5,7 +5,13 @@
 {% block content %}
 
 <!-- Start Page Banner -->
-<div class="page-banner-area item-bg3">
+    <style>
+        .page-banner-area {
+            background-image: url(Front/assets/img/h.jpg);
+            padding-top: 250px;
+        }
+    </style>
+<div class="page-banner-area ">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
@@ -27,16 +33,7 @@
 <!-- Start Checkout Area -->
 <section class="checkout-area ptb-100">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="user-actions">
-                    <i class='bx bx-link-external'></i>
-                    <span>Returning customer?
-                                <a href="login.html">Click here to login</a>
-                            </span>
-                </div>
-            </div>
-        </div>
+
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="billing-details">
@@ -44,30 +41,35 @@
                         {{ form_start(form,{ 'attr' : {'novalidate':'novalidate'} }) }}
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
-                                {{ form_label(form.nom,"Votre nom et prenom*",{'attr':{'class':'form-label'}}) }}
+                                <label for="inputProductDescription" class="form-label">1/ Votre Nom et Prenom</label>
                                 {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
                                 {{ form_errors(form.nom) }}
                             </div>
-                            <div class="col-lg-6 col-md-12">
-                                {{ form_label(form.mobile,"votre numero",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
+                            <div class="col-lg-12 col-md-12">
+                                {{ form_label(form.mobile,"2/ votre numero",{'attr':{'class':'form-label'}}) }}
                                 {{ form_widget(form.mobile,{'attr':{'class':'form-control'}}) }}
                                 {{ form_errors(form.mobile) }}
                             </div>
-                            <div class="col-lg-6 col-md-12">
-                                {{ form_label(form.datereservation,"date_reservation*",{'attr':{'class':'form-label'}}) }}
+                            <div class="col-lg-12 col-md-12">
+                                {{ form_label(form.datereservation,"3/ date_reservation",{'attr':{'class':'form-label'}}) }}
                                 {{ form_widget(form.datereservation)}}
+                                {{ form_errors(form.datereservation) }}
                             </div>
 
-                            <div class="col-lg-6 col-md-12">
-                                {{ form_label(form.tableid,"le numero du table",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
-                                {{ form_widget(form.tableid,{'attr':{'class':'form-control'}}) }}
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                {{ form_label(form.email,"votre email",{'attr':{'class':'form-label'}}) }}<span class="required">*</span>
+
+                            <div class="col-lg-12 col-md-12">
+                                {{ form_label(form.email,"4/ votre email",{'attr':{'class':'form-label'}}) }}
                                 {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
                                 {{ form_errors(form.email) }}
                             </div>
-                            <button type="submit" class="btn btn-light">Reserver</button>
+                            <div class="col-lg-12 col-md-12">
+                                {{ form_label(form.tableid,"5/ le numero du table",{'attr':{'class':'form-label'}}) }}
+                                {{ form_errors(form.tableid) }}
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                {{ form_widget(form.tableid,{'attr':{'class':'form-control'}}) }}
+                            </div>
+                            <button type="submit" class="btn btn-light mx-auto">Reserver</button>
                         </div>
                         {{ form_end (form) }}
                     </div>

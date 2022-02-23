@@ -35,11 +35,15 @@ class Reservation
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Remplir le champ")
+     * @Assert\Length(min = 8, max = 8, minMessage = "min_lenght", maxMessage = "max_lenght")
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="number_only")
      */
     private $mobile;
 
     /**
      * @ORM\ManyToOne(targetEntity=Table::class, inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
+     * @Assert\NotBlank(message="Remplir le champ")
      */
     private $tableid;
 
