@@ -1,0 +1,59 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Team{% endblock %}
+
+{% block content %}
+    <div class="page-banner-area item-bg1">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Team</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ path('front') }}">Home</a>
+                            </li>
+                            <li>Nos Chefs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="team-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Chefs</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis ipsum suspendisse</p>
+            </div>
+
+            <div class="row">
+                {% for chef in chef %}
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="single-team-box">
+                        <div class="image">
+                            <img src="{{ asset('uploads/' ~ chef.file ) }}" alt="image">
+
+                            <ul class="social">
+                                <li>
+                                    <a href="{{path('show_chef',{'id':chef.id})}}" target="_blank">
+                                        <i class='bx bx-show'>Show</i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="content">
+                            <h3> {{ chef.nom }} {{ chef.prenom  }}</h3>
+                            <span>Chef</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock%}

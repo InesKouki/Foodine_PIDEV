@@ -519,6 +519,9 @@
     <service id="App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -959,6 +962,7 @@
         <argument>App\Form\EditClientType</argument>
         <argument>App\Form\EditEmployeType</argument>
         <argument>App\Form\EditPasswordType</argument>
+        <argument>App\Form\InscriptionType</argument>
         <argument>App\Form\RegistrationType</argument>
         <argument>App\Form\ResetPassType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1295,7 +1299,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.bPeMKxL"/>
+      <argument type="service" id=".service_locator.qyDCUm9"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5541,6 +5545,8 @@
     <service id=".abstract.instanceof.App\Form\EditEmployeType" class="App\Form\EditEmployeType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" abstract="true"/>
@@ -5955,12 +5961,13 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.bPeMKxL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qyDCUm9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\EditClientType" type="service_closure" id="App\Form\EditClientType"/>
         <argument key="App\Form\EditEmployeType" type="service_closure" id="App\Form\EditEmployeType"/>
         <argument key="App\Form\EditPasswordType" type="service_closure" id="App\Form\EditPasswordType"/>
+        <argument key="App\Form\InscriptionType" type="service_closure" id="App\Form\InscriptionType"/>
         <argument key="App\Form\RegistrationType" type="service_closure" id="App\Form\RegistrationType"/>
         <argument key="App\Form\ResetPassType" type="service_closure" id="App\Form\ResetPassType"/>
         <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
@@ -6854,7 +6861,7 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
-    <service id=".service_locator.u1DnJPZ" alias=".service_locator.bPeMKxL" public="false"/>
+    <service id=".service_locator.MAAKQpZ" alias=".service_locator.qyDCUm9" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

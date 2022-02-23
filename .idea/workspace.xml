@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54f23d0d-7971-4c8b-9889-8bfdcd8902d6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LivreurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LivreurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/homeBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/homeBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/security/ForgottenPassEmail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/ForgottenPassEmail.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/security/activation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/activation.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/security/registration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/security/registration.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/annotations.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/annotations.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/H/94NOtViwEyZxs1HghIqQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/H/94NOtViwEyZxs1HghIqQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/M/6HFFvEO4lJb30+i7zAHA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/M/6HFFvEO4lJb30+i7zAHA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/R/pke4hFMm88GAEXH3z0DA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/+/R/pke4hFMm88GAEXH3z0DA" afterDir="false" />
@@ -58,7 +46,6 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/1+dLcTCojptov5E3Ed1Q" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/1+dLcTCojptov5E3Ed1Q" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/Wth3ASooMLv63jdtkcrw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/Wth3ASooMLv63jdtkcrw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/wVSgn5q1Up93IXa85gYQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/1/wVSgn5q1Up93IXa85gYQ" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/8/gbD4BHXcbOGI7+61bHfQ" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/I/k-gT+-3vseBoe+TKTU1g" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/I/k-gT+-3vseBoe+TKTU1g" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/W/kKEQpbWvz8sR6wC4O9NQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/W/kKEQpbWvz8sR6wC4O9NQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/Y/W+f2nArqIye35M-88XEw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/A/Y/W+f2nArqIye35M-88XEw" afterDir="false" />
@@ -103,7 +90,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/-/pmx2HYHmy3KhPKmYVdxQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/-/pmx2HYHmy3KhPKmYVdxQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/6/Em7oL81z0HyWtwMLyaLw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/6/Em7oL81z0HyWtwMLyaLw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/6/ZS0QUpCOCgGh7xW9Hc3g" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/6/ZS0QUpCOCgGh7xW9Hc3g" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/A/+2zbPRDr-084a-siJG7Q" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/A/+2zbPRDr-084a-siJG7Q" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/A/+2zbPRDr-084a-siJG7Q" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/B/TLiSZeCntNOzeJUFWFlw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/B/TLiSZeCntNOzeJUFWFlw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/E/GaxyWZy4ylKk6LkvjwYA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/E/GaxyWZy4ylKk6LkvjwYA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/E/R-kymJUg82x6lrSDUUlw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/I/E/R-kymJUg82x6lrSDUUlw" afterDir="false" />
@@ -149,7 +136,6 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/I/23vWkyE7PIGH0btcJCrA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/I/23vWkyE7PIGH0btcJCrA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/M/2nOGq7Q6m3qcN0PTylqA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/M/2nOGq7Q6m3qcN0PTylqA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/N/RzQOUTRK21dMaQeK6K6Q" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/N/RzQOUTRK21dMaQeK6K6Q" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/N/u+sa7Nat6tiuFXkyBHUw" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/W/ao5DuKH4JtiXPoFNJafw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/W/ao5DuKH4JtiXPoFNJafw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/Z/2nxVOnW7I20S+YOCaUOA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Q/Z/2nxVOnW7I20S+YOCaUOA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/5/xCBIyb-AQCkdOKGEF9XQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/5/xCBIyb-AQCkdOKGEF9XQ" afterDir="false" />
@@ -160,7 +146,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/T/BR3Iw-yfDCsR4Ejw4kCQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/R/T/BR3Iw-yfDCsR4Ejw4kCQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/D/MmRLNm5xfvcjnurf+8Ag" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/D/MmRLNm5xfvcjnurf+8Ag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/G/LHR3f7XGvcAuLEZCgKVA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/G/LHR3f7XGvcAuLEZCgKVA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/X/2oi2lOOjsjPazkiz+1jw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/X/2oi2lOOjsjPazkiz+1jw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/S/X/2oi2lOOjsjPazkiz+1jw" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/8/MoHlB5XAGlRkgl-E24LA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/8/MoHlB5XAGlRkgl-E24LA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/L/+bQOPzr63iYl7i-4kKIA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/L/+bQOPzr63iYl7i-4kKIA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/M/CEhtNZfLjFxg9svA6ZmA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/T/M/CEhtNZfLjFxg9svA6ZmA" afterDir="false" />
@@ -170,6 +156,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/H/jyBek4ud1MbZKxZUpiOw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/H/jyBek4ud1MbZKxZUpiOw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/M/e4liIDriKus6E20eZGCw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/M/e4liIDriKus6E20eZGCw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/P/VGCQcg7nVOrghCatGQ1w" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/P/VGCQcg7nVOrghCatGQ1w" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/U/Q/KlKRPBnpH1dRiHYpvl4w" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/G/IEZDiN-XzrMbnrAYQq3A" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/P/nVrILGmo4CQ1rMs8PPkw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/P/nVrILGmo4CQ1rMs8PPkw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/T/7L0EPNArl4sVbyxECaOQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/V/T/7L0EPNArl4sVbyxECaOQ" afterDir="false" />
@@ -190,6 +177,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/X/W/gt6JU-+eu-Ekh2c7bjWQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/X/W/gt6JU-+eu-Ekh2c7bjWQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/7/yj5S8OLwU1uIQT7VbBFQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/7/yj5S8OLwU1uIQT7VbBFQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/I/6QLn9Hc1bWzIkBSJn50A" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/I/6QLn9Hc1bWzIkBSJn50A" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/O/2NDz7pbJMKrTUnFWplGw" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/T/2QsaszOiYMxkkBdgWxYg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/T/2QsaszOiYMxkkBdgWxYg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/X/n37v7a4D7h+wggPXmHww" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Y/X/n37v7a4D7h+wggPXmHww" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Z/A/Ahd-OqeGJxaXbx2MZYAQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/9vkyaeIYPu/Z/A/Ahd-OqeGJxaXbx2MZYAQ" afterDir="false" />
@@ -202,6 +190,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -406,7 +395,8 @@
       <workItem from="1645443979257" duration="12415000" />
       <workItem from="1645479760172" duration="2265000" />
       <workItem from="1645558424228" duration="11355000" />
-      <workItem from="1645627505162" duration="7535000" />
+      <workItem from="1645627505162" duration="10566000" />
+      <workItem from="1645639011254" duration="2036000" />
     </task>
     <servers />
   </component>

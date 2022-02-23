@@ -12,10 +12,10 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-banner-content">
-                    <h2>Register</h2>
+                    <h2>Inscription</h2>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href={{ path('front') }}>Home</a>
                         </li>
                         <li>Inscription</li>
                     </ul>
@@ -40,7 +40,7 @@
    <section class="register-area ptb-100">
             <div class="container">
                 <div class="register-form">
-                    <h2>Register</h2>
+                    <h2>Inscription</h2>
                       <div class="form-group">
              {{ form_row(f.Nom,{'attr': {'class':'form-control'}}) }}
               </div>
@@ -50,54 +50,26 @@
 
              </div>
              <div class="form-group">
-                 {% if form_errors(f.Username) %}
-                 <div class="alert alert-danger"
-                 {{ form_errors(f.Username) }}
-             </div>
-                    {% endif %}
-                    {{ form_label(f.Username,'Username') }}
-            {{ form_widget(f.Username,{'attr': {'class':'form-control'}}) }}
+                 {{ form_row(f.Username,{'attr': {'class':'form-control'}}) }}
               </div>
             <div class="form-group">
-                {% if form_errors(f.Email) %}
-                <div class="alert alert-danger"
-                {{ form_errors(f.Email) }}
-            </div>
-                    {% endif %}
-                {{ form_label(f.Email,'Email') }}
-            {{ form_widget(f.Email,{'attr': {'class':'form-control'}}) }}
+                {{ form_row(f.Email,{'attr': {'class':'form-control'}}) }}
 
              </div>
              <div class="form-group">
-                 {% if form_errors(f.Password) %}
-                 <div class="alert alert-danger"
-                 {{ form_errors(f.Password) }}
-             </div>
-       {% endif %}
-                 {{ form_label(f.Password,'Password') }}
-            {{ form_widget(f.Password,{'attr': {'class':'form-control'}}) }}
+                 {{ form_row(f.Password,{'attr': {'class':'form-control'}}) }}
               </div>
          <div class="form-group">
-             {% if form_errors(f.Confirm_password) %}
-             <div class="alert alert-danger"
-             {{ form_errors(f.Confirm_password) }}
-         </div>
-       {% endif %}
-            {{ form_label(f.Confirm_password,'Confirm_password') }}
-            {{ form_widget(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
+             {{ form_row(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
               </div>
             <div class="form-group">
              {{ form_row(f.file,{'attr': {'class':'form-control'}}) }}
                </div>
-       {% if form_errors(f.captcha) %}
-           <div class="alert alert-danger"
-           {{ form_errors(f.captcha) }}
-           </div>
-       {% endif %}
+
                <div class="form-group">
-                   {{ form_widget(f.captcha,{'attr': {'class':'form-control'}}) }}
+                   {{ form_row(f.captcha,{'attr': {'class':'form-control'}}) }}
                 <button type="submit" class="default-btn">Register</button>
-            </div>       
+            </div>
             </div>
             </div>
         </section>

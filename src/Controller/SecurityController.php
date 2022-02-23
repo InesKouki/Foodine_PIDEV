@@ -4,8 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\EditPasswordType;
-use App\Form\NewPassType;
-use App\Form\RegistrationType;
+use App\Form\InscriptionType;
 use App\Form\ResetPassType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +25,7 @@ class SecurityController extends AbstractController
      */
     public function registration(Request $request,UserPasswordEncoderInterface $encoder,\Swift_Mailer $mailer) {
             $user=new User();
-            $form=$this->createForm(RegistrationType::class,$user);
+            $form=$this->createForm(InscriptionType::class,$user);
             $form->handleRequest($request); 
             if($form->isSubmitted() && $form->isValid()) {
                 $em =$this->getDoctrine()->getManager();
@@ -77,8 +76,8 @@ class SecurityController extends AbstractController
      * @Route("/login_success", name="login_success")
      */
     public function loginSuccess(){
-        $user=$this->getUser();
-        $etat=$user->getEtat();
+
+        $etat=$this->getUser()->getEtat();
         if ( $this->isGranted('ROLE_ADMIN')  )
             $redirection = $this->redirectToRoute('admin_index');
        else if ( $this->isGranted('ROLE_CHEF')&& $etat==1)
