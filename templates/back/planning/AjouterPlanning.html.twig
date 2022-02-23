@@ -1,6 +1,6 @@
 {% extends 'baseChef.html.twig' %}
 {% block title %}
-    Recettes
+    Planning
 {% endblock %}
 {% block content %}
     <div class="page-wrapper">
@@ -8,11 +8,11 @@
 
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Ajouter Recette</div>
+                <div class="breadcrumb-title pe-3">Modifier Planning</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-receipt"></i></a>
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-event"></i></a>
                             </li>
 
                         </ol>
@@ -24,74 +24,39 @@
 
             <div class="card">
                 <div class="card-body p-4">
-                    <h5 class="card-title">Ajouter Recette</h5>
                     <hr/>
-                    {{ form_start (f,{ 'attr' : {'novalidate':'novalidate'} }) }}
                     <div class="form-body mt-4">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
                                 <div class="border border-3 p-4 rounded">
+                                    {{ form_start (f,{ 'attr' : {'novalidate':'novalidate'} }) }}
 
                                     <div class="mb-3">
-                                        <label for="inputProductDescription" class="form-label">Image de
-                                            Recette</label>
-                                        {{ form_widget(f1.imagerecette,{'attr':{'class':'form-control'}}) }}
-
-                                        <ul class="custom-error">
-                                            {{ form_errors(f1.imagerecette) }}
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="inputPrice" class="form-label">Description</label>
-                                        {{ form_widget(f1.description,{'attr':{'class':'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{ form_errors(f1.description) }}
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="border border-3 p-4 rounded">
-                                    <div class="mb-3">
-                                        <label for="inputPrice" class="form-label">Nom du Recette</label>
-                                        {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{ form_errors(f1.nom) }}
-                                        </ul>
+                                        {{ form_label(f.date,"Date Debut",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f.date,{'attr':{'class':'form-control'}}) }}
+                                        <div class="custom-error">
+                                            {{form_errors(f.date)}}
+                                        </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Planning:</label>
-                                        {{ form_widget(f1.planningid) }}
-                                        <ul class="custom-error">
-                                            {{ form_errors(f1.planningid) }}
-                                        </ul>
+                                        {{ form_label(f.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                                        <div class="custom-error">
+                                            {{form_errors(f.nom)}}
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Ingredients:</label>
-                                        {{ form_widget(f1.ingredient,{'attr':{'multiple data-role':'tagsinput'}}) }}
-                                        <ul class="custom-error">
-                                            {{ form_errors(f1.ingredient) }}
-                                        </ul>
-                                    </div>
-
-
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button type="submit" class="btn btn-light">Ajouter</button>
                                         </div>
                                     </div>
+                                    {{ form_end(f) }}
                                 </div>
                             </div>
-
-
-                        </div><!--end row-->
+                        </div>
                     </div>
-                    {{ form_end(f1) }}
                 </div>
-
             </div>
-
         </div>
     </div>
 {% endblock %}

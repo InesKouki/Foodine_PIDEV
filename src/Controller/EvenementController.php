@@ -13,7 +13,7 @@ class EvenementController extends AbstractController
      */
     public function indexFront(): Response
     {
-        return $this->render('front/evenement/index.html.twig', [
+        return $this->render('front/evenement/AfficherRecette.html.twig', [
             'controller_name' => 'EventController',
         ]);
     }
@@ -23,7 +23,7 @@ class EvenementController extends AbstractController
      */
     public function indexBack(): Response
     {
-        return $this->render('back/evenement/index.html.twig', [
+        return $this->render('back/evenement/AfficherRecette.html.twig', [
             'controller_name' => 'EvenementController',
         ]);
     }

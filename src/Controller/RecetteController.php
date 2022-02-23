@@ -13,6 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
 class RecetteController extends AbstractController
 {
     /**
+     * @Route ("/recette",name="affrecette")
+     */
+    public function afficher(RecetteRepository  $rep): Response
+    {   $recette=$rep->findAll();
+       $todayRecette=$rep->findrecette();
+
+        return $this->render('front/recette/AfficherRecette.html.twig', ['recette'=>$recette,'t'=>$todayRecette]);
+    }
+    /**
      * @Route("/admin-Afficherrecette", name="AfficherRecette")
      */
     public function index(RecetteRepository  $rep): Response

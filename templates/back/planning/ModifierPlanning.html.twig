@@ -32,17 +32,10 @@
                                     {{ form_start (f1,{ 'attr' : {'novalidate':'novalidate'} }) }}
 
                                     <div class="mb-3">
-                                        {{ form_label(f1.datedebut,"Date Debut",{'attr':{'class':'form-label'}}) }}
-                                        {{ form_widget(f1.datedebut,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_label(f1.date,"Date Debut",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f1.date,{'attr':{'class':'form-control'}}) }}
                                         <div class="custom-error">
-                                            {{form_errors(f1.datedebut)}}
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        {{ form_label(f1.datefin,"Date Fin",{'attr':{'class':'form-label'}}) }}
-                                        {{ form_widget(f1.datefin,{'attr':{'class':'form-control'}}) }}
-                                        <div class="custom-error">
-                                            {{form_errors(f1.datefin)}}
+                                            {{form_errors(f1.date)}}
                                         </div>
                                     </div>
                                     <div class="mb-3">

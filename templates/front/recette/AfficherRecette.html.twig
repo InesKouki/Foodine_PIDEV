@@ -1,0 +1,133 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Recette
+{% endblock %}
+{% block content %}
+    {% if t is empty %}
+    <div class="page-banner-area item-bg1">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Team</h2>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>Team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        {% for i in t %}
+
+            <style>
+                .page-banner-area {
+                    background-image: url('{{asset('uploads/' ~ i.imagerecette)}}');
+                    padding-top: 250px;
+                }
+            </style>
+            <div class="page-banner-area ">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="page-banner-content">
+                                <h2>Notre plat du jour</h2>
+                                <ul>
+                                    <li>
+                                        <a href="">{{ i.nom }}</a>
+                                    </li>
+                                    <li>
+                                        {{ i.ingredient }}</li>
+                                </ul>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <!-- End Page Banner -->
+
+    <!-- Start Team Area -->
+    <section class="team-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notres Recettes</h2>
+            </div>
+
+            <div class="row">
+                {% for r in recette%}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-team-box">
+                        <style>
+                            .image{
+                                width:  300px;
+                                height: 300px;
+                            }
+                        </style>
+                        <div class="image" >
+                            <img src="{{ asset('uploads/' ~ r.imagerecette)}}" alt="image">
+
+                            <ul class="social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-facebook'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-twitter'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-linkedin'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-instagram'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="content">
+                            <h3>{{ r.nom }}</h3>
+                            <span>{{ r.description}}</span>
+                            <span>{{ r.ingredient}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

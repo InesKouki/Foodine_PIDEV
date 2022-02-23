@@ -41,6 +41,7 @@ class Recette
     /**
      * @ORM\ManyToOne(targetEntity=Planning::class, inversedBy="recettes")
      * @Assert\NotBlank(message="choisir le planning ")
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
      */
 
     private $planningid;

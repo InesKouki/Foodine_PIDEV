@@ -21,17 +21,11 @@ class Planning
     private $id;
 
     /**
-     * @ORM\Column(type="datetime",nullable=false)
+     * @ORM\Column(type="date",nullable=false)
      * @Assert\NotBlank (message="Entrer la date")
      */
-    private $datedebut;
+    private $date;
 
-    /**
-     * @ORM\Column(type="datetime",nullable=false)
-     * @Assert\NotBlank (message="Entrer la date ")
-     * @Assert\GreaterThan(propertyPath="datedebut",message="Vérifiez la date")
-     */
-    private $datefin;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -57,29 +51,18 @@ class Planning
         return $this->id;
     }
 
-    public function getDatedebut(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->datedebut;
+        return $this->date;
     }
 
-    public function setDatedebut(\DateTimeInterface $datedebut=null): self
+    public function setDate(\DateTimeInterface $date=null): self
     {
-        $this->datedebut = $datedebut;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getDatefin(): ?\DateTimeInterface
-    {
-        return $this->datefin;
-    }
-
-    public function setDatefin(\DateTimeInterface $datefin=null): self
-    {
-        $this->datefin = $datefin;
-
-        return $this;
-    }
 
     public function getNom(): ?string
     {

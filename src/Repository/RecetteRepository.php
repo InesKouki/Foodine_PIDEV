@@ -47,4 +47,12 @@ class RecetteRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findrecette(){
+        return $this->createQueryBuilder('rec')
+                    ->join('rec.planningid','p')
+                    ->addSelect('p')
+                    ->where('p.date = CURRENT_DATE()')
+                    ->getQuery()->getResult();
+
+    }
 }
