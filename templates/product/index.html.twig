@@ -27,7 +27,7 @@
 
                     <hr/>
                     <div class="card">
-                        {{ form_start(form1) }}
+                        {{ form_start(form1 , {'attr' : {'novalidate':'novalidate'} }) }}
 
                         <div class="card-body">
                             <div class="p-4 border rounded">
@@ -39,7 +39,7 @@
                                     <div class="col-md-4">
 
                                         <label  class="form-label">Nom catégorie</label>
-                                        {{ form_widget(form1.category ,  {'attr': {'class': 'form-control '}}) }}
+                                        {{ form_widget(form1.category ,  {'attr': {'class': 'form-select '}}) }}
 
                                     </div>
 
@@ -47,7 +47,9 @@
                                     <div class="col-md-4">
                                         <label for="validationServer02" class="form-label">Nom Produit</label>
                                         {{ form_widget(form1.name ,  {'attr': {'class': 'form-control '}}) }}
-
+                                        <ul class="custom-error">
+                                            {{ form_errors(form1.name) }}
+                                        </ul>
                                     </div>
 
 
@@ -55,14 +57,18 @@
                                     <div class="col-md-4">
                                         <label  class="form-label">Quantité </label>
                                         {{ form_widget(form1.quantitie ,  {'attr': {'class': 'form-control '}}) }}
-
+                                        <ul class="custom-error">
+                                            {{ form_errors(form1.quantitie) }}
+                                        </ul>
                                     </div>
 
                                     <div class="col-md-4">
                                         <label for="validationServerUsername" class="form-label">Prix</label>
                                         <div class="input-group has-validation">
                                             {{ form_widget(form1.price ,  {'attr': {'class': 'form-control '}}) }}
-
+                                            <ul class="custom-error">
+                                                {{ form_errors(form1.price) }}
+                                            </ul>
                                         </div>
                                     </div>
 
@@ -70,14 +76,13 @@
 
 
 
-                                    <div class="mb-3">
-                                        {{ form_widget(form1.image ,  {'attr': {'class': 'form-control '}})  }}
+                                    <div class="mb-4">
+                                        {{ form_widget(form1.image ,  {'attr': {'class': 'form-control'}})  }}
                                         <div class="invalid-feedback">Example invalid form file feedback</div>
-                                    </div>
-
-                                    <div class="col-12">
 
                                     </div>
+
+
                                     <form
 
                                             action="{{ path('product') }}"

@@ -2,32 +2,59 @@
 <html lang="zxx">
 <head>
     <!-- Required meta tags -->
+
+    <link rel="stylesheet" type="text/css" href= "{{ asset('fonts/jost/stylesheet.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/line-awesome/css/line-awesome.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/fontawesome-pro/css/fontawesome.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/slick/slick-theme.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/slick/slick.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/quilljs/css/quill.bubble.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/quilljs/css/quill.core.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/quilljs/css/quill.snow.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/chosen/chosen.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/venobox/venobox.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}" />
+
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="Front/assets/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/bootstrap.min.css') }}">
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="Front/assets/css/animate.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/animate.min.css') }}">
+
     <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="Front/assets/css/meanmenu.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/meanmenu.css') }}">
+
     <!-- Boxicons CSS -->
-    <link rel="stylesheet" href="Front/assets/css/boxicons.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/boxicons.min.css') }}">
+
     <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="Front/assets/css/flaticon.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/flaticon.css') }}">
+
     <!-- Nice Select CSS -->
-    <link rel="stylesheet" href="Front/assets/css/nice-select.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/nice-select.min.css') }}">
+
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="Front/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/owl.carousel.min.css') }}">
+
     <!-- Owl Carousel Default CSS -->
-    <link rel="stylesheet" href="Front/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/owl.theme.default.min.css') }}">
+
     <!-- Odometer CSS -->
-    <link rel="stylesheet" href="Front/assets/css/odometer.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/odometer.min.css') }}">
+
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="Front/assets/css/magnific-popup.min.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/magnific-popup.min.css') }}">
+
     <!-- Style CSS -->
-    <link rel="stylesheet" href="Front/assets/css/style.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/style.css') }}">
+
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="Front/assets/css/responsive.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/responsive.css') }}">
 
 
         <title>
@@ -78,12 +105,16 @@
                                 <i class='bx bx-chevron-down'></i>
                             </a>
 
+
+
+
+
                             <ul class="dropdown-menu">
 
-                                {% for a in cat %}
+                                {% for a in categ %}
 
                                 <li class="nav-item">
-                                    <a href="{{ path('products') }}" class="nav-link">
+                                    <a href="{{ path('categoryprod', {id : a.id }) }}" class="nav-link">
 
 
 
@@ -639,5 +670,20 @@
 <script src="Front/assets/js/wow.min.js"></script>
 <!-- Custom JS -->
 <script src="Front/assets/js/main.js"></script>
+
+
+
+<script src="{{ asset('js/jquery-1.12.4.js') }}"></script>
+<script src="{{ asset('libs/popper/popper.js')}}"></script>
+<script src="{{ asset('libs/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('libs/slick/slick.min.js')}}"></script>
+<script src="{{ asset('libs/slick/jquery.zoom.min.js')}}"></script>
+<script src="{{ asset('libs/isotope/isotope.pkgd.min.js')}}"></script>
+<script src="{{ asset('libs/quilljs/js/quill.core.js')}}"></script>
+<script src="{{ asset('libs/quilljs/js/quill.js')}}"></script>
+<script src="{{ asset('libs/chosen/chosen.jquery.min.js')}}"></script>
+<script src="{{ asset('libs/datetimepicker/jquery.datetimepicker.full.min.js')}}"></script>
+<script src="{{ asset('libs/venobox/venobox.min.js')}}"></script>
+<script src="{{ asset('libs/waypoints/jquery.waypoints.min.js')}}"></script>
 </body>
 </html>

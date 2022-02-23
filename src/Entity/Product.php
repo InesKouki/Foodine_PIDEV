@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert ;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -18,28 +19,37 @@ class Product
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message="Merci de saisir le nom")
+
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+
+     * @ORM\Column(type="integer", nullable=false)
+     * @Assert\NotBlank(message="Merci d'enter la quantité")
+
      */
     private $quantitie;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message="Merci de saisir le prix")
+
      */
     private $price;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+
      */
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
+     * @ORM\Column(type="string", length=50, nullable=false)
+
+         */
     private $image;
 
     public function getId(): ?int

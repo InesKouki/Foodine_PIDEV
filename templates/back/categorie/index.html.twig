@@ -28,7 +28,7 @@
 
                     <hr/>
                     <div class="card">
-                        {{ form_start(form) }}
+                        {{ form_start(form , {'attr' : {'novalidate':'novalidate'} }) }}
 
                         <div class="card-body">
                             <div class="p-4 border rounded">
@@ -37,12 +37,16 @@
                                         <label for="validationServer01" class="form-label">Nom catégorie</label>
                                         {{ form_widget(form.name ,  {'attr': {'class': 'form-control '}}) }}
 
+                                        <ul class="custom-error">
+                                            {{ form_errors(form.name) }}
+                                        </ul>
                                         <div class="valid-feedback">Looks good!</div>
                                     </div>
 
                                     <div class="mb-3">
                                         {{ form_widget(form.image ,  {'attr': {'class': 'form-control'}})  }}
                                         <div class="invalid-feedback">Example invalid form file feedback</div>
+
                                     </div>
 
                                     <div class="col-12">
@@ -50,7 +54,7 @@
                                     </div>
                                     <form
 
-                                            action="{{ path('categorie') }}"
+
                                             style="display: inline-block">
                                         <input type="hidden">
                                         <button class="btn btn-primary"> Ajouter</button>
@@ -65,7 +69,7 @@
 
                         {% for message in app.flashes('success') %}
                             <div class="alert alert-icon alert-success" role="alert">
-                                <i class="fe fe-check mr-2" aria-hidden="true"></i> Categorie ajouté avec succée.
+                                <i class="fe fe-check mr-2" aria-hidden="true"></i> Categorie ajouté avec succés.
                             </div>
                         {% endfor %}
                     </div>

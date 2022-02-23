@@ -29,35 +29,57 @@
 
         <!-- Start Top Products Area -->
         <section class="top-products-area pt-100 pb-100">
-            <div class="container">
-                <div class="orgo-grid-sorting row align-items-center">
-                    <div class="col-lg-6 col-md-6 result-count">
-                        <p>We found <span class="count">10</span> products available for you</p>
-                    </div>
 
-                    <div class="col-lg-6 col-md-6 ordering">
-                        <div class="select-box">
-                            <label>Sort By:</label>
-                            <select>
-                                <option>Default</option>
-                                <option>Popularity</option>
-                                <option>Latest</option>
-                                <option>Price: low to high</option>
-                                <option>Price: high to low</option>
-                            </select>
-                        </div>
+
+            <div class="container">
+
+
+                <form  method="post" action="{{path('recherche')}}"  class="site-banner__search layout-02">
+                    <div class="field-input">
+                        <label for="s">What?</label>
+                        <input class="site-banner__search__input open-suggestion" id="s" type="text" name="search" placeholder="Produit" autocomplete="off">
+
+                    </div><!-- .site-banner__search__input -->
+                    <div class="field-submit">
+                        <button><i class="las la-search la-24-black"></i></button>
                     </div>
+                </form><!-- .site-banner__search -->
+                <div class="filter-left">
+                    {% set nb=0 %}
+                    {% for a in prodprod  %}
+                        {% set nb=nb+1 %}
+                    {% endfor %}
+                    <span class="result-count"><span class="count">{{ nb }}  </span> Produit  trouvé </span>
+                </div>
+                <div class="orgo-grid-sorting row align-items-center">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
 
+
                 <div class="row">
-                    {% for a in prod %}
+                    {% for a in prodprod %}
 
                     <div class="col-lg-3 col-md-6">
 
 
+
+
                         <div class="top-products-item">
                             <div class="products-image">
-                                <a href="">      <img class="avatar" src="{{ asset('../uploads/')~a.image }}" ></a>
+                                <a href="">      <img  height="250" width="250" class="avatar" src="{{ asset('../uploads/')~a.image }}" ></a>
 
                                 <ul class="products-action">
                                     <li>
