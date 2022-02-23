@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -18,7 +19,7 @@ class InscriptionType extends AbstractType
             ->add('Nom')
             ->add('Prenom')
             ->add('Username')
-            ->add('Email',EmailType::class)
+            ->add('Email')
             ->add('Password',PasswordType::class)
             ->add('Confirm_password',PasswordType::class)
             ->add('file',FileType::class, [

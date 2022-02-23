@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\EditPasswordType;
 use App\Form\InscriptionType;
-use App\Form\ResetPassType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,7 +53,8 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('login');
             }
             return $this->render('/front/security/registration.html.twig',[
-                'f'=>$form->createView()
+                'f'=>$form->createView(),
+                'errors'=>$form->getErrors()
             ]);
     }
 

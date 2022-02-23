@@ -39,10 +39,22 @@ class ClientController extends AbstractController
         $form= $this->createForm(EditClientType::class,$user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $em =$this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('client_profil');
+            $image = $form->get('file')->getData();
+            if($image){
+                $filename = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move($this->getParameter('upload_directory'),$filename);
+                $user->setFile($filename);
+                $em =$this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute('client_profil');
+            }else {
+                $em =$this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute('client_profil');
+            }
+
         }
         return $this->render('/front/Client/modifierprofile.html.twig',[
             'form'=>$form->createView()

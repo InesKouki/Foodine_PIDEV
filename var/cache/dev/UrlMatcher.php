@@ -27,7 +27,8 @@ return [
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::indexBack'], null, null, null, false, false, null]],
         '/admin-addEvenement' => [[['_route' => 'addEvenement', '_controller' => 'App\\Controller\\EvenementController::addEvenement'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'front', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
-        '/livreur' => [[['_route' => 'livreur_index', '_controller' => 'App\\Controller\\LivreurController::index'], null, null, null, true, false, null]],
+        '/team' => [[['_route' => 'team', '_controller' => 'App\\Controller\\FrontController::afficherChefs'], null, null, null, false, false, null]],
+        '/livreur' => [[['_route' => 'livreur', '_controller' => 'App\\Controller\\LivreurController::index'], null, null, null, false, false, null]],
         '/planning' => [[['_route' => 'planning', '_controller' => 'App\\Controller\\PlanningController::index'], null, null, null, false, false, null]],
         '/ajouterplanning' => [[['_route' => 'ajouterplanning', '_controller' => 'App\\Controller\\PlanningController::ajouterplanning'], null, null, null, false, false, null]],
         '/promotions' => [[['_route' => 'deal', '_controller' => 'App\\Controller\\PromotionController::indexFront'], null, null, null, false, false, null]],
@@ -71,7 +72,8 @@ return [
                     .'|profilup/([^/]++)(*:359)'
                     .'|editPass/([^/]++)(*:384)'
                 .')'
-                .'|/resetPassword([^/]++)(*:415)'
+                .'|/show_chef/([^/]++)(*:412)'
+                .'|/resetPassword([^/]++)(*:442)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -89,7 +91,8 @@ return [
         322 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
         359 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
         384 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
-        415 => [
+        412 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
+        442 => [
             [['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

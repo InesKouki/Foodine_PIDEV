@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,15 +16,9 @@ class EditClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom',null,array(
-            'attr' => array(
-                'placeholder' => 'Nom..')))
-            ->add('Prenom',null,array(
-                'attr' => array(
-                    'placeholder' => 'Prenom..')))
-            ->add('Email',null,array(
-                'attr' => array(
-                    'placeholder' => 'username@gmail.com..')))
+            ->add('Nom')
+            ->add('Prenom')
+            ->add('Email',EmailType::class)
             ->add('Address',null,[
                 'required' =>false])
             ->add('Phone',null,[
