@@ -27,50 +27,41 @@
 
                     <hr/>
                     <div class="form-body mt-4">
-                        {{ form_start(f) }}
+
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="border border-3 p-4 rounded">
-
+                                    {{ form_start(f,{ 'attr' : {'novalidate':'novalidate'} }) }}
                                     <div class="mb-3">
                                         <label for="inputPrice" class="form-label">Nom et Prenom du client</label>
-                                        {{ form_widget(f.nom ,  {'attr': {'class': 'form-control'}}) }}                                </div>
+                                        {{ form_widget(f.nom ,  {'attr': {'class': 'form-control'}}) }}
+                                        <ul class="custom-error">
+                                        {{form_errors(f.nom)}}
+                                        </ul>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="inputPrice" class="form-label">Etat</label>
                                         {{ form_widget(f.etat ,  {'attr': {'class': 'form-control'}}) }}
                                     </div>
-                                    <div class="">
-                                        <label class="form-check form-check-inline">
-                                            <input type="radio"class="form-check-input"  name="select_size" checked="" class="custom-control-input">
-                                            <div class="form-check-label">Small</div>
-                                        </label>
-                                        <label class="form-check form-check-inline">
-                                            <input type="radio"class="form-check-input"  name="select_size" checked="" class="custom-control-input">
-                                            <div class="form-check-label">Medium</div>
-                                        </label>
-
-                                        <label class="form-check form-check-inline">
-                                            <input type="radio"class="form-check-input"  name="select_size" checked="" class="custom-control-input">
-                                            <div class="form-check-label">Large</div>
-                                        </label>
+                                    <div class="mb-3">
+                                        <label for="inputPrice" class="form-label">Détails</label>
+                                        {{ form_widget(f.total ,  {'attr': {'class': 'form-control'}}) }}
+                                        {{form_errors(f.total)}}
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="inputPrice" class="form-label">Total</label>
-                                        {{ form_widget(f.total ,  {'attr': {'class': 'form-control'}}) }}                                </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Date</label>
-                                        {{ form_widget(f.date ,  {'attr': {'class': 'form-control'}}) }}                                </div>
+
                                     <div class="mb-3">
                                         <label for="inputPrice" class="form-label">Mode de Paiement</label>
-                                        {{ form_widget(f.modepaiement ,  {'attr': {'class': 'form-control'}}) }}                                </div>
+                                        {{ form_widget(f.modepaiement ,  {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                         <div class="d-grid">
                                             <button type =submit href="{{ path('affichercommande') }}" type="button" class="btn btn-light">Modifier</button>
                                         </div>
                                     </div>
+                                {{ form_end(f) }}
                                 </div>
                             </div>
                         </div>
-                        {{ form_end(f) }}
+
                     </div><!--end row-->
                 </div>
             </div>

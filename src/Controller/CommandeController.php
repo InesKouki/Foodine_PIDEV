@@ -2,13 +2,18 @@
 
 namespace App\Controller;
 
+use App\Repository\ProductRepository;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use App\Entity\Commande;
 use App\Form\CommandeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\CommandeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
@@ -86,6 +91,13 @@ class CommandeController extends AbstractController
         $commande = $repository->find($id);
         $form = $this->createForm(CommandeType::class, $commande);
         //$form->add('Modifer', SubmitType::class);
+        $form->add('etat',
+            ChoiceType::class, [
+        'choices'  => [
+            'Non Traité' => 1,
+            'Traité' => 0
+        ],
+    ] );
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -101,24 +113,72 @@ class CommandeController extends AbstractController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return Response
      * @Route ("/ajoutercommande", name="ajoutercommande")
      */
-    public function ajout(Request $request){
+    public function ajout(Request $request, SessionInterface $session, ProductRepository $repository): Response
+
+    {
+
+        $panier = $session->get('panier',[]);
+
+        $panierWithData = [];
+
+        foreach ($panier as $id=>$quantite){
+            $panierWithData [] = [
+                'product' => $repository->find($id),
+                'quantite' => $quantite
+            ];
+
+        }
+
+        $total = 0;
+        $totals=0;
+        foreach ($panierWithData as $item){
+            $totalitem = $item['product']->getPrice() * $item['quantite'];
+            $total += $totalitem;
+            $fees = 10;
+            $totals=+$total;
+            $totals=+$fees;
+
+        }
+
+
+
 
         $commande=new Commande();
         $form=$this->createForm(CommandeType::class,$commande);
+
         $form->handleRequest($request);
-        dump($commande);
-        if (
-           $form->isSubmitted()
-            ){
+        if ($form->isSubmitted()&& $form->isValid()){
 
             $em=$this->getDoctrine()->getManager();
+
+            $commande->setDate(new \DateTime());
+
             $em->persist($commande);
             $em->flush();
             return $this->redirectToRoute('listecommande');
         }
-        return $this->render('front/commande/AjouterCommande.html.twig',['form'=>$form->createView()]);
+        return $this->render('front/commande/AjouterCommande.html.twig',['form'=>$form->createView(),
+            'liste' => $panierWithData,
+            'total' => $total,
+            'fees'=>$fees
+            ]);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
@@ -18,27 +19,37 @@ class Commande
     private $id;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255 , nullable="true")
+     * @Assert\NotBlank (message="entrer les détails")
+     *
      */
     private $total;
 
     /**
      * @ORM\Column(type="date")
+
      */
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable="true")
+     * @Assert\NotBlank (message="Merci de saisie votre mode")
+
      */
     private $modepaiement;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable="true" )
+
+     *
+
      */
     private $etat;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255 , nullable="true")
+     * @Assert\NotBlank (message="Merci de saisie votre nom")
+
      */
     private $nom;
 
@@ -47,12 +58,12 @@ class Commande
         return $this->id;
     }
 
-    public function getTotal(): ?float
+    public function getTotal(): ?string
     {
         return $this->total;
     }
 
-    public function setTotal(float $total): self
+    public function setTotal(string $total): self
     {
         $this->total = $total;
 

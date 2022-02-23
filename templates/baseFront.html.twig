@@ -5,30 +5,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="Front/assets/css/bootstrap.min.css">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="Front/assets/css/animate.min.css">
-    <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="Front/assets/css/meanmenu.css">
-    <!-- Boxicons CSS -->
-    <link rel="stylesheet" href="Front/assets/css/boxicons.min.css">
-    <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="Front/assets/css/flaticon.css">
-    <!-- Nice Select CSS -->
-    <link rel="stylesheet" href="Front/assets/css/nice-select.min.css">
-    <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="Front/assets/css/owl.carousel.min.css">
-    <!-- Owl Carousel Default CSS -->
-    <link rel="stylesheet" href="Front/assets/css/owl.theme.default.min.css">
-    <!-- Odometer CSS -->
-    <link rel="stylesheet" href="Front/assets/css/odometer.min.css">
-    <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="Front/assets/css/magnific-popup.min.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="Front/assets/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="Front/assets/css/responsive.css">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/bootstrap.min.css') }}">
 
+    <!-- Animate CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/animate.min.css') }}">
+
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/meanmenu.css') }}">
+
+    <!-- Boxicons CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/boxicons.min.css') }}">
+
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/flaticon.css') }}">
+
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/nice-select.min.css') }}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/owl.carousel.min.css') }}">
+
+    <!-- Owl Carousel Default CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/owl.theme.default.min.css') }}">
+
+    <!-- Odometer CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/odometer.min.css') }}">
+
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/magnific-popup.min.css') }}">
+
+    <!-- Style CSS -->
+    <!-- Responsive CSS -->
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/responsive.css') }}">
+    <link rel="stylesheet"  href="{{ asset('Front/assets/css/style.css') }}">
 
     <title>
         Foodine | {% block title %}{% endblock %}
@@ -132,7 +141,16 @@
                                 Recettes
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="/listecommande" class="nav-link">
+                                Commandes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/livraison" class="nav-link">
+                                Livraison
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="contact.html" class="nav-link">
                                 About Us
@@ -143,7 +161,7 @@
                     <div class="others-options d-flex align-items-center">
                         <div class="option-item">
                             <div class="cart-btn">
-                                <a href="cart.html">
+                                <a href="/panier">
                                     <i class='flaticon-shopping-cart'></i>
                                     <span>0</span>
                                 </a>

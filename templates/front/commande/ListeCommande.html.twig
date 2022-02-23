@@ -19,8 +19,8 @@
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">Nom & Prénom</th>
-                                                        <th scope="col">Etat</th>
-                                                        <th scope="col">Total</th>
+
+                                                        <th scope="col">Détails</th>
                                                         <th scope="col">Date</th>
                                                         <th scope="col">Mode de paiement</th>
                                                     </tr>
@@ -29,13 +29,20 @@
                                                     {% for c in commande %}
                                                         <tr>
                                                             <td>{{ c.nom }}</td>
-                                                            <td>{{ c.etat }}</td>
+
                                                             <td>{{ c.total }}</td>
                                                             <td>{{ c.date | date }}</td>
-                                                            <td>{{ c.modepaiement }}</td>
+                                                            <td>
+                                                                {% if c.modepaiement == 0  %} Paypal
+                                                                {% endif %}
+                                                                {% if c.modepaiement == 1  %} carte
+                                                                {% endif %}
+                                                                {% if c.modepaiement == 2  %} espéces
+                                                                {% endif %}
+                                                            </td>
                                                             <td>
                                                                 <div class="d-flex order-actions">
-                                                                    <a href="{{ path('modifiercommande',{id :c.id}) }}" class=""><i class='bx bxs-edit'></i></a>
+
                                                                     <a href="{{ path('supprimercommandefront',{id :c.id}) }}" class="ms-3"><i class='bx bxs-trash'></i></a>
                                                                 </div>
                                                             </td>
@@ -47,13 +54,13 @@
                                             <div class="cart-buttons">
                                                 <div class="row align-items-center">
                                                     <div class="col-lg-7 col-sm-7 col-md-7">
-                                                        <a href="shop-1.html" class="default-btn">
-                                                            Back to Shop
+                                                        <a href="/" class="default-btn">
+                                                            Acceuil
                                                         </a>
                                                     </div>
                                                     <div class="col-lg-5 col-sm-5 col-md-5 text-right">
                                                         <a href="/ajoutercommande" class="default-btn">
-                                                            Passer un Commande
+                                                            Passer une Commande
                                                         </a>
                                                     </div>
                                                 </div>

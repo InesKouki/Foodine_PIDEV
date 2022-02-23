@@ -1,6 +1,6 @@
 {% extends 'baseBack.html.twig' %}
 {% block title %}
-    Commande
+    Livraison
 {% endblock %}
 {% block content %}
     <div class="page-wrapper">
@@ -34,40 +34,36 @@
                         <thead class="table-light">
                         <tr>
 
-                            <th>Nom & Prénom du client</th>
+                            <th>Addresse</th>
                             <th>Etat</th>
+                            <th>Code Postal</th>
+                            <th>Addresse Email</th>
+                            <th>Phone</th>
                             <th>Détails</th>
-                            <th>Date</th>
-                            <th>Mode de paiement</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for c in commande %}
+                        {% for l in livraison %}
                             <tr>
 
-                                <td>{{ c.nom }}</td>
+                                <td>{{ l.addresse }}</td>
                                 <td>
-                                {% if c.etat == 1  %}
-                                    <span class="badge bg-success">Traité</span>
-                                {% else  %}
-                                    <span class="badge bg-secondary">Non Traité</span>
-                                {% endif %}
+                                    {% if l.etat == 1  %}
+                                        <span class="badge bg-success">Traité</span>
+                                    {% else  %}
+                                        <span class="badge bg-secondary">Non Traité</span>
+                                    {% endif %}
                                 </td>
-                                <td>{{ c.total }}</td>
-                                <td>{{ c.date | date  }}</td>
-                                <td>
-                                {% if c.modepaiement == 0  %} Paypal
-                                {% endif %}
-                                {% if c.modepaiement == 1  %} carte
-                                {% endif %}
-                                {% if c.modepaiement == 2  %} espéces
-                                {% endif %}
+                                <td>{{ l.codepostal }}</td>
+                                <td>{{ l.email  }}</td>
+                                <td>{{ l.phone }}
                                 </td>
+                                <td>{{ l.details  }}</td>
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="{{ path('modifiercommande',{id :c.id}) }}" class=""><i class='bx bxs-edit'></i></a>
-                                        <a href="{{ path('supprimercommande',{id :c.id}) }}" class="ms-3"><i class='bx bxs-trash'></i></a>
+                                        <a href="{{ path('modifierlivraison',{id :l.id}) }}" class=""><i class='bx bxs-edit'></i></a>
+                                        <a href="{{ path('supprimerlivraison',{id :l.id}) }}" class="ms-3"><i class='bx bxs-trash'></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -81,5 +77,4 @@
 
     </div>
     </div>
-    <!--end page wrapper -->
 {% endblock %}

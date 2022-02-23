@@ -1,0 +1,113 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Product
+{% endblock %}
+{% block content %}
+    <div class="page-wrapper">
+        <div class="page-content">
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">Ajouter Produit</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-package"></i></a>
+                            </li>
+
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+            <!--end breadcrumb-->
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+
+
+
+                    <hr/>
+                    <div class="card">
+                        {{ form_start(form1) }}
+
+                        <div class="card-body">
+                            <div class="p-4 border rounded">
+                                <form class="row g-3">
+
+                                    <div class="col-md-4">
+                                    </div> <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <label  class="form-label">Nom catégorie</label>
+                                        {{ form_widget(form1.category ,  {'attr': {'class': 'form-control '}}) }}
+
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <label for="validationServer02" class="form-label">Nom Produit</label>
+                                        {{ form_widget(form1.name ,  {'attr': {'class': 'form-control '}}) }}
+
+                                    </div>
+
+
+
+                                    <div class="col-md-4">
+                                        <label  class="form-label">Quantité </label>
+                                        {{ form_widget(form1.quantitie ,  {'attr': {'class': 'form-control '}}) }}
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="validationServerUsername" class="form-label">Prix</label>
+                                        <div class="input-group has-validation">
+                                            {{ form_widget(form1.price ,  {'attr': {'class': 'form-control '}}) }} DT
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="mb-3">
+                                        {{ form_widget(form1.image ,  {'attr': {'class': 'form-control '}})  }}
+                                        <div class="invalid-feedback">Example invalid form file feedback</div>
+                                    </div>
+
+                                    <div class="col-12">
+
+                                    </div>
+                                    <form
+
+                                            action="{{ path('product') }}"
+                                            style="display: inline-block">
+                                        <input type="hidden">
+                                        <button class="btn btn-primary"> Ajouter</button>
+
+                                    </form>
+                                    {{ form_end(form1) }}
+
+                                </form>
+
+                            </div>
+                        </div>
+
+
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-icon alert-success" role="alert">
+                                <i class="fe fe-check mr-2" aria-hidden="true"></i> Produit ajouté avec succée.
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+    </div>
+
+
+{% endblock %}

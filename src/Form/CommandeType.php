@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Commande;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,17 +15,22 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('total')
-            ->add('date', DateType::class, array(
-                'widget' => 'single_text',
-                'html5' => true,
-                'required' => true,
-                'attr' => array('class' => 'form-control input-inline datepicker',
-                    'data-provide' => 'datepicker',
-                    'data-format' => 'dd-mm-yyyy',
-                )))            ->add('modepaiement')
-            ->add('etat')
-            ->add('nom')
+            ->add('total', null ,[
+
+                'empty_data'=>''
+            ])
+
+            ->add('modepaiement',ChoiceType::class, [
+                'choices'  => [
+                    'Carte' => 1,
+                    'Paypal' => 0,
+                    'espéces'=>2
+                ],
+            ] )
+            ->add('nom', null , [
+
+                'empty_data'=>''
+            ])
         ;
     }
 
