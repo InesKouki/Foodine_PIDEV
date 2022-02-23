@@ -29,7 +29,7 @@
                     <hr/>
                     <div class="form-body mt-4">
                         <div class="row">
-                            {{ form_start(promotionForm) }}
+                            {{ form_start(promotionForm, {'attr' : {'novalidate' : 'novalidate'} }) }}
                             <div class="col-lg-6">
                                 <div class="border border-3 p-4 rounded">
                                     <div class="row g-3">
@@ -48,6 +48,9 @@
                                             <label for="inputProductTags" class="form-label">Réduction ( en % )</label>
                                             {{ form_widget(promotionForm.pourcentage) }}
                                         </div>
+                                        <ul class="custom-error2">
+                                            {{ form_errors(promotionForm.pourcentage) }}
+                                        </ul>
 
                                         <div class="col-12">
                                             <div class="d-grid">

@@ -45,7 +45,7 @@ class PromotionRepository extends ServiceEntityRepository
             -> getQuery()->getResult();
     }
 
-    function searchByEvent($id){
+    function getPromotionsByEventId($id){
         return $this->createQueryBuilder('s')
             ->join('s.evenement','c')
             ->addSelect('c')

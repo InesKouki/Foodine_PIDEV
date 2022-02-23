@@ -25,26 +25,36 @@
     {% for e in activeEvents %}
             <style>
                 .main-banner-item {
-                    background-image: url('{{asset('../../../uploads/' ~ e.image)}}')
+                    background-image: url('{{asset('uploads/' ~ e.image)}}')
                 }
             </style>
+
         <div class="main-banner">
             <div class="main-banner-item">
                 <div class="d-table">
                     <div class="d-table-cell">
                         <div class="container">
                             <div class="main-banner-content">
-                                <h1>Foodine</h1>
+{#                                <h1>Foodine</h1>#}
+                                <h2>Du &nbsp;{{ e.dateDeb|date('d/m/y') }}&nbsp; jusqu'à &nbsp;{{ e.dateFin|date('d/m/y') }}</h2>
                                 <div class="banner-btn">
-                                    <a href="shop-1.html" class="default-btn">Notre Restaurant</a>
+                                    <a href="/evenements" class="default-btn" target="_blank">Plus d'événements</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
         </div>
     {% endfor %}
+
+{#  else if active.events(LENGTH) > 1
+    ....
+    ....
+    ....
+#}
+
     {% endif %}
 
 {% endblock %}

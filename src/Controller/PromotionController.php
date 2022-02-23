@@ -117,17 +117,14 @@ class PromotionController extends AbstractController
         return $this->render('back/promotion/index.html.twig', ['backPromotions' => $promotion]);
     }
 
+    /**
+     * @Route ("evenement-{id}", name="eventDeals");
+     */
 
-
-
-//    /**
-//     * @Route ("evenement/{id}");
-//     */
-//
-//    public function searchC($id,PromotionRepository $rep, Request $req) {
-////        $n = $req->get('searchText');
-//        $promotion = $rep->searchByEvent($id);
-//        return $this->render('back/promotion/index.html.twig', ['backPromotions' => $promotion]);
-//    }
+    public function searchC($id,PromotionRepository $rep, Request $req) {
+//        $n = $req->get('searchText');
+        $promotion = $rep->getPromotionsByEventId($id);
+        return $this->render('front/promotion/index.html.twig', ['frontPromotions' => $promotion]);
+    }
 
 }

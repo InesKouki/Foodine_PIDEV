@@ -24,10 +24,10 @@ class EvenementType extends AbstractType
             ])
         ];
 
-        $article = $builder->getData();
+        $evt = $builder->getData();
 
 
-        if (!$article->getImage()) {
+        if (!$evt->getImage()) {
             $imageConstraints[] = new NotNull([
                 'message' => 'Veuillez ajouter une image',
             ]);

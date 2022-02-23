@@ -1430,6 +1430,17 @@ Main Banner Area CSS
   margin-bottom: 20px;
 }
 
+.main-banner-content h2 {
+  text-align: center;
+  font-size: 30px;
+  background-color: #ebebeb;
+  border-radius: 7px;
+  width: 500px;
+  color: #3b3b3b;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
 .main-banner-content p {
   color: #ffffff;
   margin-bottom: 0;
