@@ -16,8 +16,8 @@ class AddReclamationType extends AbstractType
             ->add('Description')
             ->add('Type',ChoiceType::class,[
                 'choices' => [
-                    'Livraison en retard' => "late",
-                    'Commande erronée' => "false",
+                    'Livraison en retard' => "Livraison en retard",
+                    'Commande erronée' => "Commande erronée",
                     'Autre' => "Autre",
                 ],
                 'expanded' => true,

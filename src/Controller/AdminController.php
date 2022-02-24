@@ -25,11 +25,14 @@ class AdminController extends AbstractController
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
         $nbchef=$this->getDoctrine()->getRepository(User::class)->nbsChef();
         $nblivreur=$this->getDoctrine()->getRepository(User::class)->nbsLivreur();
+        $repository=$this->getDoctrine()->getRepository(Reclamation::class);
+        $rec=$repository->findAll();
         $ntot=$nbchef+$nblivreur;
         return $this->render('/back/homeBack.html.twig', [
             'controller_name' => 'AdminController',
             'n'=>$nbclient,
             'ntot'=>$ntot,
+            'rec'=>$rec
             //'users'=>$users
         ]);
     }
@@ -113,18 +116,6 @@ class AdminController extends AbstractController
         $user=$this->getDoctrine()->getRepository(User::class)->trierNomASC();
         return $this->render("/back/Users/employe.html.twig",[
             'user' => $user
-        ]);
-    }
-
-    /**
-     * @return Response
-     * @Route ("/show_rec" , name="show_rec")
-     */
-    public function showReclamation (){
-        $repository=$this->getDoctrine()->getRepository(Reclamation::class);
-        $rec=$repository->findAll();
-        return $this->render("/back/homeBack.html.twig",[
-            'rec' => $rec
         ]);
     }
 

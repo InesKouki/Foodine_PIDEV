@@ -47,4 +47,13 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function showReclamation(){
+
+        return $this->createQueryBuilder('r')
+            ->where('val- r.created_at == 0')
+            ->setParameter('val',new \DateTime('now'))
+            ->getQuery()
+            ->getMaxResults(3);
+    }
 }
