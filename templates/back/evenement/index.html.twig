@@ -80,7 +80,7 @@
                         <tbody>
                         {% for e in backEvents %}
                             <tr>
-                                <td><a href="{{ path('eventDeals',{id: e.id}) }}">{{ e.name }}</a><td>
+                                <td><a target="_blank" href="{{ path('eventDeals',{id: e.id}) }}">{{ e.name }}</a><td>
 
                             {% if e.dateDeb|date > "now"|date and e.dateFin|date > "now"|date %}
                                 <span class="badge bg-gradient-moonlit">Bientôt</span>

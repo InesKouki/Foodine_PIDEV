@@ -16,7 +16,7 @@ class EvenementController extends AbstractController
      */
     public function afficheFront(EvenementRepository $repo)
     {
-        $event=$repo->findAll();
+        $event=$repo->getActiveEvents();
         return $this->render('front/evenement/index.html.twig', ['frontEvents' => $event]);
     }
 

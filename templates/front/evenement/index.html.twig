@@ -4,7 +4,6 @@
 {% endblock %}
 {% block content %}
 
-    {% for e in frontEvents %}
     <style>
         .page-banner-area {
             background-image: url(Front/assets/img/footer-bg.jpg)
@@ -32,12 +31,13 @@
 
     <section class="blog-area pt-100 pb-100">
         <div class="container">
+
             <div class="row">
+    {% for e in frontEvents %}
 
                 <div class="col-lg-6 col-md-6">
                     <div class="single-blog-item">
                         <div class="image">
-{#                            <a href=""><img src="{{asset('uploads/' ~ e.image)}}" alt="image"></a>#}
                             <a href={{ path('eventDeals',{id: e.id}) }}><img src="{{asset('uploads/' ~ e.image)}}" alt="image"></a>
 
                             <div class="date">
@@ -48,15 +48,15 @@
                             <h3>
                                 <a href={{ path('eventDeals',{id: e.id}) }}>{{ e.name }}</a>
                             </h3>
-                            <a href={{ path('eventDeals',{id: e.id}) }} class="blog-btn">Read More +</a>
+                            <a href={{ path('eventDeals',{id: e.id}) }} class="blog-btn">Plus d'Informations +</a>
                         </div>
                     </div>
                 </div>
 
+    {% endfor %}
 
             </div>
         </div>
     </section>
-    {% endfor %}
 
 {% endblock %}
