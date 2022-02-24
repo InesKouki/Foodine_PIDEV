@@ -6,28 +6,49 @@ use App\Entity\Table;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
 use App\Repository\TableRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\Serializer\Serializer;
+use function MongoDB\BSON\toJSON;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+//use Symfony\Component\Serializer\Serializer;
+
 
 class ReservationController extends AbstractController
 {
+    private $logger;
+
     /**
      * @Route("/reservationn", name="reservation")
      */
     public function index(): Response
     {
+        //$form = $this->createForm(ReservationType::class, Reservation::class);
         return $this->render('front/reservation/index.html.twig', [
             'controller_name' => 'ReservationController',
+            //'form'=> $form->createView()
         ]);
     }
     /**
      * @Route("/admin-reservation", name="reservationback")
      */
-    public function afficherreservation(ReservationRepository $r)
+    public function afficherreservation(Request $request,ReservationRepository $r , PaginatorInterface $paginator)
     {
-        $reservation=$r->findAll();
+        $donnes=$r->findAll();
+        $reservation=$paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),
+            4
+        );
         return $this->render('back/reservation/index.html.twig',['r'=>$reservation]);
     }
 
@@ -36,17 +57,23 @@ class ReservationController extends AbstractController
      * @return Response
      * @route("/reservation" ,name="ajouter")
      */
-    public function ajouterreservation(Request $request,TableRepository $r)
+    public function ajouterreservation(Request $request,TableRepository $r ,\Swift_Mailer $mailer)
     {
         $reservation1=$r->findAll();
         $reservation=new Reservation();
         $form=$this->createForm(ReservationType::class,$reservation);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid())
-        {$em=$this->getDoctrine()->getManager();
+        {
+            $em=$this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
+            $message = (new \Swift_Message('Food IN'))
+                ->setFrom('mootez.gam@esprit.tn')
+                ->setTo($reservation->getEmail())
+                ->setBody('Votre reservation a ete effecuée avec succes');
 
+            $mailer->send($message);
             return $this->redirectToRoute('ajouter');
         }
 
@@ -85,5 +112,18 @@ class ReservationController extends AbstractController
         return $this->render('back/reservation/modifierreservation.html.twig',['form'=>$form->createView()]);
     }
 
+    /**
+     * @Route("/admin-reservation/searchResajax ", name="searchResajax")
+     */
+    public function searchOffreajax(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Reservation::class);
+        $requestString=$request->get('searchValue');
+        $reservations = $repository->findReservationByName($requestString);
+
+       return $this->render('back/reservation/ajax.html.twig', [
+            "r"=>$reservations
+       ]);
+    }
 
 }

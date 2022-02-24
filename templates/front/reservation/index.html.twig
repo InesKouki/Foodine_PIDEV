@@ -4,35 +4,35 @@
 {% endblock %}
 {% block content %}
 
-<!-- Start Page Banner -->
+    <!-- Start Page Banner -->
     <style>
         .page-banner-area {
             background-image: url(Front/assets/img/h.jpg);
             padding-top: 250px;
         }
     </style>
-<div class="page-banner-area ">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container">
-                <div class="page-banner-content">
-                    <h2>Reservation</h2>
-                    <ul>
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>Reservation</li>
-                    </ul>
+    <div class="page-banner-area ">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Reservation</h2>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>Reservation</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Page Banner -->
+    <!-- End Page Banner -->
 
-<!-- Start Checkout Area -->
-<section class="checkout-area ptb-100">
-    <div class="container">
+    <!-- Start Checkout Area -->
+    <section class="checkout-area ptb-100">
+        <div class="container">
 
             <div class="row">
                 <div class="col-lg-6 col-md-12">
@@ -91,18 +91,18 @@
                                 <tbody>
                                 {% for i in r %}
 
-                                <tr>
-                                   {% if i.etat=='disponible' %}
-                                    <td class="product-name">
-                                        {{ i.numerotable }}
-                                    </td>
-                                    <td class="product-total">
-                                    <img height="120" width="200" src="{{ asset('uploads/') ~ i.imagetable  }}" alt="image"   >
+                                    <tr>
+                                        {% if i.etat=='disponible' %}
+                                            <td class="product-name">
+                                                {{ i.numerotable }}
+                                            </td>
+                                            <td class="product-total">
+                                                <img height="120" width="200" src="{{ asset('uploads/') ~ i.imagetable  }}" alt="image"   >
 
 
-                                    </td>
-                                    {% endif %}
-                                </tr>
+                                            </td>
+                                        {% endif %}
+                                    </tr>
                                 {% endfor %}
 
                                 </tbody>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-    </div>
-</section>
-<!-- End Checkout Area -->
+        </div>
+    </section>
+    <!-- End Checkout Area -->
 {% endblock %}
