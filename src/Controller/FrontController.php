@@ -45,23 +45,6 @@ class FrontController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("add_rec/", name="add_rec")
-     */
-    public function add(ReclamationRepository $repository,Request $request){
-        $reclamation = new Reclamation();
-        $form=$this->createForm(AddReclamationType::class,$reclamation);
-        $form->handleRequest();
-        if ($form->isSubmitted() and $form->isValid()) {
-            $reclamation->setUser($this->getUser()->getId());
-            $reclamation->setCreatedAt(new \DateTime('now'));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reclamation);
-            $em->flush();
-            return $this->redirectToRoute('reclamation');
-        }
-        return $this->render("front/reclamation/add.html.twig", array('form' => $form->createView()));
-    }
 
 
 }

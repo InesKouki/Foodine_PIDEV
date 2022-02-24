@@ -18,7 +18,7 @@ class Reclamation
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $Created_at;
 
@@ -47,12 +47,12 @@ class Reclamation
         return $this->id;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->Created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $Created_at): self
+    public function setCreatedAt(\DateTimeInterface $Created_at): self
     {
         $this->Created_at = $Created_at;
 

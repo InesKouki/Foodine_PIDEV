@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerW6kr8xX/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerW6ZNxi4/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -46,13 +46,16 @@ $classes[] = 'App\Controller\LivreurController';
 $classes[] = 'App\Controller\PlanningController';
 $classes[] = 'App\Controller\PromotionController';
 $classes[] = 'App\Controller\RecetteController';
+$classes[] = 'App\Controller\ReclamationController';
 $classes[] = 'App\Controller\ReservationController';
 $classes[] = 'App\Controller\SecurityController';
+$classes[] = 'App\Form\AddReclamationType';
 $classes[] = 'App\Form\EditClientType';
 $classes[] = 'App\Form\EditEmployeType';
 $classes[] = 'App\Form\EditPasswordType';
 $classes[] = 'App\Form\InscriptionType';
 $classes[] = 'App\Repository\PlanningRepository';
+$classes[] = 'App\Repository\ReclamationRepository';
 $classes[] = 'App\Repository\UserRepository';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider';
@@ -267,6 +270,7 @@ $classes[] = 'Symfony\Component\Mailer\EventListener\EnvelopeListener';
 $classes[] = 'Symfony\Component\Mailer\EventListener\MessageLoggerListener';
 $classes[] = 'Symfony\Bundle\MakerBundle\Command\MakerCommand';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator';
+$classes[] = 'Symfony\Bundle\MakerBundle\Security\SecurityControllerBuilder';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeCommand';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeController';
 $classes[] = 'Symfony\Bundle\MakerBundle\Maker\MakeCrud';

@@ -22,7 +22,7 @@ class AddReclamationType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple'=> false,
-                'label' => 'Rôles'
+                'label' => 'Type'
             ])
 
         ;
