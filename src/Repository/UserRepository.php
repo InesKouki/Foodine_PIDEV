@@ -96,6 +96,17 @@ class UserRepository extends ServiceEntityRepository
            ->getSingleScalarResult();
     }
 
+    public function findUserByValue($str){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT u
+                FROM App\Entity\User u
+                WHERE u.Nom LIKE :str '
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
+
     public function nbsChef(){
         return $this->createQueryBuilder('u')
             ->select('count(u.id)')

@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 class ReclamationController extends AbstractController
 {
     /**
@@ -50,6 +50,7 @@ class ReclamationController extends AbstractController
      * @Route ("/show_rec" , name="show_rec")
      */
     public function showReclamation (){
+
         $repository=$this->getDoctrine()->getRepository(Reclamation::class);
         $rec=$repository->findAll();
         return $this->render("/back/reclamations/show.html.twig",[

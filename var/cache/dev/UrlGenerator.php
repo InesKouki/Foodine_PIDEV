@@ -34,6 +34,7 @@ return [
     'front' => [[], ['_controller' => 'App\\Controller\\FrontController::index'], [], [['text', '/']], [], []],
     'team' => [[], ['_controller' => 'App\\Controller\\FrontController::afficherChefs'], [], [['text', '/team']], [], []],
     'show_chef' => [['id'], ['_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/show_chef']], [], []],
+    'search' => [[], ['_controller' => 'App\\Controller\\FrontController::search'], [], [['text', '/search']], [], []],
     'livreur_index' => [[], ['_controller' => 'App\\Controller\\LivreurController::index'], [], [['text', '/livreur/']], [], []],
     'planning' => [[], ['_controller' => 'App\\Controller\\PlanningController::index'], [], [['text', '/planning']], [], []],
     'ajouterplanning' => [[], ['_controller' => 'App\\Controller\\PlanningController::ajouterplanning'], [], [['text', '/ajouterplanning']], [], []],

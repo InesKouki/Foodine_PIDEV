@@ -5,7 +5,9 @@
 {% block content %}
     <!--start page wrapper -->
     <div class="page-wrapper">
+
         <div class="page-content">
+
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3"> Utilisateurs </div>
@@ -17,6 +19,11 @@
 
                         </ol>
                     </nav>
+                </div>
+
+                <div class="position-relative search-bar-box">
+                    <input type="text" class="form-control search-control" id="search" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
+                    <span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
@@ -37,6 +44,7 @@
 
             <h6 class="mb-0 text-uppercase">Liste des utilisateurs</h6>
             <hr/>
+
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
 
                 {% for user in user %}
@@ -82,5 +90,10 @@
 
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+
+    </script>
     <!--end page wrapper -->
 {% endblock %}

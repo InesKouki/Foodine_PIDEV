@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Form\EditEmployeType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -119,9 +120,24 @@ class AdminController extends AbstractController
         ]);
     }
 
-    public function traiterRec(){
+    /*public function searchUser(Request $request){
+        $em=$this->getDoctrine()->getManager();
+        $requestString= $request->get('u');
+        $user=$em->getRepository(UserRepository::class)->findUserByValue($requestString);
+        if(!$user){
+            $result['user']['error']= "User not found";
+        }else {
+            $result['user']=$this->getRealEntities($user);
+        }
+        return new Response(json_encode($request));
 
     }
+    public function getRealEntities($user){
+        foreach ($user as $user)
+            $realEntities[$user->getId()]=[$user->getFile(),$user->getNom()];
+        return $realEntities;
+
+    }*/
 
 
 

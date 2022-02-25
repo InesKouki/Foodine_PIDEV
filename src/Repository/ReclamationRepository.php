@@ -48,12 +48,12 @@ class ReclamationRepository extends ServiceEntityRepository
     }
     */
 
-    public function showReclamation(){
 
-        return $this->createQueryBuilder('r')
-            ->where('val- r.created_at == 0')
-            ->setParameter('val',new \DateTime('now'))
-            ->getQuery()
-            ->getMaxResults(3);
+    public function findReclamationByValue($val){
+        $em=$this->getEntityManager();
+        $query=$em->createQueryBuilder('SELECT r FROM App\Entity\Reclamation r WHERE r.Type LIKE :val OR r.Created_at LIKE :val 
+        OR r.Etat LIKE : val')
+            ->setParameter('val',$val);
+        return $query->getQuery();
     }
 }
