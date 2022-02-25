@@ -927,12 +927,12 @@
             'dev_requirement' => false,
         ),
         'symfony/maker-bundle' => array(
-            'pretty_version' => 'v1.37.0',
-            'version' => '1.37.0.0',
+            'pretty_version' => 'v1.38.0',
+            'version' => '1.38.0.0',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../symfony/maker-bundle',
             'aliases' => array(),
-            'reference' => '411863a63c495c68852215518bb5665965c61a2d',
+            'reference' => '143024ab0e426285d3d9b7f6a3ce51e12a9d8ec5',
             'dev_requirement' => true,
         ),
         'symfony/mime' => array(

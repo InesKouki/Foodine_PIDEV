@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerUxSGNCS/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerUcffZjk/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -55,6 +55,7 @@ $classes[] = 'App\Form\EditEmployeType';
 $classes[] = 'App\Form\EditPasswordType';
 $classes[] = 'App\Form\InscriptionType';
 $classes[] = 'App\Form\ReponseType';
+$classes[] = 'App\Form\ResetPassType';
 $classes[] = 'App\Repository\PlanningRepository';
 $classes[] = 'App\Repository\ReclamationRepository';
 $classes[] = 'App\Repository\ReponseRepository';
