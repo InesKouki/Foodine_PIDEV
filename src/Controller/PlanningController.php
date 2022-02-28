@@ -61,6 +61,15 @@ class PlanningController extends AbstractController
     }
     /**
      * @param PlanningRepository $rep
+     * @return Response
+     * @Route ("/Calendrier",name="Calendrier")
+     */
+    public function Calendrier(){
+        return $this->render('back/planning/Calendrier.html.twig');
+    }
+
+    /**
+     * @param PlanningRepository $rep
      * @param $az
      * @Route ("/supprimerplanning/{id}", name="supprimerplanning")
      */
