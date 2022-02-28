@@ -96,14 +96,28 @@ class UserRepository extends ServiceEntityRepository
            ->getSingleScalarResult();
     }
 
-    public function findUserByValue($str){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT u
-                FROM App\Entity\User u
-                WHERE u.Nom LIKE :str '
-            )
+    public function findChefByValue($str){
+        return $this->createQueryBuilder('u')
+
+            ->andWhere('u.Nom LIKE :str')
+            ->orWhere('u.Prenom LIKE :str')
+            ->orWhere('u.Username LIKE :str')
             ->setParameter('str', '%'.$str.'%')
+            ->andWhere('u.Roles LIKE :role')
+            ->setParameter('role','["ROLE_CHEF"]')
+            ->getQuery()
+            ->getResult();
+    }
+    public function findUserByValue($str){
+        return $this->createQueryBuilder('u')
+
+            ->andWhere('u.Nom LIKE :str')
+            ->orWhere('u.Prenom LIKE :str')
+            ->orWhere('u.Username LIKE :str')
+            ->setParameter('str', '%'.$str.'%')
+            ->andWhere('u.Roles NOT LIKE :role')
+            ->setParameter('role','["ROLE_ADMIN"]')
+            ->getQuery()
             ->getResult();
     }
 

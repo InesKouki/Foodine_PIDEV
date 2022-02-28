@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Reclamation;
+use App\Entity\Notification;
 use App\Form\EditEmployeType;
+use App\Repository\NotificationRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +22,10 @@ class AdminController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(): Response
+    public function index(NotificationRepository $repository): Response
     {
+        $notif = $repository->findAll();
+        $count=$repository->countNotifUnseen();
         //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
         $nbchef=$this->getDoctrine()->getRepository(User::class)->nbsChef();
@@ -33,8 +37,10 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
             'n'=>$nbclient,
             'ntot'=>$ntot,
-            'rec'=>$rec
-            //'users'=>$users
+            'rec'=>$rec,
+            'notif'=>$notif,
+            'nbNotif'=>$count
+            //'users'=>$users=
         ]);
     }
     /**
@@ -110,34 +116,64 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @param NotificationRepository $repository
      * @return Response
-     * @Route("/trierNomASC" , name="trierNomASC")
+     * @Route("/showNotif", name="showNotif")
      */
-    public function trierNomASC(){
-        $user=$this->getDoctrine()->getRepository(User::class)->trierNomASC();
-        return $this->render("/back/Users/employe.html.twig",[
-            'user' => $user
-        ]);
-    }
+        public function showNotification(NotificationRepository $repository){
 
-    /*public function searchUser(Request $request){
-        $em=$this->getDoctrine()->getManager();
-        $requestString= $request->get('u');
-        $user=$em->getRepository(UserRepository::class)->findUserByValue($requestString);
-        if(!$user){
-            $result['user']['error']= "User not found";
-        }else {
-            $result['user']=$this->getRealEntities($user);
+             $notif = $repository->findAll();
+            return $this->render("/back/Notifications/show.html.twig",[
+                'notif' => $notif
+            ]);
+
         }
-        return new Response(json_encode($request));
 
+    /**
+     * @Route("readNotif", name="readNotif")
+     */
+    public function readNotifications(NotificationRepository $repository){
+
+
+        $notifs=$repository->findNotifUnseen();
+        foreach ($notifs as $notif){
+            $notif->setStatus(1);
+            $em=$this->getDoctrine()->getManager();
+            $em->flush($notif);
+        }
+
+
+        return $this->redirectToRoute('admin');
     }
-    public function getRealEntities($user){
-        foreach ($user as $user)
-            $realEntities[$user->getId()]=[$user->getFile(),$user->getNom()];
+    /**
+     * @param Request $request
+     * @param UserRepository $repository
+     * @Route("/searchBack" , name="searchBack")
+     */
+    public function search(Request $request,UserRepository $repository){
+        $em = $this->getDoctrine()->getManager();
+
+        $requestString = $request->get('q');
+
+        $entities =$repository->findUserByValue($requestString);
+
+        if(!$entities) {
+            $result['entities']['error'] = "Aucun chef trouvé";
+        } else {
+            $result['entities'] = $this->getRealEntities($entities);
+        }
+
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($entities){
+
+        foreach ($entities as $entity){
+            $realEntities[$entity->getId()] =[ $entity->getFile(),$entity->getPrenom(),$entity->getNom(),$entity->getRoles()];
+
+        }
         return $realEntities;
 
-    }*/
+    }
 
 
 

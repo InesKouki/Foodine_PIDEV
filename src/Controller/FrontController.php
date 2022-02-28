@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Reclamation;
 use App\Entity\User;
 use App\Form\AddReclamationType;
+use App\Repository\NotificationRepository;
 use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +22,7 @@ class FrontController extends AbstractController
     {
         return $this->render('front/homeFront.html.twig', [
             'controller_name' => 'FrontController',
+
         ]);
     }
 
@@ -55,7 +57,7 @@ class FrontController extends AbstractController
 
         $requestString = $request->get('q');
 
-        $entities =$repository->findUserByValue($requestString);
+        $entities =$repository->findChefByValue($requestString);
 
         if(!$entities) {
             $result['entities']['error'] = "Aucun chef trouvé";

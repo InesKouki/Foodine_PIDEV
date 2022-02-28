@@ -2,9 +2,64 @@
 {% block title %}
     Dashboard
 {% endblock %}
+{% block notif %}
+    <div class="top-menu ms-auto">
+        <ul class="navbar-nav align-items-center">
+            <li class="nav-item dropdown dropdown-large">
+                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  >
+                   <div  >
+                    <span class="alert-count " id="count">
+                    {{ nbNotif }}
+                    </span>
+                    <i class='bx bx-bell'></i>
+                   </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a href="{{path('admin_readNotif')}}" >
+                        <div class="msg-header">
+                            <p class="msg-header-title">Notifications</p>
+                            <p class="msg-header-clear ms-auto">Marks all as read</p>
+                        </div>
+                    </a>
+
+                        <div class="header-notifications-list" id="notification_button" id="notification">
+                            {% for notif in notif %}
+                            <a class="dropdown-item" href="#" >
+
+                                <div class="d-flex align-items-center">
+                                    <div class="notify"><i class='bx bx-user-pin'></i>
+                                    </div>
+
+                                    <div class="flex-grow-1" >
+                                        <h6 class="msg-name">{{ notif.Titre }}<span class="msg-time float-end">
+                                                {% if notif.Status==1 %}
+                                               Seen
+                                                {% else %}
+                                                    Unseen
+                                                    {% endif %}
+                                            </span></h6>
+                                        <p class="msg-info">{{ notif.Message }}</p>
+                                    </div>
+
+                                </div>
+
+                            </a>
+                            {% endfor %}
+                        </div>
+
+                    <a href="{{path('admin_showNotif')}}">
+                        <div class="text-center msg-footer">View All Notifications</div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
 {% block content %}
+
     <!--start page wrapper -->
     <div class="page-wrapper">
+
         <div class="page-content">
 
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
@@ -372,64 +427,30 @@
         </div>
 
         <!--end row-->
-        <div class="row">
-            <div class="col">
-                <div class="card radius-10">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <h5 class="mb-1">Dernières réclamation</h5>
-                            </div>
-                            <div class="ms-auto">
-                                <a href="{{path('show_rec')}}" class="btn btn-light btn-sm radius-30">Voir toutes les réclamations</a>
-                            </div>
-                        </div>
 
-                        <div class="table-responsive mt-3">
-                            <table class="table align-middle mb-0">
-                                <thead class="table-light">
-                                <tr>
-
-
-                                    <th>Date</th>
-                                    <th>Etat</th>
-                                    <th>Type</th>
-                                    <th>Description</th>
-                                    <th>Email du client</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <tr>
-                                {% for rec in rec %}
-                                    <td> </td>
-                                    {% if rec.etat == 0 %}
-                                    <td class=""><span class="badge bg-light text-white w-100">Non Traitée</span></td>
-                                    {% else %}
-                                    <td class=""><span class="badge bg-light text-white w-100">Traitée</span></td>
-                                    {% endif %}
-                                    <td> {{ rec.type }}</td>
-                                    <td> {{ rec.Description }}</td>
-                                    <td> {{ rec.User.email }}</td>
-                                    <td>
-                                        <div class="d-flex order-actions">
-                                            <a href="javascript:;" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
-                                            <a href="javascript:;" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit' ></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor%}
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
     </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+   $(document).ready(function(){
+       $('#notification_button').click(function(){
+           jQuery.ajax({
+               url :'{{ path('admin_readNotif') }}',
+               success:function(){
+                   $('#notification').fadeToggle('fast','linear');
+                   $('#count').fadeOut('slow');
+               }
+
+           });
+           return false
+
+       });
+       $(document).click(function(){
+           $('#count').hide();
+       });
+   });
+    </script>
+
     <!--end page wrapper -->
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\Reclamation;
 use App\Entity\Reponse;
 use App\Form\AddReclamationType;
@@ -31,13 +32,20 @@ class ReclamationController extends AbstractController
      */
     public function add(Request $request){
         $reclamation = new Reclamation();
+        $notif = new Notification();
+
         $form=$this->createForm(AddReclamationType::class,$reclamation);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
             $reclamation->setUser($this->getUser());
             $reclamation->setCreatedAt(new \DateTime('now'));
             $reclamation->setEtat(0);
+            $msg=$form->get('Description')->getData();
+            $notif->setTitre("Reclamation");
+            $notif->setMessage($msg);
+            $notif->setStatus(0);
             $em = $this->getDoctrine()->getManager();
+            $em->persist($notif);
             $em->persist($reclamation);
             $em->flush();
             return $this->redirectToRoute('front');
