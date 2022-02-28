@@ -554,6 +554,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -4218,7 +4222,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.Zj0HJqG"/>
+      <argument type="service" id=".service_locator.VHkvxFW"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5591,6 +5595,8 @@
     <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5893,6 +5899,12 @@
         <argument key="repository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.bqvr0uO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\ReviewRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.JjRAOhW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5940,7 +5952,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.45BjHyG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.LNAJ293" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.F0UDtIE"/>
@@ -5951,7 +5963,10 @@
         <argument key="App\Controller\ClientController::modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
         <argument key="App\Controller\FrontController::afficherChefs" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController::afficherDetailsChef" type="service_closure" id=".service_locator.wgX78kv"/>
+        <argument key="App\Controller\FrontController::calculer" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\FrontController::index" type="service_closure" id=".service_locator.bqvr0uO"/>
         <argument key="App\Controller\FrontController::search" type="service_closure" id=".service_locator.wgX78kv"/>
+        <argument key="App\Controller\FrontController::showR" type="service_closure" id=".service_locator.bqvr0uO"/>
         <argument key="App\Controller\ReclamationController::deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController::reponse" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\SecurityController::activation" type="service_closure" id=".service_locator.1UuH9tO"/>
@@ -5967,7 +5982,10 @@
         <argument key="App\Controller\ClientController:modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
         <argument key="App\Controller\FrontController:afficherChefs" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController:afficherDetailsChef" type="service_closure" id=".service_locator.wgX78kv"/>
+        <argument key="App\Controller\FrontController:calculer" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\FrontController:index" type="service_closure" id=".service_locator.bqvr0uO"/>
         <argument key="App\Controller\FrontController:search" type="service_closure" id=".service_locator.wgX78kv"/>
+        <argument key="App\Controller\FrontController:showR" type="service_closure" id=".service_locator.bqvr0uO"/>
         <argument key="App\Controller\ReclamationController:deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController:reponse" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\SecurityController:activation" type="service_closure" id=".service_locator.1UuH9tO"/>
@@ -6221,13 +6239,14 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.Zj0HJqG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VHkvxFW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\NotificationRepository" type="service_closure" id="App\Repository\NotificationRepository"/>
         <argument key="App\Repository\PlanningRepository" type="service_closure" id="App\Repository\PlanningRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
         <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
+        <argument key="App\Repository\ReviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -6509,12 +6528,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.45BjHyG"/>
+      <argument type="service" id=".service_locator.LNAJ293"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.45BjHyG"/>
+      <argument type="service" id=".service_locator.LNAJ293"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6931,7 +6950,7 @@
     <service id="Gregwar\CaptchaBundle\Controller\CaptchaController" alias="gregwar_captcha.controller" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.45BjHyG"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.LNAJ293"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

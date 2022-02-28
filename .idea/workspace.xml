@@ -79,12 +79,15 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/BackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BackController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/back/homeBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/homeBack.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/back/reclamations/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/reclamations/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseFront.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/employes/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/employes/team.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/homeFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/homeFront.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
@@ -667,6 +670,8 @@
       <workItem from="1645825735600" duration="740000" />
       <workItem from="1645871248231" duration="8554000" />
       <workItem from="1646059754804" duration="12821000" />
+      <workItem from="1646073466389" duration="1467000" />
+      <workItem from="1646074983145" duration="6616000" />
     </task>
     <servers />
   </component>
