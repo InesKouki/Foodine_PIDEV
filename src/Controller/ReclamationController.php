@@ -8,11 +8,15 @@ use App\Entity\Reponse;
 use App\Form\AddReclamationType;
 use App\Form\ReponseType;
 use App\Repository\ReclamationRepository;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+
 class ReclamationController extends AbstractController
 {
     /**
@@ -30,17 +34,18 @@ class ReclamationController extends AbstractController
      * @return Response
      * @Route("/add_rec", name="add_rec")
      */
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $reclamation = new Reclamation();
         $notif = new Notification();
 
-        $form=$this->createForm(AddReclamationType::class,$reclamation);
+        $form = $this->createForm(AddReclamationType::class, $reclamation);
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
             $reclamation->setUser($this->getUser());
             $reclamation->setCreatedAt(new \DateTime('now'));
             $reclamation->setEtat(0);
-            $msg=$form->get('Description')->getData();
+            $msg = $form->get('Description')->getData();
             $notif->setTitre("Reclamation");
             $notif->setMessage($msg);
             $notif->setStatus(0);
@@ -57,11 +62,12 @@ class ReclamationController extends AbstractController
      * @return Response
      * @Route ("/show_rec" , name="show_rec")
      */
-    public function showReclamation (){
+    public function showReclamation()
+    {
 
-        $repository=$this->getDoctrine()->getRepository(Reclamation::class);
-        $rec=$repository->findAll();
-        return $this->render("/back/reclamations/show.html.twig",[
+        $repository = $this->getDoctrine()->getRepository(Reclamation::class);
+        $rec = $repository->findAll();
+        return $this->render("/back/reclamations/show.html.twig", [
             'rec' => $rec
         ]);
     }
@@ -72,9 +78,10 @@ class ReclamationController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/delete_rec{id}", name="delete_rec")
      */
-    public function deleteRec(ReclamationRepository $repository,$id){
+    public function deleteRec(ReclamationRepository $repository, $id)
+    {
         $reclamation = $repository->find($id);
-        $em=$this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($reclamation);
         $em->flush();
         return $this->redirectToRoute('show_rec');
@@ -88,16 +95,17 @@ class ReclamationController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/rec_res/{id}" , name="rec_res")
      */
-    public function reponse(Request $request,$id,ReclamationRepository $repository,\Swift_Mailer $mailer){
+    public function reponse(Request $request, $id, ReclamationRepository $repository, \Swift_Mailer $mailer)
+    {
         $reponse = new Reponse();
-        $reclamation =$repository->find($id);
-        $user =$reclamation->getUser();
-        $form=$this->createForm(ReponseType::class,$reponse);
+        $reclamation = $repository->find($id);
+        $user = $reclamation->getUser();
+        $form = $this->createForm(ReponseType::class, $reponse);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $reclamation->setEtat(1);
             $reponse->setRecla($reclamation);
-            $msg =$form->get('Message')->getData();
+            $msg = $form->get('Message')->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($reponse);
             $em->flush();
@@ -116,4 +124,81 @@ class ReclamationController extends AbstractController
     }
 
 
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route("/addRecJson" name="addRecJson")
+     * @Method("POST")
+     */
+    public function addRecJson(Request $request, NormalizerInterface $Normalizer)
+    {
+        $reclamation = new Reclamation();
+        $description = $request->get("description");
+        $type = $request->get("type");
+
+
+        $reclamation->setEtat(0);
+        $reclamation->setType($type);
+        $reclamation->setDescription($description);
+        $reclamation->setCreatedAt(new \DateTime('now'));
+        $reclamation->setUser($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($reclamation);
+        $em->flush();
+
+        $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
+        return new Response("Ajout effectué avec success" . json_encode($jsonContent));
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route("/deleteRecJson/{id}", name="deleteRecJson")
+     * @Method ("DELETE")
+     */
+    public function deleteReclamationJson(Request $request, NormalizerInterface $Normalizer, $id)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        if ($reclamation != null) {
+            $em->remove($reclamation);
+            $em->flush();
+            $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
+
+            return new Response("Suppression effectuée avec success" . $jsonContent);
+        }
+        return new Response('Error');
+    }
+
+    /**
+     * @return Response
+     * @Route("/showRecJson" , name="showRecJson")
+     */
+    public function allReclamationJson(NormalizerInterface $Normalizer)
+    {
+        $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
+        $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
+
+
+    /**
+     * @Route("/showRecJson" , name="showRecJson")
+     */
+    public function showAllRecJson(NormalizerInterface $Normalizer)
+    {
+
+            $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
+            $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
+
+            return new Response(json_encode($jsonContent));
+
+
+
+    }
 }

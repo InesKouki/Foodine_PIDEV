@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
@@ -14,31 +15,37 @@ class Reclamation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("post:read")
      */
     private $Created_at;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $Etat;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Groups("post:read")
      */
     private $Type;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reclamations")
+     * @Groups("post:read")
      */
     private $user;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("post:read")
      */
     private $Description;
 
