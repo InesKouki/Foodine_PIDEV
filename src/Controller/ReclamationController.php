@@ -14,9 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 class ReclamationController extends AbstractController
 {
     /**
@@ -124,17 +126,18 @@ class ReclamationController extends AbstractController
     }
 
 
+
+
+
+    ///////////////////////////MOBILE/////////////////////////
     /**
-     * @param Request $request
-     * @return Response
-     * @Route("/addRecJson" name="addRecJson")
-     * @Method("POST")
+     * @Route("/addRecJson" ,name="addRecJson")
+     * @Method ("POST")
      */
-    public function addRecJson(Request $request, NormalizerInterface $Normalizer)
-    {
-        $reclamation = new Reclamation();
+    public function addRecJson(Request $request, NormalizerInterface $Normalizer){
+        $reclamation =new Reclamation();
         $description = $request->get("description");
-        $type = $request->get("type");
+        $type=$request->get("type");
 
 
         $reclamation->setEtat(0);
@@ -143,62 +146,83 @@ class ReclamationController extends AbstractController
         $reclamation->setCreatedAt(new \DateTime('now'));
         $reclamation->setUser($this->getUser());
 
-        $em = $this->getDoctrine()->getManager();
+        $em=$this->getDoctrine()->getManager();
         $em->persist($reclamation);
         $em->flush();
 
-        $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
-        return new Response("Ajout effectué avec success" . json_encode($jsonContent));
+        $jsonContent=$Normalizer->normalize($reclamation,'json',['groups'=>'post:read']);
+        return new Response('Ajout effectué avec success'.json_encode($jsonContent));
     }
 
     /**
-     * @param Request $request
-     * @return Response
      * @Route("/deleteRecJson/{id}", name="deleteRecJson")
-     * @Method ("DELETE")
+     * @Method ("POST")
      */
-    public function deleteReclamationJson(Request $request, NormalizerInterface $Normalizer, $id)
-    {
+    public function deleteReclamationJson(Request $request,NormalizerInterface $Normalizer,$id){
 
 
-        $em = $this->getDoctrine()->getManager();
+        $em=$this->getDoctrine()->getManager();
 
         $reclamation = $em->getRepository(Reclamation::class)->find($id);
-        if ($reclamation != null) {
+        if($reclamation != null){
             $em->remove($reclamation);
             $em->flush();
-            $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
 
-            return new Response("Suppression effectuée avec success" . $jsonContent);
+
+            $jsonContent=$Normalizer->normalize($reclamation,'json',['groups'=>'post:read']);
+            return new Response('Suppression effectué avec success'.json_encode($jsonContent));
         }
         return new Response('Error');
     }
 
     /**
-     * @return Response
      * @Route("/showRecJson" , name="showRecJson")
      */
-    public function allReclamationJson(NormalizerInterface $Normalizer)
-    {
-        $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
-        $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
+    public function allReclamationJson(NormalizerInterface $Normalizer){
+        $reclamation =$this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
+        $jsonContent=$Normalizer->normalize($reclamation,'json',['groups'=>'post:read']);
 
         return new Response(json_encode($jsonContent));
     }
 
+    /**
+     * @Route("/updateRecJson/{id}", name="updateRecJson")
+     * @Method ("POST")
+     */
+    public function modifierReclamationJson(Request $request,NormalizerInterface $Normalizer,$id){
+
+
+        $em=$this->getDoctrine()->getManager();
+
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        if($reclamation != null){
+            $reclamation->setEtat(1);
+            $em->flush();
+
+
+            $jsonContent=$Normalizer->normalize($reclamation,'json',['groups'=>'post:read']);
+            return new Response('Modification effectué avec success'.json_encode($jsonContent));
+        }
+        return new Response('Error');
+    }
 
     /**
-     * @Route("/showRecJson" , name="showRecJson")
+     * @Route ("detailRecJson" , name="detailRecJson")
+     * @Method ("POST")
      */
-    public function showAllRecJson(NormalizerInterface $Normalizer)
-    {
+    public function detailReclamationAction(Request $request){
+        $id=$request->get('id');
+        $em=$this->getDoctrine()->getManager();
 
-            $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
-            $jsonContent = $Normalizer->normalize($reclamation, 'json', ['groups' => 'post:read']);
-
-            return new Response(json_encode($jsonContent));
-
-
-
+        $reclamation = $em->getRepository(Reclamation::class)->find($id);
+        $encoder= new JsonEncoder();
+        $normalizer= new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function($object){
+            return $object->getDescription();
+        });
     }
+
+
+
+
 }
