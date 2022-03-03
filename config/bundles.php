@@ -15,4 +15,6 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     CalendarBundle\CalendarBundle::class => ['all' => true],
     Nomaya\SocialBundle\NomayaSocialBundle::class => ['all' => false],
+    JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
+    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 ];

@@ -1,0 +1,80 @@
+
+<html>
+<head>
+    <style>
+        /** Define the margins of your page **/
+        @page {
+            margin: 100px 25px;
+        }
+
+        header {
+            position: fixed;
+            top: -60px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+
+            /** Extra personal styles **/
+            background-color: #f3ae8a;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: -60px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+
+            /** Extra personal styles **/
+            background-color: #03a9f4;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
+        table,tr,td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Define header and footer blocks before your content -->
+<header>
+    <img src="{{ base_url }}/Front/assets/img/logo.png">
+</header>
+
+<footer>
+    Copyright &copy; <?php echo date("Y");?>
+</footer>
+
+<!-- Wrap the content of your PDF inside a main tag -->
+<main>
+    <center><h2>Les Recettes</h2></center>
+    <center>
+        <table width="90%">
+            {% for recette in recettes %}
+            <tr>
+                <td width="35%" style="padding: 1%">
+{#                    {{ base_url }}{{ asset('/uploads/' ~ recette.imagerecette)}}#}
+
+                    <img src="{{ base_url }}{{ asset('/uploads/' ~ recette.imagerecette)}}">
+                </td>
+                <td style="padding: 1%">{{ recette.nom }}</td>
+                <td style="padding: 1%">{{ recette.description }}</td>
+                <td style="padding: 1%">{{ recette.ingredient }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</main>
+</body>
+</html>
+
+
+
+
+
+
+

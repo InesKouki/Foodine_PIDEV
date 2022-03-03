@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=PlanningRepository::class)
@@ -17,12 +20,14 @@ class Planning
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("plan")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date",nullable=false)
      * @Assert\NotBlank (message="Entrer la date")
+     * @Groups ("plan")
      */
     private $date;
 
@@ -30,6 +35,7 @@ class Planning
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Entrez le nom du planning ")
+     * @Groups ("plan")
      */
     private $nom;
 

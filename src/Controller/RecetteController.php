@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Recette;
 use App\Form\RecetteType;
+use App\Repository\PlanningRepository;
 use App\Repository\RecetteRepository;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -95,6 +98,42 @@ class RecetteController extends AbstractController
         $em->remove($recette);
         $em->flush();
         return $this->redirectToRoute('AfficherRecette');
+    }
+
+
+
+
+
+
+    /**
+     * @Route("/imprimer", name="imprimer")
+     */
+    public function imprimer(RecetteRepository  $repo,Request $request)
+    {
+        $Recettes = $repo->findAll();
+//    dd($Recettes);
+        $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('back/recette/ImprimerRecette.html.twig', [
+            "recettes" => $Recettes,
+            'base_url'=>$baseurl
+        ]);
+//dd($html);
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("BR.pdf", [
+            "Attachment" => true ,'isRemoteEnabled' => true
+        ]);
     }
 
 }

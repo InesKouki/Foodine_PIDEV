@@ -6,28 +6,60 @@
     <div class="page-wrapper">
         <div class="page-content">
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Planning</div>
+                <div class="breadcrumb-title pe-3">Dashboard</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar"></i></a>
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-money"></i></a>
                             </li>
-
+                            <li class="breadcrumb-item active" aria-current="page">Planning</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="ms-auto">
-                    <div class="ms-auto">
-                        <div class="btn-group">
-                            <a href="ajouterplanning"> <button type="button" class="btn btn-light">Ajouter</button></a>
 
+            </div>
+            <!--end breadcrumb-->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-xl-2">
+                                    <a href="ajouterplanning" class="btn btn-light mb-3 mb-lg-0"><i class='bx bxs-plus-square'></i>Ajouter</a>
+                                </div>
+                                <div class="col-lg-6 col-xl-8">
+                                    <input type="text" id="search" style="color: #ffffff" class="form-control-lg search-control" placeholder="Rechercher...">
+                                </div>
+                                <div class="col-lg-3 col-xl-2">
+                                    <form class="float-lg-end">
+                                        <div class="row row-cols-lg-auto g-2">
+
+                                            <div class="col-12">
+                                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                                    <button type="button" class="btn btn-light">Trier Par</button>
+                                                    <div class="btn-group" role="group">
+                                                        <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle dropdown-toggle-nocaret px-1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class='bx bx-chevron-down'></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                            <li><a class="dropdown-item" href="/AffichePlanning-trienomAsc">Par Nom ↑</a></li>
+                                                            <li><a class="dropdown-item" href="/AffichePlanning-trienomDsc">Par Nom ↓</a></li>
+                                                            <li><a class="dropdown-item" href="/AffichePlanning-trieDateAsc">Par Date ↑</a></li>
+                                                            <li><a class="dropdown-item" href="/AffichePlanning-trieDateDsc">Par Date ↓</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--end breadcrumb-->
-            <h6 class="mb-0 text-uppercase">Liste des Plannings</h6>
-            <hr/>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -41,18 +73,17 @@
                                 <th>Supprimer</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {% for i in n %}
-                            <tr>
-                                <td>{{ i.id }}</td>
-                                <td>{{ i.nom }}</td>
-                                <td>{{ i.date |date}}</td>
-                                <td><a href="{{ path('modifierplanning',{id:i.id}) }}">Modifier</a></td>
-                                <td><a href="{{ path('supprimerplanning',{id:i.id}) }}">Supprimer</a></td>
-                            </tr>
-                            {% endfor %}
+                            <tbody id="all">
+
+                                {% include 'back/planning/Ajax.html.twig' %}
+                            </tbody>
+                            <tbody id="search">
+
                             </tbody>
                         </table>
+                    </div>
+                    <div style="align-self: center">
+                        {{ knp_pagination_render(n) }}
                     </div>
                 </div>
             </div>
@@ -60,5 +91,36 @@
 
         </div>
     </div>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
 
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('searchResajax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

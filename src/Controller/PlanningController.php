@@ -5,12 +5,22 @@ namespace App\Controller;
 use App\Entity\Planning;
 use App\Form\PlanningType;
 use App\Repository\PlanningRepository;
+use App\Repository\RecetteRepository;
+use ContainerGFAkVy4\PaginatorInterface_82dac15;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class PlanningController extends AbstractController
 {
 
@@ -55,8 +65,12 @@ class PlanningController extends AbstractController
      * @return Response
      * @Route ("/AffichePlanning",name="AffichePlanning")
      */
-    public function AffichePlanning(PlanningRepository $rep){
-        $n=$rep->findAll();
+    public function AffichePlanning(PlanningRepository $rep,PaginatorInterface $paginator,Request $request){
+
+        $x=$rep->findAll();
+        $n=$paginator->paginate(
+            $x,$request->query->getInt('page',1),5
+        );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
     /**
@@ -79,5 +93,107 @@ class PlanningController extends AbstractController
         $em->remove($fin);
         $em->flush();
         return $this->redirectToRoute('AffichePlanning');
+    }
+
+    //-----------------------------
+    
+    /**
+     * @Route("/plan", name="displayPlan")
+     */
+    public function displayEvents(PlanningRepository $repo,SerializerInterface $serializer)
+    {
+        $events = $repo->findAll();
+        $formatted = $serializer->normalize($events,'json',['groups' => 'plan']);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route ("/AjouterPlanningMobile")
+     * @Method ("POST")
+     */
+    public function ajoutermobile(Request $request){
+
+        $planning = new Planning();
+
+        $em=$this->getDoctrine()->getManager();
+
+        $nom=$request->query->get("nom");
+        $planning->setNom($nom);
+
+        $date=$request->query->get("date");
+        $planning->setDate(new \DateTime($date));
+
+        $em->persist($planning);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($planning);
+        return new JsonResponse($aj);
+
+    }
+    /**
+     * @Route ("/DeletePlanning")
+     * @Method("DELETE")
+     */
+    function Supplanningmobile(Request $request , PlanningRepository $repository){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $planning =$em->getRepository(Planning::class)->find($id);
+        $em->remove($planning);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($planning);
+        return new JsonResponse($aj);
+    }
+    /**
+     * @Route("/admin-planning/searchResajax ", name="searchResajax")
+     */
+    public function searchEventAjax(PlanningRepository $repo,Request $request)
+    {
+        $requestString=$request->get('searchValue');
+        $events = $repo->findPlanningByName($requestString);
+
+        return $this->render('back/planning/ajax.html.twig', [
+            "n"=>$events
+        ]);
+    }
+    /**
+     * @param PlanningRepository $rep
+     * @return Response
+     * @Route ("/AffichePlanning-trienomAsc",name="trienom")
+     */
+    public function trienomAsc(PlanningRepository $rep){
+        $n=$rep->orderByNameAscQB();
+        return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
+    }
+    /**
+     * @param PlanningRepository $rep
+     * @return Response
+     * @Route ("/AffichePlanning-trienomDsc",name="trienomDsc")
+     */
+    public function trienomDsc(PlanningRepository $rep){
+        $n=$rep->orderByNameDescQB();
+        return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
+    }
+    /**
+     * @param PlanningRepository $rep
+     * @return Response
+     * @Route ("/AffichePlanning-trieDateAsc",name="triedateAsc")
+     */
+    public function trieDateAsc(PlanningRepository $rep){
+        $n=$rep->orderByDateAscQB();
+        return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
+    }
+
+    /**
+     * @param PlanningRepository $rep
+     * @return Response
+     * @Route ("/AffichePlanning-trieDateDsc",name="triedateDsc")
+     */
+    public function trieDateDsc(PlanningRepository $rep){
+        $n=$rep->orderByDateDescQB();
+        return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
 }

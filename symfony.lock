@@ -79,11 +79,35 @@
     "doctrine/sql-formatter": {
         "version": "1.1.2"
     },
+    "dompdf/dompdf": {
+        "version": "v1.2.0"
+    },
     "egulias/email-validator": {
         "version": "3.1.2"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "jms/metadata": {
+        "version": "2.6.1"
+    },
+    "jms/serializer": {
+        "version": "3.17.1"
+    },
+    "jms/serializer-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
+        }
+    },
+    "knplabs/knp-components": {
+        "version": "v3.4.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.8.0"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"
@@ -97,14 +121,17 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
-    "nomaya/social-bundle": {
-        "version": "1.0-dev"
-    },
     "phar-io/manifest": {
         "version": "2.0.3"
     },
     "phar-io/version": {
         "version": "3.1.1"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.4"
+    },
+    "phenx/php-svg-lib": {
+        "version": "0.4.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -117,6 +144,9 @@
     },
     "phpspec/prophecy": {
         "version": "v1.15.0"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "1.2.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.10"
@@ -158,6 +188,9 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.4.0"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"

@@ -1,0 +1,9 @@
+{% for i in n %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.nom }}</td>
+        <td>{{ i.date |date}}</td>
+        <td><a href="{{ path('modifierplanning',{id:i.id}) }}">Modifier</a></td>
+        <td><a href="{{ path('supprimerplanning',{id:i.id}) }}">Supprimer</a></td>
+    </tr>
+{% endfor %}
