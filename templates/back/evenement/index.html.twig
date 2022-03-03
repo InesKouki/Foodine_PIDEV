@@ -30,7 +30,10 @@
                                 <div class="col-lg-3 col-xl-2">
                                     <a href="admin-addEvenement" class="btn btn-light mb-3 mb-lg-0"><i class='bx bxs-plus-square'></i>Ajouter</a>
                                 </div>
-                                <div class="col-lg-9 col-xl-10">
+                                <div class="col-lg-6 col-xl-8">
+                                    <input type="text" id="search" style="color: #ffffff" class="form-control-lg search-control" placeholder="Rechercher...">
+                                </div>
+                                <div class="col-lg-3 col-xl-2">
                                     <form class="float-lg-end">
                                         <div class="row row-cols-lg-auto g-2">
 
@@ -77,41 +80,54 @@
 
                         </tr>
                         </thead>
-                        <tbody>
-                        {% for e in backEvents %}
-                            <tr>
-                                <td><a target="_blank" href="{{ path('eventDeals',{id: e.id}) }}">{{ e.name }}</a><td>
-
-                            {% if e.dateDeb|date > "now"|date and e.dateFin|date > "now"|date %}
-                                <span class="badge bg-gradient-moonlit">Bientôt</span>
-                            {% elseif e.dateDeb|date < "now"|date and e.dateFin|date > "now"|date %}
-                                <span class="badge bg-gradient-lush">Actif</span>
-                            {% else %}
-                                <span class="badge bg-gradient-burning">Inactif</span>
-                            {%  endif %}
-                                </td>
-
-                                <td>{{ e.description }}</td>
-                                {#<td><div class="badge rounded-pill bg-light p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>Traitée</div></td>#}
-                                <td>{{ e.dateDeb | date ('d/m/Y') }}</td>
-                                <td>{{ e.dateFin | date ('d/m/Y') }}</td>
-                                <td><img height="112" width="250" src="{{ asset('uploads/') ~ e.image }}" alt="image"></td>
-
-                                <td>
-                                    <div class="d-flex order-actions">
-                                        <a href={{ path('updateEvenement',{id: e.id}) }} class="ms-3"><i class='bx bxs-edit'></i></a>
-                                        <a href={{ path('deleteEvenement',{id: e.id}) }} class="ms-3"><i class='bx bxs-trash'></i></a>
-                                    </div>
-                                </td>
-
-                            </tr>
-                        {% endfor %}
+                        <tbody id="all">
+                        {% include 'back/evenement/ajax.html.twig' %}
+                        </tbody>
+                        <tbody id="search">
                         </tbody>
                     </table>
+                </div>
+                <div style="align-self: center">
+                    {{ knp_pagination_render(backEvents) }}
                 </div>
             </div>
 
         </div>
+
     </div>
+
+
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('searchResajax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
     <!--end page wrapper -->
 {% endblock %}

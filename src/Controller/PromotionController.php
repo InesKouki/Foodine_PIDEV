@@ -4,22 +4,25 @@ namespace App\Controller;
 
 use App\Entity\Promotion;
 use App\Form\PromotionType;
+use App\Repository\EvenementRepository;
 use App\Repository\PromotionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PromotionController extends AbstractController
 {
-    /**
-     * @Route("/promotions", name="deal")
-     */
-    public function afficheFront()
-    {
-        return $this->render('front/promotion/index.html.twig', [
-            'controller_name' => 'PromotionController',
-        ]);
-    }
+//    /**
+//     * @Route("/promotions", name="deal")
+//     */
+//    public function afficheFront()
+//    {
+//        return $this->render('front/promotion/index.html.twig', [
+//            'controller_name' => 'PromotionController',
+//        ]);
+//    }
 
     /**
      * @Route("/admin-promotions", name="promotion")
@@ -125,6 +128,18 @@ class PromotionController extends AbstractController
 //        $n = $req->get('searchText');
         $promotion = $rep->getPromotionsByEventId($id);
         return $this->render('front/promotion/index.html.twig', ['frontPromotions' => $promotion]);
+    }
+
+    //  --------- ROUTES MOBILE ----------
+
+    /**
+     * @Route("/promotions", name="displayPromotions")
+     */
+    public function displayPromotions(PromotionRepository $repo,SerializerInterface $serializer)
+    {
+        $promotions = $repo->findAll();
+        $formatted = $serializer->normalize($promotions,'json',['groups' => 'events']);
+        return new JsonResponse($formatted);
     }
 
 }

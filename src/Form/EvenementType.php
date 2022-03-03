@@ -20,7 +20,6 @@ class EvenementType extends AbstractType
     {
         $imageConstraints = [
             new Image([
-                'maxSize' => '5M'
             ])
         ];
 

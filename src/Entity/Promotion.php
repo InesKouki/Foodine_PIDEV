@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
@@ -17,18 +18,21 @@ class Promotion
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("events")
      */
     private $id;
 
     /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="Veuillez saisir le pourcentage")
+     * @Groups("events")
      */
     private $pourcentage;
 
     /**
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="promotions")
      * @ORM\JoinColumn(nullable=false, onDelete="cascade")
+     * @Groups("events")
      */
     private $evenement;
 

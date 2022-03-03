@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -17,12 +18,14 @@ class Evenement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("events")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez saisir le nom")
+     * @Groups("events")
      */
     private $name;
 
@@ -30,23 +33,27 @@ class Evenement
      * @ORM\Column(type="date")
      * @Assert\NotNull(message="Veuillez saisir la date de début")
      * @Assert\LessThan(propertyPath="dateFin", message="La date de début est invalide")
+     * @Groups("events")
      */
     private $dateDeb;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotNull(message="Veuillez saisir la date de fin")
+     * @Groups("events")
      */
     private $dateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez saisir la description")
+     * @Groups("events")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("events")
      */
     private $image;
 
