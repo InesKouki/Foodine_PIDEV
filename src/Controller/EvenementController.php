@@ -9,6 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Ob\HighchartsBundle\Highcharts\Highchart;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,9 +81,14 @@ class EvenementController extends AbstractController
                 $em->flush();
                 foreach ($users as $user) {
                     $message = (new \Swift_Message('Foodine - ' . $event->getName()))
-                        ->setFrom('mohamedaziz.msaddek@esprit.tn')
+                        ->setFrom('foodine01@gmail.com')
                         ->setTo($user->getEmail())
-                        ->setBody('Un nouvel événement plein de promotions vous attend!');
+//                        ->setBody('Un nouvel événement plein de promotions vous attend!');
+                        ->setBody($this->renderView(
+                            'back/evenement/email.html.twig', compact('event')
+                        ),
+                            'text/html'
+                        );
 
                     $mailer->send($message);
                 }

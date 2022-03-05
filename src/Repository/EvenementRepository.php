@@ -56,7 +56,6 @@ class EvenementRepository extends ServiceEntityRepository
             ->getQuery()->getResult();
     }
 
-
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */

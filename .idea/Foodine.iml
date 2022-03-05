@@ -143,6 +143,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-json" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ob/highcharts-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-chartjs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/webpack-encore-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

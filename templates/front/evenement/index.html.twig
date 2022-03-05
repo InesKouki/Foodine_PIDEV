@@ -4,7 +4,6 @@
 {% endblock %}
 {% block content %}
 
-    {% set actual_link = path(app.request.attributes.get('_route'))%}
     <style>
         .page-banner-area {
             background-image: url(Front/assets/img/footer-bg.jpg);
@@ -35,7 +34,6 @@
 
             <div class="row">
     {% for e in frontEvents %}
-
                 <div class="col-lg-6 col-md-6">
                     <div class="single-blog-item">
                         <div class="image">
@@ -60,11 +58,11 @@
                                         js.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.0";
                                         fjs.parentNode.insertBefore(js, fjs);
                                     }(document, 'script', 'facebook-jssdk'));</script>
-                                <div class="fb-share-button"
+                                <div
+                                     class="fb-share-button"
                                      data-href="http://127.0.0.1:8000/evenement-{{ e.id }}"
                                      data-layout="button" data-size="large">
                                 </div>
-
                             </div>
                             </div>
                     </div>
