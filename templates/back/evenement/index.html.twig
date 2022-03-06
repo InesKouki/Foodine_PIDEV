@@ -106,6 +106,7 @@
         $( document ).ready(function() {
             var currentRequest = null;
             $("#search").keyup(function(e){
+                // e.preventDefault();
                 /* La variable value va prendre la valeur insérer dans le champ de texte
                 afin d’effectuer la recherche */
                 var value = $(this).val();
@@ -116,7 +117,7 @@
                 « search » pour faire la recherche */
                 currentRequest = $.ajax({
                     url : "{{ path('searchResajax') }}",
-                    type : 'GET',
+                    type : 'POST',
                     data: {
                         'searchValue' : value
                     },
