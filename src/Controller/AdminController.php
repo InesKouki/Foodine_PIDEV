@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Entity\Notification;
+use App\Entity\Review;
 use App\Form\EditEmployeType;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRepository;
@@ -25,6 +26,7 @@ class AdminController extends AbstractController
     public function index(NotificationRepository $repository): Response
     {
         $notif = $repository->findAll();
+        $rev = $this->getDoctrine()->getRepository(Review::class)->findAll();
         $count=$repository->countNotifUnseen();
         //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
@@ -39,8 +41,9 @@ class AdminController extends AbstractController
             'ntot'=>$ntot,
             'rec'=>$rec,
             'notif'=>$notif,
-            'nbNotif'=>$count
-            //'users'=>$users=
+            'nbNotif'=>$count,
+            'rev'=>$rev
+
         ]);
     }
     /**
