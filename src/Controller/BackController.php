@@ -35,8 +35,7 @@ class BackController extends AbstractController
             'datasets' => [
                 [
                     'backgroundColor' => 'rgba(225, 225, 225, 0.9)',
-                    'borderColor' => 'rgb(225, 225, 225)',
-                    'data' => $eventCount,
+                    'data' => $eventCount
                 ],
             ],
         ]);
@@ -46,7 +45,7 @@ class BackController extends AbstractController
                 'legend' => ['display' => false],
                 'title' => [
                     'display' => 'true',
-                    'color' => '#262626',
+                    'color' => '#c3c3c3',
                     'font' => [
                         'size' => '30px',
                         'family' => 'Roboto, sans-serif'
@@ -57,6 +56,9 @@ class BackController extends AbstractController
             'scales' => [
                 'y' => [
                     'ticks' => [
+                        'font' => [
+                            'size' => '14px',
+                        ],
                         'color' => 'white',
                     ],
                     'min' => 0,
@@ -64,6 +66,9 @@ class BackController extends AbstractController
                 ],
                 'x' => [
                     'ticks' => [
+                        'font' => [
+                            'size' => '14px',
+                        ],
                         'color' => 'white',
                     ]
                     ]
