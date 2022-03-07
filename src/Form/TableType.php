@@ -31,11 +31,12 @@ class TableType extends AbstractType
         }
         $builder
             ->add('numerotable')
-            ->add('imagetable',FileType::class, [
+            ->add('imagetable',FileType::class, array(
 
                 'label'=>'choisir ' ,
+                'constraints' => $imageConstraints,
                 'mapped'=>false
-            ])
+            ))
             ->add('nbplacetable')
             ->add('etat',ChoiceType::class,array('choices'=>array(
                 'disponible'=>'disponible',

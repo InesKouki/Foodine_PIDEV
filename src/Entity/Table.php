@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TableRepository::class)
@@ -18,17 +19,20 @@ class Table
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("table")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Remplir le champ")
+     * @Groups("table")
      */
     private $numerotable;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("table")
      */
     private $imagetable;
 
@@ -36,16 +40,19 @@ class Table
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Remplir le champ")
      * @Assert\Positive (  message="entrer un nombre positive")
+     * @Groups("table")
      */
     private $nbplacetable;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="tableid")
+
      */
     private $reservations;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("table")
      */
     private $etat;
 

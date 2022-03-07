@@ -6,6 +6,7 @@ use App\Entity\Table;
 use App\Form\ReservationType;
 use App\Repository\ReservationRepository;
 use App\Repository\TableRepository;
+use App\service\QrcodeService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,11 +17,13 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 use function MongoDB\BSON\toJSON;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 //use Symfony\Component\Serializer\Serializer;
+
 
 
 class ReservationController extends AbstractController
@@ -57,27 +60,39 @@ class ReservationController extends AbstractController
      * @return Response
      * @route("/reservation" ,name="ajouter")
      */
-    public function ajouterreservation(Request $request,TableRepository $r ,\Swift_Mailer $mailer)
-    {
+    public function ajouterreservation(Request $request,TableRepository $r ,\Swift_Mailer $mailer ,QrcodeService $qrcodeService)
+    {   $qrcode = null;
+
         $reservation1=$r->findAll();
         $reservation=new Reservation();
         $form=$this->createForm(ReservationType::class,$reservation);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid())
         {
+
+
+            $qrcode = $qrcodeService->qrcode($form['nom']->getData());
             $em=$this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
             $message = (new \Swift_Message('Food IN'))
                 ->setFrom('mootez.gam@esprit.tn')
                 ->setTo($reservation->getEmail())
-                ->setBody('Votre reservation a ete effecuée avec succes');
+                ->setBody($this->renderView('front/reservation/qrcode.html.twig',['qrcode'=>$qrcode]),'text/html/image');
+                //->setBody($this->renderView('front/reservation/qrcode.html.twig',['qrcode'=>$qrcode]),'image','utf-8');
 
             $mailer->send($message);
-            return $this->redirectToRoute('ajouter');
+          // return $this->redirectToRoute("reservation");
+
+
+
+
         }
 
-     return $this->render('front/reservation/index.html.twig',['r'=>$reservation1,'form'=>$form->createView()]);
+     return $this->render('front/reservation/index.html.twig',['r'=>$reservation1,'form'=>$form->createView(),
+         'qrcode'=>$qrcode
+
+         ]);
     }
 
     /**
@@ -124,6 +139,24 @@ class ReservationController extends AbstractController
        return $this->render('back/reservation/ajax.html.twig', [
             "r"=>$reservations
        ]);
+    }
+
+
+
+
+
+
+////////////////////////////////////////////////* mobile */////////////////////////////////////////////////////
+    /**
+     * @param ReservationRepository $rep
+     * @param SerializerInterface $serializerinterface
+     * @Route("/rr",name="rr")
+     */
+    public function getreservation(ReservationRepository $rep,SerializerInterface $serializerinterface )
+    {
+        $reservation=$rep->findAll();
+        $json=$serializerinterface->normalize($reservation,'json',['groups'=>'reservation']);
+        return new JsonResponse($json);
     }
 
 }

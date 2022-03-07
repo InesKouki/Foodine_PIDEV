@@ -47,4 +47,16 @@ class TableRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    function orderBynombredeplaceAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.nbplacetable','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderBynombredeplaceDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.nbplacetable','DESC')
+            -> getQuery()->getResult();
+    }
 }

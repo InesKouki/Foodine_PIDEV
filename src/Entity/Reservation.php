@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
  */
@@ -16,18 +16,21 @@ class Reservation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("reservation")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Remplir le champ")
+     * @Groups("reservation")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotNull(message="Remplir le champ")
+     * @Groups("reservation")
      */
     private $datereservation;
 
@@ -36,6 +39,7 @@ class Reservation
      * @Assert\NotBlank(message="Remplir le champ")
      * @Assert\Length(min = 8, max = 8, minMessage = "min_lenght", maxMessage = "max_lenght")
      * @Assert\Regex(pattern="/^[0-9]*$/", message="number_only")
+     * @Groups("reservation")
      */
     private $mobile;
 
@@ -43,6 +47,7 @@ class Reservation
      * @ORM\ManyToOne(targetEntity=Table::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false, onDelete="cascade")
      * @Assert\NotBlank(message="Remplir le champ")
+     * @Groups("reservation")
      */
     private $tableid;
 
@@ -52,8 +57,11 @@ class Reservation
      * )
      * @Assert\NotBlank(message="Remplir le champ")
      * @ORM\Column(type="string", length=255)
+     * @Groups("reservation")
      */
     private $email;
+
+    private $captchacode;
 
     public function getId(): ?int
     {
@@ -116,6 +124,18 @@ class Reservation
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCaptchacode()
+    {
+        return $this->captchacode;
+    }
+
+    public function setCaptchacode( $captchacode)
+    {
+        $this->captchacode = $captchacode;
 
         return $this;
     }
