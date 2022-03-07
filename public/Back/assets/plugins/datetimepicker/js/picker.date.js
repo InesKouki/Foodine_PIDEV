@@ -1170,7 +1170,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                 node: 'tr',
                 item: function( rowCounter ) {
 
-                    // If Monday is the first day and the month starts on Sunday, shift the date back a week.
+                    // If Monday is the first day and the month starts on Sunday, shift the date admin a week.
                     var shiftDateBy = settings.firstDay && calendar.create([ viewsetObject.year, viewsetObject.month, 1 ]).day === 0 ? -7 : 0
 
                     return [

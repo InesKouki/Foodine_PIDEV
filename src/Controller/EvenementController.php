@@ -23,7 +23,7 @@ class EvenementController extends AbstractController
      */
     public function indexBack(): Response
     {
-        return $this->render('back/evenement/index.html.twig', [
+        return $this->render('admin/evenement/index.html.twig', [
             'controller_name' => 'EvenementController',
         ]);
     }
@@ -33,7 +33,7 @@ class EvenementController extends AbstractController
      */
     public function addEvenement(): Response
     {
-        return $this->render('back/evenement/addEvenement.html.twig', [
+        return $this->render('admin/evenement/addEvenement.html.twig', [
             'controller_name' => 'EvenementController',
         ]);
     }

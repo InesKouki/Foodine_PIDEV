@@ -1386,7 +1386,7 @@ Main Banner Area CSS
 }
 
 .main-banner-item {
-  background-image: url(../../assets/img/main-banner-bg-1.jpg);
+  background-image: url(../../assets/img/banner.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1396,7 +1396,7 @@ Main Banner Area CSS
 }
 
 .main-banner-item.banner-item-two {
-  background-image: url(../../assets/img/main-banner-bg-2.jpg);
+  background-image: url(../../assets/img/banner.jpg);
   padding-top: 50px;
   padding-bottom: 0;
   overflow: hidden;
@@ -3876,7 +3876,7 @@ Page Banner CSS
 .page-banner-area {
   position: relative;
   z-index: 1;
-  background-image: url(../../assets/img/page-banner/page-banner-1.jpg);
+  background-image: url(../../assets/img/banner.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3900,19 +3900,19 @@ Page Banner CSS
 }
 
 .page-banner-area.item-bg1 {
-  background-image: url(../../assets/img/page-banner/page-banner-2.jpg);
+  background-image: url(../../assets/img/banner.jpg);
 }
 
 .page-banner-area.item-bg2 {
-  background-image: url(../../assets/img/page-banner/page-banner-3.jpg);
+  background-image: url(../../assets/img/banner.jpg);
 }
 
 .page-banner-area.item-bg3 {
-  background-image: url(../../assets/img/page-banner/page-banner-4.jpg);
+  background-image: url(../../assets/img/banner.jpg);
 }
 
 .page-banner-area.item-bg4 {
-  background-image: url(../../assets/img/page-banner/page-banner-5.jpg);
+  background-image: url(../../assets/img/banner.jpg);
 }
 
 .page-banner-content {

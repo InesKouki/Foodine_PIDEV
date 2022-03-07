@@ -1,0 +1,131 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %} Profile-Chef{% endblock %}
+
+{% block content %}
+
+    <div class="page-banner-area item-bg4">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Profile Chef</h2>
+                        <ul>
+                            <li>
+                                <a href="{{ path('front') }}">Home</a>
+                            </li>
+                            <li>Profile Chef</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="services-details-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-12">
+                    <div class="services-details-image">
+                        <img src="{{ asset('uploads/' ~ chef.file ) }}" alt="image">
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="services-details-information">
+
+
+                        <div class="download-file">
+                            <h3>Brochures</h3>
+
+                            <ul>
+                                <li><a href="#">PDF Download <i class='bx bxs-file-pdf'></i></a></li>
+                                <li><a href="#">Services Details.txt <i class='bx bxs-file-txt'></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="services-contact-info">
+                            <h3>Contact Info</h3>
+
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <i class='bx bx-user-pin'></i>
+                                    </div>
+                                    <span>Phone:</span>
+                                   {{ chef.phone }}
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class='bx bx-map'></i>
+                                    </div>
+                                    <span>Location:</span>
+                                    {{chef.address }}
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class='bx bx-envelope'></i>
+                                    </div>
+                                    <span>Email:</span>
+                                    {{chef.email}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-services">
+                <h5>Liste des recettes</h5>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services-box">
+                            <div class="icon">
+                                <i class="flaticon-apple"></i>
+                            </div>
+                            <h3>Nom Recette</h3>
+                            <p>Description recette.</p>
+                            <a href="#" class="read-btn">Read More +</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services-box">
+                            <div class="icon">
+                                <i class="flaticon-nature"></i>
+                            </div>
+                            <h3>Nom Recette</h3>
+                            <p>Description recette.</p>
+                            <a href="#" class="read-btn">Read More +</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services-box">
+                            <div class="icon">
+                                <i class="flaticon-forest"></i>
+                            </div>
+                            <h3>Nom Recette</h3>
+                            <p>Description recette.</p>
+                            <a href="#" class="read-btn">Read More +</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services-box">
+                            <div class="icon">
+                                <i class="flaticon-organic"></i>
+                            </div>
+                            <h3>Nom Recette</h3>
+                            <p>Description recette.</p>
+                            <a href="#" class="read-btn">Read More +</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

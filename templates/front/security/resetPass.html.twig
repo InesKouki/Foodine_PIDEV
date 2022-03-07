@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="/back/assets/images/favicon-32x32.png" type="image/png" />
+    <!-- loader-->
+    <link href="/back/assets/css/pace.min.css" rel="stylesheet" />
+    <script src="/back/assets/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="/back/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="/back/assets/css/app.css" rel="stylesheet">
+    <link href="/back/assets/css/icons.css" rel="stylesheet">
+    <title>Foodine - Réini</title>
+</head>
+
+<body class="bg-theme bg-theme6">
+<!-- wrapper -->
+<div class="wrapper">
+    <div class="authentication-reset-password d-flex align-items-center justify-content-center">
+        <div class="row">
+            <div class="col-12 col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-lg-5 border-end">
+                            <div class="card-body">
+                                <div class="p-5">
+                                    <div class="text-start">
+
+                                    </div>
+                                    <h4 class="mt-5 font-weight-bold">Générer un nouveau mot de passe</h4>
+                                    <p class="">
+                                        Nous avons bien reçu votre demande de réinitialisation de mot de passe.
+                                        Veuillez saisir votre nouveau mot de passe !</p>
+                                    {{ form_start(form) }}
+                                    <div class="mb-3 mt-5">
+                                        {% if form_errors(form.Password) %}
+                                        <div class="alert alert-danger"
+                                        {{ form_errors(form.Password) }}
+                                    </div>
+                                    {% endif %}
+                                    <h6 class="form-label"> {{ form_label(form.Password,'Password') }}</h6>
+                                    {{ form_widget(form.Password,{'attr': {'class':'form-control'}}) }}
+                                    </div>
+                                    <div class="mb-3">
+                                        {% if form_errors(form) %}
+                                        <div class="alert alert-danger"
+                                        {{ form_errors(form) }}
+                                    </div>
+                                {% endif %}
+                                        <h6 class="form-label"> {{ form_label(form.Confirm_password,'Confirm_password') }}</h6>
+                                        {{ form_widget(form.Confirm_password,{'attr': {'class':'form-control'}}) }}
+                                <input type="hidden" name="token" value="{{ token }}">
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-light">Changer mon Mot de passe</button>
+                                        <a href="{{ path('login') }}" class="btn btn-light"><i class='bx bx-arrow-back mr-1'></i>Retour</a>
+                                    </div>
+                                </div>
+                            {{ form_end(form) }}
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <img src="/back/assets/images/login-images/forgot-password-frent-img.jpg" class="card-img login-img h-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end wrapper -->
+
+
+</body>
+
+</html>

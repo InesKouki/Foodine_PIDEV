@@ -2076,7 +2076,7 @@ var FullCalendar = (function (exports) {
                 allDay = defaultAllDay;
             }
             else {
-                // fall back to the date props LAST
+                // fall admin to the date props LAST
                 allDay = (!startMeta || startMeta.isTimeUnspecified) &&
                     (!endMeta || endMeta.isTimeUnspecified);
             }
@@ -5935,7 +5935,7 @@ var FullCalendar = (function (exports) {
             buttonTextDefault: queryButtonText(localeDefaults) ||
                 viewDef.defaults.buttonText ||
                 queryButtonText(BASE_OPTION_DEFAULTS) ||
-                viewDef.type // fall back to given view name
+                viewDef.type // fall admin to given view name
         };
     }
     // hack to get memoization working
@@ -12777,7 +12777,7 @@ var FullCalendar = (function (exports) {
                 return labelInterval;
             }
         }
-        return slotDuration; // fall back
+        return slotDuration; // fall admin
     }
 
     var DEFAULT_WEEK_NUM_FORMAT$1 = createFormatter({ week: 'short' });
