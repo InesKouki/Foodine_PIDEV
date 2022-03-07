@@ -110,7 +110,7 @@
                 « search » pour faire la recherche */
                 currentRequest = $.ajax({
                     url : "{{ path('searchResajax') }}",
-                    type : 'GET',
+                    type : 'POST',
                     data: {
                         'searchValue' : value
                     },

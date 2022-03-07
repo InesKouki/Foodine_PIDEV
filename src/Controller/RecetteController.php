@@ -100,6 +100,29 @@ class RecetteController extends AbstractController
         return $this->redirectToRoute('AfficherRecette');
     }
 
+    /**
+     * @Route("/admin-Afficherrecette/searchAjax ", name="ajax_search")
+     */
+
+    public function searchAction(Request $request,RecetteRepository $em)
+    {
+        $requestString = $request->get('q');
+        $posts =  $em->findEntitiesByString($requestString);
+        if(!$posts) {
+            $result['posts']['error'] = "Recette n'existe pas";
+        } else {
+            $result['posts'] = $this->getRealEntities($posts);
+        }
+        return new Response(json_encode($result));
+    }
+    public function getRealEntities($posts){
+        foreach ($posts as $posts){
+            $realEntities[$posts->getId()] = [$posts->getNom(),$posts->getImagerecette()];
+
+        }
+        return $realEntities;
+    }
+
 
 
 

@@ -79,4 +79,6 @@ class PlanningRepository extends ServiceEntityRepository
             -> orderBy('ev.nom','DESC')
             -> getQuery()->getResult();
     }
+
+
 }

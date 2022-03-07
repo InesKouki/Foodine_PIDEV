@@ -96,7 +96,7 @@ class PlanningController extends AbstractController
     }
 
     //-----------------------------
-    
+
     /**
      * @Route("/plan", name="displayPlan")
      */
@@ -164,8 +164,11 @@ class PlanningController extends AbstractController
      * @return Response
      * @Route ("/AffichePlanning-trienomAsc",name="trienom")
      */
-    public function trienomAsc(PlanningRepository $rep){
-        $n=$rep->orderByNameAscQB();
+    public function trienomAsc(PlanningRepository $rep,PaginatorInterface $paginator,Request $request){
+        $x=$rep->orderByNameAscQB();
+        $n=$paginator->paginate(
+            $x,$request->query->getInt('page',1),5
+        );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
     /**
@@ -173,8 +176,11 @@ class PlanningController extends AbstractController
      * @return Response
      * @Route ("/AffichePlanning-trienomDsc",name="trienomDsc")
      */
-    public function trienomDsc(PlanningRepository $rep){
-        $n=$rep->orderByNameDescQB();
+    public function trienomDsc(PlanningRepository $rep,PaginatorInterface $paginator,Request $request){
+        $x=$rep->orderByNameDescQB();
+        $n=$paginator->paginate(
+            $x,$request->query->getInt('page',1),5
+        );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
     /**
@@ -182,8 +188,11 @@ class PlanningController extends AbstractController
      * @return Response
      * @Route ("/AffichePlanning-trieDateAsc",name="triedateAsc")
      */
-    public function trieDateAsc(PlanningRepository $rep){
-        $n=$rep->orderByDateAscQB();
+    public function trieDateAsc(PlanningRepository $rep,PaginatorInterface $paginator,Request $request){
+        $x=$rep->orderByDateAscQB();
+        $n=$paginator->paginate(
+            $x,$request->query->getInt('page',1),5
+        );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
 
@@ -192,8 +201,14 @@ class PlanningController extends AbstractController
      * @return Response
      * @Route ("/AffichePlanning-trieDateDsc",name="triedateDsc")
      */
-    public function trieDateDsc(PlanningRepository $rep){
-        $n=$rep->orderByDateDescQB();
+    public function trieDateDsc(PlanningRepository $rep,PaginatorInterface $paginator,Request $request){
+        $x=$rep->orderByDateDescQB();
+        $n=$paginator->paginate(
+            $x,$request->query->getInt('page',1),5
+        );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
+
+
+
 }

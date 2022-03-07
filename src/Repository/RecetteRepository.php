@@ -55,6 +55,12 @@ class RecetteRepository extends ServiceEntityRepository
                     ->getQuery()->getResult();
 
     }
+    public function findEntitiesByString($nom){
+        return $this->createQueryBuilder('ev')
+            ->where('ev.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()->getResult();
+    }
 
 
 }
