@@ -24,6 +24,7 @@ return [
     'admin_showNotif' => [[], ['_controller' => 'App\\Controller\\AdminController::showNotification'], [], [['text', '/admin/showNotif']], [], []],
     'admin_readNotif' => [[], ['_controller' => 'App\\Controller\\AdminController::readNotifications'], [], [['text', '/adminreadNotif']], [], []],
     'admin_searchBack' => [[], ['_controller' => 'App\\Controller\\AdminController::search'], [], [['text', '/admin/searchBack']], [], []],
+    'admin_deleteReview' => [['id'], ['_controller' => 'App\\Controller\\AdminController::deleteReview'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/admindeleteReview']], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\BackController::index'], [], [['text', '/admin']], [], []],
     'categorie' => [[], ['_controller' => 'App\\Controller\\CategorieController::indexFront'], [], [['text', '/categorie']], [], []],
     'chef_index' => [[], ['_controller' => 'App\\Controller\\ChefController::index'], [], [['text', '/chef/']], [], []],

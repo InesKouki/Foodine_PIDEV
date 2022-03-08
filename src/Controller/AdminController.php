@@ -27,7 +27,8 @@ class AdminController extends AbstractController
     public function index(NotificationRepository $repository): Response
     {
         $notif = $repository->findAll();
-        $rev = $this->getDoctrine()->getRepository(Review::class)->findAll();
+        $rev = $this->getDoctrine()->getRepository(Review::class)->findRevMax();
+        $revCount = $this->getDoctrine()->getRepository(Review::class)->count();
         $count=$repository->countNotifUnseen();
         //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
@@ -43,7 +44,8 @@ class AdminController extends AbstractController
             'rec'=>$rec,
             'notif'=>$notif,
             'nbNotif'=>$count,
-            'rev'=>$rev
+            'rev'=>$rev,
+            'revCount'=>$revCount
 
         ]);
     }
@@ -187,6 +189,18 @@ class AdminController extends AbstractController
 
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("deleteReview/{id}", name="deleteReview")
+     */
+    public function deleteReview($id){
+        $review = $this->getDoctrine()->getRepository(Review::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($review);
+        $em->flush();
+        return $this->redirectToRoute('admin_index');
+    }
 
 
 

@@ -116,7 +116,7 @@
                             <div class="d-flex align-items-center">
                                 <div>
                                     <p class="mb-0">Feed-Backs</p>
-                                    <h5 class="mb-0 text-white">869</h5>
+                                    <h5 class="mb-0 text-white">{{ revCount }}</h5>
                                 </div>
                                 <div class="ms-auto text-white">	<i class='bx bx-chat font-30'></i>
                                 </div>
@@ -195,8 +195,11 @@
                                                       <i class='bx bxs-star text-white'></i>
 
                                                   </div>
+
                                     {% endif %}
+                                    <a href="{{ path('admin_deleteReview',{'id':rev.id}) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
                                 </div>
+
                                 {% endfor%}
                             </li>
 

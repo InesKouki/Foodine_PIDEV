@@ -76,27 +76,30 @@ return [
                     .'|gcb/generate\\-captcha/([^/]++)(*:198)'
                 .')'
                 .'|/a(?'
-                    .'|dmin/(?'
-                        .'|ModifierUser/([^/]++)(*:241)'
-                        .'|blockUser/([^/]++)(*:267)'
-                        .'|unblockUser/([^/]++)(*:295)'
+                    .'|dmin(?'
+                        .'|/(?'
+                            .'|ModifierUser/([^/]++)(*:244)'
+                            .'|blockUser/([^/]++)(*:270)'
+                            .'|unblockUser/([^/]++)(*:298)'
+                        .')'
+                        .'|deleteReview/([^/]++)(*:328)'
                     .')'
-                    .'|ctivation/([^/]++)(*:322)'
+                    .'|ctivation/([^/]++)(*:355)'
                 .')'
                 .'|/client/(?'
-                    .'|profilup/([^/]++)(*:359)'
-                    .'|editPass/([^/]++)(*:384)'
+                    .'|profilup/([^/]++)(*:392)'
+                    .'|editPass/([^/]++)(*:417)'
                 .')'
-                .'|/show_chef/([^/]++)(*:412)'
+                .'|/show_chef/([^/]++)(*:445)'
                 .'|/delete(?'
-                    .'|_rec([^/]++)(*:442)'
-                    .'|RecJson/([^/]++)(*:466)'
+                    .'|_rec([^/]++)(*:475)'
+                    .'|RecJson/([^/]++)(*:499)'
                 .')'
                 .'|/re(?'
-                    .'|c_res/([^/]++)(*:495)'
-                    .'|setPassword([^/]++)(*:522)'
+                    .'|c_res/([^/]++)(*:528)'
+                    .'|setPassword([^/]++)(*:555)'
                 .')'
-                .'|/updateRecJson/([^/]++)(*:554)'
+                .'|/updateRecJson/([^/]++)(*:587)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -108,18 +111,19 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         198 => [[['_route' => 'gregwar_captcha.generate_captcha', '_controller' => 'Gregwar\\CaptchaBundle\\Controller\\CaptchaController::generateCaptchaAction'], ['key'], null, null, false, true, null]],
-        241 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
-        267 => [[['_route' => 'admin_blockUser', '_controller' => 'App\\Controller\\AdminController::blockUser'], ['id'], null, null, false, true, null]],
-        295 => [[['_route' => 'admin_unblockUser', '_controller' => 'App\\Controller\\AdminController::unblockUser'], ['id'], null, null, false, true, null]],
-        322 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
-        359 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
-        384 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
-        412 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
-        442 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
-        466 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
-        495 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
-        522 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
-        554 => [
+        244 => [[['_route' => 'admin_ModifierUser', '_controller' => 'App\\Controller\\AdminController::ModifierUser'], ['id'], null, null, false, true, null]],
+        270 => [[['_route' => 'admin_blockUser', '_controller' => 'App\\Controller\\AdminController::blockUser'], ['id'], null, null, false, true, null]],
+        298 => [[['_route' => 'admin_unblockUser', '_controller' => 'App\\Controller\\AdminController::unblockUser'], ['id'], null, null, false, true, null]],
+        328 => [[['_route' => 'admin_deleteReview', '_controller' => 'App\\Controller\\AdminController::deleteReview'], ['id'], null, null, false, true, null]],
+        355 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
+        392 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
+        417 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
+        445 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
+        475 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
+        499 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
+        528 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
+        555 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
+        587 => [
             [['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
