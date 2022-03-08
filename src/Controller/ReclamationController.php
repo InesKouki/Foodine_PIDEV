@@ -8,6 +8,7 @@ use App\Entity\Reponse;
 use App\Form\AddReclamationType;
 use App\Form\ReponseType;
 use App\Repository\ReclamationRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,11 +65,18 @@ class ReclamationController extends AbstractController
      * @return Response
      * @Route ("/show_rec" , name="show_rec")
      */
-    public function showReclamation()
+    public function showReclamation(Request $request,PaginatorInterface $paginator)
     {
 
         $repository = $this->getDoctrine()->getRepository(Reclamation::class);
-        $rec = $repository->findAll();
+        $data = $repository->findAll();
+        $rec = $paginator->paginate(
+            $data, // on passe les données
+            $request->query->getInt('page',1), //numero de la page en cours, 1par defaut
+            5 // le nombre d'element par page
+
+
+        );
         return $this->render("/back/reclamations/show.html.twig", [
             'rec' => $rec
         ]);

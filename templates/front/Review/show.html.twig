@@ -328,7 +328,7 @@
             const textarea= document.getElementById('user_review');
             let badwords = /bite|baisable|baise|baiser|bander|branle|branlette|bordel|burnes|chatte|chiant|chiasse|chier|chiottes|con|conne|connerie|coucougnettes|couilles|couillu|cul|déconner|déconneur|emmerder|emmerdant|emmerdeur|entuber|foutre|merde merdier|merdique|niquer|nique|pisser|putain|pute|démerder|emmerder|chier| sucer|ta gueule|zob/gi;
             let user_review1 = textarea.value;
-            let user_review2 = user_review1.replace(badwords,"####");
+            let user_review2 = user_review1.replace(badwords,"****");
             document.getElementById('user_review').value=user_review2;
         }
         document.getElementById('save_review').addEventListener('click',editReview);

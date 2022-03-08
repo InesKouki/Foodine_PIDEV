@@ -8,6 +8,7 @@ use App\Entity\Review;
 use App\Form\EditEmployeType;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,10 +60,18 @@ class AdminController extends AbstractController
     /**
      * @Route("/showUsers", name="showUsers")
      */
-    public function showUsers(){
+    public function showUsers(Request $request,PaginatorInterface $paginator){
 
         $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findUsers();
+        $data=$repository->findUsers();
+
+        $user = $paginator->paginate(
+            $data, // on passe les données
+            $request->query->getInt('page',1), //numero de la page en cours, 1par defaut
+            4 // le nombre d'element par page
+
+
+        );
         return $this->render("/back/Users/employe.html.twig",[
             'user' => $user
         ]);
