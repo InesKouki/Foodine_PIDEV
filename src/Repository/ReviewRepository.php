@@ -88,7 +88,7 @@ class ReviewRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function count(){
+    public function findRevCount(){
         return $this->createQueryBuilder('r')
         ->select('count(r.id)')
             ->getQuery()

@@ -28,7 +28,7 @@ class AdminController extends AbstractController
     {
         $notif = $repository->findAll();
         $rev = $this->getDoctrine()->getRepository(Review::class)->findRevMax();
-        $revCount = $this->getDoctrine()->getRepository(Review::class)->count();
+        $revCount = $this->getDoctrine()->getRepository(Review::class)->findRevCount();
         $count=$repository->countNotifUnseen();
         //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
