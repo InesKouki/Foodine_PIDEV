@@ -152,7 +152,7 @@ class RecetteController extends AbstractController
 //dd($html);
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A3', 'portrait');
         $dompdf->render();
         $dompdf->stream("BR.pdf", [
             "Attachment" => true ,'isRemoteEnabled' => true

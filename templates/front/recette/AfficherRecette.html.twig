@@ -6,7 +6,7 @@
     {% if t is empty %}
         <style>
             .page-banner-area {
-                background-image: url(Front/assets/img/hbib.png);
+                background-image: url(Front/assets/img/pl.jpg);
                 padding-top: 250px;
             }
         </style>
@@ -15,7 +15,7 @@
             <div class="d-table-cell">
                 <div class="container">
                     <div class="page-banner-content">
-                        <h2>Team</h2>
+                        <h2>Aucun Plat aujourd'hui</h2>
 
                     </div>
                 </div>
@@ -89,37 +89,22 @@
                     <div class="single-team-box">
 
                         <div class="image" >
-                            <img width="50" HEIGHT="50" src="{{ asset('uploads/' ~ r.imagerecette)}}" alt="image">
+                            <img style="width: 340px ; height: 340px"  src="{{ asset('uploads/' ~ r.imagerecette)}}" alt="image">
 
-                            <ul class="social">
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class='bx bxl-facebook'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class='bx bxl-twitter'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class='bx bxl-linkedin'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class='bx bxl-instagram'></i>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
-
                         <div class="content">
                             <h3>{{ r.nom }}</h3>
-                            <span>{{ r.description}}</span>
-                            <span>{{ r.ingredient}}</span>
+                            <span >{{ r.description}}</span>
+                                <div style="display: flex ; justify-content: space-between">
+
+                                <span>{{ r.ingredient}}</span>
+                                <div class="fb-share-button"
+                                     data-href="http://127.0.0.1:8000/recette"
+                                     data-layout="button_count">
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 {% endfor %}
@@ -134,8 +119,5 @@
             js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-share-button"
-         data-href="http://127.0.0.1:8000/recette"
-         data-layout="button_count">
-    </div>
+
 {% endblock %}
