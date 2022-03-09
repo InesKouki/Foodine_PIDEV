@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'efddb869d118bdf9c9a4d3dfa2e9d439d2c29923',
+        'reference' => 'f1b07bfc90429f598cd2f3ebf4416c3eace519ca',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'efddb869d118bdf9c9a4d3dfa2e9d439d2c29923',
+            'reference' => 'f1b07bfc90429f598cd2f3ebf4416c3eace519ca',
             'dev_requirement' => false,
         ),
         'bacon/bacon-qr-code' => array(
@@ -996,6 +996,15 @@
             'install_path' => __DIR__ . '/../symfony/framework-bundle',
             'aliases' => array(),
             'reference' => 'e8dbdfcd475b7fbaa6b3531079c53a481ff8cad4',
+            'dev_requirement' => false,
+        ),
+        'symfony/google-mailer' => array(
+            'pretty_version' => 'v4.4.37',
+            'version' => '4.4.37.0',
+            'type' => 'symfony-bridge',
+            'install_path' => __DIR__ . '/../symfony/google-mailer',
+            'aliases' => array(),
+            'reference' => '04b82f048c9c84024f937ca3d4e11cb6269e9034',
             'dev_requirement' => false,
         ),
         'symfony/http-client' => array(

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,59 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findById($id)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id = :val')
+            ->setParameter('val', $id)
+
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
+    public function findByCategorie($id)
+    {
+     $em=$this->getEntityManager();
+     $q=$em
+         ->createQuery('SELECT p FROM APP\Entity\Product p JOIN p.category c WHERE c.id=:id')
+  ->setParameter('id', $id);
+
+     return $q->getResult();
+    }
+
+    public function findProductByName($nom){
+        return $this->createQueryBuilder('prod')
+            ->where('prod.name LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()->getResult();
+    }
+
+
+    function orderByNomDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNomAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPriceAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.price','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPriceDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.price','DESC')
+            -> getQuery()->getResult();
+    }
+
+
 }

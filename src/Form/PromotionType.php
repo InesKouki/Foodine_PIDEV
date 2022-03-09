@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Classroom;
 use App\Entity\Evenement;
+use App\Entity\Product;
 use App\Entity\Produit;
 use App\Entity\Promotion;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,7 +19,7 @@ class PromotionType extends AbstractType
     {
         $builder
             ->add('produit', EntityType::class, [
-                    'class'=>Produit::class,
+                    'class'=>Product::class,
                     'choice_label'=>'name',
                     'attr' => array('class' => 'form-select')
 

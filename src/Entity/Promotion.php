@@ -37,7 +37,7 @@ class Promotion
     private $evenement;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="promotion")
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="promotion")
      */
     private $produit;
 
@@ -70,12 +70,12 @@ class Promotion
         return $this;
     }
 
-    public function getProduit(): ?Produit
+    public function getProduit(): ?Product
     {
         return $this->produit;
     }
 
-    public function setProduit(?Produit $produit): self
+    public function setProduit(?Product $produit): self
     {
         $this->produit = $produit;
 

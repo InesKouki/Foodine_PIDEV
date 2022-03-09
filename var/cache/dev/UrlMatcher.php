@@ -19,6 +19,13 @@ return [
         '/admin/showNotif' => [[['_route' => 'admin_showNotif', '_controller' => 'App\\Controller\\AdminController::showNotification'], null, null, null, false, false, null]],
         '/adminreadNotif' => [[['_route' => 'admin_readNotif', '_controller' => 'App\\Controller\\AdminController::readNotifications'], null, null, null, false, false, null]],
         '/admin/searchBack' => [[['_route' => 'admin_searchBack', '_controller' => 'App\\Controller\\AdminController::search'], null, null, null, false, false, null]],
+        '/categorie' => [[['_route' => 'categorie', '_controller' => 'App\\Controller\\CategorieController::addCategory'], null, null, null, false, false, null]],
+        '/recherche' => [[['_route' => 'recherche', '_controller' => 'App\\Controller\\CategorieController::recherche'], null, null, null, false, false, null]],
+        '/products' => [[['_route' => 'products', '_controller' => 'App\\Controller\\CategorieController::categories'], null, null, null, false, false, null]],
+        '/Ajoutercategorie' => [[['_route' => 'app_categorie_ajoutermobile', '_controller' => 'App\\Controller\\CategorieController::ajoutermobile'], null, null, null, false, false, null]],
+        '/categoriess' => [[['_route' => 'app_categorie_indexmobile', '_controller' => 'App\\Controller\\CategorieController::indexmobile'], null, null, null, false, false, null]],
+        '/Deletecategorie' => [[['_route' => 'app_categorie_supprimerfrontmoibile', '_controller' => 'App\\Controller\\CategorieController::SupprimerFrontmoibile'], null, null, null, false, false, null]],
+        '/categorylist' => [[['_route' => 'categorylist', '_controller' => 'App\\Controller\\CategorylistController::index'], null, null, null, false, false, null]],
         '/chef' => [[['_route' => 'chef_index', '_controller' => 'App\\Controller\\ChefController::index'], null, null, null, true, false, null]],
         '/client/profil' => [[['_route' => 'client_profil', '_controller' => 'App\\Controller\\ClientController::profile'], null, null, null, false, false, null]],
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::afficheBack'], null, null, null, false, false, null]],
@@ -46,10 +53,15 @@ return [
         '/AjouterPlanningMobile' => [[['_route' => 'app_planning_ajoutermobile', '_controller' => 'App\\Controller\\PlanningController::ajoutermobile'], null, null, null, false, false, null]],
         '/DeletePlanning' => [[['_route' => 'app_planning_supplanningmobile', '_controller' => 'App\\Controller\\PlanningController::Supplanningmobile'], null, null, null, false, false, null]],
         '/chef-planning/searchResajax' => [[['_route' => 'searchPlanResajax', '_controller' => 'App\\Controller\\PlanningController::searchEventAjax'], null, null, null, false, false, null]],
-        '/AffichePlanning-trienomAsc' => [[['_route' => 'trienom', '_controller' => 'App\\Controller\\PlanningController::trienomAsc'], null, null, null, false, false, null]],
-        '/AffichePlanning-trienomDsc' => [[['_route' => 'trienomDsc', '_controller' => 'App\\Controller\\PlanningController::trienomDsc'], null, null, null, false, false, null]],
         '/AffichePlanning-trieDateAsc' => [[['_route' => 'triedateAsc', '_controller' => 'App\\Controller\\PlanningController::trieDateAsc'], null, null, null, false, false, null]],
         '/AffichePlanning-trieDateDsc' => [[['_route' => 'triedateDsc', '_controller' => 'App\\Controller\\PlanningController::trieDateDsc'], null, null, null, false, false, null]],
+        '/product' => [[['_route' => 'product', '_controller' => 'App\\Controller\\ProductController::addProd'], null, null, null, false, false, null]],
+        '/productlist' => [[['_route' => 'productlist', '_controller' => 'App\\Controller\\ProductController::index'], null, null, null, false, false, null]],
+        '/productlist/searchResajax' => [[['_route' => 'searchProdResajax', '_controller' => 'App\\Controller\\ProductController::searchProductAjax'], null, null, null, false, false, null]],
+        '/productlist-trienomAsc' => [[['_route' => 'trienom', '_controller' => 'App\\Controller\\ProductController::orderByNomDescQB'], null, null, null, false, false, null]],
+        '/productlist-trienomDsc' => [[['_route' => 'trienomDsc', '_controller' => 'App\\Controller\\ProductController::orderByNomAscQB'], null, null, null, false, false, null]],
+        '/productlist-triePrixAsc' => [[['_route' => 'trieprixAsc', '_controller' => 'App\\Controller\\ProductController::orderByPriceAscQB'], null, null, null, false, false, null]],
+        '/productlist-triePrixDsc' => [[['_route' => 'trieprixDsc', '_controller' => 'App\\Controller\\ProductController::orderByPriceDescQB'], null, null, null, false, false, null]],
         '/admin-promotions' => [[['_route' => 'promotion', '_controller' => 'App\\Controller\\PromotionController::afficheBack'], null, null, null, false, false, null]],
         '/admin-addPromotion' => [[['_route' => 'addPromotion', '_controller' => 'App\\Controller\\PromotionController::addPromotion'], null, null, null, false, false, null]],
         '/admin-promotions-sortbynameasc' => [[['_route' => 'promotionSortByNameAsc', '_controller' => 'App\\Controller\\PromotionController::sortBackByNameAsc'], null, null, null, false, false, null]],
@@ -135,38 +147,52 @@ return [
                     .')'
                     .'|ctivation/([^/]++)(*:489)'
                 .')'
+                .'|/product(?'
+                    .'|s(?'
+                        .'|/([^/]++)(*:522)'
+                        .'|like/([^/]++)/like(*:548)'
+                    .')'
+                    .'|list/(?'
+                        .'|delete/([^/]++)(*:580)'
+                        .'|edit/([^/]++)(*:601)'
+                    .')'
+                .')'
                 .'|/c(?'
+                    .'|ategorylist/(?'
+                        .'|delete/([^/]++)(*:646)'
+                        .'|edit/([^/]++)(*:667)'
+                    .')'
                     .'|lient/(?'
-                        .'|profilup/([^/]++)(*:529)'
-                        .'|editPass/([^/]++)(*:554)'
+                        .'|profilup/([^/]++)(*:702)'
+                        .'|editPass/([^/]++)(*:727)'
                     .')'
                     .'|hef\\-(?'
-                        .'|Modifierrecette\\-([^/]++)(*:596)'
-                        .'|SupprimerRecette\\-([^/]++)(*:630)'
+                        .'|Modifierrecette\\-([^/]++)(*:769)'
+                        .'|SupprimerRecette\\-([^/]++)(*:803)'
                     .')'
                 .')'
                 .'|/s(?'
-                    .'|how_chef/([^/]++)(*:662)'
-                    .'|upprimerplanning/([^/]++)(*:695)'
+                    .'|how_chef/([^/]++)(*:835)'
+                    .'|upprimerplanning/([^/]++)(*:868)'
                 .')'
                 .'|/modifier(?'
-                    .'|planning/([^/]++)(*:733)'
-                    .'|reservation/([^/]++)(*:761)'
-                    .'|/([^/]++)(*:778)'
+                    .'|planning/([^/]++)(*:906)'
+                    .'|reservation/([^/]++)(*:934)'
+                    .'|/([^/]++)(*:951)'
                 .')'
-                .'|/evenement\\-([^/]++)(*:807)'
+                .'|/evenement\\-([^/]++)(*:980)'
                 .'|/delete(?'
-                    .'|_rec([^/]++)(*:837)'
-                    .'|RecJson/([^/]++)(*:861)'
-                    .'|reservation/([^/]++)(*:889)'
-                    .'|/([^/]++)(*:906)'
+                    .'|_rec([^/]++)(*:1010)'
+                    .'|RecJson/([^/]++)(*:1035)'
+                    .'|reservation/([^/]++)(*:1064)'
+                    .'|/([^/]++)(*:1082)'
                 .')'
                 .'|/re(?'
-                    .'|c_res/([^/]++)(*:935)'
-                    .'|setPassword([^/]++)(*:962)'
+                    .'|c_res/([^/]++)(*:1112)'
+                    .'|setPassword([^/]++)(*:1140)'
                 .')'
-                .'|/updateRecJson/([^/]++)(*:994)'
-                .'|/qr\\-code/([^/]++)/([\\w\\W]+)(*:1030)'
+                .'|/updateRecJson/([^/]++)(*:1173)'
+                .'|/qr\\-code/([^/]++)/([\\w\\W]+)(*:1210)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -187,24 +213,30 @@ return [
         433 => [[['_route' => 'deleteEvenement', '_controller' => 'App\\Controller\\EvenementController::deleteEvenement'], ['id'], null, null, false, true, null]],
         460 => [[['_route' => 'deletePromotion', '_controller' => 'App\\Controller\\PromotionController::deletePromotion'], ['id'], null, null, false, true, null]],
         489 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
-        529 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
-        554 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
-        596 => [[['_route' => 'modifierrecette', '_controller' => 'App\\Controller\\RecetteController::Modierrecette'], ['id'], null, null, false, true, null]],
-        630 => [[['_route' => 'supprimerrecette', '_controller' => 'App\\Controller\\RecetteController::supprimerrecette'], ['id'], null, null, false, true, null]],
-        662 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
-        695 => [[['_route' => 'supprimerplanning', '_controller' => 'App\\Controller\\PlanningController::supprimerplanning'], ['id'], null, null, false, true, null]],
-        733 => [[['_route' => 'modifierplanning', '_controller' => 'App\\Controller\\PlanningController::modifierplanning'], ['id'], null, null, false, true, null]],
-        761 => [[['_route' => 'dddd', '_controller' => 'App\\Controller\\ReservationController::modifierreservation'], ['id'], null, null, false, true, null]],
-        778 => [[['_route' => 'dd', '_controller' => 'App\\Controller\\TableController::modifiertable'], ['id'], null, null, false, true, null]],
-        807 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
-        837 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
-        861 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
-        889 => [[['_route' => 'ddd', '_controller' => 'App\\Controller\\ReservationController::supprimerreservation'], ['id'], null, null, false, true, null]],
-        906 => [[['_route' => 'd', '_controller' => 'App\\Controller\\TableController::supprimertable'], ['id'], null, null, false, true, null]],
-        935 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
-        962 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
-        994 => [[['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null]],
-        1030 => [
+        522 => [[['_route' => 'categoryprod', '_controller' => 'App\\Controller\\CategorieController::categoyyy'], ['id'], null, null, false, true, null]],
+        548 => [[['_route' => 'produit_like', '_controller' => 'App\\Controller\\ProductController::like'], ['id'], null, null, false, false, null]],
+        580 => [[['_route' => 'deleteprodcut', '_controller' => 'App\\Controller\\ProductController::Delete'], ['id'], null, null, false, true, null]],
+        601 => [[['_route' => 'editproduct', '_controller' => 'App\\Controller\\ProductController::edit'], ['id'], null, null, false, true, null]],
+        646 => [[['_route' => 'deletecategory', '_controller' => 'App\\Controller\\CategorylistController::Delete'], ['id'], null, null, false, true, null]],
+        667 => [[['_route' => 'editcategory', '_controller' => 'App\\Controller\\CategorylistController::edit'], ['id'], null, null, false, true, null]],
+        702 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
+        727 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
+        769 => [[['_route' => 'modifierrecette', '_controller' => 'App\\Controller\\RecetteController::Modierrecette'], ['id'], null, null, false, true, null]],
+        803 => [[['_route' => 'supprimerrecette', '_controller' => 'App\\Controller\\RecetteController::supprimerrecette'], ['id'], null, null, false, true, null]],
+        835 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
+        868 => [[['_route' => 'supprimerplanning', '_controller' => 'App\\Controller\\PlanningController::supprimerplanning'], ['id'], null, null, false, true, null]],
+        906 => [[['_route' => 'modifierplanning', '_controller' => 'App\\Controller\\PlanningController::modifierplanning'], ['id'], null, null, false, true, null]],
+        934 => [[['_route' => 'dddd', '_controller' => 'App\\Controller\\ReservationController::modifierreservation'], ['id'], null, null, false, true, null]],
+        951 => [[['_route' => 'dd', '_controller' => 'App\\Controller\\TableController::modifiertable'], ['id'], null, null, false, true, null]],
+        980 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
+        1010 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
+        1035 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
+        1064 => [[['_route' => 'ddd', '_controller' => 'App\\Controller\\ReservationController::supprimerreservation'], ['id'], null, null, false, true, null]],
+        1082 => [[['_route' => 'd', '_controller' => 'App\\Controller\\TableController::supprimertable'], ['id'], null, null, false, true, null]],
+        1112 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
+        1140 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
+        1173 => [[['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null]],
+        1210 => [
             [['_route' => 'qr_code_generate', '_controller' => 'Endroid\\QrCodeBundle\\Controller\\GenerateController'], ['builder', 'data'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
