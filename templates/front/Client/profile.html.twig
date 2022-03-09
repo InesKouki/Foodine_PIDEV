@@ -86,8 +86,31 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="d-flex align-items-center mb-3">Historique des commandes</h5>
-
                                         </div>
+                                        <table>
+                                        {% for c in commande %}
+                                            <tr>
+                                                <td>{{ c.nom }}</td>
+
+                                                <td>{{ c.total }}</td>
+                                                <td>{{ c.date | date }}</td>
+                                                <td>
+                                                    {% if c.modepaiement == 0  %} Paypal
+                                                    {% endif %}
+                                                    {% if c.modepaiement == 1  %} carte
+                                                    {% endif %}
+                                                    {% if c.modepaiement == 2  %} espéces
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex order-actions">
+
+                                                        <a href="{{ path('supprimercommandefront',{id :c.id}) }}" class="ms-3"><i class='bx bxs-trash'></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

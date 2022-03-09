@@ -49,12 +49,78 @@
         </div>
     {% endfor %}
 
-{#  else if active.events(LENGTH) > 1
-    ....
-    ....
-    ....
-#}
-
     {% endif %}
+
+    <section class="testimonial-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client’s Feedback</h2>
+                <p></p>
+            </div>
+
+            <div class="testimonial-slider owl-carousel owl-theme">
+                {% for rev in rev %}
+                    <div class="testimonial-item">
+                        <div class="info">
+
+                            <h3>{{ rev.userName }}</h3>
+
+                        </div>
+                        <p>{{ rev.Description }}</p>
+
+                        <ul class="rating" style="padding-right: 45px" >
+                            {% if rev.Stars==1 %}
+                            <li>
+                                <i class='bx bxs-star'></i>
+
+                            </li>
+                            {% elseif rev.Stars==2 %}
+                            <li>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+
+
+                            </li>
+                            {% elseif rev.Stars==3 %}
+                            <li>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+
+
+                            </li>
+                            {% elseif rev.Stars==4 %}
+                            <li>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+
+
+                            </li>
+                            {% elseif rev.Stars==5 %}
+                            <li>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+
+                            </li>
+                        </ul>
+                        {% endif %}
+                        <div class="icon">
+                            <i class="flaticon-right-quotes-symbol"></i>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+        <div class="deal-btn-" style="padding-left: 890px;padding-top: 20px">
+            <a href="{{ path('showReview') }}" class="default-btn" >Show All</a>
+        </div>
+    </section>
 
 {% endblock %}

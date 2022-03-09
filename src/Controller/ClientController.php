@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\EditClientType;
 use App\Form\EditPasswordType;
+use App\Repository\CommandeRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,10 +21,12 @@ class ClientController extends AbstractController
     /**
      * @Route("/profil", name="profil")
      */
-    public function profile(): Response
+    public function profile(CommandeRepository $repository): Response
     {
+        $Commande =$repository->getCommandesByUser($this->getUser()->getId());
         return $this->render('/front/Client/profile.html.twig', [
             'controller_name' => 'ClientController',
+            'commande'=>$Commande
         ]);
     }
 
@@ -86,7 +89,5 @@ class ClientController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
-
-
 
 }
