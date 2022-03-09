@@ -130,7 +130,7 @@ class TableController extends AbstractController
          $dompdf->loadHtml($html);
 
          // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-         $dompdf->setPaper('A4', 'portrait');
+         $dompdf->setPaper('A3', 'portrait');
 
          // Render the HTML as PDF
          $dompdf->render();
@@ -148,7 +148,7 @@ class TableController extends AbstractController
         $donnes=$repo->orderBynombredeplaceAscQB();
         $table=$paginator->paginate(
             $donnes,
-            $request->query->getInt('page',1),3
+            $request->query->getInt('page',1),6
         );
         return $this->render('back/table/index.html.twig', ['t' => $table]);
     }

@@ -76,7 +76,7 @@ class ReservationController extends AbstractController
             $em->persist($reservation);
             $em->flush();
             $message = (new \Swift_Message('Food IN'))
-                ->setFrom('mootez.gam@esprit.tn')
+                ->setFrom('foodine01@gmail.com')
                 ->setTo($reservation->getEmail())
                 ->setBody($this->renderView('front/reservation/qrcode.html.twig',['qrcode'=>$qrcode]),'text/html/image');
                 //->setBody($this->renderView('front/reservation/qrcode.html.twig',['qrcode'=>$qrcode]),'image','utf-8');
