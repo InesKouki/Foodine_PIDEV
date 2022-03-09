@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-
         <!-- Start Page Banner -->
         <div class="page-banner-area">
             <div class="d-table">
@@ -29,7 +28,21 @@
 
         <!-- Start Top Products Area -->
         <section class="top-products-area pt-100 pb-100">
+
+
             <div class="container">
+
+
+                <form  method="post" action="{{path('recherche')}}"  class="site-banner__search layout-02">
+                    <div class="field-input">
+                        <label for="s">What?</label>
+                        <input class="site-banner__search__input open-suggestion" id="s" type="text" name="search" placeholder="Produit" autocomplete="off">
+
+                    </div><!-- .site-banner__search__input -->
+                    <div class="field-submit">
+                        <button><i class="las la-search la-24-black"></i></button>
+                    </div>
+                </form><!-- .site-banner__search -->
                 <div class="filter-left">
                     {% set nb=0 %}
                     {% for a in prods  %}
@@ -51,7 +64,7 @@
                                         <a href="cart.html" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="flaticon-shopping-cart"></i></a>
                                     </li>
                                     <li>
-                                        <a  href="{{ path('products',{'id':a.id}) }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart dis-block pos-relative js-addwish-b2"></i></a>
+                                        <a  href="{{ path('produit_like',{'id':a.id}) }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="flaticon-heart dis-block pos-relative js-addwish-b2"></i></a>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#productsQuickView">
@@ -103,5 +116,7 @@
                 </div>
             </div>
         </section>
+        <!-- End Top Products Area -->
+
 {% endblock %}
 

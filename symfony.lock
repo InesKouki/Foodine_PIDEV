@@ -85,14 +85,23 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "jms/metadata": {
+        "version": "2.6.1"
+    },
+    "jms/serializer": {
+        "version": "3.17.1"
+    },
+    "jms/serializer-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
+        }
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
-    },
-    "laminas/laminas-eventmanager": {
-        "version": "3.4.0"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.1"
     },
     "monolog/monolog": {
         "version": "1.26.1"
@@ -120,6 +129,9 @@
     },
     "phpspec/prophecy": {
         "version": "v1.15.0"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "1.2.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.10"
@@ -336,6 +348,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v4.4.37"

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
 
@@ -51,6 +53,16 @@ class Product
 
          */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProduitLike::class, mappedBy="Produit")
+     */
+    private $produitLikes;
+
+    public function __construct()
+    {
+        $this->produitLikes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -115,5 +127,48 @@ class Product
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, ProduitLike>
+     */
+    public function getProduitLikes(): Collection
+    {
+        return $this->produitLikes;
+    }
+
+    public function addProduitLike(ProduitLike $produitLike): self
+    {
+        if (!$this->produitLikes->contains($produitLike)) {
+            $this->produitLikes[] = $produitLike;
+            $produitLike->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduitLike(ProduitLike $produitLike): self
+    {
+        if ($this->produitLikes->removeElement($produitLike)) {
+            // set the owning side to null (unless already changed)
+            if ($produitLike->getProduit() === $this) {
+                $produitLike->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param \App\Entity\User $user
+     * @return bool
+     */
+    public function isLiked(User $user): bool
+
+    {
+        foreach ($this->produitLikes as $like){
+            if($like->getUser()=== $user)return true;
+        }
+        return false;
     }
 }

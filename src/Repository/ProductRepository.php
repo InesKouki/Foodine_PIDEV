@@ -70,7 +70,37 @@ class ProductRepository extends ServiceEntityRepository
      return $q->getResult();
     }
 
+    public function findProductByName($nom){
+        return $this->createQueryBuilder('prod')
+            ->where('prod.name LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()->getResult();
+    }
 
+
+    function orderByNomDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNomAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.name','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPriceAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.price','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByPriceDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.price','DESC')
+            -> getQuery()->getResult();
+    }
 
 
 }

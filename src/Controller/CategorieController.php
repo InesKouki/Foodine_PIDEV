@@ -8,10 +8,14 @@ use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CategorieController extends AbstractController
 {
@@ -56,7 +60,7 @@ class CategorieController extends AbstractController
     {
         $cat1=$this->getDoctrine()->getRepository(Category::class)->findAll();
 
-        return $this->render('categorylist/index.html.twig', [
+        return $this->render('back/categorylist/index.html.twig', [
             'cat'=>$cat1 ,
         ]);
     }
@@ -84,8 +88,6 @@ class CategorieController extends AbstractController
      * @return RedirectResponse|Response
      * @Route("categorylist/edit/{id}", name="editcategory" )
      */
-
-
     public function edit( CategoryRepository $repository , $id ,Request $request)
     {
         $produits=$repository->find($id);
@@ -122,7 +124,7 @@ class CategorieController extends AbstractController
 
 
         return $this->render('front/categorie/index.html.twig', [
-            'prodprod' => $product ,
+            'prods' => $product ,
             'categ'=>$cat1 ,
 
         ]);
@@ -135,33 +137,93 @@ class CategorieController extends AbstractController
     {
         $cat1=$this->getDoctrine()->getRepository(Category::class)->findAll();
         $products=$this->getDoctrine()->getRepository(Product::class)->findAll();
-
-
-
         return $this->render('front/categorie/index.html.twig', [
             'categ'=>$cat1 ,
-            'prodprod'=>$products
+            'prods'=>$products
 
         ]);
     }
 
     /**
-     * @Route("/{id}", name="categoryprod")
+     * @Route("/products/{id}", name="categoryprod")
 
      */
-    public function categoy(CategoryRepository $categoryRepository, ProductRepository $productRepository, $id): Response
+    public function categoyyy(CategoryRepository $categoryRepository, ProductRepository $productRepository, $id)
     {
-
      $cat=$categoryRepository->find($id);
      $products=$productRepository->findByCategorie($cat->getId());
-
-
-        return $this->render('front/categorie/index1.html.twig', [
+        return $this->render('front/categorie/index.html.twig', [
 
             'categ'=>$cat ,
-            'prods11'=>$products
+            'prods'=>$products
 
         ]);
     }
+
+    /**
+     * @Route ("/Ajoutercategorie")
+     * @Method ("POST")
+     */
+    public function ajoutermobile(Request $request){
+
+        $categorie = new Category();
+
+        $em=$this->getDoctrine()->getManager();
+
+        $image=$request->query->get("image");
+        $categorie->setImage($image);
+
+        $name=$request->query->get("name");
+        $categorie->setName($name);
+
+        $products=$request->query->get("products");
+        $categorie->set($products);
+
+        $em->persist($categorie);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($categorie);
+        return new JsonResponse($aj);
+
+    }
+
+
+
+    /**
+     * @param CategoryRepository $repository
+     * @return Response
+     * @Route("/categoriess")
+     */
+    public function indexmobile()
+    {
+        $categorie =$this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($categorie);
+        return new JsonResponse($aj);
+
+    }
+
+
+    /**
+     * @Route ("/Deletecategorie")
+     * @Method("DELETE")
+     */
+    function SupprimerFrontmoibile(Request $request , CategoryRepository $repository){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $categorie =$em->getRepository(Category::class)->find($id);
+        $em->remove($categorie);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($categorie);
+        return new JsonResponse($aj);
+    }
+
+
+
 
 }

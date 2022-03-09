@@ -2,19 +2,25 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FrontController extends AbstractController
 {
+
     /**
-     * @Route("/", name="front")
+     * @Route("/", name="getCateeeg")
      */
-    public function index(): Response
+    public function getCategs()
     {
-        return $this->render('front/homeFront.html.twig', [
-            'controller_name' => 'FrontController',
+        $cat1=$this->getDoctrine()->getRepository(Category::class)->findAll();
+
+        return $this->render('baseFront.html.twig', [
+            'categ'=>$cat1 ,
         ]);
     }
+
 }

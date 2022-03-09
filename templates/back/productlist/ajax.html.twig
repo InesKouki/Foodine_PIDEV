@@ -1,0 +1,14 @@
+{% for a in produits1 %}
+    <tr>
+        <td> {{ a.name }}</td>
+        <td> {{ a.Category.name }}</td>
+        <td> {{ a.price }}</td>
+        <td class="w60">
+            <img height="250" width="250" class="avatar" src="{{ asset('../uploads/')~a.image }}" >
+        </td>                                <td> {{ a.quantitie }}</td>
+
+        <td><a href="{{ path('editproduct', {id : a.id }) }}" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit' ></i></a></td>
+        <td><a href="{{ path('deleteprodcut', {id : a.id }) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
+
+    </tr>
+{% endfor %}
