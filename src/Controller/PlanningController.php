@@ -148,7 +148,7 @@ class PlanningController extends AbstractController
         return new JsonResponse($aj);
     }
     /**
-     * @Route("/chef-planning/searchResajax ", name="searchResajax")
+     * @Route("/chef-planning/searchResajax ", name="searchPlanResajax")
      */
     public function searchEventAjax(PlanningRepository $repo,Request $request)
     {

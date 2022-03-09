@@ -35,7 +35,7 @@ class SecurityController extends AbstractController
             // on recupère l'image et on le met dans le dossier public/uploads
                 $image = $form->get('file')->getData();
                 $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                $image->move($this->getParameter('upload_directory'),$filename);
+                $image->move($this->getParameter('uploads_directory'),$filename);
                 $user->setFile($filename);
             // encoder le mot de passe
                 $hash = $encoder->encodePassword($user, $user->getPassword());

@@ -36,6 +36,17 @@ class UserRepository extends ServiceEntityRepository
 
     */
 
+    public function findOnlyUsers()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.Roles LIKE :val')
+            ->setParameter('val','[]')
+            ->getQuery()
+            ->getResult();
+
+        ;
+    }
+
 
     public function findUsers()
     {

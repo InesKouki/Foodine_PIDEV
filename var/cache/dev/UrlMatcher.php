@@ -22,6 +22,7 @@ return [
         '/chef' => [[['_route' => 'chef_index', '_controller' => 'App\\Controller\\ChefController::index'], null, null, null, true, false, null]],
         '/client/profil' => [[['_route' => 'client_profil', '_controller' => 'App\\Controller\\ClientController::profile'], null, null, null, false, false, null]],
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::afficheBack'], null, null, null, false, false, null]],
+        '/admin-evenements/searchResajax' => [[['_route' => 'searchEventResajax', '_controller' => 'App\\Controller\\EvenementController::searchEventAjax'], null, null, null, false, false, null]],
         '/admin-addEvenement' => [[['_route' => 'addEvenement', '_controller' => 'App\\Controller\\EvenementController::addEvenement'], null, null, null, false, false, null]],
         '/admin-evenements-sortbynameasc' => [[['_route' => 'evenementSortByNameAsc', '_controller' => 'App\\Controller\\EvenementController::sortBackByNameAsc'], null, null, null, false, false, null]],
         '/admin-evenements-sortbynamedesc' => [[['_route' => 'evenementSortByNameDesc', '_controller' => 'App\\Controller\\EvenementController::sortBackByNameDesc'], null, null, null, false, false, null]],
@@ -44,7 +45,7 @@ return [
         '/plan' => [[['_route' => 'displayPlan', '_controller' => 'App\\Controller\\PlanningController::displayEvents'], null, null, null, false, false, null]],
         '/AjouterPlanningMobile' => [[['_route' => 'app_planning_ajoutermobile', '_controller' => 'App\\Controller\\PlanningController::ajoutermobile'], null, null, null, false, false, null]],
         '/DeletePlanning' => [[['_route' => 'app_planning_supplanningmobile', '_controller' => 'App\\Controller\\PlanningController::Supplanningmobile'], null, null, null, false, false, null]],
-        '/chef-planning/searchResajax' => [[['_route' => 'searchResajax', '_controller' => 'App\\Controller\\PlanningController::searchEventAjax'], null, null, null, false, false, null]],
+        '/chef-planning/searchResajax' => [[['_route' => 'searchPlanResajax', '_controller' => 'App\\Controller\\PlanningController::searchEventAjax'], null, null, null, false, false, null]],
         '/AffichePlanning-trienomAsc' => [[['_route' => 'trienom', '_controller' => 'App\\Controller\\PlanningController::trienomAsc'], null, null, null, false, false, null]],
         '/AffichePlanning-trienomDsc' => [[['_route' => 'trienomDsc', '_controller' => 'App\\Controller\\PlanningController::trienomDsc'], null, null, null, false, false, null]],
         '/AffichePlanning-trieDateAsc' => [[['_route' => 'triedateAsc', '_controller' => 'App\\Controller\\PlanningController::trieDateAsc'], null, null, null, false, false, null]],
@@ -67,7 +68,11 @@ return [
         '/addRecJson' => [[['_route' => 'addRecJson', '_controller' => 'App\\Controller\\ReclamationController::addRecJson'], null, null, null, false, false, null]],
         '/showRecJson' => [[['_route' => 'showRecJson', '_controller' => 'App\\Controller\\ReclamationController::allReclamationJson'], null, null, null, false, false, null]],
         '/detailRecJson' => [[['_route' => 'detailRecJson', '_controller' => 'App\\Controller\\ReclamationController::detailReclamationAction'], null, null, null, false, false, null]],
-        '/reservation' => [[['_route' => 'reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
+        '/reservationn' => [[['_route' => 'reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
+        '/admin-reservation' => [[['_route' => 'reservationback', '_controller' => 'App\\Controller\\ReservationController::afficherreservation'], null, null, null, false, false, null]],
+        '/reservation' => [[['_route' => 'ajouter', '_controller' => 'App\\Controller\\ReservationController::ajouterreservation'], null, null, null, false, false, null]],
+        '/admin-reservation/searchResajax' => [[['_route' => 'searchResajax', '_controller' => 'App\\Controller\\ReservationController::searchOffreajax'], null, null, null, false, false, null]],
+        '/rr' => [[['_route' => 'rr', '_controller' => 'App\\Controller\\ReservationController::getreservation'], null, null, null, false, false, null]],
         '/registration' => [[['_route' => 'registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/login_success' => [[['_route' => 'login_success', '_controller' => 'App\\Controller\\SecurityController::loginSuccess'], null, null, null, false, false, null]],
@@ -76,6 +81,19 @@ return [
         '/signUpJson' => [[['_route' => 'signUpJson', '_controller' => 'App\\Controller\\SecurityController::signUpAction'], null, null, null, false, false, null]],
         '/signInJson' => [[['_route' => 'signInJson', '_controller' => 'App\\Controller\\SecurityController::signInAction'], null, null, null, false, false, null]],
         '/editUserJson' => [[['_route' => 'editUserJson', '_controller' => 'App\\Controller\\SecurityController::editUser'], null, null, null, false, false, null]],
+        '/table' => [[['_route' => 'table', '_controller' => 'App\\Controller\\TableController::index'], null, null, null, false, false, null]],
+        '/admin-table' => [[['_route' => 'affichertable', '_controller' => 'App\\Controller\\TableController::affichertable'], null, null, null, false, false, null]],
+        '/admin-ajoutertable' => [
+            [['_route' => 'app_table_ajoutertable', '_controller' => 'App\\Controller\\TableController::ajoutertable'], null, null, null, false, false, null],
+            [['_route' => 'ajoutertableback', '_controller' => 'App\\Controller\\TableController::ajoutertableback'], null, null, null, false, false, null],
+        ],
+        '/listpdf' => [[['_route' => 'listpdf', '_controller' => 'App\\Controller\\TableController::listpdf'], null, null, null, false, false, null]],
+        '/trie-table-asc' => [[['_route' => 'trie-table-asc', '_controller' => 'App\\Controller\\TableController::sortBackByNameAsc'], null, null, null, false, false, null]],
+        '/trie-table-desc' => [[['_route' => 'trie-table-desc', '_controller' => 'App\\Controller\\TableController::sortBackByNameDesc'], null, null, null, false, false, null]],
+        '/tt' => [[['_route' => 'tt', '_controller' => 'App\\Controller\\TableController::gettable'], null, null, null, false, false, null]],
+        '/add' => [[['_route' => 'create', '_controller' => 'App\\Controller\\TableController::addtable'], null, null, null, false, false, null]],
+        '/deletetable' => [[['_route' => 'app_table_supprimertablee', '_controller' => 'App\\Controller\\TableController::Supprimertablee'], null, null, null, false, false, null]],
+        '/update' => [[['_route' => 'updatetable', '_controller' => 'App\\Controller\\TableController::modifiertablee'], null, null, null, false, false, null]],
         '/fc-load-events' => [[['_route' => 'fc_load_events', '_controller' => 'CalendarBundle\\Controller\\CalendarController::loadAction'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -131,17 +149,24 @@ return [
                     .'|how_chef/([^/]++)(*:662)'
                     .'|upprimerplanning/([^/]++)(*:695)'
                 .')'
-                .'|/modifierplanning/([^/]++)(*:730)'
-                .'|/evenement\\-([^/]++)(*:758)'
+                .'|/modifier(?'
+                    .'|planning/([^/]++)(*:733)'
+                    .'|reservation/([^/]++)(*:761)'
+                    .'|/([^/]++)(*:778)'
+                .')'
+                .'|/evenement\\-([^/]++)(*:807)'
                 .'|/delete(?'
-                    .'|_rec([^/]++)(*:788)'
-                    .'|RecJson/([^/]++)(*:812)'
+                    .'|_rec([^/]++)(*:837)'
+                    .'|RecJson/([^/]++)(*:861)'
+                    .'|reservation/([^/]++)(*:889)'
+                    .'|/([^/]++)(*:906)'
                 .')'
                 .'|/re(?'
-                    .'|c_res/([^/]++)(*:841)'
-                    .'|setPassword([^/]++)(*:868)'
+                    .'|c_res/([^/]++)(*:935)'
+                    .'|setPassword([^/]++)(*:962)'
                 .')'
-                .'|/updateRecJson/([^/]++)(*:900)'
+                .'|/updateRecJson/([^/]++)(*:994)'
+                .'|/qr\\-code/([^/]++)/([\\w\\W]+)(*:1030)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -168,14 +193,19 @@ return [
         630 => [[['_route' => 'supprimerrecette', '_controller' => 'App\\Controller\\RecetteController::supprimerrecette'], ['id'], null, null, false, true, null]],
         662 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
         695 => [[['_route' => 'supprimerplanning', '_controller' => 'App\\Controller\\PlanningController::supprimerplanning'], ['id'], null, null, false, true, null]],
-        730 => [[['_route' => 'modifierplanning', '_controller' => 'App\\Controller\\PlanningController::modifierplanning'], ['id'], null, null, false, true, null]],
-        758 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
-        788 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
-        812 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
-        841 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
-        868 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
-        900 => [
-            [['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null],
+        733 => [[['_route' => 'modifierplanning', '_controller' => 'App\\Controller\\PlanningController::modifierplanning'], ['id'], null, null, false, true, null]],
+        761 => [[['_route' => 'dddd', '_controller' => 'App\\Controller\\ReservationController::modifierreservation'], ['id'], null, null, false, true, null]],
+        778 => [[['_route' => 'dd', '_controller' => 'App\\Controller\\TableController::modifiertable'], ['id'], null, null, false, true, null]],
+        807 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
+        837 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
+        861 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
+        889 => [[['_route' => 'ddd', '_controller' => 'App\\Controller\\ReservationController::supprimerreservation'], ['id'], null, null, false, true, null]],
+        906 => [[['_route' => 'd', '_controller' => 'App\\Controller\\TableController::supprimertable'], ['id'], null, null, false, true, null]],
+        935 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
+        962 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
+        994 => [[['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null]],
+        1030 => [
+            [['_route' => 'qr_code_generate', '_controller' => 'Endroid\\QrCodeBundle\\Controller\\GenerateController'], ['builder', 'data'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

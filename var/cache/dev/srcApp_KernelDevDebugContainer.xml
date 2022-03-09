@@ -29,6 +29,7 @@
       <parameter key="WebpackEncoreBundle">Symfony\WebpackEncoreBundle\WebpackEncoreBundle</parameter>
       <parameter key="GregwarCaptchaBundle">Gregwar\CaptchaBundle\GregwarCaptchaBundle</parameter>
       <parameter key="CalendarBundle">CalendarBundle\CalendarBundle</parameter>
+      <parameter key="EndroidQrCodeBundle">Endroid\QrCodeBundle\EndroidQrCodeBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -110,6 +111,10 @@
       <parameter key="CalendarBundle" type="collection">
         <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src</parameter>
         <parameter key="namespace">CalendarBundle</parameter>
+      </parameter>
+      <parameter key="EndroidQrCodeBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\endroid\qr-code-bundle\src</parameter>
+        <parameter key="namespace">Endroid\QrCodeBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -557,6 +562,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SecurityController"/>
       </call>
     </service>
+    <service id="App\Controller\TableController" class="App\Controller\TableController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\TableController"/>
+      </call>
+    </service>
     <service id="App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" autoconfigure="true">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="App\Repository\PlanningRepository"/>
@@ -592,7 +604,13 @@
     <service id="App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ReservationType" class="App\Form\ReservationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\TableType" class="App\Form\TableType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
@@ -639,7 +657,15 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\ReservationRepository" class="App\Repository\ReservationRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\TableRepository" class="App\Repository\TableRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -648,6 +674,9 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\TutorialBlogBundle" class="App\TutorialBlogBundle" autowire="true" autoconfigure="true"/>
+    <service id="App\service\QrcodeService" class="App\service\QrcodeService" autowire="true" autoconfigure="true">
+      <argument type="service" id="Endroid\QrCode\Builder\Builder"/>
+    </service>
     <service id=".legacy_controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1096,7 +1125,9 @@
         <argument>App\Form\PromotionType</argument>
         <argument>App\Form\RecetteType</argument>
         <argument>App\Form\ReponseType</argument>
+        <argument>App\Form\ReservationType</argument>
         <argument>App\Form\ResetPassType</argument>
+        <argument>App\Form\TableType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1433,7 +1464,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.hd2OOIx"/>
+      <argument type="service" id=".service_locator.Szt_6oM"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2113,6 +2144,8 @@
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/CalendarBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\endroid\qr-code-bundle\src/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/EndroidQrCodeBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -2161,6 +2194,8 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/CalendarBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\endroid\qr-code-bundle\src/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/EndroidQrCodeBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -3667,6 +3702,9 @@
       <call method="addExtension">
         <argument type="service" id="webpack_encore.twig_stimulus_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="Endroid\QrCodeBundle\Twig\QrCodeExtension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3927,7 +3965,7 @@
       <argument>,</argument>
     </service>
     <service id="twig.runtime_loader" class="Twig\RuntimeLoader\ContainerRuntimeLoader" public="false">
-      <argument type="service" id=".service_locator.7puFXBj"/>
+      <argument type="service" id=".service_locator.u3fe4WF"/>
     </service>
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" public="false">
       <argument type="service" id="twig"/>
@@ -4515,7 +4553,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.DrtbIRm"/>
+      <argument type="service" id=".service_locator.B_PRVzK"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5898,7 +5936,7 @@
     <service id="jms_serializer.json_serialization_visitor" class="JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory" public="false">
       <tag name="jms_serializer.serialization_visitor" format="json"/>
       <call method="setOptions">
-        <argument>1024</argument>
+        <argument>1216</argument>
       </call>
     </service>
     <service id="jms_serializer.json_deserialization_visitor" class="JMS\Serializer\Visitor\Factory\JsonDeserializationVisitorFactory" public="false">
@@ -5909,6 +5947,9 @@
     </service>
     <service id="jms_serializer.xml_serialization_visitor" class="JMS\Serializer\Visitor\Factory\XmlSerializationVisitorFactory" public="false">
       <tag name="jms_serializer.serialization_visitor" format="xml"/>
+      <call method="setFormatOutput">
+        <argument>true</argument>
+      </call>
     </service>
     <service id="jms_serializer.xml_deserialization_visitor" class="JMS\Serializer\Visitor\Factory\XmlDeserializationVisitorFactory" public="false">
       <tag name="jms_serializer.deserialization_visitor" format="xml"/>
@@ -6923,6 +6964,94 @@
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="CalendarBundle\Serializer\Serializer"/>
     </service>
+    <service id="Endroid\QrCodeBundle\Controller\GenerateController" class="Endroid\QrCodeBundle\Controller\GenerateController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="Endroid\QrCode\Builder\BuilderRegistry"/>
+    </service>
+    <service id="Endroid\QrCode\Writer\BinaryWriter" class="Endroid\QrCode\Writer\BinaryWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\DebugWriter" class="Endroid\QrCode\Writer\DebugWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\EpsWriter" class="Endroid\QrCode\Writer\EpsWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\PdfWriter" class="Endroid\QrCode\Writer\PdfWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\PngWriter" class="Endroid\QrCode\Writer\PngWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\SvgWriter" class="Endroid\QrCode\Writer\SvgWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Builder\Builder" class="Endroid\QrCode\Builder\Builder" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Builder\BuilderRegistry" class="Endroid\QrCode\Builder\BuilderRegistry" public="false" autowire="true" autoconfigure="true">
+      <call method="addBuilder">
+        <argument>default</argument>
+        <argument type="service">
+          <service class="Endroid\QrCode\Builder\Builder" public="true" autowire="true">
+            <call method="writer">
+              <argument type="service" id="Endroid\QrCode\Writer\PngWriter"/>
+            </call>
+            <call method="size">
+              <argument>300</argument>
+            </call>
+            <call method="margin">
+              <argument>10</argument>
+            </call>
+            <call method="encoding">
+              <argument type="service">
+                <service class="Endroid\QrCode\Encoding\Encoding">
+                  <argument>UTF-8</argument>
+                </service>
+              </argument>
+            </call>
+            <call method="errorCorrectionLevel">
+              <argument type="service">
+                <service class="Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow"/>
+              </argument>
+            </call>
+            <call method="roundBlockSizeMode">
+              <argument type="service">
+                <service class="Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin"/>
+              </argument>
+            </call>
+            <call method="validateResult">
+              <argument>false</argument>
+            </call>
+          </service>
+        </argument>
+      </call>
+    </service>
+    <service id="Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" autoconfigure="true">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" autoconfigure="true">
+      <tag name="twig.runtime"/>
+      <argument type="service" id="Endroid\QrCode\Builder\BuilderRegistry"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="endroid_qr_code.default_builder" class="Endroid\QrCode\Builder\Builder" public="true" autowire="true">
+      <call method="writer">
+        <argument type="service" id="Endroid\QrCode\Writer\PngWriter"/>
+      </call>
+      <call method="size">
+        <argument>300</argument>
+      </call>
+      <call method="margin">
+        <argument>10</argument>
+      </call>
+      <call method="encoding">
+        <argument type="service">
+          <service class="Endroid\QrCode\Encoding\Encoding">
+            <argument>UTF-8</argument>
+          </service>
+        </argument>
+      </call>
+      <call method="errorCorrectionLevel">
+        <argument type="service">
+          <service class="Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow"/>
+        </argument>
+      </call>
+      <call method="roundBlockSizeMode">
+        <argument type="service">
+          <service class="Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin"/>
+        </argument>
+      </call>
+      <call method="validateResult">
+        <argument>false</argument>
+      </call>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6965,6 +7094,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TableController" class="App\Controller\TableController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TableController" class="App\Controller\TableController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TableController" class="App\Controller\TableController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AddReclamationType" class="App\Form\AddReclamationType" autowire="true" abstract="true"/>
@@ -6987,8 +7119,12 @@
     <service id=".abstract.instanceof.App\Form\RecetteType" class="App\Form\RecetteType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReservationType" class="App\Form\ReservationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReservationType" class="App\Form\ReservationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TableType" class="App\Form\TableType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TableType" class="App\Form\TableType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" abstract="true"/>
@@ -7011,10 +7147,18 @@
     <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReservationRepository" class="App\Repository\ReservationRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ReservationRepository" class="App\Repository\ReservationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReviewRepository" class="App\Repository\ReviewRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TableRepository" class="App\Repository\TableRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\TableRepository" class="App\Repository\TableRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\ExtensionInterface.0.Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\RuntimeExtensionInterface.0.Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7463,6 +7607,40 @@
         <argument key="Normalizer" type="service_closure" id="serializer"/>
       </argument>
     </service>
+    <service id=".service_locator.ie3Pbs8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="r" type="service_closure" id="App\Repository\ReservationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.rVwA5tG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+        <argument key="qrcodeService" type="service_closure" id="App\service\QrcodeService"/>
+        <argument key="r" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TbtqYtz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="r" type="service_closure" id="App\Repository\ReservationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Jfpm0Lz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\ReservationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.mJzkubv" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rep" type="service_closure" id="App\Repository\ReservationRepository"/>
+        <argument key="serializerinterface" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.rpP4fMw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7503,7 +7681,39 @@
         <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
-    <service id=".service_locator.0CQSQAm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.e65P6Zd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="t" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uoFp6Rd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.lzUsxkl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="tableRepository" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.VaqQ7eW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="repo" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.7xxI7L1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="serializerinterface" type="service_closure" id="serializer"/>
+        <argument key="tab" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ikWpbX." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.y3HPCYI"/>
@@ -7561,6 +7771,11 @@
         <argument key="App\Controller\ReclamationController::modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::reponse" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\ReclamationController::showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\ReservationController::afficherreservation" type="service_closure" id=".service_locator.ie3Pbs8"/>
+        <argument key="App\Controller\ReservationController::ajouterreservation" type="service_closure" id=".service_locator.rVwA5tG"/>
+        <argument key="App\Controller\ReservationController::getreservation" type="service_closure" id=".service_locator.mJzkubv"/>
+        <argument key="App\Controller\ReservationController::modifierreservation" type="service_closure" id=".service_locator.Jfpm0Lz"/>
+        <argument key="App\Controller\ReservationController::supprimerreservation" type="service_closure" id=".service_locator.TbtqYtz"/>
         <argument key="App\Controller\SecurityController::activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController::editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController::forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
@@ -7568,6 +7783,14 @@
         <argument key="App\Controller\SecurityController::registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController::resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
         <argument key="App\Controller\SecurityController::signUpAction" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\TableController::Supprimertablee" type="service_closure" id=".service_locator.uoFp6Rd"/>
+        <argument key="App\Controller\TableController::affichertable" type="service_closure" id=".service_locator.e65P6Zd"/>
+        <argument key="App\Controller\TableController::gettable" type="service_closure" id=".service_locator.7xxI7L1"/>
+        <argument key="App\Controller\TableController::listpdf" type="service_closure" id=".service_locator.lzUsxkl"/>
+        <argument key="App\Controller\TableController::modifiertable" type="service_closure" id=".service_locator.uoFp6Rd"/>
+        <argument key="App\Controller\TableController::sortBackByNameAsc" type="service_closure" id=".service_locator.VaqQ7eW"/>
+        <argument key="App\Controller\TableController::sortBackByNameDesc" type="service_closure" id=".service_locator.VaqQ7eW"/>
+        <argument key="App\Controller\TableController::supprimertable" type="service_closure" id=".service_locator.e65P6Zd"/>
         <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.y3HPCYI"/>
         <argument key="App\Controller\AdminController:readNotifications" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController:search" type="service_closure" id=".service_locator.wgX78kv"/>
@@ -7623,6 +7846,11 @@
         <argument key="App\Controller\ReclamationController:modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:reponse" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\ReclamationController:showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\ReservationController:afficherreservation" type="service_closure" id=".service_locator.ie3Pbs8"/>
+        <argument key="App\Controller\ReservationController:ajouterreservation" type="service_closure" id=".service_locator.rVwA5tG"/>
+        <argument key="App\Controller\ReservationController:getreservation" type="service_closure" id=".service_locator.mJzkubv"/>
+        <argument key="App\Controller\ReservationController:modifierreservation" type="service_closure" id=".service_locator.Jfpm0Lz"/>
+        <argument key="App\Controller\ReservationController:supprimerreservation" type="service_closure" id=".service_locator.TbtqYtz"/>
         <argument key="App\Controller\SecurityController:activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController:editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController:forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
@@ -7630,6 +7858,14 @@
         <argument key="App\Controller\SecurityController:registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController:resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
         <argument key="App\Controller\SecurityController:signUpAction" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\TableController:Supprimertablee" type="service_closure" id=".service_locator.uoFp6Rd"/>
+        <argument key="App\Controller\TableController:affichertable" type="service_closure" id=".service_locator.e65P6Zd"/>
+        <argument key="App\Controller\TableController:gettable" type="service_closure" id=".service_locator.7xxI7L1"/>
+        <argument key="App\Controller\TableController:listpdf" type="service_closure" id=".service_locator.lzUsxkl"/>
+        <argument key="App\Controller\TableController:modifiertable" type="service_closure" id=".service_locator.uoFp6Rd"/>
+        <argument key="App\Controller\TableController:sortBackByNameAsc" type="service_closure" id=".service_locator.VaqQ7eW"/>
+        <argument key="App\Controller\TableController:sortBackByNameDesc" type="service_closure" id=".service_locator.VaqQ7eW"/>
+        <argument key="App\Controller\TableController:supprimertable" type="service_closure" id=".service_locator.e65P6Zd"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7691,7 +7927,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.hd2OOIx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Szt_6oM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AddReclamationType" type="service_closure" id="App\Form\AddReclamationType"/>
@@ -7704,7 +7940,9 @@
         <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
         <argument key="App\Form\RecetteType" type="service_closure" id="App\Form\RecetteType"/>
         <argument key="App\Form\ReponseType" type="service_closure" id="App\Form\ReponseType"/>
+        <argument key="App\Form\ReservationType" type="service_closure" id="App\Form\ReservationType"/>
         <argument key="App\Form\ResetPassType" type="service_closure" id="App\Form\ResetPassType"/>
+        <argument key="App\Form\TableType" type="service_closure" id="App\Form\TableType"/>
         <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -7880,7 +8118,7 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.DrtbIRm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.B_PRVzK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
@@ -7894,7 +8132,9 @@
         <argument key="App\Repository\RecetteRepository" type="service_closure" id="App\Repository\RecetteRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
         <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
+        <argument key="App\Repository\ReservationRepository" type="service_closure" id="App\Repository\ReservationRepository"/>
         <argument key="App\Repository\ReviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
+        <argument key="App\Repository\TableRepository" type="service_closure" id="App\Repository\TableRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -8027,6 +8267,12 @@
     <service id=".service_locator.vdmMuyE.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
       <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\TableController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\TableController"/>
+      <argument>App\Controller\TableController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -8176,12 +8422,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.0CQSQAm"/>
+      <argument type="service" id=".service_locator.ikWpbX."/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.0CQSQAm"/>
+      <argument type="service" id=".service_locator.ikWpbX."/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -8457,9 +8703,10 @@
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
-    <service id=".service_locator.7puFXBj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.u3fe4WF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="Endroid\QrCodeBundle\Twig\QrCodeRuntime" type="service_closure" id="Endroid\QrCodeBundle\Twig\QrCodeRuntime"/>
         <argument key="JMS\Serializer\Twig\SerializerRuntimeHelper" type="service_closure" id="jms_serializer.twig_extension.serializer_runtime_helper"/>
         <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
         <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service_closure" id="twig.runtime.httpkernel"/>
@@ -8626,9 +8873,12 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="Gregwar\CaptchaBundle\Controller\CaptchaController" alias="gregwar_captcha.controller" public="true"/>
+    <service id="Endroid\QrCode\Builder\BuilderInterface" alias="Endroid\QrCode\Builder\Builder" public="false"/>
+    <service id="Endroid\QrCode\Builder\BuilderRegistryInterface" alias="Endroid\QrCode\Builder\BuilderRegistry" public="false"/>
+    <service id="Endroid\QrCode\Builder\BuilderInterface $defaultQrCodeBuilder" alias="endroid_qr_code.default_builder" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.0CQSQAm"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.ikWpbX."/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -8648,7 +8898,7 @@
     <service id=".service_locator.J7o.N2l" alias="jms_serializer.metadata.service_locator" public="false"/>
     <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~eUXzXYF" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
-    <service id=".service_locator.5ASAQ1L" alias=".service_locator.hd2OOIx" public="false"/>
+    <service id=".service_locator.XicSvMc" alias=".service_locator.Szt_6oM" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

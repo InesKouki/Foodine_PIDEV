@@ -42,7 +42,7 @@ class ClientController extends AbstractController
             $image = $form->get('file')->getData();
             if($image){
                 $filename = md5(uniqid()) . '.' . $image->guessExtension();
-                $image->move($this->getParameter('upload_directory'),$filename);
+                $image->move($this->getParameter('uploads_directory'),$filename);
                 $user->setFile($filename);
                 $em =$this->getDoctrine()->getManager();
                 $em->persist($user);

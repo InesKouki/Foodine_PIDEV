@@ -36,7 +36,7 @@ class EvenementController extends AbstractController
      */
     public function afficheBack(EvenementRepository $repo, PaginatorInterface $paginator, Request $request)
     {
-        $donnes=$repo->orderByDateDescQB();
+        $donnes=$repo->orderByNameAscQB();
         $event=$paginator->paginate(
             $donnes,
             $request->query->getInt('page',1),3
@@ -45,7 +45,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/admin-evenements/searchResajax ", name="searchResajax")
+     * @Route("/admin-evenements/searchResajax ", name="searchEventResajax")
      */
     public function searchEventAjax(EvenementRepository $repo,Request $request)
     {
@@ -67,7 +67,7 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
         $file = $form['image']->getData();
 
-        $users = $repo->findAll();
+        $users = $repo->findOnlyUsers();
 
         if ($form->isSubmitted() && $form->isValid()) {
                 $upload_dir = $this->getParameter('uploads_directory');
