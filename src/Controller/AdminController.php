@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Entity\Notification;
+use App\Entity\Review;
 use App\Form\EditEmployeType;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +27,8 @@ class AdminController extends AbstractController
     public function index(NotificationRepository $repository): Response
     {
         $notif = $repository->findAll();
+        $rev = $this->getDoctrine()->getRepository(Review::class)->findRevMax();
+        $revCount = $this->getDoctrine()->getRepository(Review::class)->findRevCount();
         $count=$repository->countNotifUnseen();
         //$users=$this->getDoctrine()->getRepository(User::class)->findClients();
         $nbclient=$this->getDoctrine()->getRepository(User::class)->nbsClient();
@@ -39,8 +43,10 @@ class AdminController extends AbstractController
             'ntot'=>$ntot,
             'rec'=>$rec,
             'notif'=>$notif,
-            'nbNotif'=>$count
-            //'users'=>$users=
+            'nbNotif'=>$count,
+            'rev'=>$rev,
+            'revCount'=>$revCount
+
         ]);
     }
     /**
@@ -56,10 +62,18 @@ class AdminController extends AbstractController
     /**
      * @Route("/showUsers", name="showUsers")
      */
-    public function showUsers(){
+    public function showUsers(Request $request,PaginatorInterface $paginator){
 
         $repository=$this->getDoctrine()->getRepository(User::class);
-        $user=$repository->findUsers();
+        $data=$repository->findUsers();
+
+        $user = $paginator->paginate(
+            $data, // on passe les données
+            $request->query->getInt('page',1), //numero de la page en cours, 1par defaut
+            4 // le nombre d'element par page
+
+
+        );
         return $this->render("/back/Users/employe.html.twig",[
             'user' => $user
         ]);
@@ -175,6 +189,18 @@ class AdminController extends AbstractController
 
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("deleteReview/{id}", name="deleteReview")
+     */
+    public function deleteReview($id){
+        $review = $this->getDoctrine()->getRepository(Review::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($review);
+        $em->flush();
+        return $this->redirectToRoute('admin_index');
+    }
 
 
 

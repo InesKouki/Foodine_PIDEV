@@ -129,6 +129,11 @@ class ComposerStaticInit04c04f72f4934c7d5b43cf6b1f812650
         array (
             'Laminas\\Code\\' => 13,
         ),
+        'K' => 
+        array (
+            'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
+        ),
         'G' => 
         array (
             'Gregwar\\CaptchaBundle\\' => 22,
@@ -503,6 +508,14 @@ class ComposerStaticInit04c04f72f4934c7d5b43cf6b1f812650
         'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
+        ),
+        'Knp\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
         ),
         'Gregwar\\CaptchaBundle\\' => 
         array (
