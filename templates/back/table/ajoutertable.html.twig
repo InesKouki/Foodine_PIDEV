@@ -1,8 +1,12 @@
 {% extends 'baseBack.html.twig' %}
 {% block title %}
-    Reservation
+    ajouetrtable
 {% endblock %}
+
 {% block content %}
+
+
+
     <!--wrapper-->
     <div class="wrapper">
         <!--start header -->
@@ -423,15 +427,16 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             <div class="page-content">
+
                 <!--breadcrumb-->
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                     <div class="breadcrumb-title pe-3">Tables</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
-                                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bxs-calendar"></i></a>
+                                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-chair"></i></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Réservations</li>
+                                <li class="breadcrumb-item active" aria-current="page">Ajouter Table</li>
                             </ol>
                         </nav>
                     </div>
@@ -439,51 +444,79 @@
                 </div>
                 <!--end breadcrumb-->
 
-                <h6 class="mb-0 text-uppercase" >Liste des Réservations</h6>
-                <br>
-
-                <div>
-                    <input type="text" id="search" class="form-control search-control" placeholder="Type to search...">
-                </div>
-                <hr/>
                 <div class="card">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="reservationTable" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th>Nom du client </th>
-                                    <th>Date reservation</th>
-                                    <th>Numero Portable</th>
-                                    <th>Numero de la table</th>
-                                    <th>Email</th>
-                                    <th>image de la table</th>
+                    <div class="card-body p-4">
+                        <h5 class="card-title">Ajouter Table</h5>
+                        <hr/>
+                        <div class="form-body mt-4">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="border border-3 p-4 rounded">
+                                        {{ form_start (form,{ 'attr' : {'novalidate':'novalidate'} }) }}
+                                        <div class="mb-3">
+                                            {{ form_label(form.imagetable,"image_table",{'attr':{'class':'form-label'}}) }}
+                                            {{ form_widget(form.imagetable,{'attr':{'class':'form-control'}}) }}
+                                          <style>
+                                              .custom-error { color: #c13584 }
 
-                                    <th>Supprimer</th>
-                                    <th>Modifier</th>
-                                </tr>
-                                </thead>
-                                <tbody id="all">
-                                {% include 'back/reservation/ajax.html.twig' %}
-                                </tbody>
-                                <tbody id="search">
+                                          </style>
+                                           <div class="custom-error">
+                                               {{ form_errors(form.imagetable) }}
+                                           </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="border border-3 p-4 rounded">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ form_label(form.nbplacetable,"nombre de place",{'attr':{'class':'form-label'}}) }}
+                                                    {{ form_widget(form.nbplacetable,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.nbplacetable) }}
+                                                </div>
 
-                                </tbody>
+                                            </div>
 
 
-                            </table>
-                            <div style="align-self: center">
-                            {{ knp_pagination_render(r) }}
-                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ form_label(form.numerotable,"numero de la table",{'attr':{'class':'form-label'}}) }}
+                                                    {{ form_widget(form.numerotable,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.numerotable) }}
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{ form_label(form.etat,"etat de la table",{'attr':{'class':'form-label'}}) }}
+                                                    {{ form_widget(form.etat,{'attr':{'class':'form-control'}}) }}
+                                                    {{ form_errors(form.numerotable) }}
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col-12">
+                                                <div class="d-grid">
+                                                    <button type="submit" class="btn btn-light">Ajouter</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--end row-->
                         </div>
                     </div>
                 </div>
 
-
             </div>
         </div>
         <!--end page wrapper -->
-
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
@@ -493,38 +526,8 @@
             <p class="mb-0">Copyright © 2021. All right reserved.</p>
         </footer>
     </div>
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
-    <script
-            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
-    </script>
-    <script>
-        $( document ).ready(function() {
-            var currentRequest = null;
-            $("#search").keyup(function(e){
-                /* La variable value va prendre la valeur insérer dans le champ de texte
-                afin d’effectuer la recherche */
-                var value = $(this).val();
-                if(currentRequest != null) {
-                    currentRequest.abort();
-                }
-                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
-                « search » pour faire la recherche */
-                currentRequest = $.ajax({
-                    url : "{{ path('searchResajax') }}",
-                    type : 'GET',
-                    data: {
-                        'searchValue' : value
-                    },
-                    success : function(retour)
-                    {
-                        $('#all').html(retour);
-                    },
-                });
-                return false;
-            });
-        });
-    </script>
-
+    {{ form_end (form) }}
     <!--end wrapper-->
 {% endblock %}
+
 

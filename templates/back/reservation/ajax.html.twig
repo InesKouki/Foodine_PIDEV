@@ -1,0 +1,12 @@
+{% for i in r %}
+    <tr>
+        <td>{{ i.nom }}</td>
+        <td>{{ i.datereservation|date }}</td>
+        <td>{{ i.mobile }}</td>
+        <td>{{ i.tableid.numerotable }}</td>
+        <td>{{ i.email }}</td>
+        <td><img height="120" width="200" src="{{ asset('uploads/') ~ i.tableid.imagetable  }}" alt="image"   ></td>
+        <td><a href="{{ path('ddd',{'id':i.id} ) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
+        <td><a href="{{ path('dddd',{'id':i.id} ) }}" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit' ></i></a></td>
+    </tr>
+{% endfor %}
