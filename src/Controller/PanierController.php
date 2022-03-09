@@ -46,9 +46,8 @@ class PanierController extends AbstractController
 
         return $this->render('front/panier/panier.html.twig', [
             /*'panier'=>$panier*/
-            'liste' => $panierWithData,
+            'liste1' => $panierWithData,
             'total' => $total,
-            'fees'=>$fees
 
         ]);
     }

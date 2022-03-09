@@ -1,6 +1,6 @@
 {% extends 'baseFront.html.twig' %}
 {% block title %}
-    Commande
+    Panier
 {% endblock %}
 {% block content %}
     <!-- Sidebar Modal -->
@@ -156,7 +156,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for p in liste %}
+                                {% for p in liste1 %}
 
                                 <tr>
                                     <td class="product-thumbnail">
@@ -226,7 +226,7 @@
                                     <span class="text-right">{{ total }}Dt</span>
                                 </li>
                                 <li>Shipping
-                                    <span class="text-right">{{ fees }}Dt</span>
+                                    <span class="text-right">Dt</span>
                                 </li>
                                 <li>Total
                                     <span class="text-right"><b>Dt</b></span>

@@ -3,6 +3,23 @@
     Commande
 {% endblock %}
 {% block content %}
+    <div class="page-banner-area item-bg3">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Commande</h2>
+                        <ul>
+                            <li>
+                                <a href="index.html">Acceuil</a>
+                            </li>
+                            <li>Passer commande</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="cart-area ptb-100">
 
         <div class="container">
@@ -54,29 +71,25 @@
                                     style="display: inline-block">
 
                                 <button class="btn btn-primary"> Ajouter</button>
-
                             </form>
                             {{ form_end(form) }}
-
                         </div>
-
                     </div>
-
                 </div>
                 <div class="col-lg-6 col-md-12">
-                    {% for p in liste %}
-
                     <div class="order-details">
-                        <h3 class="title">Your Order</h3>
+                        <h3 class="title">Liste des Produits</h3>
                         <div class="order-table table-responsive">
                             <table class="table table-bordered">
                                 <thead>
+
                                 <tr>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Nom du Produit</th>
+                                    <th scope="col">Prix</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for p in liste1 %}
                                 <tr>
                                     <td class="product-name">
                                         <a href="shop-details.html">{{ p.product.name }}</a>
@@ -85,23 +98,20 @@
                                         <span class="subtotal-amount">{{ p.product.price }}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="total-price">
-                                        <span>Order Total</span>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="subtotal-amount">{{ total }}</span>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                                 </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-right">Total :</td>
+                                    <td class="text-right">{{ total }}Dt</td>
+                                    <td></td>
+                                </tr>
+                                </tfoot>>
                             </table>
                         </div>
-
-
                     </div>
-                    {% endfor %}
-
                 </div>
+
             </div>
 
         </div>

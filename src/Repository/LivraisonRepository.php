@@ -47,4 +47,17 @@ class LivraisonRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function OrderByMail(){
+        $em=$this->getEntityManager();
+        $query=$em->createQuery('select l from App\Entity\Livraison l order by l.email ASC');
+        return $query->getResult();
+    }
+
+    public function findLivrasionByEmail($nom){
+        return $this->createQueryBuilder('event')
+            ->where('event.email LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()->getResult();
+    }
 }

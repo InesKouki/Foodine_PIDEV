@@ -1,131 +1,19 @@
 {% extends 'baseFront.html.twig' %}
 {% block title %}
-    Commande
+    Livraison
 {% endblock %}
 {% block content %}
-    <div class="sidebar-modal">
-        <div class="sidebar-modal-inner">
-            <div class="sidebar-about-area">
-                <div class="title">
-                    <h2>About Us</h2>
-                    <p>We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration.</p>
-                </div>
-            </div>
-
-            <div class="sidebar-instagram-feed">
-                <h2>Instagram</h2>
-                <ul>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram1.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram2.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram3.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram4.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram5.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram6.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram7.jpg" alt="image">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="assets/img/instagram/instagram8.jpg" alt="image">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="sidebar-contact-area">
-                <div class="contact-info">
-                    <div class="contact-info-content">
-                        <h2>
-                            <a href="tel:+0881306298615">
-                                +088 130 629 8615
-                            </a>
-                            <span>OR</span>
-                            <a href="mailto:orgo@gmail.com">
-                                orgo@gmail.com
-                            </a>
-                        </h2>
-
-                        <ul class="social">
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-facebook'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-twitter'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-instagram'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-pinterest-alt'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-youtube'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <span class="close-btn sidebar-modal-close-btn">
-                    <i class="flaticon-cancel"></i>
-                </span>
-        </div>
-    </div>
-    <!-- End Sidebar Modal -->
-
-    <!-- Start Page Banner -->
     <div class="page-banner-area item-bg3">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
                     <div class="page-banner-content">
-                        <h2>Checkout</h2>
+                        <h2>Livraison</h2>
                         <ul>
                             <li>
                                 <a href="index.html">Acceuil</a>
                             </li>
-                            <li>Checkout</li>
+                            <li>Passer livraison</li>
                         </ul>
                     </div>
                 </div>
@@ -140,117 +28,118 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="user-actions">
-                        <i class='bx bx-link-external'></i>
-                        <span>Returning customer?
-                                <a href="login.html">Click here to login</a>
-                            </span>
+
+
+                        {{ form_start(form,{ 'attr' : {'novalidate':'novalidate'} }) }}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="billing-details">
+                                    <h3 class="title">Details de la livraison</h3>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Addresse <span class="required">*</span></label>
+                                                {{ form_widget(form.addresse ,  {'attr': {'class': 'form-control'}}) }}
+                                                <ul class="custom-error">
+                                                    {{form_errors(form.addresse)}}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Code Postal <span class="required"></span></label>
+                                                {{ form_widget(form.codepostal ,  {'attr': {'class': 'form-control'}}) }}
+                                                <ul class="custom-error">
+                                                    {{form_errors(form.codepostal)}}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Addresse Email<span class="required"></span></label>
+                                                {{ form_widget(form.email ,  {'attr': {'class': 'form-control'}}) }}
+                                                <ul class="custom-error">
+                                                    {{form_errors(form.email)}}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Phone <span class="required">*</span></label>
+                                                {{ form_widget(form.phone ,  {'attr': {'class': 'form-control'}}) }}
+                                                <ul class="custom-error">
+                                                    {{form_errors(form.phone)}}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label>Détails <span class="required"></span></label>
+                                                {{ form_widget(form.details ,  {'attr': {'class': 'form-control'}}) }}
+                                                <ul class="custom-error">
+                                                    {{form_errors(form.details)}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <form
+
+                                                action="{{ path('ajouterlivraison') }}"
+                                                style="display: inline-block">
+
+                                            <button class="btn btn-primary">Passer le Livraison</button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{ form_end(form) }}
+                            <div class="col-lg-6 col-md-6">
+                                <div class="order-details">
+                                    <h3 class="title">Liste des Produits</h3>
+                                    <div class="order-table table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+
+                                            <tr>
+                                                <th scope="col">Nom du Produit</th>
+                                                <th scope="col">Prix</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for p in liste1 %}
+                                                <tr>
+                                                    <td class="product-name">
+                                                        <a href="shop-details.html">{{ p.product.name }}</a>
+                                                    </td>
+                                                    <td class="product-total">
+                                                        <span class="subtotal-amount">{{ p.product.price }}</span>
+                                                    </td>
+                                                </tr>
+
+                                            {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="4" class="text-right">Total :</td>
+                                                <td class="text-right">{{ total }}Dt</td>
+                                                <td></td>
+                                            </tr>
+                                            </tfoot>>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-
-                {{ form_start(form,{ 'attr' : {'novalidate':'novalidate'} }) }}
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="billing-details">
-                            <h3 class="title">Details de la livraison</h3>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Addresse <span class="required">*</span></label>
-                                        {{ form_widget(form.addresse ,  {'attr': {'class': 'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{form_errors(form.addresse)}}
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Code Postal <span class="required"></span></label>
-                                        {{ form_widget(form.codepostal ,  {'attr': {'class': 'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{form_errors(form.codepostal)}}
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Addresse Email<span class="required"></span></label>
-                                        {{ form_widget(form.email ,  {'attr': {'class': 'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{form_errors(form.email)}}
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Phone <span class="required">*</span></label>
-                                        {{ form_widget(form.phone ,  {'attr': {'class': 'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{form_errors(form.phone)}}
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group">
-                                        <label>Détails <span class="required"></span></label>
-                                        {{ form_widget(form.details ,  {'attr': {'class': 'form-control'}}) }}
-                                        <ul class="custom-error">
-                                            {{form_errors(form.details)}}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <form
-
-                                        action="{{ path('ajouterlivraison') }}"
-                                        style="display: inline-block">
-
-                                    <button class="btn btn-primary">Passer le Livraison</button>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {{ form_end(form) }}
-                    {% for l in livraison %}
-                    <div class="col-lg-6 col-md-12">
-                        <div class="order-details">
-                            <h3 class="title">Your Order</h3>
-                            <div class="order-table table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Total</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="product-name">
-                                            {{ l.product.name }}
-                                        </td>
-                                        <td class="product-total">
-                                            {{ l.product.total }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="total-price">
-                                            <span>Order Total</span>
-                                        </td>
-                                        <td class="product-subtotal">
-                                            <span class="subtotal-amount">$1713.50</span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
         </div>
     </section>
     <!-- End Checkout Area -->

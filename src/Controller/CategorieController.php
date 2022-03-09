@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\CategoryType;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -51,17 +53,43 @@ class CategorieController extends AbstractController
     /**
      * @Route("/products", name="products")
      */
-    public function categories(): Response
+    public function categories(SessionInterface $session, ProductRepository $repository): Response
     {
+
+        $panier = $session->get('panier',[]);
+
+        $panierWithData = [];
+
+        foreach ($panier as $id=>$quantite){
+            $panierWithData [] = [
+                'product' => $repository->find($id),
+                'quantite' => $quantite
+            ];
+
+        }
+
+        $total = 0;
+        $totals=0;
+        foreach ($panierWithData as $item){
+            $totalitem = $item['product']->getPrice() * $item['quantite'];
+            $total += $totalitem;
+            $fees = 10;
+            $totals=+$total;
+            $totals=+$fees;
+
+        }
+
         $cat1=$this->getDoctrine()->getRepository(Category::class)->findAll();
         $products=$this->getDoctrine()->getRepository(Product::class)->findAll();
 
         return $this->render('front/categorie/index.html.twig', [
             'cat'=>$cat1 ,
-            'prod'=>$products
-
+            'prod'=>$products,
+'liste1' => $panierWithData,
+            'total' => $total,
         ]);
     }
+
 
 
 

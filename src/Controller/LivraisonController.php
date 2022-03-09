@@ -5,15 +5,25 @@ namespace App\Controller;
 use App\Entity\Livraison;
 use App\Form\CommandeType;
 use App\Form\LivraisonType;
+use App\Repository\ProductRepository;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use App\Repository\LivraisonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Dompdf\Dompdf as Dompdf;
+use Dompdf\Options;
+
+
 class LivraisonController extends AbstractController
 {
     /**
@@ -37,6 +47,20 @@ class LivraisonController extends AbstractController
         return $this->render('back/livraison/livraison.html.twig',
             ['livraison'=>$Livraison]);
     }
+
+    /**
+     * @Route("/afficherlivraison/searchResajax", name="searchResajax")
+     */
+    public function searchEventAjax(LivraisonRepository $repo,Request $request)
+    {
+        $requestString=$request->get('searchValue');
+        $events = $repo->findLivrasionByEmail($requestString);
+
+        return $this->render('back/livraison/ajax.html.twig', [
+            "livraison"=>$events
+        ]);
+    }
+
     /**
      * @param $id
      * @param LivraisonRepository $repository
@@ -69,12 +93,36 @@ class LivraisonController extends AbstractController
      * @return Response
      * @Route ("/ajouterlivraison", name="ajouterlivraison")
      */
-    public function ajouter(Request $request){
+    public function ajouter(Request $request ,\Swift_Mailer $mailer, SessionInterface $session, ProductRepository $repository){
+
+
+
+        $panier = $session->get('panier',[]);
+
+        $panierWithData = [];
+
+        foreach ($panier as $id=>$quantite){
+            $panierWithData [] = [
+                'product' => $repository->find($id),
+                'quantite' => $quantite
+            ];
+
+        }
+
+        $total = 0;
+        $totals=0;
+        foreach ($panierWithData as $item){
+            $totalitem = $item['product']->getPrice() * $item['quantite'];
+            $total += $totalitem;
+            $fees = 10;
+            $totals=+$total;
+            $totals=+$fees;
+
+        }
 
 
         $livraison = new Livraison();
         $form=$this->createForm(LivraisonType::class,$livraison);
-
         $form->handleRequest($request);
         if ($form->isSubmitted()&& $form->isValid()){
 
@@ -84,11 +132,28 @@ class LivraisonController extends AbstractController
 
             $em->persist($livraison);
             $em->flush();
+            $message = (new \Swift_Message('Hello Email'))
+
+                ->setFrom('sitefoodine@gmail.com')
+                ->setTo($livraison->getEmail())
+                ->setBody('You should see me from the profiler!')
+
+
+            ;
+
+           $mailer->send($message);
             return $this->redirectToRoute('livraison');
+
         }
+
+
         return $this->render('front/livraison/AjouterLivraison.html.twig',['form'=>$form->createView(
 
-        ), 'livraison' => $livraison]);
+        ), 'livraison' => $livraison,
+            'liste1' => $panierWithData,
+            'total' => $total,
+            'fees'=>$fees
+        ]);
     }
 
     /**
@@ -122,4 +187,116 @@ class LivraisonController extends AbstractController
                 "form_title" => "Modifier"
             ]);
     }
+
+    /**
+     * @Route ("/Ajouterlivraison")
+     * @Method ("POST")
+     */
+    public function ajoutermobile(Request $request){
+
+        $livraison = new Livraison();
+
+        $em=$this->getDoctrine()->getManager();
+
+         $details=$request->query->get("details");
+         $livraison->setDetails($details);
+
+        $adresse=$request->query->get("addresse");
+        $livraison->setAddresse($adresse);
+
+        $codepostal=$request->query->get("codepostal");
+        $livraison->setCodepostal($codepostal);
+
+        $email=$request->query->get("email");
+        $livraison->setEmail($email);
+
+        $phone=$request->query->get("phone");
+        $livraison->setPhone($phone);
+
+            $em->persist($livraison);
+            $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($livraison);
+        return new JsonResponse($aj);
+
+    }
+
+
+    /**
+     * @param LivraisonRepository $repository
+     * @return Response
+     * @Route("/livraisons")
+     */
+    public function indexmobile()
+    {
+        $livraison =$this->getDoctrine()->getManager()->getRepository(Livraison::class)->findAll();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($livraison);
+        return new JsonResponse($aj);
+
+    }
+
+
+    /**
+     * @Route ("/Deletelivraison")
+    * @Method("DELETE")
+     */
+    function SupprimerFrontmoibile(Request $request , LivraisonRepository $repository){
+       $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $livraison =$em->getRepository(Livraison::class)->find($id);
+        $em->remove($livraison);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize($livraison);
+        return new JsonResponse($aj);
+    }
+
+
+    /**
+     * @param LivraisonRepository $repository
+     * @return Response
+     * @Route ("livraisontrieb")
+     */
+    function OrderByMailDQL(LivraisonRepository $repository){
+
+        $livraison = $repository->OrderByMail();
+        return $this->render('back/livraison/livraison.html.twig',
+            ['livraison'=>$livraison]);
+    }
+
+
+
+
+
+    /**
+     * @Route("/pdf", name="pdf")
+     */
+
+
+    public function generate_pdf()
+    {
+        $livraison=$this->getDoctrine()->getRepository(Livraison::class)->findAll();
+
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($options);
+
+        $html = $this->renderView('back/livraison/pdf.html.twig', [
+            'livraison'=>$livraison
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("Livraison.pdf", [
+            "Attachment" => false
+        ]);
+    }
+
 }

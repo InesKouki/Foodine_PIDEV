@@ -19,30 +19,30 @@ class Livraison
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255 )
      * @Assert\NotBlank (message="Merci de saisie votre addresse")
      */
     private $addresse;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string")
      * @Assert\NotBlank (message="Merci de saisie votre code postal")
      */
     private $codepostal;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank (message="Merci de saisie votre numéro de telephone")
      */
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $details;
 
@@ -68,12 +68,12 @@ class Livraison
         return $this;
     }
 
-    public function getCodepostal(): ?int
+    public function getCodepostal(): ?string
     {
         return $this->codepostal;
     }
 
-    public function setCodepostal(?int $codepostal): self
+    public function setCodepostal(?string $codepostal): self
     {
         $this->codepostal = $codepostal;
 
@@ -92,12 +92,12 @@ class Livraison
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 

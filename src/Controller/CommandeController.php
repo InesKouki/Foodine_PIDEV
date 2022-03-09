@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Serializer;
 
 class CommandeController extends AbstractController
 {
@@ -116,7 +117,7 @@ class CommandeController extends AbstractController
      * @return Response
      * @Route ("/ajoutercommande", name="ajoutercommande")
      */
-    public function ajout(Request $request, SessionInterface $session, ProductRepository $repository): Response
+    public function ajout(Request $request, SessionInterface $session, ProductRepository $repository)
 
     {
 
@@ -161,7 +162,7 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('listecommande');
         }
         return $this->render('front/commande/AjouterCommande.html.twig',['form'=>$form->createView(),
-            'liste' => $panierWithData,
+            'liste1' => $panierWithData,
             'total' => $total,
             'fees'=>$fees
             ]);

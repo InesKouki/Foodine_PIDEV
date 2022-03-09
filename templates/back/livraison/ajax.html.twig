@@ -1,0 +1,24 @@
+{% for l in livraison %}
+    <tr>
+
+        <td>{{ l.addresse }}</td>
+        <td>
+            {% if l.etat == 1  %}
+                <span class="badge bg-success">Traité</span>
+            {% else  %}
+                <span class="badge bg-secondary">Non Traité</span>
+            {% endif %}
+        </td>
+        <td>{{ l.codepostal }}</td>
+        <td>{{ l.email  }}</td>
+        <td>{{ l.phone }}
+        </td>
+        <td>{{ l.details  }}</td>
+        <td>
+            <div class="d-flex order-actions">
+                <a href="{{ path('modifierlivraison',{id :l.id}) }}" class=""><i class='bx bxs-edit'></i></a>
+                <a href="{{ path('supprimerlivraison',{id :l.id}) }}" class="ms-3"><i class='bx bxs-trash'></i></a>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
