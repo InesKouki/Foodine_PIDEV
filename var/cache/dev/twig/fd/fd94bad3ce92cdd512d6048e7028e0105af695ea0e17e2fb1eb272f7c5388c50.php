@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* back/recette/ajoutRecette.html.twig */
+/* back/recette/AjoutRecette.html.twig */
 class __TwigTemplate_7dadcddca5fb4b3b8dee9b1409f2a50236ab7f26cb4ae6005ea2ccfcedacba5b extends Template
 {
     private $source;
@@ -24,316 +24,29 @@ class __TwigTemplate_7dadcddca5fb4b3b8dee9b1409f2a50236ab7f26cb4ae6005ea2ccfceda
 
         $this->source = $this->getSourceContext();
 
-        $this->parent = false;
-
         $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'content' => [$this, 'block_content'],
         ];
+    }
+
+    protected function doGetParent(array $context)
+    {
+        // line 1
+        return "baseBack.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/recette/ajoutRecette.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/recette/AjoutRecette.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/recette/ajoutRecette.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/recette/AjoutRecette.html.twig"));
 
-        // line 1
-        echo "<!doctype html>
-<html lang=\"en\">
-<head>
-    <!-- Required meta tags -->
-    <meta charset=\"utf-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-    <!--favicon-->
-    <link rel=\"icon\" href=\"Back/assets/images/icon.png\" type=\"image/png\" />
-    <!--plugins-->
-    <link href=\"Back/assets/plugins/simplebar/css/simplebar.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/input-tags/css/tagsinput.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/metismenu/css/metisMenu.min.css\" rel=\"stylesheet\" />
-    <!-- loader-->
-    <link href=\"Back/assets/css/pace.min.css\" rel=\"stylesheet\" />
-    <script src=\"Back/assets/js/pace.min.js\"></script>
-    <!-- Bootstrap CSS -->
-    <link href=\"Back/assets/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">
-    <link href=\"Back/assets/css/app.css\" rel=\"stylesheet\">
-    <link href=\"Back/assets/css/icons.css\" rel=\"stylesheet\">
-
-    <title>Foodine | Ajouter Recette</title>
-</head>
-
-<body class=\"bg-theme bg-theme6\">
-<!--wrapper-->
-<div class=\"wrapper\">
-    <!--start header -->
-    <header>
-        <div class=\"topbar d-flex align-items-center\">
-            <nav class=\"navbar navbar-expand\">
-                <div class=\"topbar-logo-header\">
-                    <div class=\"\">
-                        <a href=\"IndexChef.html\" ><img src=\"Back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
-                    </div>
-                    <div class=\"\">
-                        <!--<h4 class=\"logo-text\">Foodine</h4>-->
-                    </div>
-                </div>
-                <div class=\"mobile-toggle-menu\"><i class='bx bx-menu'></i></div>
-                <div class=\"search-bar flex-grow-1\">
-
-                </div>
-                <div class=\"top-menu ms-auto\">
-                    <ul class=\"navbar-nav align-items-center\">
-                        <li class=\"nav-item mobile-search-icon\">
-                            <a class=\"nav-link\" href=\"#\">\t<i class='bx bx-search'></i>
-                            </a>
-                        </li>
-
-                        <li class=\"nav-item dropdown dropdown-large\">
-
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-
-                                <div class=\"header-notifications-list\">
-                                </div>
-
-                            </div>
-                        </li>
-                        <li class=\"nav-item dropdown dropdown-large\">
-
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-
-                                <div class=\"header-message-list\">
-                                </div>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class=\"user-box dropdown\">
-                    <a class=\"d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <img src=\"Back/assets/images/avatars/ines.jpg\" class=\"user-img\" alt=\"user avatar\">
-                        <div class=\"user-info ps-3\">
-                            <p class=\"user-name mb-0\">Ines </p>
-                            <p class=\"designattion mb-0\">Chef</p>
-                        </div>
-                    </a>
-                    <ul class=\"dropdown-menu dropdown-menu-end\">
-
-                        <li><a class=\"dropdown-item\" href=\"ConnexionChef.html\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <!--end header -->
-    <!--navigation-->
-    <div class=\"nav-container\">
-        <div class=\"mobile-topbar-header\">
-            <div>
-                <!--\t<img src=\"Back/assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
-            </div>
-            <div>
-                <a href=\"indexChef.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
-            </div>
-            <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
-            </div>
-        </div>
-        <nav class=\"topbar-nav\">
-            <ul class=\"metismenu\" id=\"menu\">
-                <li>
-                    <a href=\"/ajouterplanning\" class=\"\">
-                        <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
-                        </div>
-                        <div class=\"menu-title\">Planning</div>
-                    </a>
-
-
-                <li>
-                    <a href=\"admin-recette\" class=\"\">
-                        <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
-                        </div>
-                        <div class=\"menu-title\">Recettes</div>
-                    </a>
-
-                </li>
-
-            </ul>
-        </nav>
-    </div>
-    <!--end navigation-->
-    <!--start page wrapper -->
-    <div class=\"page-wrapper\">
-        <div class=\"page-content\">
-
-            <!--breadcrumb-->
-            <div class=\"page-breadcrumb d-none d-sm-flex align-items-center mb-3\">
-                <div class=\"breadcrumb-title pe-3\">Ajouter Recette</div>
-                <div class=\"ps-3\">
-                    <nav aria-label=\"breadcrumb\">
-                        <ol class=\"breadcrumb mb-0 p-0\">
-                            <li class=\"breadcrumb-item\"><a href=\"javascript:;\"><i class=\"bx bx-receipt\"></i></a>
-                            </li>
-
-                        </ol>
-                    </nav>
-                </div>
-
-            </div>
-            <!--end breadcrumb-->
-
-            <div class=\"card\">
-                <div class=\"card-body p-4\">
-                    <h5 class=\"card-title\">Ajouter Recette</h5>
-                    <hr/>
-                    <div class=\"form-body mt-4\">
-                        <div class=\"row\">
-                            <div class=\"col-lg-8\">
-                                <div class=\"border border-3 p-4 rounded\">
-
-                                    <div class=\"mb-3\">
-                                        <label for=\"inputProductDescription\" class=\"form-label\">Image de la recette</label>
-                                        <input id=\"image-uploadify\" type=\"file\" accept=\".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf\" multiple>
-                                    </div>
-
-
-
-                                </div>
-
-
-
-
-                            </div>
-
-
-
-
-                            <div class=\"col-lg-4\">
-                                <div class=\"border border-3 p-4 rounded\">
-                                    <div class=\"row g-3\">
-
-
-                                        <div class=\"col-12\">
-                                            <label for=\"inputProductType\" class=\"form-label\">Nom De la recette</label>
-                                            <input type=\"text\" class=\"form-control\" id=\"inputProductTags\" placeholder=\"Nom recette\">
-                                        </div>
-                                        <div class=\"col-12\">
-                                            <label for=\"inputVendor\" class=\"form-label\">Nom de du planning</label>
-                                            <select class=\"form-select\" id=\"inputVendor\">
-                                                <option></option>
-                                                <option value=\"1\">One</option>
-                                                <option value=\"2\">Two</option>
-                                                <option value=\"3\">Three</option>
-                                            </select>
-                                        </div>
-
-                                        <div class=\"card-body\">
-                                            <form>
-
-                                                <div class=\"mb-3\">
-                                                    <label class=\"form-label\">Ingrédients</label>
-                                                    <select multiple data-role=\"tagsinput\">
-                                                        <option value=\"Amsterdam\">Ingredient1</option>
-                                                        <option value=\"Washington\">Ingredient2</option>
-                                                        <option value=\"Sydney\">Ingredient3</option>
-                                                        <option value=\"Beijing\">Beijing</option>
-                                                        <option value=\"Cairo\">Cairo</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <div class=\"col-12\">
-                                            <label for=\"inputProductTags\" class=\"form-label\">Description</label>
-                                            <input type=\"text\" class=\"form-control\" id=\"inputProductTags\" placeholder=\"Enter Product Tags\">
-                                        </div>
-                                        <div class=\"col-12\">
-                                            <div class=\"d-grid\">
-                                                <button type=\"button\" class=\"btn btn-light\">Ajouter</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end row-->
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!--end page wrapper -->
-    <!--start overlay-->
-    <div class=\"overlay toggle-icon\"></div>
-    <!--end overlay-->
-    <!--Start Back To Top Button--> <a href=\"javaScript:;\" class=\"back-to-top\"><i class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
-    <footer class=\"page-footer\">
-        <p class=\"mb-0\">Copyright © 2021. All right reserved.</p>
-    </footer>
-</div>
-<!--end wrapper-->
-<!--start switcher-->
-<div class=\"switcher-wrapper\">
-    <div class=\"switcher-btn\"> <i class='bx bx-cog bx-spin'></i>
-    </div>
-    <div class=\"switcher-body\">
-        <div class=\"d-flex align-items-center\">
-            <h5 class=\"mb-0 text-uppercase\">Theme Customizer</h5>
-            <button type=\"button\" class=\"btn-close ms-auto close-switcher\" aria-label=\"Close\"></button>
-        </div>
-        <hr/>
-        <p class=\"mb-0\">Gaussian Texture</p>
-        <hr>
-
-        <ul class=\"switcher\">
-            <li id=\"theme1\"></li>
-            <li id=\"theme2\"></li>
-            <li id=\"theme3\"></li>
-            <li id=\"theme4\"></li>
-            <li id=\"theme5\"></li>
-            <li id=\"theme6\"></li>
-        </ul>
-        <hr>
-        <p class=\"mb-0\">Gradient Background</p>
-        <hr>
-
-        <ul class=\"switcher\">
-            <li id=\"theme7\"></li>
-            <li id=\"theme8\"></li>
-            <li id=\"theme9\"></li>
-            <li id=\"theme10\"></li>
-            <li id=\"theme11\"></li>
-            <li id=\"theme12\"></li>
-            <li id=\"theme13\"></li>
-            <li id=\"theme14\"></li>
-            <li id=\"theme15\"></li>
-        </ul>
-    </div>
-</div>
-<!--end switcher-->
-<!-- Bootstrap JS -->
-<script src=\"Back/assets/js/bootstrap.bundle.min.js\"></script>
-<!--plugins-->
-<script src=\"Back/assets/js/jquery.min.js\"></script>
-<script src=\"Back/assets/plugins/input-tags/js/tagsinput.js\"></script>
-
-<script src=\"Back/assets/plugins/simplebar/js/simplebar.min.js\"></script>
-<script src=\"Back/assets/plugins/metismenu/js/metisMenu.min.js\"></script>
-<script src=\"Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>
-<script src=\"Back/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js\"></script>
-<script>
-    \$(document).ready(function () {
-        \$('#image-uploadify').imageuploadify();
-    })
-</script>
-<!--app JS-->
-<script src=\"Back/assets/js/app.js\"></script>
-</body>
-
-</html>";
+        $this->parent = $this->loadTemplate("baseBack.html.twig", "back/recette/AjoutRecette.html.twig", 1);
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
@@ -342,143 +55,196 @@ class __TwigTemplate_7dadcddca5fb4b3b8dee9b1409f2a50236ab7f26cb4ae6005ea2ccfceda
 
     }
 
+    // line 2
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        // line 3
+        echo "    Recettes
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 5
+    public function block_content($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
+
+        // line 6
+        echo "    <div class=\"page-wrapper\">
+        <div class=\"page-content\">
+
+            <!--breadcrumb-->
+            <div class=\"page-breadcrumb d-none d-sm-flex align-items-center mb-3\">
+                <div class=\"breadcrumb-title pe-3\">Ajouter Recette</div>
+                <div class=\"ps-3\">
+                    <nav aria-label=\"breadcrumb\">
+                        <ol class=\"breadcrumb mb-0 p-0\">
+                            <li class=\"breadcrumb-item\"><a href=\"javascript:;\"><i class=\"bx bx-receipt\"></i></a>
+                            </li>
+
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+            <!--end breadcrumb-->
+
+            <div class=\"card\">
+                <div class=\"card-body p-4\">
+                    <h5 class=\"card-title\">Ajouter Recette</h5>
+                    <hr/>
+                    ";
+        // line 29
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 29, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
+        echo "
+                    <div class=\"form-body mt-4\">
+                        <div class=\"row\">
+                            <div class=\"col-lg-6\">
+                                <div class=\"border border-3 p-4 rounded\">
+
+                                    <div class=\"mb-3\">
+                                        <label for=\"inputProductDescription\" class=\"form-label\">Image de
+                                            Recette</label>
+                                        ";
+        // line 38
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 38, $this->source); })()), "imagerecette", [], "any", false, false, false, 38), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+
+                                        <ul class=\"custom-error\">
+                                            ";
+        // line 41
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 41, $this->source); })()), "imagerecette", [], "any", false, false, false, 41), 'errors');
+        echo "
+                                        </ul>
+                                    </div>
+                                    <div class=\"col-md-12\">
+                                        <label for=\"inputPrice\" class=\"form-label\">Description</label>
+                                        ";
+        // line 46
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 46, $this->source); })()), "description", [], "any", false, false, false, 46), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                                        <ul class=\"custom-error\">
+                                            ";
+        // line 48
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 48, $this->source); })()), "description", [], "any", false, false, false, 48), 'errors');
+        echo "
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=\"col-lg-6\">
+                                <div class=\"border border-3 p-4 rounded\">
+                                    <div class=\"mb-3\">
+                                        <label for=\"inputPrice\" class=\"form-label\">Nom du Recette</label>
+                                        ";
+        // line 58
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 58, $this->source); })()), "nom", [], "any", false, false, false, 58), 'widget', ["attr" => ["class" => "form-control"]]);
+        echo "
+                                        <ul class=\"custom-error\">
+                                            ";
+        // line 60
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 60, $this->source); })()), "nom", [], "any", false, false, false, 60), 'errors');
+        echo "
+                                        </ul>
+                                    </div>
+                                    <div class=\"mb-3\">
+                                        <label class=\"form-label\">Planning:</label>
+                                        ";
+        // line 65
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 65, $this->source); })()), "planningid", [], "any", false, false, false, 65), 'widget');
+        echo "
+                                        <ul class=\"custom-error\">
+                                            ";
+        // line 67
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 67, $this->source); })()), "planningid", [], "any", false, false, false, 67), 'errors');
+        echo "
+                                        </ul>
+                                    </div>
+                                    <div class=\"mb-3\">
+                                        <label class=\"form-label\">Ingredients:</label>
+                                        ";
+        // line 72
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 72, $this->source); })()), "ingredient", [], "any", false, false, false, 72), 'widget', ["attr" => ["multiple data-role" => "tagsinput"]]);
+        echo "
+                                        <ul class=\"custom-error\">
+                                            ";
+        // line 74
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 74, $this->source); })()), "ingredient", [], "any", false, false, false, 74), 'errors');
+        echo "
+                                        </ul>
+                                    </div>
+
+
+                                    <div class=\"col-12\">
+                                        <div class=\"d-grid\">
+                                            <button type=\"submit\" class=\"btn btn-light\">Ajouter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div><!--end row-->
+                    </div>
+                    ";
+        // line 90
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["f1"]) || array_key_exists("f1", $context) ? $context["f1"] : (function () { throw new RuntimeError('Variable "f1" does not exist.', 90, $this->source); })()), 'form_end');
+        echo "
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
     public function getTemplateName()
     {
-        return "back/recette/ajoutRecette.html.twig";
+        return "back/recette/AjoutRecette.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
     }
 
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  209 => 90,  190 => 74,  185 => 72,  177 => 67,  172 => 65,  164 => 60,  159 => 58,  146 => 48,  141 => 46,  133 => 41,  127 => 38,  115 => 29,  90 => 6,  80 => 5,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<!doctype html>
-<html lang=\"en\">
-<head>
-    <!-- Required meta tags -->
-    <meta charset=\"utf-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-    <!--favicon-->
-    <link rel=\"icon\" href=\"Back/assets/images/icon.png\" type=\"image/png\" />
-    <!--plugins-->
-    <link href=\"Back/assets/plugins/simplebar/css/simplebar.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/input-tags/css/tagsinput.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css\" rel=\"stylesheet\" />
-    <link href=\"Back/assets/plugins/metismenu/css/metisMenu.min.css\" rel=\"stylesheet\" />
-    <!-- loader-->
-    <link href=\"Back/assets/css/pace.min.css\" rel=\"stylesheet\" />
-    <script src=\"Back/assets/js/pace.min.js\"></script>
-    <!-- Bootstrap CSS -->
-    <link href=\"Back/assets/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">
-    <link href=\"Back/assets/css/app.css\" rel=\"stylesheet\">
-    <link href=\"Back/assets/css/icons.css\" rel=\"stylesheet\">
-
-    <title>Foodine | Ajouter Recette</title>
-</head>
-
-<body class=\"bg-theme bg-theme6\">
-<!--wrapper-->
-<div class=\"wrapper\">
-    <!--start header -->
-    <header>
-        <div class=\"topbar d-flex align-items-center\">
-            <nav class=\"navbar navbar-expand\">
-                <div class=\"topbar-logo-header\">
-                    <div class=\"\">
-                        <a href=\"IndexChef.html\" ><img src=\"Back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
-                    </div>
-                    <div class=\"\">
-                        <!--<h4 class=\"logo-text\">Foodine</h4>-->
-                    </div>
-                </div>
-                <div class=\"mobile-toggle-menu\"><i class='bx bx-menu'></i></div>
-                <div class=\"search-bar flex-grow-1\">
-
-                </div>
-                <div class=\"top-menu ms-auto\">
-                    <ul class=\"navbar-nav align-items-center\">
-                        <li class=\"nav-item mobile-search-icon\">
-                            <a class=\"nav-link\" href=\"#\">\t<i class='bx bx-search'></i>
-                            </a>
-                        </li>
-
-                        <li class=\"nav-item dropdown dropdown-large\">
-
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-
-                                <div class=\"header-notifications-list\">
-                                </div>
-
-                            </div>
-                        </li>
-                        <li class=\"nav-item dropdown dropdown-large\">
-
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-
-                                <div class=\"header-message-list\">
-                                </div>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class=\"user-box dropdown\">
-                    <a class=\"d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <img src=\"Back/assets/images/avatars/ines.jpg\" class=\"user-img\" alt=\"user avatar\">
-                        <div class=\"user-info ps-3\">
-                            <p class=\"user-name mb-0\">Ines </p>
-                            <p class=\"designattion mb-0\">Chef</p>
-                        </div>
-                    </a>
-                    <ul class=\"dropdown-menu dropdown-menu-end\">
-
-                        <li><a class=\"dropdown-item\" href=\"ConnexionChef.html\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <!--end header -->
-    <!--navigation-->
-    <div class=\"nav-container\">
-        <div class=\"mobile-topbar-header\">
-            <div>
-                <!--\t<img src=\"Back/assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
-            </div>
-            <div>
-                <a href=\"indexChef.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
-            </div>
-            <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
-            </div>
-        </div>
-        <nav class=\"topbar-nav\">
-            <ul class=\"metismenu\" id=\"menu\">
-                <li>
-                    <a href=\"/ajouterplanning\" class=\"\">
-                        <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
-                        </div>
-                        <div class=\"menu-title\">Planning</div>
-                    </a>
-
-
-                <li>
-                    <a href=\"admin-recette\" class=\"\">
-                        <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
-                        </div>
-                        <div class=\"menu-title\">Recettes</div>
-                    </a>
-
-                </li>
-
-            </ul>
-        </nav>
-    </div>
-    <!--end navigation-->
-    <!--start page wrapper -->
+        return new Source("{% extends 'baseBack.html.twig' %}
+{% block title %}
+    Recettes
+{% endblock %}
+{% block content %}
     <div class=\"page-wrapper\">
         <div class=\"page-content\">
 
@@ -502,151 +268,74 @@ class __TwigTemplate_7dadcddca5fb4b3b8dee9b1409f2a50236ab7f26cb4ae6005ea2ccfceda
                 <div class=\"card-body p-4\">
                     <h5 class=\"card-title\">Ajouter Recette</h5>
                     <hr/>
+                    {{ form_start (f1,{ 'attr' : {'novalidate':'novalidate'} }) }}
                     <div class=\"form-body mt-4\">
                         <div class=\"row\">
-                            <div class=\"col-lg-8\">
+                            <div class=\"col-lg-6\">
                                 <div class=\"border border-3 p-4 rounded\">
 
                                     <div class=\"mb-3\">
-                                        <label for=\"inputProductDescription\" class=\"form-label\">Image de la recette</label>
-                                        <input id=\"image-uploadify\" type=\"file\" accept=\".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf\" multiple>
+                                        <label for=\"inputProductDescription\" class=\"form-label\">Image de
+                                            Recette</label>
+                                        {{ form_widget(f1.imagerecette,{'attr':{'class':'form-control'}}) }}
+
+                                        <ul class=\"custom-error\">
+                                            {{ form_errors(f1.imagerecette) }}
+                                        </ul>
+                                    </div>
+                                    <div class=\"col-md-12\">
+                                        <label for=\"inputPrice\" class=\"form-label\">Description</label>
+                                        {{ form_widget(f1.description,{'attr':{'class':'form-control'}}) }}
+                                        <ul class=\"custom-error\">
+                                            {{ form_errors(f1.description) }}
+                                        </ul>
                                     </div>
 
-
-
                                 </div>
-
-
-
-
                             </div>
-
-
-
-
-                            <div class=\"col-lg-4\">
+                            <div class=\"col-lg-6\">
                                 <div class=\"border border-3 p-4 rounded\">
-                                    <div class=\"row g-3\">
+                                    <div class=\"mb-3\">
+                                        <label for=\"inputPrice\" class=\"form-label\">Nom du Recette</label>
+                                        {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
+                                        <ul class=\"custom-error\">
+                                            {{ form_errors(f1.nom) }}
+                                        </ul>
+                                    </div>
+                                    <div class=\"mb-3\">
+                                        <label class=\"form-label\">Planning:</label>
+                                        {{ form_widget(f1.planningid) }}
+                                        <ul class=\"custom-error\">
+                                            {{ form_errors(f1.planningid) }}
+                                        </ul>
+                                    </div>
+                                    <div class=\"mb-3\">
+                                        <label class=\"form-label\">Ingredients:</label>
+                                        {{ form_widget(f1.ingredient,{'attr':{'multiple data-role':'tagsinput'}}) }}
+                                        <ul class=\"custom-error\">
+                                            {{ form_errors(f1.ingredient) }}
+                                        </ul>
+                                    </div>
 
 
-                                        <div class=\"col-12\">
-                                            <label for=\"inputProductType\" class=\"form-label\">Nom De la recette</label>
-                                            <input type=\"text\" class=\"form-control\" id=\"inputProductTags\" placeholder=\"Nom recette\">
-                                        </div>
-                                        <div class=\"col-12\">
-                                            <label for=\"inputVendor\" class=\"form-label\">Nom de du planning</label>
-                                            <select class=\"form-select\" id=\"inputVendor\">
-                                                <option></option>
-                                                <option value=\"1\">One</option>
-                                                <option value=\"2\">Two</option>
-                                                <option value=\"3\">Three</option>
-                                            </select>
-                                        </div>
-
-                                        <div class=\"card-body\">
-                                            <form>
-
-                                                <div class=\"mb-3\">
-                                                    <label class=\"form-label\">Ingrédients</label>
-                                                    <select multiple data-role=\"tagsinput\">
-                                                        <option value=\"Amsterdam\">Ingredient1</option>
-                                                        <option value=\"Washington\">Ingredient2</option>
-                                                        <option value=\"Sydney\">Ingredient3</option>
-                                                        <option value=\"Beijing\">Beijing</option>
-                                                        <option value=\"Cairo\">Cairo</option>
-                                                    </select>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <div class=\"col-12\">
-                                            <label for=\"inputProductTags\" class=\"form-label\">Description</label>
-                                            <input type=\"text\" class=\"form-control\" id=\"inputProductTags\" placeholder=\"Enter Product Tags\">
-                                        </div>
-                                        <div class=\"col-12\">
-                                            <div class=\"d-grid\">
-                                                <button type=\"button\" class=\"btn btn-light\">Ajouter</button>
-                                            </div>
+                                    <div class=\"col-12\">
+                                        <div class=\"d-grid\">
+                                            <button type=\"submit\" class=\"btn btn-light\">Ajouter</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div><!--end row-->
                     </div>
+                    {{ form_end(f1) }}
                 </div>
+
             </div>
 
         </div>
     </div>
-    <!--end page wrapper -->
-    <!--start overlay-->
-    <div class=\"overlay toggle-icon\"></div>
-    <!--end overlay-->
-    <!--Start Back To Top Button--> <a href=\"javaScript:;\" class=\"back-to-top\"><i class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
-    <footer class=\"page-footer\">
-        <p class=\"mb-0\">Copyright © 2021. All right reserved.</p>
-    </footer>
-</div>
-<!--end wrapper-->
-<!--start switcher-->
-<div class=\"switcher-wrapper\">
-    <div class=\"switcher-btn\"> <i class='bx bx-cog bx-spin'></i>
-    </div>
-    <div class=\"switcher-body\">
-        <div class=\"d-flex align-items-center\">
-            <h5 class=\"mb-0 text-uppercase\">Theme Customizer</h5>
-            <button type=\"button\" class=\"btn-close ms-auto close-switcher\" aria-label=\"Close\"></button>
-        </div>
-        <hr/>
-        <p class=\"mb-0\">Gaussian Texture</p>
-        <hr>
-
-        <ul class=\"switcher\">
-            <li id=\"theme1\"></li>
-            <li id=\"theme2\"></li>
-            <li id=\"theme3\"></li>
-            <li id=\"theme4\"></li>
-            <li id=\"theme5\"></li>
-            <li id=\"theme6\"></li>
-        </ul>
-        <hr>
-        <p class=\"mb-0\">Gradient Background</p>
-        <hr>
-
-        <ul class=\"switcher\">
-            <li id=\"theme7\"></li>
-            <li id=\"theme8\"></li>
-            <li id=\"theme9\"></li>
-            <li id=\"theme10\"></li>
-            <li id=\"theme11\"></li>
-            <li id=\"theme12\"></li>
-            <li id=\"theme13\"></li>
-            <li id=\"theme14\"></li>
-            <li id=\"theme15\"></li>
-        </ul>
-    </div>
-</div>
-<!--end switcher-->
-<!-- Bootstrap JS -->
-<script src=\"Back/assets/js/bootstrap.bundle.min.js\"></script>
-<!--plugins-->
-<script src=\"Back/assets/js/jquery.min.js\"></script>
-<script src=\"Back/assets/plugins/input-tags/js/tagsinput.js\"></script>
-
-<script src=\"Back/assets/plugins/simplebar/js/simplebar.min.js\"></script>
-<script src=\"Back/assets/plugins/metismenu/js/metisMenu.min.js\"></script>
-<script src=\"Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>
-<script src=\"Back/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js\"></script>
-<script>
-    \$(document).ready(function () {
-        \$('#image-uploadify').imageuploadify();
-    })
-</script>
-<!--app JS-->
-<script src=\"Back/assets/js/app.js\"></script>
-</body>
-
-</html>", "back/recette/ajoutRecette.html.twig", "C:\\Users\\azizm\\Desktop\\SEM2\\PIDEV\\Foodine_PIDEV\\templates\\back\\recette\\ajoutRecette.html.twig");
+{% endblock %}", "back/recette/AjoutRecette.html.twig", "C:\\Users\\azizm\\Desktop\\SEM2\\PIDEV\\Foodine_PIDEV\\templates\\back\\recette\\ajoutRecette.html.twig");
     }
 }

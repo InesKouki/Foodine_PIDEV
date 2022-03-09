@@ -28,6 +28,7 @@
       <parameter key="ChartjsBundle">Symfony\UX\Chartjs\ChartjsBundle</parameter>
       <parameter key="WebpackEncoreBundle">Symfony\WebpackEncoreBundle\WebpackEncoreBundle</parameter>
       <parameter key="GregwarCaptchaBundle">Gregwar\CaptchaBundle\GregwarCaptchaBundle</parameter>
+      <parameter key="CalendarBundle">CalendarBundle\CalendarBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -105,6 +106,10 @@
       <parameter key="GregwarCaptchaBundle" type="collection">
         <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle</parameter>
         <parameter key="namespace">Gregwar\CaptchaBundle</parameter>
+      </parameter>
+      <parameter key="CalendarBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src</parameter>
+        <parameter key="namespace">CalendarBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -468,13 +473,6 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\BackController"/>
       </call>
     </service>
-    <service id="App\Controller\CategorieController" class="App\Controller\CategorieController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CategorieController"/>
-      </call>
-    </service>
     <service id="App\Controller\ChefController" class="App\Controller\ChefController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -494,6 +492,13 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\EvenementController"/>
+      </call>
+    </service>
+    <service id="App\Controller\EventController" class="App\Controller\EventController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\EventController"/>
       </call>
     </service>
     <service id="App\Controller\FrontController" class="App\Controller\FrontController" public="true" autowire="true" autoconfigure="true">
@@ -552,6 +557,11 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SecurityController"/>
       </call>
     </service>
+    <service id="App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" autoconfigure="true">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="App\Repository\PlanningRepository"/>
+      <argument type="service" id="router.default"/>
+    </service>
     <service id="App\Form\AddReclamationType" class="App\Form\AddReclamationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -570,7 +580,13 @@
     <service id="App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\PlanningType" class="App\Form\PlanningType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RecetteType" class="App\Form\RecetteType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true">
@@ -580,6 +596,10 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -595,11 +615,19 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -619,6 +647,7 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\TutorialBlogBundle" class="App\TutorialBlogBundle" autowire="true" autoconfigure="true"/>
     <service id=".legacy_controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1063,7 +1092,9 @@
         <argument>App\Form\EditPasswordType</argument>
         <argument>App\Form\EvenementType</argument>
         <argument>App\Form\InscriptionType</argument>
+        <argument>App\Form\PlanningType</argument>
         <argument>App\Form\PromotionType</argument>
+        <argument>App\Form\RecetteType</argument>
         <argument>App\Form\ReponseType</argument>
         <argument>App\Form\ResetPassType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1402,7 +1433,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator..i2qWIS"/>
+      <argument type="service" id=".service_locator.hd2OOIx"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2080,6 +2111,8 @@
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\webpack-encore-bundle\src/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebpackEncoreBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/CalendarBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -2126,6 +2159,8 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\webpack-encore-bundle\src/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebpackEncoreBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/CalendarBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -2590,6 +2625,14 @@
         <argument type="collection">
           <argument type="service_closure" id="webpack_encore.exception_listener"/>
           <argument>onKernelException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>calendar.set_data</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="App\EventSubscriber\CalendarSubscriber"/>
+          <argument>onCalendarSetData</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3782,6 +3825,14 @@
         <argument>!GregwarCaptcha</argument>
       </call>
       <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/Resources/views</argument>
+        <argument>Calendar</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src/Resources/views</argument>
+        <argument>!Calendar</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/templates</argument>
       </call>
       <call method="addPath">
@@ -4178,6 +4229,10 @@
             <argument>App\Entity</argument>
             <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
           </argument>
+          <argument type="collection">
+            <argument>CalendarBundle\Entity</argument>
+            <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+          </argument>
         </argument>
       </argument>
     </service>
@@ -4460,7 +4515,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.LwcRfOZ"/>
+      <argument type="service" id=".service_locator.DrtbIRm"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4589,6 +4644,7 @@
       <call method="setEntityNamespaces">
         <argument type="collection">
           <argument key="App">App\Entity</argument>
+          <argument key="CalendarBundle">CalendarBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCache">
@@ -4635,12 +4691,17 @@
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src\Entity</argument>
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\tattali\calendar-bundle\src\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain" public="false">
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>App\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>CalendarBundle\Entity</argument>
       </call>
     </service>
     <service id="cache.doctrine.orm.default.metadata" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
@@ -6857,15 +6918,17 @@
     </service>
     <service id="gregwar_captcha.captcha_builder" class="Gregwar\Captcha\CaptchaBuilder" public="true"/>
     <service id="gregwar_captcha.phrase_builder" class="Gregwar\Captcha\PhraseBuilder" public="true"/>
+    <service id="CalendarBundle\Serializer\Serializer" class="CalendarBundle\Serializer\Serializer" public="false"/>
+    <service id="CalendarBundle\Controller\CalendarController" class="CalendarBundle\Controller\CalendarController" public="true" autowire="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="CalendarBundle\Serializer\Serializer"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BackController" class="App\Controller\BackController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ChefController" class="App\Controller\ChefController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ChefController" class="App\Controller\ChefController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ChefController" class="App\Controller\ChefController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6875,6 +6938,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EvenementController" class="App\Controller\EvenementController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EvenementController" class="App\Controller\EvenementController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EvenementController" class="App\Controller\EvenementController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventController" class="App\Controller\EventController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventController" class="App\Controller\EventController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EventController" class="App\Controller\EventController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6899,6 +6965,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\EventSubscriber\CalendarSubscriber" class="App\EventSubscriber\CalendarSubscriber" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AddReclamationType" class="App\Form\AddReclamationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\AddReclamationType" class="App\Form\AddReclamationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EditClientType" class="App\Form\EditClientType" autowire="true" abstract="true"/>
@@ -6911,24 +6979,34 @@
     <service id=".abstract.instanceof.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PlanningType" class="App\Form\PlanningType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\PlanningType" class="App\Form\PlanningType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RecetteType" class="App\Form\RecetteType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RecetteType" class="App\Form\RecetteType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NotificationRepository" class="App\Repository\NotificationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\NotificationRepository" class="App\Repository\NotificationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PlanningRepository" class="App\Repository\PlanningRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PlanningRepository" class="App\Repository\PlanningRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" abstract="true"/>
@@ -7291,6 +7369,44 @@
         <argument key="repository" type="service_closure" id="App\Repository\ReviewRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.m76e24j" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repos" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UXHyNHw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="rep" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZoxpiYK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rep" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.yvZGyzc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\PlanningRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Xh14VnM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.22mKHwX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator._7qJDNs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7308,6 +7424,24 @@
       <argument type="collection">
         <argument key="repo" type="service_closure" id="App\Repository\PromotionRepository"/>
         <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2Z1gB17" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rep" type="service_closure" id="App\Repository\RecetteRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.GGYBe0t" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="App\Repository\RecetteRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.dfiQDCL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\RecetteRepository"/>
       </argument>
     </service>
     <service id=".service_locator.JjRAOhW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7369,7 +7503,7 @@
         <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
-    <service id=".service_locator.3N0aDRu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.0CQSQAm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.y3HPCYI"/>
@@ -7395,6 +7529,16 @@
         <argument key="App\Controller\FrontController::index" type="service_closure" id=".service_locator.HSlls17"/>
         <argument key="App\Controller\FrontController::search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController::showR" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\PlanningController::AffichePlanning" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController::Supplanningmobile" type="service_closure" id=".service_locator.Xh14VnM"/>
+        <argument key="App\Controller\PlanningController::displayEvents" type="service_closure" id=".service_locator.yvZGyzc"/>
+        <argument key="App\Controller\PlanningController::modifierplanning" type="service_closure" id=".service_locator.m76e24j"/>
+        <argument key="App\Controller\PlanningController::searchEventAjax" type="service_closure" id=".service_locator.22mKHwX"/>
+        <argument key="App\Controller\PlanningController::supprimerplanning" type="service_closure" id=".service_locator.ZoxpiYK"/>
+        <argument key="App\Controller\PlanningController::trieDateAsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController::trieDateDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController::trienomAsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController::trienomDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
         <argument key="App\Controller\PromotionController::afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
         <argument key="App\Controller\PromotionController::deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController::displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
@@ -7404,6 +7548,12 @@
         <argument key="App\Controller\PromotionController::sortBackByPrcAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController::sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController::updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\RecetteController::Modierrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController::afficher" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController::imprimer" type="service_closure" id=".service_locator.dfiQDCL"/>
+        <argument key="App\Controller\RecetteController::index" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController::searchAction" type="service_closure" id=".service_locator.GGYBe0t"/>
+        <argument key="App\Controller\RecetteController::supprimerrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\ReclamationController::addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
@@ -7441,6 +7591,16 @@
         <argument key="App\Controller\FrontController:index" type="service_closure" id=".service_locator.HSlls17"/>
         <argument key="App\Controller\FrontController:search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController:showR" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\PlanningController:AffichePlanning" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController:Supplanningmobile" type="service_closure" id=".service_locator.Xh14VnM"/>
+        <argument key="App\Controller\PlanningController:displayEvents" type="service_closure" id=".service_locator.yvZGyzc"/>
+        <argument key="App\Controller\PlanningController:modifierplanning" type="service_closure" id=".service_locator.m76e24j"/>
+        <argument key="App\Controller\PlanningController:searchEventAjax" type="service_closure" id=".service_locator.22mKHwX"/>
+        <argument key="App\Controller\PlanningController:supprimerplanning" type="service_closure" id=".service_locator.ZoxpiYK"/>
+        <argument key="App\Controller\PlanningController:trieDateAsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController:trieDateDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController:trienomAsc" type="service_closure" id=".service_locator.UXHyNHw"/>
+        <argument key="App\Controller\PlanningController:trienomDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
         <argument key="App\Controller\PromotionController:afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
         <argument key="App\Controller\PromotionController:deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController:displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
@@ -7450,6 +7610,12 @@
         <argument key="App\Controller\PromotionController:sortBackByPrcAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController:sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController:updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\RecetteController:Modierrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController:afficher" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController:imprimer" type="service_closure" id=".service_locator.dfiQDCL"/>
+        <argument key="App\Controller\RecetteController:index" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController:searchAction" type="service_closure" id=".service_locator.GGYBe0t"/>
+        <argument key="App\Controller\RecetteController:supprimerrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\ReclamationController:addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
@@ -7525,7 +7691,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator..i2qWIS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.hd2OOIx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AddReclamationType" type="service_closure" id="App\Form\AddReclamationType"/>
@@ -7534,7 +7700,9 @@
         <argument key="App\Form\EditPasswordType" type="service_closure" id="App\Form\EditPasswordType"/>
         <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
         <argument key="App\Form\InscriptionType" type="service_closure" id="App\Form\InscriptionType"/>
+        <argument key="App\Form\PlanningType" type="service_closure" id="App\Form\PlanningType"/>
         <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
+        <argument key="App\Form\RecetteType" type="service_closure" id="App\Form\RecetteType"/>
         <argument key="App\Form\ReponseType" type="service_closure" id="App\Form\ReponseType"/>
         <argument key="App\Form\ResetPassType" type="service_closure" id="App\Form\ResetPassType"/>
         <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
@@ -7712,15 +7880,18 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.LwcRfOZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.DrtbIRm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
+        <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="App\Repository\EvenementRepository" type="service_closure" id="App\Repository\EvenementRepository"/>
         <argument key="App\Repository\NotificationRepository" type="service_closure" id="App\Repository\NotificationRepository"/>
         <argument key="App\Repository\PlanningRepository" type="service_closure" id="App\Repository\PlanningRepository"/>
+        <argument key="App\Repository\ProductRepository" type="service_closure" id="App\Repository\ProductRepository"/>
         <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
         <argument key="App\Repository\PromotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="App\Repository\RecetteRepository" type="service_closure" id="App\Repository\RecetteRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
         <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
         <argument key="App\Repository\ReviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
@@ -7787,12 +7958,6 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\CategorieController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\CategorieController"/>
-      <argument>App\Controller\CategorieController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\ChefController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ChefController"/>
       <argument>App\Controller\ChefController</argument>
@@ -7808,6 +7973,12 @@
     <service id=".service_locator.vdmMuyE.App\Controller\EvenementController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\EvenementController"/>
       <argument>App\Controller\EvenementController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\EventController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\EventController"/>
+      <argument>App\Controller\EventController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -8005,12 +8176,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.3N0aDRu"/>
+      <argument type="service" id=".service_locator.0CQSQAm"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.3N0aDRu"/>
+      <argument type="service" id=".service_locator.0CQSQAm"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -8457,7 +8628,7 @@
     <service id="Gregwar\CaptchaBundle\Controller\CaptchaController" alias="gregwar_captcha.controller" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.3N0aDRu"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.0CQSQAm"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -8477,7 +8648,7 @@
     <service id=".service_locator.J7o.N2l" alias="jms_serializer.metadata.service_locator" public="false"/>
     <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~eUXzXYF" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
-    <service id=".service_locator.g34k4IL" alias=".service_locator..i2qWIS" public="false"/>
+    <service id=".service_locator.5ASAQ1L" alias=".service_locator.hd2OOIx" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

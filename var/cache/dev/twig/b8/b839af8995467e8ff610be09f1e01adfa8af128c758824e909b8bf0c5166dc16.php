@@ -60,59 +60,71 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
         // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/simplebar/css/simplebar.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
+
     <link href=\"";
-        // line 12
+        // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/input-tags/css/tagsinput.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" />
+
+    <link href=\"";
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 13
+        // line 16
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/highcharts/css/highcharts-white.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 14
+        // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/metismenu/css/metisMenu.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 15
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <!-- loader-->
     <link href=\"";
-        // line 17
+        // line 20
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/pace.min.css"), "html", null, true);
         echo "\"  rel=\"stylesheet\" />
     <script src=\"";
-        // line 18
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/pace.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Bootstrap CSS -->
     <link href=\"";
-        // line 20
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/bootstrap.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">
     <link href=\"";
-        // line 22
+        // line 25
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/app.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 23
+        // line 26
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/icons.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
+
+    <link href=\"";
+        // line 28
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/fullcalendar/css/main.min.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" />
+
     ";
-        // line 24
+        // line 30
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("app");
         echo "
     ";
-        // line 25
+        // line 31
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
         echo "
 
     <title>
         Foodine | ";
-        // line 28
+        // line 34
         $this->displayBlock('title', $context, $blocks);
-        // line 29
+        // line 35
         echo "    </title>
 </head>
 
@@ -126,38 +138,38 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 <div class=\"topbar-logo-header\">
                     <div class=\"\">
                         ";
-        // line 41
+        // line 47
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 41, $this->source); })()), "user", [], "any", false, false, false, 41), "Roles", [], "any", false, false, false, 41));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47), "Roles", [], "any", false, false, false, 47));
         foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-            // line 42
+            // line 48
             echo "
 
                             ";
-            // line 44
+            // line 50
             if ((0 === twig_compare($context["role"], "ROLE_CHEF"))) {
-                // line 45
+                // line 51
                 echo "                                <a href=\"/chef\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
                             ";
-            } elseif ((0 === twig_compare(            // line 46
+            } elseif ((0 === twig_compare(            // line 52
 $context["role"], "ROLE_LIVREUR"))) {
-                // line 47
+                // line 53
                 echo "                                <a href=\"/livreur\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
                             ";
-            } elseif ((0 === twig_compare(            // line 48
+            } elseif ((0 === twig_compare(            // line 54
 $context["role"], "ROLE_ADMIN"))) {
-                // line 49
+                // line 55
                 echo "                                <a href=\"/admin\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
                             ";
             }
-            // line 51
+            // line 57
             echo "
                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 53
+        // line 59
         echo "
                     </div>
                     <div class=\"\">
@@ -169,57 +181,57 @@ $context["role"], "ROLE_ADMIN"))) {
 
                 </div>
                 ";
-        // line 63
+        // line 69
         $this->displayBlock('notif', $context, $blocks);
-        // line 65
+        // line 71
         echo "                <div class=\"user-box dropdown\">
                     <a class=\"d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
                         <img src=\"";
-        // line 67
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 67, $this->source); })()), "user", [], "any", false, false, false, 67), "file", [], "any", false, false, false, 67))), "html", null, true);
+        // line 73
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 73, $this->source); })()), "user", [], "any", false, false, false, 73), "file", [], "any", false, false, false, 73))), "html", null, true);
         echo "\" class=\"user-img\" alt=\"user avatar\">
                         <div class=\"user-info ps-3\">
                             <p class=\"user-name mb-0\">";
-        // line 69
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 69, $this->source); })()), "user", [], "any", false, false, false, 69), "Nom", [], "any", false, false, false, 69), "html", null, true);
+        // line 75
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 75, $this->source); })()), "user", [], "any", false, false, false, 75), "Nom", [], "any", false, false, false, 75), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 69, $this->source); })()), "user", [], "any", false, false, false, 69), "Prenom", [], "any", false, false, false, 69), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 75, $this->source); })()), "user", [], "any", false, false, false, 75), "Prenom", [], "any", false, false, false, 75), "html", null, true);
         echo " </p>
                             <p class=\"designattion mb-0\">
 
                                 ";
-        // line 72
+        // line 78
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 72, $this->source); })()), "user", [], "any", false, false, false, 72), "Roles", [], "any", false, false, false, 72));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 78, $this->source); })()), "user", [], "any", false, false, false, 78), "Roles", [], "any", false, false, false, 78));
         foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-            // line 73
+            // line 79
             echo "
 
                                     ";
-            // line 75
+            // line 81
             if ((0 === twig_compare($context["role"], "ROLE_CHEF"))) {
-                // line 76
+                // line 82
                 echo "                                    Chef
                                 ";
-            } elseif ((0 === twig_compare(            // line 77
+            } elseif ((0 === twig_compare(            // line 83
 $context["role"], "ROLE_LIVREUR"))) {
-                // line 78
+                // line 84
                 echo "                                    Livreur
                                 ";
-            } elseif ((0 === twig_compare(            // line 79
+            } elseif ((0 === twig_compare(            // line 85
 $context["role"], "ROLE_ADMIN"))) {
-                // line 80
+                // line 86
                 echo "                                    Admin
                                 ";
             }
-            // line 82
+            // line 88
             echo "
                                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 84
+        // line 90
         echo "
 
 
@@ -229,7 +241,7 @@ $context["role"], "ROLE_ADMIN"))) {
                     <ul class=\"dropdown-menu dropdown-menu-end\">
 
                         <li><a class=\"dropdown-item\" href=\"";
-        // line 92
+        // line 98
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
         echo "\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
                         </li>
@@ -243,9 +255,9 @@ $context["role"], "ROLE_ADMIN"))) {
 
     <div class=\"nav-container\">
         ";
-        // line 103
+        // line 109
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 104
+            // line 110
             echo "        <div class=\"mobile-topbar-header\">
             <div>
                 <!--\t<img src=\"/back/assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
@@ -293,7 +305,7 @@ $context["role"], "ROLE_ADMIN"))) {
                 </li>
                 <li>
                     <a class=\"\" href=\"";
-            // line 150
+            // line 156
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_showUsers");
             echo "\">
                         <div class=\"parent-icon\"><i class=\"bx bxs-user-badge\"></i>
@@ -304,7 +316,7 @@ $context["role"], "ROLE_ADMIN"))) {
                 </li>
                 <li>
                     <a class=\"\" href=\"";
-            // line 158
+            // line 164
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_rec");
             echo "\">
                         <div class=\"parent-icon\"><i class='bx bx-message-square-edit'></i>
@@ -346,7 +358,7 @@ $context["role"], "ROLE_ADMIN"))) {
         </nav>
         ";
         } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_CHEF")) {
-            // line 197
+            // line 203
             echo "            <div class=\"mobile-topbar-header\">
                 <div>
                     <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
@@ -360,7 +372,7 @@ $context["role"], "ROLE_ADMIN"))) {
             <nav class=\"topbar-nav\">
                 <ul class=\"metismenu\" id=\"menu\">
                     <li>
-                        <a href=\"table-planning.html\" class=\"\">
+                        <a href=\"/AffichePlanning\" class=\"\">
                             <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
                             </div>
                             <div class=\"menu-title\">Planning</div>
@@ -368,7 +380,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
 
                     <li>
-                        <a href=\"table-recette.html\" class=\"\">
+                        <a href=\"/chef-Afficherrecette\" class=\"\">
                             <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
                             </div>
                             <div class=\"menu-title\">Recettes</div>
@@ -380,7 +392,7 @@ $context["role"], "ROLE_ADMIN"))) {
             </nav>
         ";
         } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_LIVREUR")) {
-            // line 229
+            // line 235
             echo "            <div class=\"mobile-topbar-header\">
                 <div>
                     <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
@@ -406,14 +418,14 @@ $context["role"], "ROLE_ADMIN"))) {
             </nav>
         ";
         }
-        // line 253
+        // line 259
         echo "    </div>
     <!--end navigation-->
 
     ";
-        // line 256
+        // line 262
         $this->displayBlock('content', $context, $blocks);
-        // line 259
+        // line 265
         echo "
 <!--start overlay-->
 <div class=\"overlay toggle-icon\"></div>
@@ -466,7 +478,7 @@ $context["role"], "ROLE_ADMIN"))) {
 <!--end switcher-->
 <!-- Bootstrap JS -->
 <script src=\"";
-        // line 310
+        // line 316
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
 <!--plugins-->
@@ -474,14 +486,18 @@ $context["role"], "ROLE_ADMIN"))) {
 <script src=\"Back/assets/plugins/simplebar/js/simplebar.min.js\"></script>
 <script src=\"Back/assets/plugins/metismenu/js/metisMenu.min.js\"></script>
 <script src=\"Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>
-<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js\"></script>
-<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/highcharts.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/exporting.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/variable-pie.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/export-data.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/accessibility.js\"></script>
-<script src=\"Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js\"></script>
+
+<script src=\"Back/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js\"></script>
+<script src=\"Back/assets/plugins/input-tags/js/tagsinput.js\"></script>
+
+";
+        // line 334
+        echo "
+<script>
+    \$(document).ready(function () {
+        \$('#image-uploadify').imageuploadify();
+    })
+</script>
 
 <!--app JS-->
 <script src=\"Back/assets/js/app.js\"></script>
@@ -501,7 +517,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
     }
 
-    // line 28
+    // line 34
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -519,7 +535,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
     }
 
-    // line 63
+    // line 69
     public function block_notif($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -529,7 +545,7 @@ $context["role"], "ROLE_ADMIN"))) {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "notif"));
 
-        // line 64
+        // line 70
         echo "                ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -539,7 +555,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
     }
 
-    // line 256
+    // line 262
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -549,7 +565,7 @@ $context["role"], "ROLE_ADMIN"))) {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 257
+        // line 263
         echo "
     ";
         
@@ -572,7 +588,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
     public function getDebugInfo()
     {
-        return array (  553 => 257,  543 => 256,  533 => 64,  523 => 63,  505 => 28,  470 => 310,  417 => 259,  415 => 256,  410 => 253,  384 => 229,  350 => 197,  308 => 158,  297 => 150,  249 => 104,  247 => 103,  233 => 92,  223 => 84,  216 => 82,  212 => 80,  210 => 79,  207 => 78,  205 => 77,  202 => 76,  200 => 75,  196 => 73,  192 => 72,  184 => 69,  179 => 67,  175 => 65,  173 => 63,  161 => 53,  154 => 51,  150 => 49,  148 => 48,  145 => 47,  143 => 46,  140 => 45,  138 => 44,  134 => 42,  130 => 41,  116 => 29,  114 => 28,  108 => 25,  104 => 24,  100 => 23,  96 => 22,  91 => 20,  86 => 18,  82 => 17,  77 => 15,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
+        return array (  569 => 263,  559 => 262,  549 => 70,  539 => 69,  521 => 34,  495 => 334,  482 => 316,  429 => 265,  427 => 262,  422 => 259,  396 => 235,  362 => 203,  320 => 164,  309 => 156,  261 => 110,  259 => 109,  245 => 98,  235 => 90,  228 => 88,  224 => 86,  222 => 85,  219 => 84,  217 => 83,  214 => 82,  212 => 81,  208 => 79,  204 => 78,  196 => 75,  191 => 73,  187 => 71,  185 => 69,  173 => 59,  166 => 57,  162 => 55,  160 => 54,  157 => 53,  155 => 52,  152 => 51,  150 => 50,  146 => 48,  142 => 47,  128 => 35,  126 => 34,  120 => 31,  116 => 30,  111 => 28,  106 => 26,  102 => 25,  97 => 23,  92 => 21,  88 => 20,  83 => 18,  79 => 17,  75 => 16,  71 => 15,  66 => 13,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -588,6 +604,9 @@ $context["role"], "ROLE_ADMIN"))) {
     <link rel=\"icon\" href=\"{{ asset('Back/assets/images/icon.png')}}\" type=\"image/png\" />
     <!--plugins-->
     <link href=\"{{ asset('Back/assets/plugins/simplebar/css/simplebar.css') }}\" rel=\"stylesheet\" />
+
+    <link href=\"{{ asset('Back/assets/plugins/input-tags/css/tagsinput.css')}}\" rel=\"stylesheet\" />
+
     <link href=\"{{ asset('Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}\" rel=\"stylesheet\" />
     <link href=\"{{ asset('Back/assets/plugins/highcharts/css/highcharts-white.css') }}\" rel=\"stylesheet\" />
     <link href=\"{{ asset('Back/assets/plugins/metismenu/css/metisMenu.min.css') }}\" rel=\"stylesheet\" />
@@ -600,6 +619,9 @@ $context["role"], "ROLE_ADMIN"))) {
     <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">
     <link href=\"{{ asset('Back/assets/css/app.css') }}\" rel=\"stylesheet\">
     <link href=\"{{ asset('Back/assets/css/icons.css') }}\" rel=\"stylesheet\">
+
+    <link href=\"{{ asset('Back/assets/plugins/fullcalendar/css/main.min.css')}}\" rel=\"stylesheet\" />
+
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
 
@@ -786,7 +808,7 @@ $context["role"], "ROLE_ADMIN"))) {
             <nav class=\"topbar-nav\">
                 <ul class=\"metismenu\" id=\"menu\">
                     <li>
-                        <a href=\"table-planning.html\" class=\"\">
+                        <a href=\"/AffichePlanning\" class=\"\">
                             <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
                             </div>
                             <div class=\"menu-title\">Planning</div>
@@ -794,7 +816,7 @@ $context["role"], "ROLE_ADMIN"))) {
 
 
                     <li>
-                        <a href=\"table-recette.html\" class=\"\">
+                        <a href=\"/chef-Afficherrecette\" class=\"\">
                             <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
                             </div>
                             <div class=\"menu-title\">Recettes</div>
@@ -892,14 +914,24 @@ $context["role"], "ROLE_ADMIN"))) {
 <script src=\"Back/assets/plugins/simplebar/js/simplebar.min.js\"></script>
 <script src=\"Back/assets/plugins/metismenu/js/metisMenu.min.js\"></script>
 <script src=\"Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>
-<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js\"></script>
-<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/highcharts.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/exporting.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/variable-pie.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/export-data.js\"></script>
-<script src=\"Back/assets/plugins/highcharts/js/accessibility.js\"></script>
-<script src=\"Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js\"></script>
+
+<script src=\"Back/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js\"></script>
+<script src=\"Back/assets/plugins/input-tags/js/tagsinput.js\"></script>
+
+{#<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js\"></script>#}
+{#<script src=\"Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js\"></script>#}
+{#<script src=\"Back/assets/plugins/highcharts/js/highcharts.js\"></script>#}
+{#<script src=\"Back/assets/plugins/highcharts/js/exporting.js\"></script>#}
+{#<script src=\"Back/assets/plugins/highcharts/js/variable-pie.js\"></script>#}
+{#<script src=\"Back/assets/plugins/highcharts/js/export-data.js\"></script>#}
+{#<script src=\"Back/assets/plugins/highcharts/js/accessibility.js\"></script>#}
+{#<script src=\"Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js\"></script>#}
+
+<script>
+    \$(document).ready(function () {
+        \$('#image-uploadify').imageuploadify();
+    })
+</script>
 
 <!--app JS-->
 <script src=\"Back/assets/js/app.js\"></script>

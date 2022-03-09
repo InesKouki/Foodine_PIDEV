@@ -25,7 +25,7 @@ class RecetteController extends AbstractController
         return $this->render('front/recette/AfficherRecette.html.twig', ['recette'=>$recette,'t'=>$todayRecette]);
     }
     /**
-     * @Route("/admin-Afficherrecette", name="AfficherRecette")
+     * @Route("/chef-Afficherrecette", name="AfficherRecette")
      */
     public function index(RecetteRepository  $rep): Response
     {   $Recette=$rep->findAll();
@@ -33,7 +33,7 @@ class RecetteController extends AbstractController
         return $this->render('back/recette/AfficheRecette.html.twig', ['recette'=>$Recette]);
     }
     /**
-     * @Route("/admin-Ajoutrecette", name="ajoutrecette")
+     * @Route("/chef-Ajoutrecette", name="ajoutrecette")
      * @param Request $request ;
      */
     public function AjouterRecette( Request $request): Response
@@ -61,7 +61,7 @@ class RecetteController extends AbstractController
             ]);
     }
     /**
-     * @Route("/admin-Modifierrecette-{id}", name="modifierrecette")
+     * @Route("/chef-Modifierrecette-{id}", name="modifierrecette")
      * @param Request $request ;
      */
     public function Modierrecette($id, Request $request,RecetteRepository $rep): Response
@@ -90,7 +90,7 @@ class RecetteController extends AbstractController
     }
     /**
      * @param RecetteRepository $rep
-     * @Route ("/admin-SupprimerRecette-{id}", name="supprimerrecette")
+     * @Route ("/chef-SupprimerRecette-{id}", name="supprimerrecette")
      */
     public function supprimerrecette(RecetteRepository $rep,$id){
         $recette=$rep->find($id);
@@ -101,7 +101,7 @@ class RecetteController extends AbstractController
     }
 
     /**
-     * @Route("/admin-Afficherrecette/searchAjax ", name="ajax_search")
+     * @Route("/chef-Afficherrecette/searchAjax ", name="ajax_search")
      */
 
     public function searchAction(Request $request,RecetteRepository $em)

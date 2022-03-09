@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* /back/homeBack.html.twig */
+/* back/homeBack.html.twig */
 class __TwigTemplate_8f343b57e5d047c04021c289c8afed2c7b5b1066a1951a9fbf875c9aef0eac47 extends Template
 {
     private $source;
@@ -41,12 +41,12 @@ class __TwigTemplate_8f343b57e5d047c04021c289c8afed2c7b5b1066a1951a9fbf875c9aef0
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "/back/homeBack.html.twig"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/homeBack.html.twig"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "/back/homeBack.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "back/homeBack.html.twig"));
 
-        $this->parent = $this->loadTemplate("baseBack.html.twig", "/back/homeBack.html.twig", 1);
+        $this->parent = $this->loadTemplate("baseBack.html.twig", "back/homeBack.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -637,7 +637,7 @@ $context["rev"], "Stars", [], "any", false, false, false, 265), 4))) {
 
     public function getTemplateName()
     {
-        return "/back/homeBack.html.twig";
+        return "back/homeBack.html.twig";
     }
 
     public function isTraitable()
@@ -1094,6 +1094,6 @@ $context["rev"], "Stars", [], "any", false, false, false, 265), 4))) {
 
     <!--end page wrapper -->
 {% endblock %}
-", "/back/homeBack.html.twig", "C:\\Users\\azizm\\Desktop\\SEM2\\PIDEV\\Foodine_PIDEV\\templates\\back\\homeBack.html.twig");
+", "back/homeBack.html.twig", "C:\\Users\\azizm\\Desktop\\SEM2\\PIDEV\\Foodine_PIDEV\\templates\\back\\homeBack.html.twig");
     }
 }

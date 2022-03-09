@@ -9,6 +9,9 @@
     <link rel="icon" href="{{ asset('Back/assets/images/icon.png')}}" type="image/png" />
     <!--plugins-->
     <link href="{{ asset('Back/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('Back/assets/plugins/input-tags/css/tagsinput.css')}}" rel="stylesheet" />
+
     <link href="{{ asset('Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('Back/assets/plugins/highcharts/css/highcharts-white.css') }}" rel="stylesheet" />
     <link href="{{ asset('Back/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
@@ -21,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{ asset('Back/assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('Back/assets/css/icons.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('Back/assets/plugins/fullcalendar/css/main.min.css')}}" rel="stylesheet" />
+
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
 
@@ -207,7 +213,7 @@
             <nav class="topbar-nav">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="table-planning.html" class="">
+                        <a href="/AffichePlanning" class="">
                             <div class="parent-icon"><i class='bx bx-calendar'></i>
                             </div>
                             <div class="menu-title">Planning</div>
@@ -215,7 +221,7 @@
 
 
                     <li>
-                        <a href="table-recette.html" class="">
+                        <a href="/chef-Afficherrecette" class="">
                             <div class="parent-icon"><i class="bx bx-receipt"></i>
                             </div>
                             <div class="menu-title">Recettes</div>
@@ -313,14 +319,24 @@
 <script src="Back/assets/plugins/simplebar/js/simplebar.min.js"></script>
 <script src="Back/assets/plugins/metismenu/js/metisMenu.min.js"></script>
 <script src="Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<script src="Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="Back/assets/plugins/highcharts/js/highcharts.js"></script>
-<script src="Back/assets/plugins/highcharts/js/exporting.js"></script>
-<script src="Back/assets/plugins/highcharts/js/variable-pie.js"></script>
-<script src="Back/assets/plugins/highcharts/js/export-data.js"></script>
-<script src="Back/assets/plugins/highcharts/js/accessibility.js"></script>
-<script src="Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+
+<script src="Back/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
+<script src="Back/assets/plugins/input-tags/js/tagsinput.js"></script>
+
+{#<script src="Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>#}
+{#<script src="Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>#}
+{#<script src="Back/assets/plugins/highcharts/js/highcharts.js"></script>#}
+{#<script src="Back/assets/plugins/highcharts/js/exporting.js"></script>#}
+{#<script src="Back/assets/plugins/highcharts/js/variable-pie.js"></script>#}
+{#<script src="Back/assets/plugins/highcharts/js/export-data.js"></script>#}
+{#<script src="Back/assets/plugins/highcharts/js/accessibility.js"></script>#}
+{#<script src="Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>#}
+
+<script>
+    $(document).ready(function () {
+        $('#image-uploadify').imageuploadify();
+    })
+</script>
 
 <!--app JS-->
 <script src="Back/assets/js/app.js"></script>

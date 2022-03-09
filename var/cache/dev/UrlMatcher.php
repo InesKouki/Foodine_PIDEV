@@ -19,12 +19,9 @@ return [
         '/admin/showNotif' => [[['_route' => 'admin_showNotif', '_controller' => 'App\\Controller\\AdminController::showNotification'], null, null, null, false, false, null]],
         '/adminreadNotif' => [[['_route' => 'admin_readNotif', '_controller' => 'App\\Controller\\AdminController::readNotifications'], null, null, null, false, false, null]],
         '/admin/searchBack' => [[['_route' => 'admin_searchBack', '_controller' => 'App\\Controller\\AdminController::search'], null, null, null, false, false, null]],
-        '/categorie' => [[['_route' => 'categorie', '_controller' => 'App\\Controller\\CategorieController::indexFront'], null, null, null, false, false, null]],
         '/chef' => [[['_route' => 'chef_index', '_controller' => 'App\\Controller\\ChefController::index'], null, null, null, true, false, null]],
         '/client/profil' => [[['_route' => 'client_profil', '_controller' => 'App\\Controller\\ClientController::profile'], null, null, null, false, false, null]],
-        '/evenements' => [[['_route' => 'event', '_controller' => 'App\\Controller\\EvenementController::afficheFront'], null, null, null, false, false, null]],
         '/admin-evenements' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::afficheBack'], null, null, null, false, false, null]],
-        '/admin-evenements/searchResajax' => [[['_route' => 'searchResajax', '_controller' => 'App\\Controller\\EvenementController::searchEventAjax'], null, null, null, false, false, null]],
         '/admin-addEvenement' => [[['_route' => 'addEvenement', '_controller' => 'App\\Controller\\EvenementController::addEvenement'], null, null, null, false, false, null]],
         '/admin-evenements-sortbynameasc' => [[['_route' => 'evenementSortByNameAsc', '_controller' => 'App\\Controller\\EvenementController::sortBackByNameAsc'], null, null, null, false, false, null]],
         '/admin-evenements-sortbynamedesc' => [[['_route' => 'evenementSortByNameDesc', '_controller' => 'App\\Controller\\EvenementController::sortBackByNameDesc'], null, null, null, false, false, null]],
@@ -33,6 +30,7 @@ return [
         '/addEvent' => [[['_route' => 'addEvent', '_controller' => 'App\\Controller\\EvenementController::addEvent'], null, null, null, false, false, null]],
         '/deleteEvent' => [[['_route' => 'delete_reclamation', '_controller' => 'App\\Controller\\EvenementController::deleteReclamationAction'], null, null, null, false, false, null]],
         '/updateEvent' => [[['_route' => 'update_reclamation', '_controller' => 'App\\Controller\\EvenementController::modifierReclamationAction'], null, null, null, false, false, null]],
+        '/event' => [[['_route' => 'event', '_controller' => 'App\\Controller\\EventController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'front', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
         '/team' => [[['_route' => 'team', '_controller' => 'App\\Controller\\FrontController::afficherChefs'], null, null, null, false, false, null]],
         '/search' => [[['_route' => 'search', '_controller' => 'App\\Controller\\FrontController::search'], null, null, null, false, false, null]],
@@ -40,8 +38,17 @@ return [
         '/addReview' => [[['_route' => 'addReview', '_controller' => 'App\\Controller\\FrontController::ajouterReview'], null, null, null, false, false, null]],
         '/calculer' => [[['_route' => 'calculer', '_controller' => 'App\\Controller\\FrontController::calculer'], null, null, null, false, false, null]],
         '/livreur' => [[['_route' => 'livreur_index', '_controller' => 'App\\Controller\\LivreurController::index'], null, null, null, true, false, null]],
-        '/planning' => [[['_route' => 'planning', '_controller' => 'App\\Controller\\PlanningController::index'], null, null, null, false, false, null]],
-        '/ajouterplanning' => [[['_route' => 'ajouterplanning', '_controller' => 'App\\Controller\\PlanningController::ajouterplanning'], null, null, null, false, false, null]],
+        '/ajouterplanning' => [[['_route' => 'ajouterplanning', '_controller' => 'App\\Controller\\PlanningController::ajout'], null, null, null, false, false, null]],
+        '/AffichePlanning' => [[['_route' => 'AffichePlanning', '_controller' => 'App\\Controller\\PlanningController::AffichePlanning'], null, null, null, false, false, null]],
+        '/Calendrier' => [[['_route' => 'Calendrier', '_controller' => 'App\\Controller\\PlanningController::Calendrier'], null, null, null, false, false, null]],
+        '/plan' => [[['_route' => 'displayPlan', '_controller' => 'App\\Controller\\PlanningController::displayEvents'], null, null, null, false, false, null]],
+        '/AjouterPlanningMobile' => [[['_route' => 'app_planning_ajoutermobile', '_controller' => 'App\\Controller\\PlanningController::ajoutermobile'], null, null, null, false, false, null]],
+        '/DeletePlanning' => [[['_route' => 'app_planning_supplanningmobile', '_controller' => 'App\\Controller\\PlanningController::Supplanningmobile'], null, null, null, false, false, null]],
+        '/chef-planning/searchResajax' => [[['_route' => 'searchResajax', '_controller' => 'App\\Controller\\PlanningController::searchEventAjax'], null, null, null, false, false, null]],
+        '/AffichePlanning-trienomAsc' => [[['_route' => 'trienom', '_controller' => 'App\\Controller\\PlanningController::trienomAsc'], null, null, null, false, false, null]],
+        '/AffichePlanning-trienomDsc' => [[['_route' => 'trienomDsc', '_controller' => 'App\\Controller\\PlanningController::trienomDsc'], null, null, null, false, false, null]],
+        '/AffichePlanning-trieDateAsc' => [[['_route' => 'triedateAsc', '_controller' => 'App\\Controller\\PlanningController::trieDateAsc'], null, null, null, false, false, null]],
+        '/AffichePlanning-trieDateDsc' => [[['_route' => 'triedateDsc', '_controller' => 'App\\Controller\\PlanningController::trieDateDsc'], null, null, null, false, false, null]],
         '/admin-promotions' => [[['_route' => 'promotion', '_controller' => 'App\\Controller\\PromotionController::afficheBack'], null, null, null, false, false, null]],
         '/admin-addPromotion' => [[['_route' => 'addPromotion', '_controller' => 'App\\Controller\\PromotionController::addPromotion'], null, null, null, false, false, null]],
         '/admin-promotions-sortbynameasc' => [[['_route' => 'promotionSortByNameAsc', '_controller' => 'App\\Controller\\PromotionController::sortBackByNameAsc'], null, null, null, false, false, null]],
@@ -49,7 +56,11 @@ return [
         '/admin-promotions-sortbyprcasc' => [[['_route' => 'promotionSortByPrceAsc', '_controller' => 'App\\Controller\\PromotionController::sortBackByPrcAsc'], null, null, null, false, false, null]],
         '/admin-promotions-sortbyprcdesc' => [[['_route' => 'promotionSortByPrceDesc', '_controller' => 'App\\Controller\\PromotionController::sortBackByPrcDesc'], null, null, null, false, false, null]],
         '/promotions' => [[['_route' => 'displayPromotions', '_controller' => 'App\\Controller\\PromotionController::displayPromotions'], null, null, null, false, false, null]],
-        '/admin-recette' => [[['_route' => 'recette', '_controller' => 'App\\Controller\\RecetteController::index'], null, null, null, false, false, null]],
+        '/recette' => [[['_route' => 'affrecette', '_controller' => 'App\\Controller\\RecetteController::afficher'], null, null, null, false, false, null]],
+        '/chef-Afficherrecette' => [[['_route' => 'AfficherRecette', '_controller' => 'App\\Controller\\RecetteController::index'], null, null, null, false, false, null]],
+        '/chef-Ajoutrecette' => [[['_route' => 'ajoutrecette', '_controller' => 'App\\Controller\\RecetteController::AjouterRecette'], null, null, null, false, false, null]],
+        '/chef-Afficherrecette/searchAjax' => [[['_route' => 'ajax_search', '_controller' => 'App\\Controller\\RecetteController::searchAction'], null, null, null, false, false, null]],
+        '/imprimer' => [[['_route' => 'imprimer', '_controller' => 'App\\Controller\\RecetteController::imprimer'], null, null, null, false, false, null]],
         '/reclamation' => [[['_route' => 'reclamation', '_controller' => 'App\\Controller\\ReclamationController::index'], null, null, null, false, false, null]],
         '/add_rec' => [[['_route' => 'add_rec', '_controller' => 'App\\Controller\\ReclamationController::add'], null, null, null, false, false, null]],
         '/show_rec' => [[['_route' => 'show_rec', '_controller' => 'App\\Controller\\ReclamationController::showReclamation'], null, null, null, false, false, null]],
@@ -65,6 +76,7 @@ return [
         '/signUpJson' => [[['_route' => 'signUpJson', '_controller' => 'App\\Controller\\SecurityController::signUpAction'], null, null, null, false, false, null]],
         '/signInJson' => [[['_route' => 'signInJson', '_controller' => 'App\\Controller\\SecurityController::signInAction'], null, null, null, false, false, null]],
         '/editUserJson' => [[['_route' => 'editUserJson', '_controller' => 'App\\Controller\\SecurityController::editUser'], null, null, null, false, false, null]],
+        '/fc-load-events' => [[['_route' => 'fc_load_events', '_controller' => 'CalendarBundle\\Controller\\CalendarController::loadAction'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -105,21 +117,31 @@ return [
                     .')'
                     .'|ctivation/([^/]++)(*:489)'
                 .')'
-                .'|/client/(?'
-                    .'|profilup/([^/]++)(*:526)'
-                    .'|editPass/([^/]++)(*:551)'
+                .'|/c(?'
+                    .'|lient/(?'
+                        .'|profilup/([^/]++)(*:529)'
+                        .'|editPass/([^/]++)(*:554)'
+                    .')'
+                    .'|hef\\-(?'
+                        .'|Modifierrecette\\-([^/]++)(*:596)'
+                        .'|SupprimerRecette\\-([^/]++)(*:630)'
+                    .')'
                 .')'
-                .'|/show_chef/([^/]++)(*:579)'
-                .'|/evenement\\-([^/]++)(*:607)'
+                .'|/s(?'
+                    .'|how_chef/([^/]++)(*:662)'
+                    .'|upprimerplanning/([^/]++)(*:695)'
+                .')'
+                .'|/modifierplanning/([^/]++)(*:730)'
+                .'|/evenement\\-([^/]++)(*:758)'
                 .'|/delete(?'
-                    .'|_rec([^/]++)(*:637)'
-                    .'|RecJson/([^/]++)(*:661)'
+                    .'|_rec([^/]++)(*:788)'
+                    .'|RecJson/([^/]++)(*:812)'
                 .')'
                 .'|/re(?'
-                    .'|c_res/([^/]++)(*:690)'
-                    .'|setPassword([^/]++)(*:717)'
+                    .'|c_res/([^/]++)(*:841)'
+                    .'|setPassword([^/]++)(*:868)'
                 .')'
-                .'|/updateRecJson/([^/]++)(*:749)'
+                .'|/updateRecJson/([^/]++)(*:900)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -140,15 +162,19 @@ return [
         433 => [[['_route' => 'deleteEvenement', '_controller' => 'App\\Controller\\EvenementController::deleteEvenement'], ['id'], null, null, false, true, null]],
         460 => [[['_route' => 'deletePromotion', '_controller' => 'App\\Controller\\PromotionController::deletePromotion'], ['id'], null, null, false, true, null]],
         489 => [[['_route' => 'activation', '_controller' => 'App\\Controller\\SecurityController::activation'], ['token'], null, null, false, true, null]],
-        526 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
-        551 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
-        579 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
-        607 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
-        637 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
-        661 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
-        690 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
-        717 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
-        749 => [
+        529 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
+        554 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
+        596 => [[['_route' => 'modifierrecette', '_controller' => 'App\\Controller\\RecetteController::Modierrecette'], ['id'], null, null, false, true, null]],
+        630 => [[['_route' => 'supprimerrecette', '_controller' => 'App\\Controller\\RecetteController::supprimerrecette'], ['id'], null, null, false, true, null]],
+        662 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
+        695 => [[['_route' => 'supprimerplanning', '_controller' => 'App\\Controller\\PlanningController::supprimerplanning'], ['id'], null, null, false, true, null]],
+        730 => [[['_route' => 'modifierplanning', '_controller' => 'App\\Controller\\PlanningController::modifierplanning'], ['id'], null, null, false, true, null]],
+        758 => [[['_route' => 'eventDeals', '_controller' => 'App\\Controller\\PromotionController::searchC'], ['id'], null, null, false, true, null]],
+        788 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
+        812 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
+        841 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
+        868 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
+        900 => [
             [['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
