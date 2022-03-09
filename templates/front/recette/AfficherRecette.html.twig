@@ -1,0 +1,123 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+    Recette
+{% endblock %}
+{% block content %}
+    {% if t is empty %}
+        <style>
+            .page-banner-area {
+                background-image: url(Front/assets/img/pl.jpg);
+                padding-top: 250px;
+            }
+        </style>
+    <div class="page-banner-area ">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Aucun Plat aujourd'hui</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        {% for i in t %}
+
+            <style>
+                .page-banner-area {
+                    background-image: url('{{asset('uploads/' ~ i.imagerecette)}}');
+                    padding-top: 250px;
+                }
+            </style>
+            <div class="page-banner-area ">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="page-banner-content">
+                                <h2>Notre plat du jour</h2>
+                                <ul>
+                                    <li>
+                                        <a href="">{{ i.nom }}</a>
+                                    </li>
+                                    <li>
+                                        {{ i.ingredient }}</li>
+                                </ul>
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <!-- End Page Banner -->
+
+    <!-- Start Team Area -->
+    <section class="team-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notres Recettes</h2>
+            </div>
+
+            <div class="row">
+                {% for r in recette%}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-team-box">
+
+                        <div class="image" >
+                            <img style="width: 340px ; height: 340px"  src="{{ asset('uploads/' ~ r.imagerecette)}}" alt="image">
+
+                        </div>
+                        <div class="content">
+                            <h3>{{ r.nom }}</h3>
+                            <span >{{ r.description}}</span>
+                                <div style="display: flex ; justify-content: space-between">
+
+                                <span>{{ r.ingredient}}</span>
+                                <div class="fb-share-button"
+                                     data-href="http://127.0.0.1:8000/recette"
+                                     data-layout="button_count">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+{% endblock %}

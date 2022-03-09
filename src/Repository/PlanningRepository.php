@@ -47,4 +47,38 @@ class PlanningRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findPlanningByName($nom){
+        return $this->createQueryBuilder('event')
+            ->where('event.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()->getResult();
+    }
+
+
+
+    function orderByDateDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.date','DESC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByDateAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.date','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNameAscQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.nom','ASC')
+            -> getQuery()->getResult();
+    }
+
+    function orderByNameDescQB(){
+        return $this->createQueryBuilder('ev')
+            -> orderBy('ev.nom','DESC')
+            -> getQuery()->getResult();
+    }
+
+
 }

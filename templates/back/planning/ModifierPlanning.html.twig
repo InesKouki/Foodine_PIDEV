@@ -29,28 +29,28 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="border border-3 p-4 rounded">
-                                    {{ form_start (f,{ 'attr' : {'novalidate':'novalidate'} }) }}
+                                    {{ form_start (f1,{ 'attr' : {'novalidate':'novalidate'} }) }}
 
                                     <div class="mb-3">
-                                        {{ form_label(f.date,"Date ",{'attr':{'class':'form-label'}}) }}
-                                        {{ form_widget(f.date,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_label(f1.date,"Date Debut",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f1.date,{'attr':{'class':'form-control'}}) }}
                                         <div class="custom-error">
-                                            {{form_errors(f.date)}}
+                                            {{form_errors(f1.date)}}
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        {{ form_label(f.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
-                                        {{ form_widget(f.nom,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_label(f1.nom,"Nom du planning",{'attr':{'class':'form-label'}}) }}
+                                        {{ form_widget(f1.nom,{'attr':{'class':'form-control'}}) }}
                                         <div class="custom-error">
-                                            {{form_errors(f.nom)}}
+                                            {{form_errors(f1.nom)}}
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button type="submit" class="btn btn-light">Ajouter</button>
+                                            <button type="submit" class="btn btn-light">Modifier</button>
                                         </div>
                                     </div>
-                                    {{ form_end(f) }}
+                                    {{ form_end(f1) }}
                                 </div>
                             </div>
                         </div>
