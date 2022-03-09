@@ -136,7 +136,7 @@ class LivraisonController extends AbstractController
 
                 ->setFrom('sitefoodine@gmail.com')
                 ->setTo($livraison->getEmail())
-                ->setBody('You should see me from the profiler!')
+                ->setBody('Merci pour passer une livraison !')
 
 
             ;
