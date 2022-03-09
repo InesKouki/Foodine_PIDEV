@@ -62,12 +62,12 @@ class CalendarSubscriber implements EventSubscriberInterface
              */
         if($planning->getRecettes()->toArray()){
             $planningEvent->setOptions([
-                'backgroundColor' => 'orange',
-                'borderColor' => 'orange',
+                'backgroundColor' => '#bf4040',
+                'borderColor' => '#bf4040',
             ]);
         }else{ $planningEvent->setOptions([
-            'backgroundColor' => '#BDB69C',
-            'borderColor' => '#c64ede',
+            'backgroundColor' => '#ff9933',
+            'borderColor' => '#ff9933',
         ]);}
 
 
