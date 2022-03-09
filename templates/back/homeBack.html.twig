@@ -131,79 +131,13 @@
 
 
 
+
             <div class="row">
-
-                <div class="col-12 col-lg-6 col-xl-8 d-flex">
+                <div class="col-12 col-xl-8 d-flex">
                     <div class="card radius-10 w-100">
-                        <div class="card-header border-bottom">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <h6 class="mb-0">Feed-Back des clients</h6>
-                                </div>
-                                <div class="font-22 ms-auto text-white"><i class="bx bx-dots-horizontal-rounded"></i>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            {{ render_chart(chart) }}
                         </div>
-                        <ul class="list-group list-group-flush">
-                            {% for rev in rev %}
-                            <li class="list-group-item bg-transparent">
-                                <div class="d-flex align-items-center">
-                                    <img src="/back/assets/images/avatars/avatar-1.png" alt="user avatar" class="rounded-circle" width="55" height="55">
-                                    <div class="ms-3">
-                                        <h6 class="mb-0">{{  rev.userName }} <small class="ms-4"></small></h6>
-                                        <p class="mb-0 small-font">{{ rev.Description }}</p>
-                                    </div>
-                                      {% if rev.Stars==1 %}
-                                    <div class="ms-auto star">
-                                        <i class='bx bxs-star text-white'></i>
-                                        <i class='bx bxs-star text-light-4'></i>
-                                        <i class='bx bxs-star text-light-4'></i>
-                                        <i class='bx bxs-star text-light-4'></i>
-                                        <i class='bx bxs-star text-light-4'></i>
-                                    </div>
-                                          {% elseif rev.Stars==2 %}
-                                              <div class="ms-auto star">
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-light-4'></i>
-                                                  <i class='bx bxs-star text-light-4'></i>
-                                                  <i class='bx bxs-star text-light-4'></i>
-                                              </div>
-                                              {% elseif rev.Stars==3 %}
-                                                  <div class="ms-auto star">
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-light-4'></i>
-                                                      <i class='bx bxs-star text-light-4'></i>
-                                                  </div>
-
-                                          {% elseif rev.Stars==4 %}
-                                              <div class="ms-auto star">
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-white'></i>
-                                                  <i class='bx bxs-star text-light-4'></i>
-                                              </div>
-                                              {% else %}
-                                                  <div class="ms-auto star">
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-                                                      <i class='bx bxs-star text-white'></i>
-
-                                                  </div>
-
-                                    {% endif %}
-                                    <a href="{{ path('admin_deleteReview',{'id':rev.id}) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
-                                </div>
-
-                                {% endfor%}
-                            </li>
-
-                        </ul>
                     </div>
                 </div>
                 <div class="col-12 col-xl-4 d-flex">
@@ -283,6 +217,80 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-lg-6 col-xl-8 d-flex">
+                    <div class="card radius-10 w-100">
+                        <div class="card-header border-bottom">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Feed-Back des clients</h6>
+                                </div>
+                                <div class="font-22 ms-auto text-white"><i class="bx bx-dots-horizontal-rounded"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for rev in rev %}
+                            <li class="list-group-item bg-transparent">
+                                <div class="d-flex align-items-center">
+                                    <img src="/back/assets/images/avatars/avatar-1.png" alt="user avatar" class="rounded-circle" width="55" height="55">
+                                    <div class="ms-3">
+                                        <h6 class="mb-0">{{  rev.userName }} <small class="ms-4"></small></h6>
+                                        <p class="mb-0 small-font">{{ rev.Description }}</p>
+                                    </div>
+                                      {% if rev.Stars==1 %}
+                                    <div class="ms-auto star">
+                                        <i class='bx bxs-star text-white'></i>
+                                        <i class='bx bxs-star text-light-4'></i>
+                                        <i class='bx bxs-star text-light-4'></i>
+                                        <i class='bx bxs-star text-light-4'></i>
+                                        <i class='bx bxs-star text-light-4'></i>
+                                    </div>
+                                          {% elseif rev.Stars==2 %}
+                                              <div class="ms-auto star">
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-light-4'></i>
+                                                  <i class='bx bxs-star text-light-4'></i>
+                                                  <i class='bx bxs-star text-light-4'></i>
+                                              </div>
+                                              {% elseif rev.Stars==3 %}
+                                                  <div class="ms-auto star">
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-light-4'></i>
+                                                      <i class='bx bxs-star text-light-4'></i>
+                                                  </div>
+
+                                          {% elseif rev.Stars==4 %}
+                                              <div class="ms-auto star">
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-white'></i>
+                                                  <i class='bx bxs-star text-light-4'></i>
+                                              </div>
+                                              {% else %}
+                                                  <div class="ms-auto star">
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+                                                      <i class='bx bxs-star text-white'></i>
+
+                                                  </div>
+
+                                    {% endif %}
+                                    <a href="{{ path('admin_deleteReview',{'id':rev.id}) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
+                                </div>
+
+                                {% endfor%}
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div><!--end row-->
         <div class="row">

@@ -49,44 +49,40 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
     <meta charset=\"utf-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
     <!-- Bootstrap CSS -->
-    <link rel=\"stylesheet\" href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Front/assets/css/bootstrap.min.css"), "html", null, true);
-        echo "\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/bootstrap.min.css\">
     <!-- Animate CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/animate.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/animate.min.css\">
     <!-- Meanmenu CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/meanmenu.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/meanmenu.css\">
     <!-- Boxicons CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/boxicons.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/boxicons.min.css\">
     <!-- Flaticon CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/flaticon.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/flaticon.css\">
     <!-- Nice Select CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/nice-select.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/nice-select.min.css\">
     <!-- Owl Carousel CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/owl.carousel.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/owl.carousel.min.css\">
     <!-- Owl Carousel Default CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/owl.theme.default.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/owl.theme.default.min.css\">
     <!-- Odometer CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/odometer.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/odometer.min.css\">
     <!-- Magnific Popup CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/magnific-popup.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/magnific-popup.min.css\">
     <!-- Style CSS -->
-    <link rel=\"stylesheet\" href=\"";
-        // line 28
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Front/assets/css/style.css"), "html", null, true);
-        echo "\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/style.css\">
     <!-- Responsive CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/responsive.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/responsive.css\">
+
+
 
         <title>
             Foodine | ";
-        // line 33
+        // line 35
         $this->displayBlock('title', $context, $blocks);
-        // line 34
+        // line 36
         echo "        </title>
 
-    <link rel=\"icon\" type=\"image/png\" href=\"Front/assets/img/icon.png\">
+    <link rel=\"icon\" type=\"image/png\" href=\"/Front/assets/img/icon.png\">
 </head>
 
 <body>
@@ -107,8 +103,11 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
         <div class=\"container\">
             <div class=\"main-responsive-menu\">
                 <div class=\"logo\">
-                    <a href=\"/\">
-                        <img src=\"Front/assets/img/logo.png\" alt=\"image\">
+                    <a href=\"";
+        // line 59
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("front");
+        echo "\">
+                        <img src=\"/Front/assets/img/logo.png\" alt=\"image\">
                     </a>
                 </div>
             </div>
@@ -119,7 +118,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
         <div class=\"container\">
             <nav class=\"navbar navbar-expand-md navbar-light\">
                 <a class=\"navbar-brand\" href=\"/\">
-                    <img src=\"Front/assets/img/logo.png\" alt=\"image\">
+                    <img src=\"/Front/assets/img/logo.png\" alt=\"image\">
                 </a>
 
                 <div class=\"collapse navbar-collapse mean-menu\" id=\"navbarSupportedContent\">
@@ -167,7 +166,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li class=\"nav-item\">
                             <a href=\"/evenements\" class=\"nav-link\">
-                                Nos Deals
+                                Evénements
                             </a>
 
                         </li>
@@ -186,10 +185,126 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                         </li>
 
                         <li class=\"nav-item\">
-                            <a href=\"contact.html\" class=\"nav-link\">
-                                About Us
+                            <a href=\"";
+        // line 138
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("team");
+        echo "\" class=\"nav-link\">
+                                Equipe
                             </a>
                         </li>
+                        ";
+        // line 142
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 142, $this->source); })()), "user", [], "any", false, false, false, 142)) {
+            // line 143
+            echo "                        <li class=\"nav-item\">
+                            <a href=\"";
+            // line 144
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_rec");
+            echo "\" class=\"nav-link\">
+                                Contact
+                            </a>
+                        </li>
+                        ";
+        }
+        // line 149
+        echo "
+                        <li class=\"nav-item\">
+                            <a href=\"#\" class=\"nav-link\">
+                                Compte
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            ";
+        // line 155
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 155, $this->source); })()), "user", [], "any", false, false, false, 155)) {
+            // line 156
+            echo "                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href=\"";
+            // line 159
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+            echo "\" class=\"nav-link\">
+                                        Se connecter
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"";
+            // line 164
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("registration");
+            echo "\" class=\"nav-link\">
+                                        S'inscrire
+                                    </a>
+                                </li>
+                            </ul>
+                            ";
+        } else {
+            // line 170
+            echo "                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href=";
+            // line 173
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("client_profil");
+            echo " class=\"nav-link\">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"/logout\" class=\"nav-link\">
+                                       Déconnexion
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                            ";
+        }
+        // line 187
+        echo "
+                        </li>
+
+                ";
+        // line 190
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 191
+            echo "                        <li class=\"nav-item\">
+                            <a href=\"";
+            // line 192
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_index");
+            echo "\" class=\"nav-link\">
+                                Admin_Dashboard
+                            </a>
+
+                        </li>
+                    ";
+        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_CHEF")) {
+            // line 198
+            echo "                        <li class=\"nav-item\">
+                            <a href=\"";
+            // line 199
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("chef_index");
+            echo "\" class=\"nav-link\">
+                                Chef_Dashboard
+                            </a>
+
+                        </li>
+                    ";
+        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_LIVREUR")) {
+            // line 205
+            echo "                        <li class=\"nav-item\">
+                            <a href=\"";
+            // line 206
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("livreur_index");
+            echo "\" class=\"nav-link\">
+                                Livreur_Dashboard
+                            </a>
+
+                        </li>
+                        ";
+        }
+        // line 212
+        echo "
                     </ul>
 
                     <div class=\"others-options d-flex align-items-center\">
@@ -202,12 +317,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                             </div>
                         </div>
 
-                        <div class=\"option-item\">
-                            <form class=\"search-box\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                                <button type=\"submit\"><i class=\"flaticon-search\"></i></button>
-                            </form>
-                        </div>
+
 
                         <div class=\"option-item\">
                             <div class=\"burger-menu\">
@@ -235,15 +345,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
             <div class=\"container\">
                 <div class=\"option-inner\">
                     <div class=\"others-options d-flex align-items-center\">
-                        <div class=\"option-item\">
-                            <div class=\"languages-list\">
-                                <select>
-                                    <option value=\"1\">Eng</option>
-                                    <option value=\"2\">Ger</option>
-                                    <option value=\"3\">Span</option>
-                                </select>
-                            </div>
-                        </div>
+
 
                         <div class=\"option-item\">
                             <div class=\"cart-btn\">
@@ -254,20 +356,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                             </div>
                         </div>
 
-                        <div class=\"option-item\">
-                            <form class=\"search-box\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                                <button type=\"submit\"><i class=\"flaticon-search\"></i></button>
-                            </form>
-                        </div>
 
-                        <div class=\"option-item\">
-                            <div class=\"burger-menu\">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -276,125 +365,13 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 </div>
 <!-- End Navbar Area -->
 
-<!-- Sidebar Modal -->
-<div class=\"sidebar-modal\">
-    <div class=\"sidebar-modal-inner\">
-        <div class=\"sidebar-about-area\">
-            <div class=\"title\">
-                <h2>About Us</h2>
-                <p>We believe brand interaction is key in communication. Real innovations and a positive customer
-                    experience are the heart of successful communication. No fake products and services. The customer is
-                    king, their lives and needs are the inspiration.</p>
-            </div>
-        </div>
 
-        <div class=\"sidebar-instagram-feed\">
-            <h2>Instagram</h2>
-            <ul>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class=\"sidebar-contact-area\">
-            <div class=\"contact-info\">
-                <div class=\"contact-info-content\">
-                    <h2>
-                        <a href=\"tel:+0881306298615\">
-                            +088 130 629 8615
-                        </a>
-                        <span>OR</span>
-                        <a href=\"mailto:orgo@gmail.com\">
-                            orgo@gmail.com
-                        </a>
-                    </h2>
-
-                    <ul class=\"social\">
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-facebook'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-twitter'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-instagram'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-linkedin'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-pinterest-alt'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-youtube'></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <span class=\"close-btn sidebar-modal-close-btn\">
-                    <i class=\"flaticon-cancel\"></i>
-                </span>
-    </div>
-</div>
-<!-- End Sidebar Modal -->
 
 <!-- Start Main Banner Area -->
 ";
-        // line 341
+        // line 276
         $this->displayBlock('content', $context, $blocks);
-        // line 344
+        // line 279
         echo "<!-- End Main Banner Area -->
 
 <!-- Start Footer Area -->
@@ -405,7 +382,10 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                 <div class=\"single-footer-widget\">
                     <div class=\"logo\">
                         <h2>
-                            <a href=\"index.html\">Orgo</a>
+                            <a href=\"";
+        // line 289
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("front");
+        echo "\">Foodine</a>
                         </h2>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -442,7 +422,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                     <ul class=\"instagram-list\">
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -450,7 +430,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -458,7 +438,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -466,7 +446,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -474,7 +454,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -482,7 +462,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -490,7 +470,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -498,7 +478,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -506,7 +486,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -517,26 +497,29 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
             <div class=\"col-lg-3 col-sm-6\">
                 <div class=\"single-footer-widget pl-5\">
-                    <h3>Quick Links</h3>
+                    <h3>Liens Rapides</h3>
 
                     <ul class=\"quick-links\">
                         <li>
-                            <a href=\"#\">About Us</a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Our Services</a>
+                            <a href=\"";
+        // line 405
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("team");
+        echo "\">Equipe</a>
                         </li>
                         <li>
                             <a href=\"#\">Shop</a>
                         </li>
                         <li>
-                            <a href=\"#\">Blog</a>
+                            <a href=\"";
+        // line 411
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_rec");
+        echo "\">Contact</a>
                         </li>
                         <li>
-                            <a href=\"#\">Faq</a>
+                            <a href=\"#\">Reservation</a>
                         </li>
                         <li>
-                            <a href=\"#\">Contact</a>
+                            <a href=\"#\">Evenements</a>
                         </li>
                     </ul>
                 </div>
@@ -544,23 +527,23 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
             <div class=\"col-lg-3 col-sm-6\">
                 <div class=\"single-footer-widget\">
-                    <h3>Contact Us</h3>
+                    <h3>Contact </h3>
 
                     <ul class=\"footer-contact-info\">
                         <li>
                             <i class='bx bxs-phone'></i>
                             <span>Phone</span>
-                            <a href=\"tel:407409202288\">(+40) 74 0920 2288</a>
+                            <a href=\"#\">+216 70100100</a>
                         </li>
                         <li>
                             <i class='bx bx-envelope'></i>
                             <span>Email</span>
-                            <a href=\"mailto:hello@orgo.com\">hello@orgo.com</a>
+                            <a href=\"#\">contact@foodine.com</a>
                         </li>
                         <li>
                             <i class='bx bx-map'></i>
                             <span>Address</span>
-                            175 5th Ave Premium Area, New York, NY 10010, United States
+                            01 Rue des Oranges ,Tunis
                         </li>
                     </ul>
                 </div>
@@ -681,35 +664,34 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
     </div>
 </div>
 <!-- End QuickView Modal Area -->
-
 <!-- Jquery Slim JS -->
-<script src=\"Front/assets/js/jquery.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.min.js\"></script>
 <!-- Popper JS -->
-<script src=\"Front/assets/js/popper.min.js\"></script>
+<script src=\"/Front/assets/js/popper.min.js\"></script>
 <!-- Bootstrap JS -->
-<script src=\"Front/assets/js/bootstrap.min.js\"></script>
+<script src=\"/Front/assets/js/bootstrap.min.js\"></script>
 <!-- Meanmenu JS -->
-<script src=\"Front/assets/js/jquery.meanmenu.js\"></script>
+<script src=\"/Front/assets/js/jquery.meanmenu.js\"></script>
 <!-- Nice Select JS -->
-<script src=\"Front/assets/js/jquery.nice-select.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.nice-select.min.js\"></script>
 <!-- Owl Carousel JS -->
-<script src=\"Front/assets/js/owl.carousel.min.js\"></script>
+<script src=\"/Front/assets/js/owl.carousel.min.js\"></script>
 <!-- Magnific Popup JS -->
-<script src=\"Front/assets/js/jquery.magnific-popup.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.magnific-popup.min.js\"></script>
 <!-- Odometer JS -->
-<script src=\"Front/assets/js/odometer.min.js\"></script>
+<script src=\"/Front/assets/js/odometer.min.js\"></script>
 <!-- Jquery Appear JS -->
-<script src=\"Front/assets/js/jquery.appear.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.appear.min.js\"></script>
 <!-- Ajaxchimp JS -->
-<script src=\"Front/assets/js/jquery.ajaxchimp.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.ajaxchimp.min.js\"></script>
 <!-- Form Validator JS -->
-<script src=\"Front/assets/js/form-validator.min.js\"></script>
+<script src=\"/Front/assets/js/form-validator.min.js\"></script>
 <!-- Contact JS -->
-<script src=\"Front/assets/js/contact-form-script.js\"></script>
+<script src=\"/Front/assets/js/contact-form-script.js\"></script>
 <!-- Wow JS -->
-<script src=\"Front/assets/js/wow.min.js\"></script>
+<script src=\"/Front/assets/js/wow.min.js\"></script>
 <!-- Custom JS -->
-<script src=\"Front/assets/js/main.js\"></script>
+<script src=\"/Front/assets/js/main.js\"></script>
 </body>
 </html>";
         
@@ -720,7 +702,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
     }
 
-    // line 33
+    // line 35
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -738,7 +720,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
     }
 
-    // line 341
+    // line 276
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -748,7 +730,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 342
+        // line 277
         echo "
 ";
         
@@ -771,7 +753,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
     public function getDebugInfo()
     {
-        return array (  752 => 342,  742 => 341,  724 => 33,  398 => 344,  396 => 341,  87 => 34,  85 => 33,  77 => 28,  54 => 8,  45 => 1,);
+        return array (  734 => 277,  724 => 276,  706 => 35,  515 => 411,  506 => 405,  387 => 289,  375 => 279,  373 => 276,  307 => 212,  298 => 206,  295 => 205,  286 => 199,  283 => 198,  274 => 192,  271 => 191,  269 => 190,  264 => 187,  247 => 173,  242 => 170,  233 => 164,  225 => 159,  220 => 156,  218 => 155,  210 => 149,  202 => 144,  199 => 143,  197 => 142,  190 => 138,  108 => 59,  83 => 36,  81 => 35,  45 => 1,);
     }
 
     public function getSourceContext()
@@ -783,35 +765,37 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
     <meta charset=\"utf-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
     <!-- Bootstrap CSS -->
-    <link rel=\"stylesheet\" href=\"{{ asset('Front/assets/css/bootstrap.min.css') }}\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/bootstrap.min.css\">
     <!-- Animate CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/animate.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/animate.min.css\">
     <!-- Meanmenu CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/meanmenu.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/meanmenu.css\">
     <!-- Boxicons CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/boxicons.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/boxicons.min.css\">
     <!-- Flaticon CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/flaticon.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/flaticon.css\">
     <!-- Nice Select CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/nice-select.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/nice-select.min.css\">
     <!-- Owl Carousel CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/owl.carousel.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/owl.carousel.min.css\">
     <!-- Owl Carousel Default CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/owl.theme.default.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/owl.theme.default.min.css\">
     <!-- Odometer CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/odometer.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/odometer.min.css\">
     <!-- Magnific Popup CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/magnific-popup.min.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/magnific-popup.min.css\">
     <!-- Style CSS -->
-    <link rel=\"stylesheet\" href=\"{{asset(\"Front/assets/css/style.css\")}}\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/style.css\">
     <!-- Responsive CSS -->
-    <link rel=\"stylesheet\" href=\"Front/assets/css/responsive.css\">
+    <link rel=\"stylesheet\" href=\"/Front/assets/css/responsive.css\">
+
+
 
         <title>
             Foodine | {% block title %}{% endblock %}
         </title>
 
-    <link rel=\"icon\" type=\"image/png\" href=\"Front/assets/img/icon.png\">
+    <link rel=\"icon\" type=\"image/png\" href=\"/Front/assets/img/icon.png\">
 </head>
 
 <body>
@@ -832,8 +816,8 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
         <div class=\"container\">
             <div class=\"main-responsive-menu\">
                 <div class=\"logo\">
-                    <a href=\"/\">
-                        <img src=\"Front/assets/img/logo.png\" alt=\"image\">
+                    <a href=\"{{ path('front') }}\">
+                        <img src=\"/Front/assets/img/logo.png\" alt=\"image\">
                     </a>
                 </div>
             </div>
@@ -844,7 +828,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
         <div class=\"container\">
             <nav class=\"navbar navbar-expand-md navbar-light\">
                 <a class=\"navbar-brand\" href=\"/\">
-                    <img src=\"Front/assets/img/logo.png\" alt=\"image\">
+                    <img src=\"/Front/assets/img/logo.png\" alt=\"image\">
                 </a>
 
                 <div class=\"collapse navbar-collapse mean-menu\" id=\"navbarSupportedContent\">
@@ -892,7 +876,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li class=\"nav-item\">
                             <a href=\"/evenements\" class=\"nav-link\">
-                                Nos Deals
+                                Evénements
                             </a>
 
                         </li>
@@ -911,10 +895,81 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                         </li>
 
                         <li class=\"nav-item\">
-                            <a href=\"contact.html\" class=\"nav-link\">
-                                About Us
+                            <a href=\"{{ path('team') }}\" class=\"nav-link\">
+                                Equipe
                             </a>
                         </li>
+                        {% if app.user %}
+                        <li class=\"nav-item\">
+                            <a href=\"{{ path('add_rec') }}\" class=\"nav-link\">
+                                Contact
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        <li class=\"nav-item\">
+                            <a href=\"#\" class=\"nav-link\">
+                                Compte
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            {% if not app.user %}
+                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href=\"{{ path('login')}}\" class=\"nav-link\">
+                                        Se connecter
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"{{ path('registration')}}\" class=\"nav-link\">
+                                        S'inscrire
+                                    </a>
+                                </li>
+                            </ul>
+                            {% else %}
+                            <ul class=\"dropdown-menu\">
+
+                                <li class=\"nav-item\">
+                                    <a href={{ path('client_profil') }} class=\"nav-link\">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class=\"nav-item\">
+                                    <a href=\"/logout\" class=\"nav-link\">
+                                       Déconnexion
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                            {% endif %}
+
+                        </li>
+
+                {% if is_granted(\"ROLE_ADMIN\") %}
+                        <li class=\"nav-item\">
+                            <a href=\"{{ path('admin_index') }}\" class=\"nav-link\">
+                                Admin_Dashboard
+                            </a>
+
+                        </li>
+                    {% elseif is_granted(\"ROLE_CHEF\")%}
+                        <li class=\"nav-item\">
+                            <a href=\"{{ path('chef_index') }}\" class=\"nav-link\">
+                                Chef_Dashboard
+                            </a>
+
+                        </li>
+                    {% elseif is_granted(\"ROLE_LIVREUR\")%}
+                        <li class=\"nav-item\">
+                            <a href=\"{{ path('livreur_index') }}\" class=\"nav-link\">
+                                Livreur_Dashboard
+                            </a>
+
+                        </li>
+                        {% endif %}
+
                     </ul>
 
                     <div class=\"others-options d-flex align-items-center\">
@@ -927,12 +982,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                             </div>
                         </div>
 
-                        <div class=\"option-item\">
-                            <form class=\"search-box\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                                <button type=\"submit\"><i class=\"flaticon-search\"></i></button>
-                            </form>
-                        </div>
+
 
                         <div class=\"option-item\">
                             <div class=\"burger-menu\">
@@ -960,15 +1010,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
             <div class=\"container\">
                 <div class=\"option-inner\">
                     <div class=\"others-options d-flex align-items-center\">
-                        <div class=\"option-item\">
-                            <div class=\"languages-list\">
-                                <select>
-                                    <option value=\"1\">Eng</option>
-                                    <option value=\"2\">Ger</option>
-                                    <option value=\"3\">Span</option>
-                                </select>
-                            </div>
-                        </div>
+
 
                         <div class=\"option-item\">
                             <div class=\"cart-btn\">
@@ -979,20 +1021,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                             </div>
                         </div>
 
-                        <div class=\"option-item\">
-                            <form class=\"search-box\">
-                                <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                                <button type=\"submit\"><i class=\"flaticon-search\"></i></button>
-                            </form>
-                        </div>
 
-                        <div class=\"option-item\">
-                            <div class=\"burger-menu\">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1001,119 +1030,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 </div>
 <!-- End Navbar Area -->
 
-<!-- Sidebar Modal -->
-<div class=\"sidebar-modal\">
-    <div class=\"sidebar-modal-inner\">
-        <div class=\"sidebar-about-area\">
-            <div class=\"title\">
-                <h2>About Us</h2>
-                <p>We believe brand interaction is key in communication. Real innovations and a positive customer
-                    experience are the heart of successful communication. No fake products and services. The customer is
-                    king, their lives and needs are the inspiration.</p>
-            </div>
-        </div>
 
-        <div class=\"sidebar-instagram-feed\">
-            <h2>Instagram</h2>
-            <ul>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
-                    </a>
-                </li>
-                <li>
-                    <a href=\"#\">
-                        <img src=\"Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class=\"sidebar-contact-area\">
-            <div class=\"contact-info\">
-                <div class=\"contact-info-content\">
-                    <h2>
-                        <a href=\"tel:+0881306298615\">
-                            +088 130 629 8615
-                        </a>
-                        <span>OR</span>
-                        <a href=\"mailto:orgo@gmail.com\">
-                            orgo@gmail.com
-                        </a>
-                    </h2>
-
-                    <ul class=\"social\">
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-facebook'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-twitter'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-instagram'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-linkedin'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-pinterest-alt'></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href=\"#\" target=\"_blank\">
-                                <i class='bx bxl-youtube'></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <span class=\"close-btn sidebar-modal-close-btn\">
-                    <i class=\"flaticon-cancel\"></i>
-                </span>
-    </div>
-</div>
-<!-- End Sidebar Modal -->
 
 <!-- Start Main Banner Area -->
 {% block content %}
@@ -1129,7 +1046,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                 <div class=\"single-footer-widget\">
                     <div class=\"logo\">
                         <h2>
-                            <a href=\"index.html\">Orgo</a>
+                            <a href=\"{{ path('front') }}\">Foodine</a>
                         </h2>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -1166,7 +1083,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
                     <ul class=\"instagram-list\">
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1174,7 +1091,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram2.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1182,7 +1099,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram3.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1190,7 +1107,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram4.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1198,7 +1115,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram5.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1206,7 +1123,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram6.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1214,7 +1131,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram7.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1222,7 +1139,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram8.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1230,7 +1147,7 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
                         <li>
                             <div class=\"box\">
-                                <img src=\"Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
+                                <img src=\"/Front/assets/img/instagram/instagram1.jpg\" alt=\"image\">
                                 <i class=\"bx bxl-instagram\"></i>
                                 <a href=\"#\" target=\"_blank\" class=\"link-btn\"></a>
                             </div>
@@ -1241,26 +1158,23 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
             <div class=\"col-lg-3 col-sm-6\">
                 <div class=\"single-footer-widget pl-5\">
-                    <h3>Quick Links</h3>
+                    <h3>Liens Rapides</h3>
 
                     <ul class=\"quick-links\">
                         <li>
-                            <a href=\"#\">About Us</a>
-                        </li>
-                        <li>
-                            <a href=\"#\">Our Services</a>
+                            <a href=\"{{path('team')}}\">Equipe</a>
                         </li>
                         <li>
                             <a href=\"#\">Shop</a>
                         </li>
                         <li>
-                            <a href=\"#\">Blog</a>
+                            <a href=\"{{path('add_rec')}}\">Contact</a>
                         </li>
                         <li>
-                            <a href=\"#\">Faq</a>
+                            <a href=\"#\">Reservation</a>
                         </li>
                         <li>
-                            <a href=\"#\">Contact</a>
+                            <a href=\"#\">Evenements</a>
                         </li>
                     </ul>
                 </div>
@@ -1268,23 +1182,23 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
 
             <div class=\"col-lg-3 col-sm-6\">
                 <div class=\"single-footer-widget\">
-                    <h3>Contact Us</h3>
+                    <h3>Contact </h3>
 
                     <ul class=\"footer-contact-info\">
                         <li>
                             <i class='bx bxs-phone'></i>
                             <span>Phone</span>
-                            <a href=\"tel:407409202288\">(+40) 74 0920 2288</a>
+                            <a href=\"#\">+216 70100100</a>
                         </li>
                         <li>
                             <i class='bx bx-envelope'></i>
                             <span>Email</span>
-                            <a href=\"mailto:hello@orgo.com\">hello@orgo.com</a>
+                            <a href=\"#\">contact@foodine.com</a>
                         </li>
                         <li>
                             <i class='bx bx-map'></i>
                             <span>Address</span>
-                            175 5th Ave Premium Area, New York, NY 10010, United States
+                            01 Rue des Oranges ,Tunis
                         </li>
                     </ul>
                 </div>
@@ -1405,35 +1319,34 @@ class __TwigTemplate_37df95673a8b9f05dc31334c1293f74253ecc1fb257b1f18e2ae13fe894
     </div>
 </div>
 <!-- End QuickView Modal Area -->
-
 <!-- Jquery Slim JS -->
-<script src=\"Front/assets/js/jquery.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.min.js\"></script>
 <!-- Popper JS -->
-<script src=\"Front/assets/js/popper.min.js\"></script>
+<script src=\"/Front/assets/js/popper.min.js\"></script>
 <!-- Bootstrap JS -->
-<script src=\"Front/assets/js/bootstrap.min.js\"></script>
+<script src=\"/Front/assets/js/bootstrap.min.js\"></script>
 <!-- Meanmenu JS -->
-<script src=\"Front/assets/js/jquery.meanmenu.js\"></script>
+<script src=\"/Front/assets/js/jquery.meanmenu.js\"></script>
 <!-- Nice Select JS -->
-<script src=\"Front/assets/js/jquery.nice-select.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.nice-select.min.js\"></script>
 <!-- Owl Carousel JS -->
-<script src=\"Front/assets/js/owl.carousel.min.js\"></script>
+<script src=\"/Front/assets/js/owl.carousel.min.js\"></script>
 <!-- Magnific Popup JS -->
-<script src=\"Front/assets/js/jquery.magnific-popup.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.magnific-popup.min.js\"></script>
 <!-- Odometer JS -->
-<script src=\"Front/assets/js/odometer.min.js\"></script>
+<script src=\"/Front/assets/js/odometer.min.js\"></script>
 <!-- Jquery Appear JS -->
-<script src=\"Front/assets/js/jquery.appear.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.appear.min.js\"></script>
 <!-- Ajaxchimp JS -->
-<script src=\"Front/assets/js/jquery.ajaxchimp.min.js\"></script>
+<script src=\"/Front/assets/js/jquery.ajaxchimp.min.js\"></script>
 <!-- Form Validator JS -->
-<script src=\"Front/assets/js/form-validator.min.js\"></script>
+<script src=\"/Front/assets/js/form-validator.min.js\"></script>
 <!-- Contact JS -->
-<script src=\"Front/assets/js/contact-form-script.js\"></script>
+<script src=\"/Front/assets/js/contact-form-script.js\"></script>
 <!-- Wow JS -->
-<script src=\"Front/assets/js/wow.min.js\"></script>
+<script src=\"/Front/assets/js/wow.min.js\"></script>
 <!-- Custom JS -->
-<script src=\"Front/assets/js/main.js\"></script>
+<script src=\"/Front/assets/js/main.js\"></script>
 </body>
 </html>", "baseFront.html.twig", "C:\\Users\\azizm\\Desktop\\SEM2\\PIDEV\\Foodine_PIDEV\\templates\\baseFront.html.twig");
     }

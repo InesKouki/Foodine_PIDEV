@@ -21,7 +21,12 @@
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
+      <parameter key="JMSSerializerBundle">JMS\SerializerBundle\JMSSerializerBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
+      <parameter key="ObHighchartsBundle">Ob\HighchartsBundle\ObHighchartsBundle</parameter>
+      <parameter key="ChartjsBundle">Symfony\UX\Chartjs\ChartjsBundle</parameter>
+      <parameter key="WebpackEncoreBundle">Symfony\WebpackEncoreBundle\WebpackEncoreBundle</parameter>
       <parameter key="GregwarCaptchaBundle">Gregwar\CaptchaBundle\GregwarCaptchaBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
@@ -73,9 +78,29 @@
         <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\web-server-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
+      <parameter key="JMSSerializerBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\jms\serializer-bundle</parameter>
+        <parameter key="namespace">JMS\SerializerBundle</parameter>
+      </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
       <parameter key="SwiftmailerBundle" type="collection">
         <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\swiftmailer-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
+      </parameter>
+      <parameter key="ObHighchartsBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\ob\highcharts-bundle</parameter>
+        <parameter key="namespace">Ob\HighchartsBundle</parameter>
+      </parameter>
+      <parameter key="ChartjsBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\ux-chartjs</parameter>
+        <parameter key="namespace">Symfony\UX\Chartjs</parameter>
+      </parameter>
+      <parameter key="WebpackEncoreBundle" type="collection">
+        <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\webpack-encore-bundle\src</parameter>
+        <parameter key="namespace">Symfony\WebpackEncoreBundle</parameter>
       </parameter>
       <parameter key="GregwarCaptchaBundle" type="collection">
         <parameter key="path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle</parameter>
@@ -86,7 +111,7 @@
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="container.dumper.inline_factories">true</parameter>
-    <parameter key="upload_directory">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/public/uploads</parameter>
+    <parameter key="uploads_directory">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/public/uploads</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -121,7 +146,7 @@
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">fr</parameter>
     <parameter key="kernel.error_controller">error_controller</parameter>
     <parameter key="templating.helper.code.file_link_format">null</parameter>
     <parameter key="debug.file_link_format">null</parameter>
@@ -271,6 +296,11 @@
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="knp_paginator.page_limit">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">dynamic</parameter>
     <parameter key="swiftmailer.spool.default.memory.path">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\var\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
@@ -284,6 +314,7 @@
       <parameter key="default">swiftmailer.mailer.default</parameter>
     </parameter>
     <parameter key="swiftmailer.default_mailer">default</parameter>
+    <parameter key="ob_highcharts.twig_extension.class">Ob\HighchartsBundle\Twig\HighchartsExtension</parameter>
     <parameter key="gregwar_captcha.controller.class">Gregwar\CaptchaBundle\Controller\CaptchaController</parameter>
     <parameter key="gregwar_captcha.captcha_type.class">Gregwar\CaptchaBundle\Type\CaptchaType</parameter>
     <parameter key="gregwar_captcha.captcha_generator.class">Gregwar\CaptchaBundle\Generator\CaptchaGenerator</parameter>
@@ -407,6 +438,10 @@
         <parameter>mailer</parameter>
         <parameter>@WebProfiler/Collector/mailer.html.twig</parameter>
       </parameter>
+      <parameter key="data_collector.jms_serializer" type="collection">
+        <parameter>jms_serializer</parameter>
+        <parameter>@JMSSerializer/Collector/panel.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
@@ -529,7 +564,13 @@
     <service id="App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true">
@@ -538,11 +579,27 @@
     <service id="App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\NotificationRepository" class="App\Repository\NotificationRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\PlanningRepository" class="App\Repository\PlanningRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -583,7 +640,7 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="request_stack"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="service" id="router.default" on-invalid="ignore"/>
     </service>
     <service id="validate_request_listener" class="Symfony\Component\HttpKernel\EventListener\ValidateRequestListener" public="false">
@@ -679,6 +736,9 @@
         <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="swiftmailer.email_sender.listener" type="service" id="swiftmailer.email_sender.listener" on-invalid="ignore_uninitialized"/>
+        <argument key="webpack_encore.tag_renderer" type="service" id="webpack_encore.tag_renderer" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.webpack_encore" type="service" id="cache.webpack_encore" on-invalid="ignore_uninitialized"/>
+        <argument key="webpack_encore.entrypoint_lookup[_default]" type="service" id="webpack_encore.entrypoint_lookup[_default]" on-invalid="ignore_uninitialized"/>
         <argument key=".debug.http_client" type="service" id=".debug.http_client" on-invalid="ignore_uninitialized"/>
       </argument>
       <argument type="collection">
@@ -738,6 +798,15 @@
           <argument>reset</argument>
         </argument>
         <argument key="swiftmailer.email_sender.listener" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="webpack_encore.tag_renderer" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="cache.webpack_encore" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="webpack_encore.entrypoint_lookup[_default]" type="collection">
           <argument>reset</argument>
         </argument>
         <argument key=".debug.http_client" type="collection">
@@ -856,6 +925,7 @@
         <argument>cache.doctrine.orm.default.result</argument>
         <argument>cache.doctrine.orm.default.query</argument>
         <argument>cache.security_expression_language</argument>
+        <argument>cache.webpack_encore</argument>
       </argument>
       <call method="setName">
         <argument>cache:pool:list</argument>
@@ -935,6 +1005,7 @@
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/vendor/knplabs/knp-paginator-bundle/templates</argument>
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -947,7 +1018,7 @@
       <argument type="service" id="translation.writer"/>
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/translations</argument>
       <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/templates</argument>
       <argument type="collection">
@@ -956,6 +1027,7 @@
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations</argument>
       </argument>
       <argument type="collection">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/vendor/knplabs/knp-paginator-bundle/templates</argument>
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -989,7 +1061,9 @@
         <argument>App\Form\EditClientType</argument>
         <argument>App\Form\EditEmployeType</argument>
         <argument>App\Form\EditPasswordType</argument>
+        <argument>App\Form\EvenementType</argument>
         <argument>App\Form\InscriptionType</argument>
+        <argument>App\Form\PromotionType</argument>
         <argument>App\Form\ReponseType</argument>
         <argument>App\Form\ResetPassType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1210,6 +1284,7 @@
         <argument key="cache.annotations" type="service" id="cache.annotations" on-invalid="ignore_uninitialized"/>
         <argument key="cache.property_info" type="service" id="cache.property_info" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.webpack_encore" type="service" id="cache.webpack_encore" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="cache.global_clearer" class="Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer" public="true">
@@ -1224,6 +1299,7 @@
         <argument key="cache.doctrine.orm.default.result" type="service" id="cache.doctrine.orm.default.result" on-invalid="ignore_uninitialized"/>
         <argument key="cache.doctrine.orm.default.query" type="service" id="cache.doctrine.orm.default.query" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.webpack_encore" type="service" id="cache.webpack_encore" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="identity_translator" class="Symfony\Component\Translation\IdentityTranslator" public="false"/>
@@ -1326,7 +1402,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.wGwEMJa"/>
+      <argument type="service" id=".service_locator..i2qWIS"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1581,7 +1657,7 @@
       <tag name="kernel.locale_aware"/>
       <argument type="service" id=".service_locator.V.o0zE7"/>
       <argument type="service" id="translator.formatter.default"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -1632,6 +1708,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.ar.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.ar.yml</argument>
           </argument>
@@ -1649,6 +1726,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.bg.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.bg.yml</argument>
           </argument>
@@ -1666,6 +1744,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.cs.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.cs.yml</argument>
           </argument>
@@ -1676,11 +1755,13 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.de.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.de.yml</argument>
           </argument>
@@ -1693,6 +1774,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.en.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.en.yml</argument>
           </argument>
@@ -1700,6 +1782,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.es.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.es.yml</argument>
           </argument>
@@ -1712,21 +1795,25 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fa.xliff</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fi.xliff</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.fr.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.fr.yml</argument>
           </argument>
@@ -1744,11 +1831,13 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hr.xliff</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1759,11 +1848,13 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.it.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.it.yml</argument>
           </argument>
@@ -1771,6 +1862,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ja.xliff</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
@@ -1781,6 +1873,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -1806,6 +1899,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.nl.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.nl.yml</argument>
           </argument>
@@ -1818,11 +1912,13 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.no.xliff</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.pl.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.pl.yml</argument>
           </argument>
@@ -1835,6 +1931,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.pt_BR.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.pt_BR.yml</argument>
           </argument>
@@ -1842,6 +1939,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.ro.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.ro.yml</argument>
           </argument>
@@ -1849,6 +1947,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.ru.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.ru.yml</argument>
           </argument>
@@ -1881,6 +1980,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
@@ -1896,6 +1996,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.tr.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.tr.yml</argument>
           </argument>
@@ -1903,6 +2004,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\gregwar_captcha.uk.yml</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations\validators.uk.yml</argument>
           </argument>
@@ -1928,11 +2030,18 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
           </argument>
+          <argument key="ky" type="collection">
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\framework-bundle/translations</argument>
@@ -1959,8 +2068,17 @@
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/TwigExtraBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\web-server-bundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebServerBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\jms\serializer-bundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/JMSSerializerBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/KnpPaginatorBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\swiftmailer-bundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/SwiftmailerBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\ob\highcharts-bundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/ObHighchartsBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\ux-chartjs/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/ChartjsBundle/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+          <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebpackEncoreBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
           <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
         </argument>
@@ -1969,6 +2087,7 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\validator/Resources/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\form/Resources/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\gregwar\captcha-bundle/Resources/translations</argument>
             <argument>translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\framework-bundle/translations</argument>
@@ -1995,8 +2114,17 @@
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/TwigExtraBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\web-server-bundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebServerBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\jms\serializer-bundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/JMSSerializerBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/KnpPaginatorBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\swiftmailer-bundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/SwiftmailerBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\ob\highcharts-bundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/ObHighchartsBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\ux-chartjs/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/ChartjsBundle/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+            <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/WebpackEncoreBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/GregwarCaptchaBundle/translations</argument>
             <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src/Resources/translations</argument>
           </argument>
@@ -2271,6 +2399,9 @@
         <argument type="service" id="mailer.data_collector"/>
       </call>
       <call method="add">
+        <argument type="service" id="data_collector.jms_serializer"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.config"/>
       </call>
     </service>
@@ -2367,6 +2498,10 @@
         <argument>cache.security_expression_language</argument>
         <argument type="service" id="cache.security_expression_language"/>
       </call>
+      <call method="addInstance">
+        <argument>cache.webpack_encore</argument>
+        <argument type="service" id="cache.webpack_encore"/>
+      </call>
     </service>
     <service id=".1_ResolvedFormTypeFactory~2nxLW1a" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
     <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension" public="false">
@@ -2439,6 +2574,22 @@
         <argument type="collection">
           <argument type="service_closure" id="data_collector.router"/>
           <argument>onKernelController</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="webpack_encore.exception_listener"/>
+          <argument>onKernelException</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -2859,6 +3010,46 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
           <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
@@ -2887,6 +3078,14 @@
         <argument type="collection">
           <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
           <argument>onTerminate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.finish_request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="Symfony\WebpackEncoreBundle\EventListener\ResetAssetsEventListener"/>
+          <argument>resetAssets</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -2989,7 +3188,7 @@
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="parameter_bag" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.router" on-invalid="ignore"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <call method="setConfigCacheFactory">
         <argument type="service" id="config_cache_factory"/>
       </call>
@@ -3407,6 +3606,24 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="jms_serializer.twig_extension.runtime_serializer"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="ob_highcharts.twig.highcharts_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="chartjs.twig_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="webpack_encore.twig_entry_files_extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="webpack_encore.twig_stimulus_extension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3452,6 +3669,7 @@
       <argument type="service" id="kernel"/>
       <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\src</argument>
       <argument type="collection">
+        <argument key="C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/vendor/knplabs/knp-paginator-bundle/templates">KnpPaginator</argument>
         <argument key="C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
         <argument key="C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
       </argument>
@@ -3467,6 +3685,10 @@
       <tag name="twig.loader"/>
       <argument type="collection"/>
       <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV</argument>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/vendor/knplabs/knp-paginator-bundle/templates</argument>
+        <argument>KnpPaginator</argument>
+      </call>
       <call method="addPath">
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
@@ -3526,6 +3748,22 @@
       <call method="addPath">
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\jms\serializer-bundle/Resources/views</argument>
+        <argument>JMSSerializer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\jms\serializer-bundle/Resources/views</argument>
+        <argument>!JMSSerializer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
@@ -3638,7 +3876,7 @@
       <argument>,</argument>
     </service>
     <service id="twig.runtime_loader" class="Twig\RuntimeLoader\ContainerRuntimeLoader" public="false">
-      <argument type="service" id=".service_locator.7YWluy."/>
+      <argument type="service" id=".service_locator.7puFXBj"/>
     </service>
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" public="false">
       <argument type="service" id="twig"/>
@@ -4222,7 +4460,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.VHkvxFW"/>
+      <argument type="service" id=".service_locator.LwcRfOZ"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5406,6 +5644,1012 @@
         <argument>server:status</argument>
       </call>
     </service>
+    <service id="jms_serializer.event_dispatcher.service_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="jms_serializer.stopwatch_subscriber" type="service_closure" id="jms_serializer.stopwatch_subscriber"/>
+        <argument key="jms_serializer.traceable_runs_listener" type="service_closure" id="jms_serializer.traceable_runs_listener"/>
+        <argument key="jms_serializer.doctrine_proxy_subscriber" type="service_closure" id="jms_serializer.doctrine_proxy_subscriber"/>
+      </argument>
+    </service>
+    <service id="jms_serializer.doctrine_proxy_subscriber" class="JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber" public="false">
+      <tag name="jms_serializer.event_subscriber"/>
+      <argument>true</argument>
+      <argument>false</argument>
+    </service>
+    <service id="jms_serializer.stopwatch_subscriber" class="JMS\SerializerBundle\Serializer\StopwatchEventSubscriber" public="false">
+      <tag name="jms_serializer.event_subscriber"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
+    <service id="jms_serializer.handler_registry.service_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="jms_serializer.array_collection_handler" type="service_closure" id="jms_serializer.array_collection_handler"/>
+        <argument key="jms_serializer.constraint_violation_handler" type="service_closure" id="jms_serializer.constraint_violation_handler"/>
+        <argument key="jms_serializer.datetime_handler" type="service_closure" id="jms_serializer.datetime_handler"/>
+        <argument key="jms_serializer.form_error_handler" type="service_closure" id="jms_serializer.form_error_handler"/>
+        <argument key="jms_serializer.iterator_handler" type="service_closure" id="jms_serializer.iterator_handler"/>
+      </argument>
+    </service>
+    <service id="jms_serializer.array_collection_handler" class="JMS\Serializer\Handler\ArrayCollectionHandler" public="false">
+      <tag name="jms_serializer.subscribing_handler"/>
+      <argument>false</argument>
+    </service>
+    <service id="jms_serializer.constraint_violation_handler" class="JMS\Serializer\Handler\ConstraintViolationHandler" public="false">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.datetime_handler" class="JMS\Serializer\Handler\DateHandler" public="false">
+      <tag name="jms_serializer.subscribing_handler"/>
+      <argument>Y-m-d\TH:i:sP</argument>
+      <argument>Europe/Berlin</argument>
+      <argument>true</argument>
+    </service>
+    <service id="jms_serializer.form_error_handler" class="JMS\Serializer\Handler\FormErrorHandler" public="false">
+      <tag name="jms_serializer.subscribing_handler"/>
+      <argument type="service" id="translator.data_collector" on-invalid="null"/>
+      <argument>validators</argument>
+    </service>
+    <service id="jms_serializer.iterator_handler" class="JMS\Serializer\Handler\IteratorHandler" public="false">
+      <tag name="jms_serializer.subscribing_handler"/>
+    </service>
+    <service id="jms_serializer.type_parser" class="JMS\Serializer\Type\Parser" public="false"/>
+    <service id="jms_serializer.metadata.yaml_driver" class="JMS\Serializer\Metadata\Driver\YamlDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.traceable_file_locator"/>
+      <argument type="service" id="jms_serializer.serialized_name_annotation_strategy"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.metadata.xml_driver" class="JMS\Serializer\Metadata\Driver\XmlDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.traceable_file_locator"/>
+      <argument type="service" id="jms_serializer.serialized_name_annotation_strategy"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.metadata.annotation_driver" class="JMS\Serializer\Metadata\Driver\AnnotationDriver" public="false">
+      <argument type="service" id="annotations.cached_reader"/>
+      <argument type="service" id="jms_serializer.serialized_name_annotation_strategy"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.metadata.chain_driver" class="Metadata\Driver\DriverChain" public="false">
+      <argument type="collection">
+        <argument type="service" id="jms_serializer.metadata.yaml_driver"/>
+        <argument type="service" id="jms_serializer.metadata.xml_driver"/>
+        <argument type="service" id="jms_serializer.metadata.annotation_driver"/>
+      </argument>
+    </service>
+    <service id="jms_serializer.metadata.doctrine_type_driver" class="JMS\Serializer\Metadata\Driver\DoctrineTypeDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.chain_driver"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="jms_serializer.type_parser"/>
+    </service>
+    <service id="jms_serializer.metadata.doctrine_phpcr_type_driver" class="JMS\Serializer\Metadata\Driver\DoctrinePHPCRTypeDriver" public="false">
+      <argument></argument>
+      <argument type="service" id="doctrine_phpcr"/>
+      <argument type="service" id="jms_serializer.type_parser"/>
+    </service>
+    <service id="jms_serializer.metadata.typed_properties_driver" class="JMS\Serializer\Metadata\Driver\TypedPropertiesDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.typed_properties_driver.inner"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.metadata.doc_block_driver" class="JMS\Serializer\Metadata\Driver\DocBlockDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.doc_block_driver.inner"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.metadata.service_locator" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="metadata_driver" type="service_closure" id="jms_serializer.metadata.doctrine_type_driver"/>
+      </argument>
+    </service>
+    <service id="jms_serializer.metadata.lazy_loading_driver" class="Metadata\Driver\LazyLoadingDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.service_locator"/>
+      <argument>metadata_driver</argument>
+    </service>
+    <service id="jms_serializer.metadata.cache.file_cache" class="Metadata\Cache\FileCache" public="false">
+      <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\var\cache\dev/jms_serializer</argument>
+    </service>
+    <service id="jms_serializer.metadata_factory" class="Metadata\MetadataFactory" public="false">
+      <argument type="service" id="jms_serializer.metadata.lazy_loading_driver"/>
+      <argument>Metadata\ClassHierarchyMetadata</argument>
+      <argument>true</argument>
+      <call method="setCache">
+        <argument type="service" id="jms_serializer.metadata.traceable_cache" on-invalid="ignore"/>
+      </call>
+      <call method="setIncludeInterfaces">
+        <argument>false</argument>
+      </call>
+    </service>
+    <service id="jms_serializer.version_exclusion_strategy" class="JMS\Serializer\Exclusion\VersionExclusionStrategy" public="false" abstract="true"/>
+    <service id="jms_serializer.camel_case_naming_strategy" class="JMS\Serializer\Naming\CamelCaseNamingStrategy" public="false">
+      <argument>_</argument>
+      <argument>true</argument>
+    </service>
+    <service id="jms_serializer.identical_property_naming_strategy" class="JMS\Serializer\Naming\IdenticalPropertyNamingStrategy" public="false"/>
+    <service id="jms_serializer.serialized_name_annotation_strategy" class="JMS\Serializer\Naming\SerializedNameAnnotationStrategy" public="false">
+      <argument type="service" id="jms_serializer.camel_case_naming_strategy"/>
+    </service>
+    <service id="jms_serializer.doctrine_object_constructor" class="JMS\Serializer\Construction\DoctrineObjectConstructor" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+      <argument type="string">null</argument>
+    </service>
+    <service id="jms_serializer.doctrine_phpcr_object_constructor" class="JMS\Serializer\Construction\DoctrineObjectConstructor" public="false">
+      <argument type="service" id="doctrine_phpcr"/>
+      <argument type="service" id="jms_serializer.unserialize_object_constructor"/>
+    </service>
+    <service id="jms_serializer.unserialize_object_constructor" class="JMS\Serializer\Construction\UnserializeObjectConstructor" public="false"/>
+    <service id="jms_serializer.serializer" class="JMS\Serializer\Serializer" public="false">
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="collection">
+        <argument key="2" type="service" id="jms_serializer.deserialization_graph_navigator_factory"/>
+        <argument key="1" type="service" id="jms_serializer.serialization_graph_navigator_factory"/>
+      </argument>
+      <argument type="collection">
+        <argument key="json" type="service" id="jms_serializer.json_serialization_visitor"/>
+        <argument key="xml" type="service" id="jms_serializer.xml_serialization_visitor"/>
+      </argument>
+      <argument type="collection">
+        <argument key="json" type="service" id="jms_serializer.json_deserialization_visitor"/>
+        <argument key="xml" type="service" id="jms_serializer.xml_deserialization_visitor"/>
+      </argument>
+      <argument type="service" id="jms_serializer.configured_serialization_context_factory"/>
+      <argument type="service" id="jms_serializer.configured_deserialization_context_factory"/>
+      <argument type="service" id="jms_serializer.type_parser" on-invalid="null"/>
+    </service>
+    <service id="jms_serializer.deserialization_graph_navigator_factory" class="JMS\Serializer\GraphNavigator\Factory\DeserializationGraphNavigatorFactory" public="false">
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="service" id="jms_serializer.traceable_handler_registry"/>
+      <argument type="service" id="jms_serializer.doctrine_object_constructor"/>
+      <argument type="service" id="jms_serializer.accessor_strategy.default"/>
+      <argument type="service" id="jms_serializer.traceable_event_dispatcher"/>
+      <argument type="service" id="jms_serializer.expression_evaluator"/>
+    </service>
+    <service id="jms_serializer.serialization_graph_navigator_factory" class="JMS\Serializer\GraphNavigator\Factory\SerializationGraphNavigatorFactory" public="false">
+      <argument type="service" id="jms_serializer.metadata_factory"/>
+      <argument type="service" id="jms_serializer.traceable_handler_registry"/>
+      <argument type="service" id="jms_serializer.accessor_strategy.default"/>
+      <argument type="service" id="jms_serializer.traceable_event_dispatcher"/>
+      <argument type="service" id="jms_serializer.expression_evaluator"/>
+    </service>
+    <service id="jms_serializer.expression_evaluator" class="JMS\Serializer\Expression\ExpressionEvaluator">
+      <argument type="service" id="jms_serializer.expression_language"/>
+      <argument type="collection">
+        <argument key="container" type="service" id="service_container"/>
+      </argument>
+    </service>
+    <service id="jms_serializer.expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage" public="false">
+      <call method="registerProvider">
+        <argument type="service" id="jms_serializer.expression_language.function_provider"/>
+      </call>
+    </service>
+    <service id="jms_serializer.expression_language.function_provider" class="JMS\SerializerBundle\ExpressionLanguage\BasicSerializerFunctionsProvider" public="false">
+      <tag name="jms.expression.function_provider"/>
+    </service>
+    <service id="jms_serializer.twig_extension.runtime_serializer" class="JMS\Serializer\Twig\SerializerRuntimeExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument>jms_</argument>
+    </service>
+    <service id="jms_serializer.twig_extension.serializer_runtime_helper" class="JMS\Serializer\Twig\SerializerRuntimeHelper" public="false">
+      <tag name="twig.runtime"/>
+      <argument type="service" id="jms_serializer.serializer"/>
+    </service>
+    <service id="jms_serializer.accessor_strategy.default" class="JMS\Serializer\Accessor\DefaultAccessorStrategy" public="false">
+      <argument type="service" id="jms_serializer.expression_evaluator"/>
+    </service>
+    <service id="jms_serializer.json_serialization_visitor" class="JMS\Serializer\Visitor\Factory\JsonSerializationVisitorFactory" public="false">
+      <tag name="jms_serializer.serialization_visitor" format="json"/>
+      <call method="setOptions">
+        <argument>1024</argument>
+      </call>
+    </service>
+    <service id="jms_serializer.json_deserialization_visitor" class="JMS\Serializer\Visitor\Factory\JsonDeserializationVisitorFactory" public="false">
+      <tag name="jms_serializer.deserialization_visitor" format="json"/>
+      <call method="setOptions">
+        <argument>0</argument>
+      </call>
+    </service>
+    <service id="jms_serializer.xml_serialization_visitor" class="JMS\Serializer\Visitor\Factory\XmlSerializationVisitorFactory" public="false">
+      <tag name="jms_serializer.serialization_visitor" format="xml"/>
+    </service>
+    <service id="jms_serializer.xml_deserialization_visitor" class="JMS\Serializer\Visitor\Factory\XmlDeserializationVisitorFactory" public="false">
+      <tag name="jms_serializer.deserialization_visitor" format="xml"/>
+    </service>
+    <service id="jms_serializer.cache.cache_clearer" class="JMS\SerializerBundle\Cache\CacheClearer" public="false">
+      <tag name="kernel.cache_clearer"/>
+      <argument type="service" id="jms_serializer.metadata.traceable_cache"/>
+    </service>
+    <service id="jms_serializer.configured_serialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory" public="false"/>
+    <service id="jms_serializer.configured_deserialization_context_factory" class="JMS\SerializerBundle\ContextFactory\ConfiguredContextFactory" public="false"/>
+    <service id="data_collector.jms_serializer" class="JMS\SerializerBundle\Debug\DataCollector">
+      <tag name="data_collector" id="jms_serializer" template="@JMSSerializer/Collector/panel.html.twig"/>
+      <argument type="collection"/>
+      <argument type="service" id="jms_serializer.traceable_event_dispatcher"/>
+      <argument type="service" id="jms_serializer.traceable_handler_registry"/>
+      <argument type="service" id="jms_serializer.metadata.traceable_cache"/>
+      <argument type="service" id="jms_serializer.metadata.traceable_file_locator"/>
+      <argument type="service" id="jms_serializer.traceable_runs_listener"/>
+    </service>
+    <service id="jms_serializer.traceable_event_dispatcher" class="JMS\SerializerBundle\Debug\TraceableEventDispatcher" public="false">
+      <argument type="service" id="jms_serializer.event_dispatcher.service_locator"/>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.stopwatch_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.traceable_runs_listener</argument>
+          <argument>saveRunInfo</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerializeTypedProxy</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\Persistence\Proxy</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerializeTypedProxy</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\Common\Persistence\Proxy</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\Persistence\Proxy</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>Doctrine\Common\Persistence\Proxy</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.pre_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.doctrine_proxy_subscriber</argument>
+          <argument>onPreSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>ProxyManager\Proxy\LazyLoadingInterface</argument>
+      </call>
+      <call method="addListener">
+        <argument>serializer.post_serialize</argument>
+        <argument type="collection">
+          <argument>jms_serializer.stopwatch_subscriber</argument>
+          <argument>onPostSerialize</argument>
+        </argument>
+        <argument>null</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="jms_serializer.traceable_runs_listener" class="JMS\SerializerBundle\Debug\RunsListener" public="false">
+      <tag name="jms_serializer.event_listener" event="serializer.pre_serialize" method="saveRunInfo"/>
+    </service>
+    <service id="jms_serializer.metadata.traceable_cache" class="JMS\SerializerBundle\Debug\TraceableDriver" public="false">
+      <argument type="service" id="jms_serializer.metadata.cache.file_cache"/>
+    </service>
+    <service id="jms_serializer.traceable_handler_registry" class="JMS\SerializerBundle\Debug\TraceableHandlerRegistry" public="false">
+      <argument type="service" id="jms_serializer.traceable_handler_registry.inner"/>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>ArrayCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>ArrayCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>ArrayCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>serializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Validator\ConstraintViolationList</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.constraint_violation_handler</argument>
+          <argument>serializeListToxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Validator\ConstraintViolationList</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.constraint_violation_handler</argument>
+          <argument>serializeListTojson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Validator\ConstraintViolation</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.constraint_violation_handler</argument>
+          <argument>serializeViolationToxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Validator\ConstraintViolation</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.constraint_violation_handler</argument>
+          <argument>serializeViolationTojson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTime</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTime</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTime</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTime</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTimeImmutable</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTimeImmutable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTimeImmutable</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTimeImmutable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateInterval</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateInterval</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateInterval</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateInterval</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTimeInterface</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTimeInterface</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>DateTimeInterface</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>serializeDateTimeInterface</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\Form</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormToxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\Form</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormTojson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\FormInterface</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormInterfaceToxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\FormInterface</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormInterfaceTojson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\FormError</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormErrorToxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Symfony\Component\Form\FormError</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.form_error_handler</argument>
+          <argument>serializeFormErrorTojson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Iterator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Iterator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>ArrayIterator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>ArrayIterator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Generator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>1</argument>
+        <argument>Generator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>serializeIterable</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>ArrayCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>ArrayCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>ArrayCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\Common\Collections\ArrayCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ORM\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\MongoDB\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Doctrine\ODM\PHPCR\PersistentCollection</argument>
+        <argument>yml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.array_collection_handler</argument>
+          <argument>deserializeCollection</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTime</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeFromjson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTime</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeFromxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTimeImmutable</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeImmutableFromjson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTimeImmutable</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeImmutableFromxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateInterval</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateIntervalFromjson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateInterval</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateIntervalFromxml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTimeInterface</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeFromJson</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>DateTimeInterface</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.datetime_handler</argument>
+          <argument>deserializeDateTimeFromXml</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Iterator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeIterator</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Iterator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeIterator</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>ArrayIterator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeIterator</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>ArrayIterator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeIterator</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Generator</argument>
+        <argument>json</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeGenerator</argument>
+        </argument>
+      </call>
+      <call method="registerHandler">
+        <argument>2</argument>
+        <argument>Generator</argument>
+        <argument>xml</argument>
+        <argument type="collection">
+          <argument>jms_serializer.iterator_handler</argument>
+          <argument>deserializeGenerator</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="jms_serializer.metadata.traceable_file_locator" class="JMS\SerializerBundle\Debug\TraceableFileLocator" public="false">
+      <argument type="collection"/>
+    </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <tag name="proxy" interface="Knp\Component\Pager\PaginatorInterface"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+          <argument key="pageOutOfRange">ignore</argument>
+          <argument key="defaultLimit">10</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+        <argument key="defaultPageLimit">null</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
     <service id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~zajnuJk" class="Swift_Transport_Esmtp_Auth_NTLMAuthenticator" public="false"/>
     <service id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~zajnuJk" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
     <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~zajnuJk" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
@@ -5503,6 +6747,88 @@
     <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger" public="true">
       <tag name="swiftmailer.default.plugin"/>
     </service>
+    <service id="ob_highcharts.twig.highcharts_extension" class="Ob\HighchartsBundle\Twig\HighchartsExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="chartjs.builder" class="Symfony\UX\Chartjs\Builder\ChartBuilder" public="false"/>
+    <service id="chartjs.twig_extension" class="Symfony\UX\Chartjs\Twig\ChartExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="webpack_encore.twig_stimulus_extension"/>
+    </service>
+    <service id=".1_ServiceLocator~eUXzXYF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="webpack_encore.entrypoint_lookup_collection" type="service_closure" id="webpack_encore.entrypoint_lookup_collection"/>
+        <argument key="webpack_encore.tag_renderer" type="service_closure" id="webpack_encore.tag_renderer"/>
+      </argument>
+    </service>
+    <service id="webpack_encore.entrypoint_lookup_collection" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollection" public="false">
+      <argument type="service" id=".service_locator.0DpzJRH"/>
+      <argument>_default</argument>
+    </service>
+    <service id="webpack_encore.tag_renderer" class="Symfony\WebpackEncoreBundle\Asset\TagRenderer" public="false">
+      <tag name="kernel.reset" method="reset"/>
+      <argument type="service" id="webpack_encore.entrypoint_lookup_collection"/>
+      <argument type="service" id="assets.packages"/>
+      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="defer">true</argument>
+      </argument>
+      <argument type="collection"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="webpack_encore.twig_entry_files_extension" class="Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id=".1_ServiceLocator~eUXzXYF"/>
+    </service>
+    <service id="webpack_encore.twig_stimulus_extension" class="Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension" public="false">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="webpack_encore.entrypoint_lookup.cache_warmer" class="Symfony\WebpackEncoreBundle\CacheWarmer\EntrypointCacheWarmer" public="false">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="collection">
+        <argument key="_default">C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/public/build/entrypoints.json</argument>
+      </argument>
+      <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\var\cache\dev/webpack_encore.cache.php</argument>
+    </service>
+    <service id="webpack_encore.cache" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\var\cache\dev/webpack_encore.cache.php</argument>
+      <argument type="service" id="cache.webpack_encore"/>
+      <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+    </service>
+    <service id="cache.webpack_encore" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="false">
+      <tag name="cache.pool"/>
+      <tag name="kernel.reset" method="reset"/>
+      <argument type="service" id="cache.webpack_encore.recorder_inner"/>
+    </service>
+    <service id="webpack_encore.exception_listener" class="Symfony\WebpackEncoreBundle\EventListener\ExceptionListener" public="false">
+      <tag name="kernel.event_listener" event="kernel.exception"/>
+      <argument type="service" id="webpack_encore.entrypoint_lookup_collection"/>
+      <argument type="collection">
+        <argument>_default</argument>
+      </argument>
+    </service>
+    <service id="Symfony\WebpackEncoreBundle\EventListener\ResetAssetsEventListener" class="Symfony\WebpackEncoreBundle\EventListener\ResetAssetsEventListener" public="false">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="webpack_encore.entrypoint_lookup_collection"/>
+      <argument type="collection">
+        <argument>_default</argument>
+      </argument>
+    </service>
+    <service id="webpack_encore.entrypoint_lookup[_default]" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookup">
+      <tag name="kernel.reset" method="reset"/>
+      <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV/public/build/entrypoints.json</argument>
+      <argument>null</argument>
+      <argument>_default</argument>
+      <argument>true</argument>
+    </service>
+    <service id=".service_locator.0DpzJRH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="_default" type="service_closure" id="webpack_encore.entrypoint_lookup[_default]"/>
+      </argument>
+    </service>
     <service id="gregwar_captcha.controller" class="Gregwar\CaptchaBundle\Controller\CaptchaController" public="true" autowire="true">
       <argument type="service" id="gregwar_captcha.generator"/>
       <argument>%gregwar_captcha.config%</argument>
@@ -5581,16 +6907,28 @@
     <service id=".abstract.instanceof.App\Form\EditEmployeType" class="App\Form\EditEmployeType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EditPasswordType" class="App\Form\EditPasswordType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\InscriptionType" class="App\Form\InscriptionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPassType" class="App\Form\ResetPassType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\NotificationRepository" class="App\Repository\NotificationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\NotificationRepository" class="App\Repository\NotificationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PlanningRepository" class="App\Repository\PlanningRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PlanningRepository" class="App\Repository\PlanningRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReponseRepository" class="App\Repository\ReponseRepository" autowire="true" abstract="true"/>
@@ -5880,6 +7218,20 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.y3HPCYI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="chartBuilder" type="service_closure" id="chartjs.builder"/>
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\NotificationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.n8gOTNr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+      </argument>
+    </service>
     <service id=".service_locator.F0UDtIE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5899,10 +7251,63 @@
         <argument key="repository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.T6JpKpg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.pugCF3O" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.eTCdelq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+        <argument key="repo" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wzP3o6W" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HSlls17" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\ReviewRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.bqvr0uO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repository" type="service_closure" id="App\Repository\ReviewRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator._7qJDNs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rep" type="service_closure" id="App\Repository\PromotionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UA5dx9Q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\PromotionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QYVF7FC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.JjRAOhW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5964,27 +7369,48 @@
         <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
-    <service id=".service_locator.AaVLlvt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.3N0aDRu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.F0UDtIE"/>
+        <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.y3HPCYI"/>
         <argument key="App\Controller\AdminController::readNotifications" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController::search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\AdminController::showNotification" type="service_closure" id=".service_locator.F0UDtIE"/>
+        <argument key="App\Controller\AdminController::showUsers" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\ClientController::modifier" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\ClientController::modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
+        <argument key="App\Controller\EvenementController::addEvenement" type="service_closure" id=".service_locator.eTCdelq"/>
+        <argument key="App\Controller\EvenementController::afficheBack" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController::afficheFront" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController::deleteEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController::displayEvents" type="service_closure" id=".service_locator.wzP3o6W"/>
+        <argument key="App\Controller\EvenementController::searchEventAjax" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController::sortBackByDateAsc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController::sortBackByNameAsc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController::sortBackByNameDesc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController::updateEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
         <argument key="App\Controller\FrontController::afficherChefs" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController::afficherDetailsChef" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController::calculer" type="service_closure" id=".service_locator.bqvr0uO"/>
-        <argument key="App\Controller\FrontController::index" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\FrontController::index" type="service_closure" id=".service_locator.HSlls17"/>
         <argument key="App\Controller\FrontController::search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController::showR" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\PromotionController::afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController::deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController::displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
+        <argument key="App\Controller\PromotionController::searchC" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController::sortBackByNameAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController::sortBackByNameDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController::sortBackByPrcAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController::sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController::updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\ReclamationController::addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController::deleteReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::reponse" type="service_closure" id=".service_locator.DVfd__4"/>
+        <argument key="App\Controller\ReclamationController::showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\SecurityController::activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController::editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController::forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
@@ -5992,24 +7418,45 @@
         <argument key="App\Controller\SecurityController::registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController::resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
         <argument key="App\Controller\SecurityController::signUpAction" type="service_closure" id=".service_locator.jmvbEvf"/>
-        <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.F0UDtIE"/>
+        <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.y3HPCYI"/>
         <argument key="App\Controller\AdminController:readNotifications" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController:search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\AdminController:showNotification" type="service_closure" id=".service_locator.F0UDtIE"/>
+        <argument key="App\Controller\AdminController:showUsers" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\ClientController:modifier" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\ClientController:modifierMotdepasse" type="service_closure" id=".service_locator.Z7qS7IC"/>
+        <argument key="App\Controller\EvenementController:addEvenement" type="service_closure" id=".service_locator.eTCdelq"/>
+        <argument key="App\Controller\EvenementController:afficheBack" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController:afficheFront" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController:deleteEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController:displayEvents" type="service_closure" id=".service_locator.wzP3o6W"/>
+        <argument key="App\Controller\EvenementController:searchEventAjax" type="service_closure" id=".service_locator.T6JpKpg"/>
+        <argument key="App\Controller\EvenementController:sortBackByDateAsc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController:sortBackByNameAsc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController:sortBackByNameDesc" type="service_closure" id=".service_locator.pugCF3O"/>
+        <argument key="App\Controller\EvenementController:updateEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
         <argument key="App\Controller\FrontController:afficherChefs" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController:afficherDetailsChef" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController:calculer" type="service_closure" id=".service_locator.bqvr0uO"/>
-        <argument key="App\Controller\FrontController:index" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\FrontController:index" type="service_closure" id=".service_locator.HSlls17"/>
         <argument key="App\Controller\FrontController:search" type="service_closure" id=".service_locator.wgX78kv"/>
         <argument key="App\Controller\FrontController:showR" type="service_closure" id=".service_locator.bqvr0uO"/>
+        <argument key="App\Controller\PromotionController:afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController:deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController:displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
+        <argument key="App\Controller\PromotionController:searchC" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController:sortBackByNameAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController:sortBackByNameDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController:sortBackByPrcAsc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController:sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
+        <argument key="App\Controller\PromotionController:updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\ReclamationController:addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController:deleteReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:reponse" type="service_closure" id=".service_locator.DVfd__4"/>
+        <argument key="App\Controller\ReclamationController:showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\SecurityController:activation" type="service_closure" id=".service_locator.1UuH9tO"/>
         <argument key="App\Controller\SecurityController:editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController:forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
@@ -6078,14 +7525,16 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.wGwEMJa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator..i2qWIS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AddReclamationType" type="service_closure" id="App\Form\AddReclamationType"/>
         <argument key="App\Form\EditClientType" type="service_closure" id="App\Form\EditClientType"/>
         <argument key="App\Form\EditEmployeType" type="service_closure" id="App\Form\EditEmployeType"/>
         <argument key="App\Form\EditPasswordType" type="service_closure" id="App\Form\EditPasswordType"/>
+        <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
         <argument key="App\Form\InscriptionType" type="service_closure" id="App\Form\InscriptionType"/>
+        <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
         <argument key="App\Form\ReponseType" type="service_closure" id="App\Form\ReponseType"/>
         <argument key="App\Form\ResetPassType" type="service_closure" id="App\Form\ResetPassType"/>
         <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
@@ -6263,11 +7712,15 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.VHkvxFW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.LwcRfOZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\CategorieRepository" type="service_closure" id="App\Repository\CategorieRepository"/>
+        <argument key="App\Repository\EvenementRepository" type="service_closure" id="App\Repository\EvenementRepository"/>
         <argument key="App\Repository\NotificationRepository" type="service_closure" id="App\Repository\NotificationRepository"/>
         <argument key="App\Repository\PlanningRepository" type="service_closure" id="App\Repository\PlanningRepository"/>
+        <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
+        <argument key="App\Repository\PromotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
         <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
         <argument key="App\Repository\ReviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
@@ -6552,12 +8005,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.AaVLlvt"/>
+      <argument type="service" id=".service_locator.3N0aDRu"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.AaVLlvt"/>
+      <argument type="service" id=".service_locator.3N0aDRu"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6566,6 +8019,9 @@
         <argument type="service" id="monolog.logger.http_client" on-invalid="ignore"/>
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
+    </service>
+    <service id="jms_serializer.traceable_handler_registry.inner" class="JMS\Serializer\Handler\LazyHandlerRegistry" public="false">
+      <argument type="service" id="jms_serializer.handler_registry.service_locator"/>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.MrSgT.u"/>
@@ -6822,9 +8278,18 @@
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
-    <service id=".service_locator.7YWluy." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="cache.webpack_encore.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
+      <argument>aihsI34RWN</argument>
+      <argument>0</argument>
+      <argument>%container.build_id%</argument>
+      <argument>C:\Users\azizm\Desktop\SEM2\PIDEV\Foodine_PIDEV\var\cache\dev/pools</argument>
+      <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+      <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+    </service>
+    <service id=".service_locator.7puFXBj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="JMS\Serializer\Twig\SerializerRuntimeHelper" type="service_closure" id="jms_serializer.twig_extension.serializer_runtime_helper"/>
         <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
         <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service_closure" id="twig.runtime.httpkernel"/>
         <argument key="Symfony\Component\Form\FormRenderer" type="service_closure" id="twig.form.renderer"/>
@@ -6960,6 +8425,21 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
+    <service id="jms_serializer.metadata_driver" alias="jms_serializer.metadata.doctrine_type_driver" public="true"/>
+    <service id="jms_serializer.metadata.cache" alias="jms_serializer.metadata.traceable_cache" public="false"/>
+    <service id="jms_serializer.naming_strategy" alias="jms_serializer.serialized_name_annotation_strategy" public="false"/>
+    <service id="jms_serializer.object_constructor" alias="jms_serializer.doctrine_object_constructor" public="false"/>
+    <service id="jms_serializer.deserialization_context_factory" alias="jms_serializer.configured_deserialization_context_factory" public="true"/>
+    <service id="jms_serializer.serialization_context_factory" alias="jms_serializer.configured_serialization_context_factory" public="true"/>
+    <service id="jms_serializer" alias="jms_serializer.serializer" public="true"/>
+    <service id="JMS\Serializer\SerializerInterface" alias="jms_serializer.serializer" public="false"/>
+    <service id="JMS\Serializer\ArrayTransformerInterface" alias="jms_serializer.serializer" public="false"/>
+    <service id="jms_serializer.accessor_strategy" alias="jms_serializer.accessor_strategy.default" public="false"/>
+    <service id="JMS\Serializer\ContextFactory\SerializationContextFactoryInterface" alias="jms_serializer.configured_serialization_context_factory" public="false"/>
+    <service id="JMS\Serializer\ContextFactory\DeserializationContextFactoryInterface" alias="jms_serializer.configured_deserialization_context_factory" public="false"/>
+    <service id="jms_serializer.metadata.file_locator" alias="jms_serializer.metadata.traceable_file_locator"/>
+    <service id="jms_serializer.event_dispatcher" alias="jms_serializer.traceable_event_dispatcher"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="swiftmailer.mailer.default.transport" alias="swiftmailer.mailer.default.transport.spool"/>
     <service id="swiftmailer.mailer.default.spool" alias="swiftmailer.mailer.default.spool.memory"/>
     <service id="swiftmailer.mailer.default.transport.real" alias="swiftmailer.mailer.default.transport.dynamic" public="true"/>
@@ -6971,10 +8451,13 @@
     <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
     <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
     <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
+    <service id="Symfony\UX\Chartjs\Builder\ChartBuilderInterface" alias="chartjs.builder" public="false"/>
+    <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
+    <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="Gregwar\CaptchaBundle\Controller\CaptchaController" alias="gregwar_captcha.controller" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.AaVLlvt"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.3N0aDRu"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -6988,8 +8471,13 @@
     <service id="Psr\Log\LoggerInterface $debugLogger" alias="monolog.logger.debug"/>
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
+    <service id="jms_serializer.authorization_checker" alias="security.authorization_checker" public="true"/>
+    <service id=".service_locator.EO8lhEe" alias="jms_serializer.event_dispatcher.service_locator" public="false"/>
+    <service id=".service_locator.UfK7yB0" alias="jms_serializer.handler_registry.service_locator" public="false"/>
+    <service id=".service_locator.J7o.N2l" alias="jms_serializer.metadata.service_locator" public="false"/>
+    <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~eUXzXYF" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
-    <service id=".service_locator.RLWzLPf" alias=".service_locator.wGwEMJa" public="false"/>
+    <service id=".service_locator.g34k4IL" alias=".service_locator..i2qWIS" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
@@ -6999,6 +8487,8 @@
     <service id="var_dumper.cli_dumper" alias="var_dumper.contextualized_cli_dumper" public="false"/>
     <service id="doctrine.migrations.migrations_factory" alias="doctrine.migrations.container_aware_migrations_factory"/>
     <service id="security.access.decision_manager" alias="debug.security.access.decision_manager" public="false"/>
+    <service id="jms_serializer.metadata.doctrine_type_driver.inner" alias="jms_serializer.metadata.chain_driver" public="false"/>
+    <service id="jms_serializer.doctrine_object_constructor.inner" alias="jms_serializer.unserialize_object_constructor" public="false"/>
     <service id="argument_resolver.request_attribute" alias="debug.argument_resolver.request_attribute" public="false"/>
     <service id="argument_resolver.request" alias="debug.argument_resolver.request" public="false"/>
     <service id="argument_resolver.session" alias="debug.argument_resolver.session" public="false"/>
@@ -7008,5 +8498,7 @@
     <service id="argument_resolver.variadic" alias="debug.argument_resolver.variadic" public="false"/>
     <service id="argument_resolver.not_tagged_controller" alias="debug.argument_resolver.not_tagged_controller" public="false"/>
     <service id="http_client" alias=".debug.http_client"/>
+    <service id="jms_serializer.metadata.traceable_cache.inner" alias="jms_serializer.metadata.cache.file_cache" public="false"/>
+    <service id="jms_serializer.handler_registry" alias="jms_serializer.traceable_handler_registry"/>
   </services>
 </container>

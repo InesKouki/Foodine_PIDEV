@@ -28,6 +28,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
+            'notif' => [$this, 'block_notif'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -44,73 +45,74 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
         // line 1
         echo "<!doctype html>
 <html lang=\"en\">
+
 <head>
     <!-- Required meta tags -->
     <meta charset=\"utf-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <!--favicon-->
     <link rel=\"icon\" href=\"";
-        // line 8
+        // line 9
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/icon.png"), "html", null, true);
         echo "\" type=\"image/png\" />
     <!--plugins-->
     <link href=\"";
-        // line 10
+        // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/simplebar/css/simplebar.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 12
+        // line 13
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/highcharts/css/highcharts-white.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 13
+        // line 14
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/metismenu/css/metisMenu.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <link href=\"";
-        // line 14
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <!-- loader-->
     <link href=\"";
-        // line 16
+        // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/pace.min.css"), "html", null, true);
         echo "\"  rel=\"stylesheet\" />
     <script src=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/pace.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Bootstrap CSS -->
     <link href=\"";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/bootstrap.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap\" rel=\"stylesheet\">
     <link href=\"";
-        // line 21
+        // line 22
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/app.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/css/icons.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
     ";
-        // line 23
+        // line 24
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("app");
         echo "
     ";
-        // line 24
+        // line 25
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackScriptTags("app");
         echo "
 
     <title>
         Foodine | ";
-        // line 27
-        $this->displayBlock('title', $context, $blocks);
         // line 28
+        $this->displayBlock('title', $context, $blocks);
+        // line 29
         echo "    </title>
 </head>
 
@@ -123,10 +125,40 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
             <nav class=\"navbar navbar-expand\">
                 <div class=\"topbar-logo-header\">
                     <div class=\"\">
-                        <a href=\"/admin\" ><img src=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/logo-white.png"), "html", null, true);
-        echo "\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                        ";
+        // line 41
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 41, $this->source); })()), "user", [], "any", false, false, false, 41), "Roles", [], "any", false, false, false, 41));
+        foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
+            // line 42
+            echo "
+
+                            ";
+            // line 44
+            if ((0 === twig_compare($context["role"], "ROLE_CHEF"))) {
+                // line 45
+                echo "                                <a href=\"/chef\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            ";
+            } elseif ((0 === twig_compare(            // line 46
+$context["role"], "ROLE_LIVREUR"))) {
+                // line 47
+                echo "                                <a href=\"/livreur\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            ";
+            } elseif ((0 === twig_compare(            // line 48
+$context["role"], "ROLE_ADMIN"))) {
+                // line 49
+                echo "                                <a href=\"/admin\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            ";
+            }
+            // line 51
+            echo "
+                        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 53
+        echo "
                     </div>
                     <div class=\"\">
                         <!--<h4 class=\"logo-text\">Foodine</h4>-->
@@ -134,301 +166,72 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </div>
                 <div class=\"mobile-toggle-menu\"><i class='bx bx-menu'></i></div>
                 <div class=\"search-bar flex-grow-1\">
-                    <div class=\"position-relative search-bar-box\">
-                        <input type=\"text\" class=\"form-control search-control\" placeholder=\"Type to search...\"> <span class=\"position-absolute top-50 search-show translate-middle-y\"><i class='bx bx-search'></i></span>
-                        <span class=\"position-absolute top-50 search-close translate-middle-y\"><i class='bx bx-x'></i></span>
-                    </div>
-                </div>
-                <div class=\"top-menu ms-auto\">
-                    <ul class=\"navbar-nav align-items-center\">
-                        <li class=\"nav-item mobile-search-icon\">
-                            <a class=\"nav-link\" href=\"#\">\t<i class='bx bx-search'></i>
-                            </a>
-                        </li>
 
-                        <li class=\"nav-item dropdown dropdown-large\">
-                            <a class=\"nav-link dropdown-toggle dropdown-toggle-nocaret position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> <span class=\"alert-count\">7</span>
-                                <i class='bx bx-bell'></i>
-                            </a>
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-                                <a href=\"javascript:;\">
-                                    <div class=\"msg-header\">
-                                        <p class=\"msg-header-title\">Notifications</p>
-                                        <p class=\"msg-header-clear ms-auto\">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class=\"header-notifications-list\">
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-group\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Customers<span class=\"msg-time float-end\">14 Sec
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">5 new user registered</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-cart-alt\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Orders <span class=\"msg-time float-end\">2 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">You have recived new orders</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-file\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">24 PDF File<span class=\"msg-time float-end\">19 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The pdf files generated</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-send\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Time Response <span class=\"msg-time float-end\">28 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">5.1 min avarage time response</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-home-circle\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Product Approved <span
-                                                            class=\"msg-time float-end\">2 hrs ago</span></h6>
-                                                <p class=\"msg-info\">Your new product has approved</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-message-detail\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Comments <span class=\"msg-time float-end\">4 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">New customer comments recived</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-check-square'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Your item is shipped <span class=\"msg-time float-end\">5 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Successfully shipped your item</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-user-pin'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New 24 authors<span class=\"msg-time float-end\">1 day
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">24 new authors joined last week</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-door-open'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Defense Alerts <span class=\"msg-time float-end\">2 weeks
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">45% less alerts last 4 weeks</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href=\"javascript:;\">
-                                    <div class=\"text-center msg-footer\">View All Notifications</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class=\"nav-item dropdown dropdown-large\">
-                            <a class=\"nav-link dropdown-toggle dropdown-toggle-nocaret position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> <span class=\"alert-count\">8</span>
-                                <i class='bx bx-comment'></i>
-                            </a>
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-                                <a href=\"javascript:;\">
-                                    <div class=\"msg-header\">
-                                        <p class=\"msg-header-title\">Messages</p>
-                                        <p class=\"msg-header-clear ms-auto\">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class=\"header-message-list\">
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-1.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Daisy Anderson <span class=\"msg-time float-end\">5 sec
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The standard chunk of lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-2.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Althea Cabardo <span class=\"msg-time float-end\">14
-\t\t\t\t\t\t\t\t\t\t\t\t\tsec ago</span></h6>
-                                                <p class=\"msg-info\">Many desktop publishing packages</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-3.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Oscar Garner <span class=\"msg-time float-end\">8 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-4.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Katherine Pechon <span class=\"msg-time float-end\">15
-\t\t\t\t\t\t\t\t\t\t\t\t\tmin ago</span></h6>
-                                                <p class=\"msg-info\">Making this the first true generator</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-5.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Amelia Doe <span class=\"msg-time float-end\">22 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Duis aute irure dolor in reprehenderit</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-6.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Cristina Jhons <span class=\"msg-time float-end\">2 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The passage is attributed to an unknown</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-7.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">James Caviness <span class=\"msg-time float-end\">4 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The point of using Lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-8.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Peter Costanzo <span class=\"msg-time float-end\">6 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">It was popularised in the 1960s</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-9.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">David Buckley <span class=\"msg-time float-end\">2 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-10.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Thomas Wheeler <span class=\"msg-time float-end\">2 days
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">If you are going to use a passage</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-11.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Johnny Seitz <span class=\"msg-time float-end\">5 days
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">All the Lorem Ipsum generators</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href=\"javascript:;\">
-                                    <div class=\"text-center msg-footer\">View All Messages</div>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <div class=\"user-box dropdown\">
+                ";
+        // line 63
+        $this->displayBlock('notif', $context, $blocks);
+        // line 65
+        echo "                <div class=\"user-box dropdown\">
                     <a class=\"d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
                         <img src=\"";
-        // line 331
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/avatars/portrait.jpg"), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 67, $this->source); })()), "user", [], "any", false, false, false, 67), "file", [], "any", false, false, false, 67))), "html", null, true);
         echo "\" class=\"user-img\" alt=\"user avatar\">
                         <div class=\"user-info ps-3\">
-                            <p class=\"user-name mb-0\">Aziz</p>
-                            <p class=\"designattion mb-0\">Admin</p>
+                            <p class=\"user-name mb-0\">";
+        // line 69
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 69, $this->source); })()), "user", [], "any", false, false, false, 69), "Nom", [], "any", false, false, false, 69), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 69, $this->source); })()), "user", [], "any", false, false, false, 69), "Prenom", [], "any", false, false, false, 69), "html", null, true);
+        echo " </p>
+                            <p class=\"designattion mb-0\">
+
+                                ";
+        // line 72
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 72, $this->source); })()), "user", [], "any", false, false, false, 72), "Roles", [], "any", false, false, false, 72));
+        foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
+            // line 73
+            echo "
+
+                                    ";
+            // line 75
+            if ((0 === twig_compare($context["role"], "ROLE_CHEF"))) {
+                // line 76
+                echo "                                    Chef
+                                ";
+            } elseif ((0 === twig_compare(            // line 77
+$context["role"], "ROLE_LIVREUR"))) {
+                // line 78
+                echo "                                    Livreur
+                                ";
+            } elseif ((0 === twig_compare(            // line 79
+$context["role"], "ROLE_ADMIN"))) {
+                // line 80
+                echo "                                    Admin
+                                ";
+            }
+            // line 82
+            echo "
+                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 84
+        echo "
+
+
+                            </p>
                         </div>
                     </a>
                     <ul class=\"dropdown-menu dropdown-menu-end\">
 
-                        <li><a class=\"dropdown-item\" href=\"ConnexionAdmin.html\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
+                        <li><a class=\"dropdown-item\" href=\"";
+        // line 92
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+        echo "\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
                         </li>
                     </ul>
                 </div>
@@ -437,10 +240,15 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
     </header>
     <!--end header -->
     <!--navigation-->
+
     <div class=\"nav-container\">
-        <div class=\"mobile-topbar-header\">
+        ";
+        // line 103
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 104
+            echo "        <div class=\"mobile-topbar-header\">
             <div>
-                <img src=\"Back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\">
+                <!--\t<img src=\"/back/assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
             </div>
             <div>
                 <a href=\"index.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
@@ -448,10 +256,11 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
             <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
             </div>
         </div>
+
         <nav class=\"topbar-nav\">
             <ul class=\"metismenu\" id=\"menu\">
                 <li>
-                    <a href=\"#\" class=\"\">
+                    <a href=\"table-prod.html\" class=\"\">
                         <div class=\"parent-icon\"><i class='bx bx-package'></i>
                         </div>
                         <div class=\"menu-title\">Produits</div>
@@ -459,7 +268,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
 
                 <li>
-                    <a href=\"#\" class=\"\">
+                    <a href=\"table-categ.html\" class=\"\">
                         <div class=\"parent-icon\"><i class=\"bx bx-category\"></i>
                         </div>
                         <div class=\"menu-title\">Catégories</div>
@@ -483,15 +292,21 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
                 </li>
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"";
+            // line 150
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_showUsers");
+            echo "\">
                         <div class=\"parent-icon\"><i class=\"bx bxs-user-badge\"></i>
                         </div>
-                        <div class=\"menu-title\">Employés</div>
+                        <div class=\"menu-title\">Utilisateurs</div>
                     </a>
 
                 </li>
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"";
+            // line 158
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_rec");
+            echo "\">
                         <div class=\"parent-icon\"><i class='bx bx-message-square-edit'></i>
                         </div>
                         <div class=\"menu-title\">Réclamations</div>
@@ -501,7 +316,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-commande.html\">
                         <div class=\"parent-icon\"><i class='bx bx-purchase-tag'></i>
                         </div>
                         <div class=\"menu-title\">Commandes</div>
@@ -510,7 +325,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </li>
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-reservation.html\">
                         <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
                         </div>
                         <div class=\"menu-title\">Réservations</div>
@@ -519,39 +334,96 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </li>
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-table.html\">
                         <div class=\"parent-icon\"><i class='bx bx-chair'></i>
                         </div>
                         <div class=\"menu-title\">Tables</div>
                     </a>
 
                 </li>
-                <li>
-                    <a class=\"\" href=\"#\">
-                        <div class=\"parent-icon icon-color-6\"> <i class=\"bx bxs-user-account\"></i>
-                        </div>
-                        <div class=\"menu-title\">Clients</div>
-                    </a>
 
-                </li>
             </ul>
         </nav>
-    </div>
+        ";
+        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_CHEF")) {
+            // line 197
+            echo "            <div class=\"mobile-topbar-header\">
+                <div>
+                    <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
+                </div>
+                <div>
+                    <a href=\"indexChef.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
+                </div>
+                <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
+                </div>
+            </div>
+            <nav class=\"topbar-nav\">
+                <ul class=\"metismenu\" id=\"menu\">
+                    <li>
+                        <a href=\"table-planning.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
+                            </div>
+                            <div class=\"menu-title\">Planning</div>
+                        </a>
+
+
+                    <li>
+                        <a href=\"table-recette.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
+                            </div>
+                            <div class=\"menu-title\">Recettes</div>
+                        </a>
+
+                    </li>
+
+                </ul>
+            </nav>
+        ";
+        } elseif ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_LIVREUR")) {
+            // line 229
+            echo "            <div class=\"mobile-topbar-header\">
+                <div>
+                    <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
+                </div>
+                <div>
+                    <a href=\"IndexLivreur.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
+                </div>
+                <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
+                </div>
+            </div>
+            <nav class=\"topbar-nav\">
+                <ul class=\"metismenu\" id=\"menu\">
+                    <li>
+                        <a href=\"table-livraison.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class='bx bx-package'></i>
+                            </div>
+                            <div class=\"menu-title\">Livraisons</div>
+                        </a>
+
+
+
+                </ul>
+            </nav>
+        ";
+        }
+        // line 253
+        echo "    </div>
     <!--end navigation-->
 
     ";
-        // line 450
+        // line 256
         $this->displayBlock('content', $context, $blocks);
-        // line 453
+        // line 259
         echo "
 <!--start overlay-->
 <div class=\"overlay toggle-icon\"></div>
 <!--end overlay-->
 <!--Start Back To Top Button--> <a href=\"javaScript:;\" class=\"back-to-top\"><i class='bx bxs-up-arrow-alt'></i></a>
 <!--End Back To Top Button-->
-";
-        // line 462
-        echo "</div>
+<footer class=\"page-footer\">
+    <p class=\"mb-0\">Copyright © 2021. All right reserved.</p>
+</footer>
+</div>
 <!--end wrapper-->
 <!--start switcher-->
 <div class=\"switcher-wrapper\">
@@ -594,7 +466,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 <!--end switcher-->
 <!-- Bootstrap JS -->
 <script src=\"";
-        // line 504
+        // line 310
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
 <!--plugins-->
@@ -629,7 +501,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
     }
 
-    // line 27
+    // line 28
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -647,7 +519,27 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
     }
 
-    // line 450
+    // line 63
+    public function block_notif($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "notif"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "notif"));
+
+        // line 64
+        echo "                ";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 256
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -657,7 +549,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 451
+        // line 257
         echo "
     ";
         
@@ -680,13 +572,14 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
     public function getDebugInfo()
     {
-        return array (  661 => 451,  651 => 450,  633 => 27,  598 => 504,  554 => 462,  546 => 453,  544 => 450,  422 => 331,  128 => 40,  114 => 28,  112 => 27,  106 => 24,  102 => 23,  98 => 22,  94 => 21,  89 => 19,  84 => 17,  80 => 16,  75 => 14,  71 => 13,  67 => 12,  63 => 11,  59 => 10,  54 => 8,  45 => 1,);
+        return array (  553 => 257,  543 => 256,  533 => 64,  523 => 63,  505 => 28,  470 => 310,  417 => 259,  415 => 256,  410 => 253,  384 => 229,  350 => 197,  308 => 158,  297 => 150,  249 => 104,  247 => 103,  233 => 92,  223 => 84,  216 => 82,  212 => 80,  210 => 79,  207 => 78,  205 => 77,  202 => 76,  200 => 75,  196 => 73,  192 => 72,  184 => 69,  179 => 67,  175 => 65,  173 => 63,  161 => 53,  154 => 51,  150 => 49,  148 => 48,  145 => 47,  143 => 46,  140 => 45,  138 => 44,  134 => 42,  130 => 41,  116 => 29,  114 => 28,  108 => 25,  104 => 24,  100 => 23,  96 => 22,  91 => 20,  86 => 18,  82 => 17,  77 => 15,  73 => 14,  69 => 13,  65 => 12,  61 => 11,  56 => 9,  46 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!doctype html>
 <html lang=\"en\">
+
 <head>
     <!-- Required meta tags -->
     <meta charset=\"utf-8\">
@@ -724,7 +617,19 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
             <nav class=\"navbar navbar-expand\">
                 <div class=\"topbar-logo-header\">
                     <div class=\"\">
-                        <a href=\"/admin\" ><img src=\"{{ asset('Back/assets/images/logo-white.png')}}\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                        {% for role in app.user.Roles %}
+
+
+                            {% if role==\"ROLE_CHEF\" %}
+                                <a href=\"/chef\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            {% elseif role==\"ROLE_LIVREUR\" %}
+                                <a href=\"/livreur\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            {% elseif role==\"ROLE_ADMIN\" %}
+                                <a href=\"/admin\" ><img src=\"/back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\"></a>
+                            {% endif %}
+
+                        {% endfor %}
+
                     </div>
                     <div class=\"\">
                         <!--<h4 class=\"logo-text\">Foodine</h4>-->
@@ -732,298 +637,38 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </div>
                 <div class=\"mobile-toggle-menu\"><i class='bx bx-menu'></i></div>
                 <div class=\"search-bar flex-grow-1\">
-                    <div class=\"position-relative search-bar-box\">
-                        <input type=\"text\" class=\"form-control search-control\" placeholder=\"Type to search...\"> <span class=\"position-absolute top-50 search-show translate-middle-y\"><i class='bx bx-search'></i></span>
-                        <span class=\"position-absolute top-50 search-close translate-middle-y\"><i class='bx bx-x'></i></span>
-                    </div>
-                </div>
-                <div class=\"top-menu ms-auto\">
-                    <ul class=\"navbar-nav align-items-center\">
-                        <li class=\"nav-item mobile-search-icon\">
-                            <a class=\"nav-link\" href=\"#\">\t<i class='bx bx-search'></i>
-                            </a>
-                        </li>
 
-                        <li class=\"nav-item dropdown dropdown-large\">
-                            <a class=\"nav-link dropdown-toggle dropdown-toggle-nocaret position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> <span class=\"alert-count\">7</span>
-                                <i class='bx bx-bell'></i>
-                            </a>
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-                                <a href=\"javascript:;\">
-                                    <div class=\"msg-header\">
-                                        <p class=\"msg-header-title\">Notifications</p>
-                                        <p class=\"msg-header-clear ms-auto\">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class=\"header-notifications-list\">
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-group\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Customers<span class=\"msg-time float-end\">14 Sec
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">5 new user registered</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-cart-alt\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Orders <span class=\"msg-time float-end\">2 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">You have recived new orders</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-file\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">24 PDF File<span class=\"msg-time float-end\">19 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The pdf files generated</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-send\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Time Response <span class=\"msg-time float-end\">28 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">5.1 min avarage time response</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-home-circle\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Product Approved <span
-                                                            class=\"msg-time float-end\">2 hrs ago</span></h6>
-                                                <p class=\"msg-info\">Your new product has approved</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class=\"bx bx-message-detail\"></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New Comments <span class=\"msg-time float-end\">4 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">New customer comments recived</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-check-square'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Your item is shipped <span class=\"msg-time float-end\">5 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Successfully shipped your item</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-user-pin'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">New 24 authors<span class=\"msg-time float-end\">1 day
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">24 new authors joined last week</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"notify\"><i class='bx bx-door-open'></i>
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Defense Alerts <span class=\"msg-time float-end\">2 weeks
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">45% less alerts last 4 weeks</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href=\"javascript:;\">
-                                    <div class=\"text-center msg-footer\">View All Notifications</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class=\"nav-item dropdown dropdown-large\">
-                            <a class=\"nav-link dropdown-toggle dropdown-toggle-nocaret position-relative\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> <span class=\"alert-count\">8</span>
-                                <i class='bx bx-comment'></i>
-                            </a>
-                            <div class=\"dropdown-menu dropdown-menu-end\">
-                                <a href=\"javascript:;\">
-                                    <div class=\"msg-header\">
-                                        <p class=\"msg-header-title\">Messages</p>
-                                        <p class=\"msg-header-clear ms-auto\">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class=\"header-message-list\">
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-1.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Daisy Anderson <span class=\"msg-time float-end\">5 sec
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The standard chunk of lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-2.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Althea Cabardo <span class=\"msg-time float-end\">14
-\t\t\t\t\t\t\t\t\t\t\t\t\tsec ago</span></h6>
-                                                <p class=\"msg-info\">Many desktop publishing packages</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-3.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Oscar Garner <span class=\"msg-time float-end\">8 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-4.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Katherine Pechon <span class=\"msg-time float-end\">15
-\t\t\t\t\t\t\t\t\t\t\t\t\tmin ago</span></h6>
-                                                <p class=\"msg-info\">Making this the first true generator</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-5.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Amelia Doe <span class=\"msg-time float-end\">22 min
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Duis aute irure dolor in reprehenderit</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-6.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Cristina Jhons <span class=\"msg-time float-end\">2 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The passage is attributed to an unknown</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-7.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">James Caviness <span class=\"msg-time float-end\">4 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">The point of using Lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-8.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Peter Costanzo <span class=\"msg-time float-end\">6 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">It was popularised in the 1960s</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-9.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">David Buckley <span class=\"msg-time float-end\">2 hrs
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-10.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Thomas Wheeler <span class=\"msg-time float-end\">2 days
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">If you are going to use a passage</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class=\"dropdown-item\" href=\"javascript:;\">
-                                        <div class=\"d-flex align-items-center\">
-                                            <div class=\"user-online\">
-                                                <img src=\"Back/assets/images/avatars/avatar-11.png\" class=\"msg-avatar\" alt=\"user avatar\">
-                                            </div>
-                                            <div class=\"flex-grow-1\">
-                                                <h6 class=\"msg-name\">Johnny Seitz <span class=\"msg-time float-end\">5 days
-\t\t\t\t\t\t\t\t\t\t\t\t\tago</span></h6>
-                                                <p class=\"msg-info\">All the Lorem Ipsum generators</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href=\"javascript:;\">
-                                    <div class=\"text-center msg-footer\">View All Messages</div>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
+                {% block notif %}
+                {% endblock %}
                 <div class=\"user-box dropdown\">
                     <a class=\"d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <img src=\"{{ asset('Back/assets/images/avatars/portrait.jpg')}}\" class=\"user-img\" alt=\"user avatar\">
+                        <img src=\"{{asset('uploads/' ~ app.user.file) }}\" class=\"user-img\" alt=\"user avatar\">
                         <div class=\"user-info ps-3\">
-                            <p class=\"user-name mb-0\">Aziz</p>
-                            <p class=\"designattion mb-0\">Admin</p>
+                            <p class=\"user-name mb-0\">{{app.user.Nom }} {{app.user.Prenom }} </p>
+                            <p class=\"designattion mb-0\">
+
+                                {% for role in app.user.Roles %}
+
+
+                                    {% if role==\"ROLE_CHEF\" %}
+                                    Chef
+                                {% elseif role==\"ROLE_LIVREUR\" %}
+                                    Livreur
+                                {% elseif role==\"ROLE_ADMIN\" %}
+                                    Admin
+                                {% endif %}
+
+                                {% endfor %}
+
+
+
+                            </p>
                         </div>
                     </a>
                     <ul class=\"dropdown-menu dropdown-menu-end\">
 
-                        <li><a class=\"dropdown-item\" href=\"ConnexionAdmin.html\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
+                        <li><a class=\"dropdown-item\" href=\"{{ path('logout') }}\"><i class='bx bx-log-out-circle'></i><span>Déconnexion</span></a>
                         </li>
                     </ul>
                 </div>
@@ -1032,10 +677,12 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
     </header>
     <!--end header -->
     <!--navigation-->
+
     <div class=\"nav-container\">
+        {% if is_granted(\"ROLE_ADMIN\") %}
         <div class=\"mobile-topbar-header\">
             <div>
-                <img src=\"Back/assets/images/logo-white.png\" class=\"logo-icon\" alt=\"logo icon\">
+                <!--\t<img src=\"/back/assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
             </div>
             <div>
                 <a href=\"index.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
@@ -1043,10 +690,11 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
             <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
             </div>
         </div>
+
         <nav class=\"topbar-nav\">
             <ul class=\"metismenu\" id=\"menu\">
                 <li>
-                    <a href=\"#\" class=\"\">
+                    <a href=\"table-prod.html\" class=\"\">
                         <div class=\"parent-icon\"><i class='bx bx-package'></i>
                         </div>
                         <div class=\"menu-title\">Produits</div>
@@ -1054,7 +702,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
 
                 <li>
-                    <a href=\"#\" class=\"\">
+                    <a href=\"table-categ.html\" class=\"\">
                         <div class=\"parent-icon\"><i class=\"bx bx-category\"></i>
                         </div>
                         <div class=\"menu-title\">Catégories</div>
@@ -1078,15 +726,15 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
                 </li>
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"{{ path('admin_showUsers') }}\">
                         <div class=\"parent-icon\"><i class=\"bx bxs-user-badge\"></i>
                         </div>
-                        <div class=\"menu-title\">Employés</div>
+                        <div class=\"menu-title\">Utilisateurs</div>
                     </a>
 
                 </li>
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"{{path('show_rec')}}\">
                         <div class=\"parent-icon\"><i class='bx bx-message-square-edit'></i>
                         </div>
                         <div class=\"menu-title\">Réclamations</div>
@@ -1096,7 +744,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-commande.html\">
                         <div class=\"parent-icon\"><i class='bx bx-purchase-tag'></i>
                         </div>
                         <div class=\"menu-title\">Commandes</div>
@@ -1105,7 +753,7 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </li>
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-reservation.html\">
                         <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
                         </div>
                         <div class=\"menu-title\">Réservations</div>
@@ -1114,23 +762,73 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
                 </li>
 
                 <li>
-                    <a class=\"\" href=\"#\">
+                    <a class=\"\" href=\"table-table.html\">
                         <div class=\"parent-icon\"><i class='bx bx-chair'></i>
                         </div>
                         <div class=\"menu-title\">Tables</div>
                     </a>
 
                 </li>
-                <li>
-                    <a class=\"\" href=\"#\">
-                        <div class=\"parent-icon icon-color-6\"> <i class=\"bx bxs-user-account\"></i>
-                        </div>
-                        <div class=\"menu-title\">Clients</div>
-                    </a>
 
-                </li>
             </ul>
         </nav>
+        {% elseif is_granted(\"ROLE_CHEF\") %}
+            <div class=\"mobile-topbar-header\">
+                <div>
+                    <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
+                </div>
+                <div>
+                    <a href=\"indexChef.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
+                </div>
+                <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
+                </div>
+            </div>
+            <nav class=\"topbar-nav\">
+                <ul class=\"metismenu\" id=\"menu\">
+                    <li>
+                        <a href=\"table-planning.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class='bx bx-calendar'></i>
+                            </div>
+                            <div class=\"menu-title\">Planning</div>
+                        </a>
+
+
+                    <li>
+                        <a href=\"table-recette.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class=\"bx bx-receipt\"></i>
+                            </div>
+                            <div class=\"menu-title\">Recettes</div>
+                        </a>
+
+                    </li>
+
+                </ul>
+            </nav>
+        {% elseif is_granted(\"ROLE_LIVREUR\") %}
+            <div class=\"mobile-topbar-header\">
+                <div>
+                    <!--\t<img src=\"assets/images/logoo.png\" class=\"logo-icon\" alt=\"logo icon\"> -->
+                </div>
+                <div>
+                    <a href=\"IndexLivreur.html\">\t<h4 class=\"logo-text\">Foodine</h4></a>
+                </div>
+                <div class=\"toggle-icon ms-auto\"><i class='bx bx-arrow-to-left'></i>
+                </div>
+            </div>
+            <nav class=\"topbar-nav\">
+                <ul class=\"metismenu\" id=\"menu\">
+                    <li>
+                        <a href=\"table-livraison.html\" class=\"\">
+                            <div class=\"parent-icon\"><i class='bx bx-package'></i>
+                            </div>
+                            <div class=\"menu-title\">Livraisons</div>
+                        </a>
+
+
+
+                </ul>
+            </nav>
+        {% endif %}
     </div>
     <!--end navigation-->
 
@@ -1143,9 +841,9 @@ class __TwigTemplate_38d27fe93f89bcdd70c39b3679b8701c7e0092ad9caf23eae7ee1162333
 <!--end overlay-->
 <!--Start Back To Top Button--> <a href=\"javaScript:;\" class=\"back-to-top\"><i class='bx bxs-up-arrow-alt'></i></a>
 <!--End Back To Top Button-->
-{#<footer class=\"page-footer\">#}
-{#    <p class=\"mb-0\">Copyright © 2021. All right reserved.</p>#}
-{#</footer>#}
+<footer class=\"page-footer\">
+    <p class=\"mb-0\">Copyright © 2021. All right reserved.</p>
+</footer>
 </div>
 <!--end wrapper-->
 <!--start switcher-->

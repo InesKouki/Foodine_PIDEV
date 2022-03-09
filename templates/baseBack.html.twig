@@ -6,21 +6,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="/back/assets/images/icon.png" type="image/png" />
+    <link rel="icon" href="{{ asset('Back/assets/images/icon.png')}}" type="image/png" />
     <!--plugins-->
-    <link href="/back/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="/back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="/back/assets/plugins/highcharts/css/highcharts-white.css" rel="stylesheet" />
-    <link href="/back/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link href="/back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/highcharts/css/highcharts-white.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <!-- loader-->
-    <link href="/back/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="/back/assets/js/pace.min.js"></script>
+    <link href="{{ asset('Back/assets/css/pace.min.css') }}"  rel="stylesheet" />
+    <script src="{{ asset('Back/assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link href="/back/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="/back/assets/css/app.css" rel="stylesheet">
-    <link href="/back/assets/css/icons.css" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('Back/assets/css/icons.css') }}" rel="stylesheet">
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
 
     <title>
         Foodine | {% block title %}{% endblock %}
@@ -62,7 +64,7 @@
                 {% endblock %}
                 <div class="user-box dropdown">
                     <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('uploads/' ~ app.user.file ) }}" class="user-img" alt="user avatar">
+                        <img src="{{asset('uploads/' ~ app.user.file) }}" class="user-img" alt="user avatar">
                         <div class="user-info ps-3">
                             <p class="user-name mb-0">{{app.user.Nom }} {{app.user.Prenom }} </p>
                             <p class="designattion mb-0">
@@ -305,93 +307,23 @@
 </div>
 <!--end switcher-->
 <!-- Bootstrap JS -->
-<script src="/back/assets/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('Back/assets/js/bootstrap.bundle.min.js')}}"></script>
 <!--plugins-->
-<!--plugins-->
-<script src="/back/assets/js/jquery.min.js"></script>
-<script src="/back/assets/plugins/simplebar/js/simplebar.min.js"></script>
-<script src="/back/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-<script src="/back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<script src="/back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="/back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/back/assets/plugins/highcharts/js/highcharts.js"></script>
-<script src="/back/assets/plugins/highcharts/js/exporting.js"></script>
-<script src="/back/assets/plugins/highcharts/js/variable-pie.js"></script>
-<script src="/back/assets/plugins/highcharts/js/export-data.js"></script>
-<script src="/back/assets/plugins/highcharts/js/accessibility.js"></script>
-<script src="/back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+<script src="Back/assets/js/jquery.min.js"></script>
+<script src="Back/assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="Back/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="Back/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<script src="Back/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="Back/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="Back/assets/plugins/highcharts/js/highcharts.js"></script>
+<script src="Back/assets/plugins/highcharts/js/exporting.js"></script>
+<script src="Back/assets/plugins/highcharts/js/variable-pie.js"></script>
+<script src="Back/assets/plugins/highcharts/js/export-data.js"></script>
+<script src="Back/assets/plugins/highcharts/js/accessibility.js"></script>
+<script src="Back/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
 
-{#Calendar Script#}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-            },
-            initialView: 'dayGridMonth',
-            initialDate: '2020-09-12',
-            navLinks: true, // can click day/week names to navigate views
-            selectable: true,
-            nowIndicator: true,
-            dayMaxEvents: true, // allow "more" link when too many events
-            editable: true,
-            selectable: true,
-            businessHours: true,
-            dayMaxEvents: true, // allow "more" link when too many events
-            events: [{
-                title: 'All Day Event',
-                start: '2020-09-01',
-            }, {
-                title: 'Long Event',
-                start: '2020-09-07',
-                end: '2020-09-10'
-            }, {
-                groupId: 999,
-                title: 'Repeating Event',
-                start: '2020-09-09T16:00:00'
-            }, {
-                groupId: 999,
-                title: 'Repeating Event',
-                start: '2020-09-16T16:00:00'
-            }, {
-                title: 'Conference',
-                start: '2020-09-11',
-                end: '2020-09-13'
-            }, {
-                title: 'Meeting',
-                start: '2020-09-12T10:30:00',
-                end: '2020-09-12T12:30:00'
-            }, {
-                title: 'Lunch',
-                start: '2020-09-12T12:00:00'
-            }, {
-                title: 'Meeting',
-                start: '2020-09-12T14:30:00'
-            }, {
-                title: 'Happy Hour',
-                start: '2020-09-12T17:30:00'
-            }, {
-                title: 'Dinner',
-                start: '2020-09-12T20:00:00'
-            }, {
-                title: 'Birthday Party',
-                start: '2020-09-13T07:00:00'
-            }, {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2020-09-28'
-            }]
-        });
-        calendar.render();
-    });
-</script>
-
-<script src="/back/assets/js/dashboard-sales.js"></script>
 <!--app JS-->
-<script src="/back/assets/js/app.js"></script>
+<script src="Back/assets/js/app.js"></script>
 <script>
     new PerfectScrollbar('.customers-list');
     new PerfectScrollbar('.store-metrics');

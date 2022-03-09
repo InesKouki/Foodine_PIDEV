@@ -6,6 +6,7 @@ use App\Entity\Reclamation;
 use App\Entity\Notification;
 use App\Entity\Review;
 use App\Form\EditEmployeType;
+use App\Repository\EvenementRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -15,6 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\User;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Ob\HighchartsBundle\Highcharts\Highchart;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\UX\Chartjs\Model\Chart;
+
 /**
  * @Route("/admin", name="admin_")
  */
@@ -24,9 +30,13 @@ class AdminController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(NotificationRepository $repository): Response
+    public function index(NotificationRepository $repository,EvenementRepository $repo, ChartBuilderInterface $chartBuilder): Response
     {
         $notif = $repository->findAll();
+        $events = $repo->findAll();
+        $eventName = [];
+        $eventCount = [];
+
         $rev = $this->getDoctrine()->getRepository(Review::class)->findRevMax();
         $revCount = $this->getDoctrine()->getRepository(Review::class)->findRevCount();
         $count=$repository->countNotifUnseen();
@@ -37,7 +47,61 @@ class AdminController extends AbstractController
         $repository=$this->getDoctrine()->getRepository(Reclamation::class);
         $rec=$repository->findAll();
         $ntot=$nbchef+$nblivreur;
+
+        foreach ($events as $e){
+            $eventName[] = $e->getName();
+            $eventCount[] = count($e->getPromotions());
+        }
+
+        $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
+
+        $chart->setData([
+            'labels' => $eventName,
+            'datasets' => [
+                [
+                    'backgroundColor' => 'rgba(225, 225, 225, 0.9)',
+                    'data' => $eventCount
+                ],
+            ],
+        ]);
+
+        $chart->setOptions([
+            'plugins' => [
+                'legend' => ['display' => false],
+                'title' => [
+                    'display' => 'true',
+                    'color' => '#c3c3c3',
+                    'font' => [
+                        'size' => '30px',
+                        'family' => 'Roboto, sans-serif'
+                    ],
+                    'text' => 'LES PLUS ACTIFS EVENEMENTS'
+                ]
+            ],
+            'scales' => [
+                'y' => [
+                    'ticks' => [
+                        'font' => [
+                            'size' => '14px',
+                        ],
+                        'color' => 'white',
+                    ],
+                    'min' => 0,
+                    'max' => 10,
+                ],
+                'x' => [
+                    'ticks' => [
+                        'font' => [
+                            'size' => '14px',
+                        ],
+                        'color' => 'white',
+                    ]
+                ]
+            ],
+        ]);
+
         return $this->render('/back/homeBack.html.twig', [
+            'chart' => $chart,
             'controller_name' => 'AdminController',
             'n'=>$nbclient,
             'ntot'=>$ntot,
@@ -45,8 +109,7 @@ class AdminController extends AbstractController
             'notif'=>$notif,
             'nbNotif'=>$count,
             'rev'=>$rev,
-            'revCount'=>$revCount
-
+            'revCount'=>$revCount,
         ]);
     }
     /**
