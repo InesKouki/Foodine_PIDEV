@@ -75,7 +75,8 @@ class ReviewRepository extends ServiceEntityRepository
     */
     public function findRevMax(){
         return $this->createQueryBuilder('r')
-            ->setMaxResults(3)
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults(6)
             ->getQuery()
            ->getResult();
     }
@@ -85,5 +86,12 @@ class ReviewRepository extends ServiceEntityRepository
         $em=$this->getEntityManager();
         $query=$em->createQuery('SELECT r FROM App\Entity\Review r ORDER BY r.id DESC');
         return $query->getResult();
+    }
+
+    public function findRevCount(){
+        return $this->createQueryBuilder('r')
+        ->select('count(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }
