@@ -1,0 +1,28 @@
+{% for e in backEvents %}
+    <tr>
+        <td><a target="_blank" href="{{ path('eventDeals',{id: e.id}) }}">{{ e.name }}</a><td>
+
+            {% if e.dateDeb|date('Y-m-d') > "now"|date('Y-m-d') and e.dateFin|date('Y-m-d') > "now"|date('Y-m-d') %}
+                <span class="badge bg-gradient-moonlit">Bientôt</span>
+            {% elseif e.dateDeb|date('Y-m-d') <= "now"|date('Y-m-d') and e.dateFin|date('Y-m-d') > "now"|date('Y-m-d') %}
+                <span class="badge bg-gradient-lush">Actif</span>
+            {% elseif e.dateDeb|date('Y-m-d') < "now"|date('Y-m-d') and e.dateFin|date('Y-m-d') < "now"|date('Y-m-d') %}
+                <span class="badge bg-gradient-burning">Inactif</span>
+            {%  endif %}
+        </td>
+
+        <td>{{ e.description }}</td>
+        {#<td><div class="badge rounded-pill bg-light p-2 text-uppercase px-3"><i class='bx bxs-circle me-1'></i>Traitée</div></td>#}
+        <td>{{ e.dateDeb | date ('d/m/Y') }}</td>
+        <td>{{ e.dateFin | date ('d/m/Y') }}</td>
+        <td><img height="112" width="250" src="{{ asset('uploads/') ~ e.image }}" alt="image"></td>
+
+        <td>
+            <div class="d-flex order-actions">
+                <a href={{ path('updateEvenement',{id: e.id}) }} class="ms-3"><i class='bx bxs-edit'></i></a>
+                <a href={{ path('deleteEvenement',{id: e.id}) }} class="ms-3"><i class='bx bxs-trash'></i></a>
+            </div>
+        </td>
+
+    </tr>
+{% endfor %}

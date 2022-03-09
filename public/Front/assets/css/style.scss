@@ -1281,7 +1281,7 @@ Main Banner Area CSS
     overflow: hidden;
 }
 .main-banner-item {
-    background-image: url(../../assets/img/banner.jpg);
+    background-image: url(../../assets/img/main-banner-bg-1.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1290,7 +1290,7 @@ Main Banner Area CSS
     background-attachment: fixed;
 
     &.banner-item-two {
-        background-image: url(../../assets/img/banner.jpg);
+        background-image: url(../../assets/img/main-banner-bg-2.jpg);
         padding-top: 50px;
         padding-bottom: 0;
         overflow: hidden;
@@ -2242,7 +2242,7 @@ Featured Products Area CSS
 Testimonial Area CSS
 =================================================*/
 .testimonial-area {
-    background-image: url(../../assets/img/banner.jpg);
+    background-image: url(../../assets/img/testimonial-bg.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2368,7 +2368,7 @@ Testimonial Area CSS
 Overview Area CSS
 =================================================*/
 .overview-area {
-    background-image: url(../../assets/img/banner.jpg);
+    background-image: url(../../assets/img/overview-bg.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -3498,7 +3498,7 @@ Page Banner CSS
 .page-banner-area {
     position: relative;
     z-index: 1;
-    background-image: url(../../assets/img/banner.jpg);
+    background-image: url(../../assets/img/footer-bg.jpg);
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -3521,16 +3521,16 @@ Page Banner CSS
     }
 
     &.item-bg1 {
-        background-image: url(../../assets/img/banner.jpg);
+        background-image: url(../../assets/img/page-banner/page-banner-2.jpg);
     }
     &.item-bg2 {
-        background-image: url(../../assets/img/banner.jpg);
+        background-image: url(../../assets/img/page-banner/page-banner-3.jpg);
     }
     &.item-bg3 {
-        background-image: url(../../assets/img/banner.jpg);
+        background-image: url(../../assets/img/page-banner/page-banner-4.jpg);
     }
     &.item-bg4 {
-        background-image: url(../../assets/img/banner.jpg);
+        background-image: url(../../assets/img/page-banner/page-banner-5.jpg);
     }
 }
 .page-banner-content {

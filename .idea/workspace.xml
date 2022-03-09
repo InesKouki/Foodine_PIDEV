@@ -2,43 +2,154 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54f23d0d-7971-4c8b-9889-8bfdcd8902d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/fb55c9d9905d575ea863513ded036872.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/controllers/hello_controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218135732.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218182739.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218182919.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218184448.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218184609.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218190133.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218190644.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220218195240.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220221111806.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220227191041.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220305123003.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220305135647.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Back/assets/images/avatars/portrait.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Back/assets/images/products/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/05450e9ed2dc1c310c952393b588fb2d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/08d2d8677d1f681d9f3a66c10241995f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/0a62edd138b837e10ec09c8c3b64e1ae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/0f68bc56210466e91e4f209c6b5744da.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/1612bda86ee969f10e3fe649e625eeef.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/1688c0734ea451caec9d71c9dd44543b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/1b7df7b03710e253999b114fbcd25e1c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/1d07c21cb2f77439e0af3eb62e3809bf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/1f49f3ed1879e9cfedf05ce8cb7946ca.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/30401419af1d3b93bd36da5625c8ac6d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/320bcbc4072d04ce0c0f746bf7bc2e13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/33b6e78208f1545ce81edc764cd96e59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/35f8ed372aa550b276491f06dfafa16a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/3b081e92ed551960758df5980e078e9b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/3b8cfa86da5c4ff44b5ac2b44b974c23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/3bbf9224950576bba7905a58e4848ca6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/3dcaa9679bf358d4db97726281a10db0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/4511d2e5320002047d1195288f1173e5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/48298ce438622c97e129313f2bb23c0d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/4da0ada5229c64dc2f5a53ebe759b4d6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/50b33ffe8dc717fc3afd15533f5e6e76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/512174d823e9575f718a5a8570dd70f5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/5a2b4f14c5081c611fd99d23c7771fd4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/5d2072633b4d6c2d23a66dca5b0a6b4c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/5e93559a2d888d4bd63af6481ff126e7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/5edce42b7b3c34ed30fa6e541477f157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/61406a5a753f538f63a1f0e63b04e52a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/62da843bed2871ab98034fb81aaf7185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/63564169aa86ce4f5ff8cc3450277fee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/6c93a39a7224fb6e22e0f9f4322c7692.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/70df2abbffdd7ec1d6d01f788d44b871.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/746828f8bced5108b0c1a149e6d4b91b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/75e98f32f54ec677a544b66970f0eebb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/76ff7605eefee5b48ce272fafad0404c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/7a524fa029a605f4cbdace86daaed607.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/80e53f08c117b44281153923755494cc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/8122387a9b0867e773f47bb0399db6a0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/861884919c8c598394d280147a37ec25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/8a1895afc0e81b8a7ab202c9b3f8c05d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/8c40795506339910369eb6548422ec53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/8e6d2e5bfd7d05b7db588f1e94338e48.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/9038b72abaedf1cb3b4ad408f72630cc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/962506ca7cf245989805547424b23657.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/962528410b7e3cb0d4a34c08d0a6f5e3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/9d955271c770c44ec23c417953fdc245.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/9e424f18f3a117487402ae9985a864b6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/a29a524ca47b36be5599f6ae8c4d9c8d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/abb528a36bf1a57f6476a394ddecf1cd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/abe654bab3638892359258ebfb25d378.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/acfbd91e456ee9192e442edecf5900fd.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/ad1d19861ec3245696c9d1f0b4753a46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/ad37c16a3c010acf8906a4d73cd5966a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/b0227c3fba76679bfa7537d3dfc87061.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/bf7442fbe561d3f404d030c4a4bf3a8b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/bfe9e0180eac07206f4cdaf30572cf8b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/c2b7ed015c0522ed630c3cafdf59dab2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/c3e0ede53956c435414de19608bc0fd2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/c57995ecb9978a8261dd660943d4dc97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/cba5297812478167b90471d7df684dcc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/cc339b9aeb6a9e0129aa520a11e22004.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/d9460a60f2c091da6029574d2de37935.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/dc2dfc008dd8d467db4f7d9eafce82c5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/de3039334271d8de983646d7f6212090.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/df2aca9e3dad0a3e0b009c023fc7b773.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/dfb9256cb6ee9534f113aad77fd56121.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/e291c066056f8abf0b8b21cfc9097b87.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/e4c0218354d91f7d77890c8e09f23d9b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/e7844507e2dbc8e09be9a319b5865c15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/e87fde56d7924ab1f0e0c6ae15c095fc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/e8cbcd9f6f331a201a348f1e2a8ffb59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/ea6189fe5739eb0455c9206d2f8b2c9b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/ecb149e9bcdfed0fbf93e1947c1c644c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/f11ad49688b1ae2a0c0a38364e6486b9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/f2913e680190584cce691392c6109db1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/f7c78420f45564fcfd17142d99c7a23c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/f9c5d1f651e1693fd71ec22f46969bec.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Categorie.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Evenement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Produit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Promotion.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/EvenementType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/PromotionType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/EvenementRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ProduitRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/back/evenement/ajax.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/back/evenement/email.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/back/evenement/updateEvenement.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/back/promotion/updatePromotion.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Foodine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Foodine.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Back/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/Back/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Front/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/Front/assets/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Front/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/Front/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/Front/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/Front/assets/css/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReviewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReviewRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Front/assets/img/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Front/assets/img/banner.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BackController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvenementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvenementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PromotionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromotionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/Users/employe.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/evenement/addEvenement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/evenement/addEvenement.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/evenement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/evenement/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/back/homeBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/homeBack.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/reclamations/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/reclamations/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/promotion/addPromotion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/promotion/addPromotion.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/promotion/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/promotion/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/baseFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseFront.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/Review/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/Review/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/employes/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/employes/team.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerDeprecations.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerDeprecations.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/evenement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/evenement/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/homeFront.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/homeFront.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/promotion/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/promotion/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

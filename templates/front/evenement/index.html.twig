@@ -3,4 +3,75 @@
     Evénements
 {% endblock %}
 {% block content %}
+
+    <style>
+        .page-banner-area {
+            background-image: url(Front/assets/img/footer-bg.jpg);
+        }
+    </style>
+
+    <div class="page-banner-area">
+
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-banner-content">
+                        <h2>Nos Deals</h2>
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>Nos Deals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="blog-area pt-100 pb-100">
+        <div class="container">
+
+            <div class="row">
+    {% for e in frontEvents %}
+                <div class="col-lg-6 col-md-6">
+                    <div class="single-blog-item">
+                        <div class="image">
+                            <a href={{ path('eventDeals',{id: e.id}) }}><img width="740" src="{{asset('uploads/' ~ e.image)}}" alt="image"></a>
+
+                            <div class="date">
+                                <span>Du <b>{{ e.dateDeb|date('d/m/Y') }}</b> Jusqu'à <b>{{ e.dateFin|date('d/m/Y') }}</b></span>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h3>
+                                <a href={{ path('eventDeals',{id: e.id}) }}>{{ e.name }}</a>
+                            </h3>
+                            <div style="display: flex; justify-content: space-between">
+                            <a  href={{ path('eventDeals',{id: e.id}) }} class="blog-btn">Plus d'Informations +</a>
+
+                                <div id="fb-root"></div>
+                                <script>(function(d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.0";
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));</script>
+                                <div
+                                     class="fb-share-button"
+                                     data-href="http://127.0.0.1:8000/evenement-{{ e.id }}"
+                                     data-layout="button" data-size="large">
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+
+    {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
