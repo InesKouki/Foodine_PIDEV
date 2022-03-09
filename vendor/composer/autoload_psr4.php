@@ -88,6 +88,8 @@ return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src/Prophecy'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Laminas\\ZendFrameworkBridge\\' => array($vendorDir . '/laminas/laminas-zendframework-bridge/src'),
+    'Laminas\\EventManager\\' => array($vendorDir . '/laminas/laminas-eventmanager/src'),
     'Laminas\\Code\\' => array($vendorDir . '/laminas/laminas-code/src'),
     'Gregwar\\CaptchaBundle\\' => array($vendorDir . '/gregwar/captcha-bundle'),
     'Gregwar\\' => array($vendorDir . '/gregwar/captcha/src/Gregwar'),
