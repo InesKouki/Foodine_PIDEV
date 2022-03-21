@@ -15,6 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class FrontController extends AbstractController
 {
     /**
@@ -190,6 +194,63 @@ class FrontController extends AbstractController
     }
 
 
+    ///////////////////////////MOBILE/////////////////////////
+    /**
+     * @Route("/addRevJson" ,name="addRevJson")
+     * @Method ("POST")
+     */
+    public function addRevJson(Request $request, NormalizerInterface $Normalizer){
+
+        $review =new Review();
+        $description = $request->get("description");
+        $username= $request->get("user_name");
+        $stars=$request->get("stars");
+
+        $review->setStars($stars);
+        $review->setDescription($description);
+        $review->setUserName($username);
+        $review->setPublishedAt(new \DateTime('now'));
+
+
+
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($review);
+        $em->flush();
+
+        $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+        return new Response('Ajout effectué avec success'.json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/deleteRevJson/{id}", name="deleteRevJson")
+     * @Method ("POST")
+     */
+    public function deleteReviewJson(Request $request,NormalizerInterface $Normalizer,$id){
+
+
+        $em=$this->getDoctrine()->getManager();
+
+        $review = $em->getRepository(Review::class)->find($id);
+        if($review != null){
+            $em->remove( $review);
+            $em->flush();
+
+
+            $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+            return new Response('Suppression effectué avec success'.json_encode($jsonContent));
+        }
+        return new Response('Error');
+    }
+
+    /**
+     * @Route("/showRevJson" , name="showRevJson")
+     */
+    public function allReviewsJson(NormalizerInterface $Normalizer){
+        $review =$this->getDoctrine()->getManager()->getRepository(Review::class)->findAll();
+        $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
 
 
 

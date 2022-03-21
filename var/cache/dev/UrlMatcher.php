@@ -34,6 +34,8 @@ return [
         '/showReview' => [[['_route' => 'showReview', '_controller' => 'App\\Controller\\FrontController::showReviews'], null, null, null, false, false, null]],
         '/addReview' => [[['_route' => 'addReview', '_controller' => 'App\\Controller\\FrontController::ajouterReview'], null, null, null, false, false, null]],
         '/calculer' => [[['_route' => 'calculer', '_controller' => 'App\\Controller\\FrontController::calculer'], null, null, null, false, false, null]],
+        '/addRevJson' => [[['_route' => 'addRevJson', '_controller' => 'App\\Controller\\FrontController::addRevJson'], null, null, null, false, false, null]],
+        '/showRevJson' => [[['_route' => 'showRevJson', '_controller' => 'App\\Controller\\FrontController::allReviewsJson'], null, null, null, false, false, null]],
         '/livreur' => [[['_route' => 'livreur_index', '_controller' => 'App\\Controller\\LivreurController::index'], null, null, null, true, false, null]],
         '/planning' => [[['_route' => 'planning', '_controller' => 'App\\Controller\\PlanningController::index'], null, null, null, false, false, null]],
         '/ajouterplanning' => [[['_route' => 'ajouterplanning', '_controller' => 'App\\Controller\\PlanningController::ajouterplanning'], null, null, null, false, false, null]],
@@ -46,7 +48,6 @@ return [
         '/show_rec' => [[['_route' => 'show_rec', '_controller' => 'App\\Controller\\ReclamationController::showReclamation'], null, null, null, false, false, null]],
         '/addRecJson' => [[['_route' => 'addRecJson', '_controller' => 'App\\Controller\\ReclamationController::addRecJson'], null, null, null, false, false, null]],
         '/showRecJson' => [[['_route' => 'showRecJson', '_controller' => 'App\\Controller\\ReclamationController::allReclamationJson'], null, null, null, false, false, null]],
-        '/detailRecJson' => [[['_route' => 'detailRecJson', '_controller' => 'App\\Controller\\ReclamationController::detailReclamationAction'], null, null, null, false, false, null]],
         '/reservation' => [[['_route' => 'reservation', '_controller' => 'App\\Controller\\ReservationController::index'], null, null, null, false, false, null]],
         '/registration' => [[['_route' => 'registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
@@ -56,6 +57,8 @@ return [
         '/signUpJson' => [[['_route' => 'signUpJson', '_controller' => 'App\\Controller\\SecurityController::signUpAction'], null, null, null, false, false, null]],
         '/signInJson' => [[['_route' => 'signInJson', '_controller' => 'App\\Controller\\SecurityController::signInAction'], null, null, null, false, false, null]],
         '/editUserJson' => [[['_route' => 'editUserJson', '_controller' => 'App\\Controller\\SecurityController::editUser'], null, null, null, false, false, null]],
+        '/oubliPassJSON' => [[['_route' => 'oubliPassJSON', '_controller' => 'App\\Controller\\SecurityController::forgottenPassJSON'], null, null, null, false, false, null]],
+        '/showUserJson' => [[['_route' => 'showUserJson', '_controller' => 'App\\Controller\\SecurityController::allUsersJson'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -92,14 +95,28 @@ return [
                 .')'
                 .'|/show_chef/([^/]++)(*:445)'
                 .'|/delete(?'
-                    .'|_rec([^/]++)(*:475)'
-                    .'|RecJson/([^/]++)(*:499)'
+                    .'|Re(?'
+                        .'|vJson/([^/]++)(*:482)'
+                        .'|cJson/([^/]++)(*:504)'
+                    .')'
+                    .'|_rec([^/]++)(*:525)'
+                    .'|UserJson/([^/]++)(*:550)'
                 .')'
-                .'|/re(?'
-                    .'|c_res/([^/]++)(*:528)'
-                    .'|setPassword([^/]++)(*:555)'
+                .'|/r(?'
+                    .'|e(?'
+                        .'|c_res/([^/]++)(*:582)'
+                        .'|setPassword(?'
+                            .'|([^/]++)(*:612)'
+                            .'|JSON(*:624)'
+                        .')'
+                    .')'
+                    .'|oleJson/([^/]++)(*:650)'
                 .')'
-                .'|/updateRecJson/([^/]++)(*:587)'
+                .'|/u(?'
+                    .'|pdateRecJson/([^/]++)(*:685)'
+                    .'|nblockUserJson/([^/]++)(*:716)'
+                .')'
+                .'|/blockUserJson/([^/]++)(*:748)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -119,12 +136,18 @@ return [
         392 => [[['_route' => 'client_profilup', '_controller' => 'App\\Controller\\ClientController::modifier'], ['id'], null, null, false, true, null]],
         417 => [[['_route' => 'client_editPass', '_controller' => 'App\\Controller\\ClientController::modifierMotdepasse'], ['id'], null, null, false, true, null]],
         445 => [[['_route' => 'show_chef', '_controller' => 'App\\Controller\\FrontController::afficherDetailsChef'], ['id'], null, null, false, true, null]],
-        475 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
-        499 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
-        528 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
-        555 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
-        587 => [
-            [['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null],
+        482 => [[['_route' => 'deleteRevJson', '_controller' => 'App\\Controller\\FrontController::deleteReviewJson'], ['id'], null, null, false, true, null]],
+        504 => [[['_route' => 'deleteRecJson', '_controller' => 'App\\Controller\\ReclamationController::deleteReclamationJson'], ['id'], null, null, false, true, null]],
+        525 => [[['_route' => 'delete_rec', '_controller' => 'App\\Controller\\ReclamationController::deleteRec'], ['id'], null, null, false, true, null]],
+        550 => [[['_route' => 'deleteUserJson', '_controller' => 'App\\Controller\\SecurityController::deleteUserJson'], ['id'], null, null, false, true, null]],
+        582 => [[['_route' => 'rec_res', '_controller' => 'App\\Controller\\ReclamationController::reponse'], ['id'], null, null, false, true, null]],
+        612 => [[['_route' => 'resetPassword', '_controller' => 'App\\Controller\\SecurityController::resetPass'], ['token'], null, null, false, true, null]],
+        624 => [[['_route' => 'resetPasswordJSON', '_controller' => 'App\\Controller\\SecurityController::resetPassJSON'], [], null, null, false, false, null]],
+        650 => [[['_route' => 'roleJson', '_controller' => 'App\\Controller\\SecurityController::ModifierUser'], ['id'], null, null, false, true, null]],
+        685 => [[['_route' => 'updateRecJson', '_controller' => 'App\\Controller\\ReclamationController::modifierReclamationJson'], ['id'], null, null, false, true, null]],
+        716 => [[['_route' => 'unblockUserJson', '_controller' => 'App\\Controller\\SecurityController::unblockUser'], ['id'], null, null, false, true, null]],
+        748 => [
+            [['_route' => 'blockUserJson', '_controller' => 'App\\Controller\\SecurityController::blockUser'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

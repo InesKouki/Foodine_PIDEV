@@ -18,9 +18,10 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class SecurityController extends AbstractController
 {
     /**
@@ -193,7 +194,7 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // On génère un message
-             $this->addFlash('message', 'Utilisateur activé avec succès');
+             $this->addFlash('message', 'Mot de passe modifié avec succès');
              return $this->redirectToRoute('login');
         }
             return $this->render('front/security/resetPass.html.twig', ['token'=>$token,
@@ -206,7 +207,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/signUpJson" , name="signUpJson")
      */
-    public function signUpAction(Request $request,UserPasswordEncoderInterface $encoder){
+    public function signUpAction(Request $request,UserPasswordEncoderInterface $encoder,NormalizerInterface $Normalizer){
 
         $email = $request->get("email");
         $username = $request->get("username");
@@ -217,7 +218,7 @@ class SecurityController extends AbstractController
 
 
         $user = new User();
-        $hash = $encoder->encodePassword($user, $user->getPassword());
+        $hash = $encoder->encodePassword($user, $password);
         $user->setPassword($hash);
         $user->setNom($nom);
         $user->setUsername($username);
@@ -226,21 +227,20 @@ class SecurityController extends AbstractController
         $user->setEtat(1);
         $user->setCreatedAt(new \DateTime('now'));
 
-        try {
+
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return new Response("Compte crée avec success",200);
-        }catch(\Exception $ex){
-            return new Response("Exception".$ex->getMessage());
-        }
+
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+        return new Response('Compte créer avec success'.json_encode($jsonContent));
 
     }
 
     /**
      * @Route("signInJson", name="signInJson")
      */
-    public function signInAction(Request $request){
+    public function signInAction(Request $request,NormalizerInterface $Normalizer){
         $username = $request->get('username');
         $password = $request->get('password');
         $em=$this->getDoctrine()->getManager();
@@ -248,13 +248,13 @@ class SecurityController extends AbstractController
         if($user){
             if(password_verify($password,$user->getPassword())){
                 $serializer = new Serializer([new ObjectNormalizer()]);
-                $formatted = $serializer->normalize($user);
-                return new JsonResponse($formatted);
+                $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+                return new Response('Succes'.json_encode($jsonContent));
             }else {
                 return new Response("Mot de passe invalide");
             }
         }else {
-            return new Response("Erreur");
+            return new Response("failed");
         }
 
     }
@@ -300,6 +300,155 @@ class SecurityController extends AbstractController
         }
 
     }
+
+    /**
+     * @Route("/oubliPassJSON", name="oubliPassJSON")
+     */
+    public function forgottenPassJSON(Request $request, UserRepository $userRepository,\Swift_Mailer $mailer,TokenGeneratorInterface $tokenGenerator){
+
+
+            $email=$request->get('email');
+            $user = $userRepository->findOneBy(['email'=>$email]);
+            if(!$user){
+                return new Response("Erreur");
+            }
+
+            $token =$tokenGenerator->generateToken();
+            try {
+                $user->setResetToken($token);
+                $em =$this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $message = (new \Swift_Message('Mot de passe oublié'))
+                    ->setFrom('foodine01@gmail.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        "Bonjour,<br><br> Une demande de réinitialisation de mot de passe a été effectué,Veuillez entrer le code ci-joint: ".$token,'text/html');
+                $mailer->send($message);
+                return new Response("Un email vous a été envoyé");
+            }catch(\Exception $e) {
+                return new Response("ERROR");
+            }
+
+
+        }
+
+    /**
+     * @Route("/resetPasswordJSON" , name="resetPasswordJSON")
+     */
+    public function resetPassJSON(Request $request,UserPasswordEncoderInterface $encoder,UserRepository $userRepository){
+
+        $reset_token=$request->get('code');
+        $password=$request->get('password');
+        $user=$userRepository->findOneBy(['reset_token'=>$reset_token]);
+
+        if(!$user){
+            return new Response("Code incorrecte");
+        }
+
+            $user->setResetToken(null);
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+
+        try {
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return new Response("Mot de passe modifié avec success",200);
+        }catch(\Exception $ex){
+            return new Response("Exception".$ex->getMessage());
+        }
+
+        }
+
+    /**
+     * @Route("/showUserJson" , name="showUserJson")
+     */
+    public function allUsersJson(NormalizerInterface $Normalizer){
+        $user =$this->getDoctrine()->getManager()->getRepository(User::class)->findUsers();
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/blockUserJson/{id}", name="blockUserJson")
+     */
+    public function blockUser($id,NormalizerInterface $Normalizer) {
+
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $user->setEtat(0);
+        $em->flush();
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+        return new Response('Utilisateur bloqué'.json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/unblockUserJson/{id}", name="unblockUserJson")
+     */
+    public function unblockUser($id,NormalizerInterface $Normalizer) {
+
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $user->setEtat(1);
+        $em->flush();
+
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+        return new Response('Utilisateur debloqué'.json_encode($jsonContent));
+
+    }
+
+    /**
+     * @Route("/deleteUserJson/{id}", name="deleteUserJson")
+     * @Method ("POST")
+     */
+    public function deleteUserJson(Request $request,NormalizerInterface $Normalizer,$id){
+
+
+        $em=$this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+        if($user != null){
+            $em->remove($user);
+            $em->flush();
+
+
+            $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+            return new Response('Suppression effectué avec success'.json_encode($jsonContent));
+        }
+        return new Response('Error');
+    }
+
+
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @Route("/roleJson/{id}", name="roleJson")
+     */
+
+    public function ModifierUser(Request $request,$id,NormalizerInterface $Normalizer)
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $role = $request->get("Role");
+        if ($user != null) {
+            if ($role == "Chef")
+                $user->setRole("ROLE_CHEF");
+            else
+                $user->setRole("ROLE_LIVREUR");
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+            return new Response('Suppression effectué avec success' . json_encode($jsonContent));
+        }
+        return new Response('Error');
+    }
+
+
+
+
+
 
 
 }

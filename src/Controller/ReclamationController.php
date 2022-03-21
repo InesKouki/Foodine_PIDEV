@@ -214,21 +214,6 @@ class ReclamationController extends AbstractController
         return new Response('Error');
     }
 
-    /**
-     * @Route ("detailRecJson" , name="detailRecJson")
-     * @Method ("POST")
-     */
-    public function detailReclamationAction(Request $request){
-        $id=$request->get('id');
-        $em=$this->getDoctrine()->getManager();
-
-        $reclamation = $em->getRepository(Reclamation::class)->find($id);
-        $encoder= new JsonEncoder();
-        $normalizer= new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function($object){
-            return $object->getDescription();
-        });
-    }
 
 
 
