@@ -6150,7 +6150,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.V3g0vmd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.RojXiPV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.F0UDtIE"/>
@@ -6192,6 +6192,7 @@
         <argument key="App\Controller\SecurityController::signInAction" type="service_closure" id=".service_locator.Em9LKse"/>
         <argument key="App\Controller\SecurityController::signUpAction" type="service_closure" id=".service_locator.IsBt6qd"/>
         <argument key="App\Controller\SecurityController::unblockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::updatePass" type="service_closure" id=".service_locator.IsBt6qd"/>
         <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController:readNotifications" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController:search" type="service_closure" id=".service_locator.wgX78kv"/>
@@ -6231,6 +6232,7 @@
         <argument key="App\Controller\SecurityController:signInAction" type="service_closure" id=".service_locator.Em9LKse"/>
         <argument key="App\Controller\SecurityController:signUpAction" type="service_closure" id=".service_locator.IsBt6qd"/>
         <argument key="App\Controller\SecurityController:unblockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:updatePass" type="service_closure" id=".service_locator.IsBt6qd"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6766,12 +6768,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.V3g0vmd"/>
+      <argument type="service" id=".service_locator.RojXiPV"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.V3g0vmd"/>
+      <argument type="service" id=".service_locator.RojXiPV"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7189,7 +7191,7 @@
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.V3g0vmd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.RojXiPV"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

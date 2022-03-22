@@ -62,6 +62,7 @@ return [
         '/showUserJson' => [[['_route' => 'showUserJson', '_controller' => 'App\\Controller\\SecurityController::allUsersJson'], null, null, null, false, false, null]],
         '/deleteUserJson' => [[['_route' => 'deleteUserJson', '_controller' => 'App\\Controller\\SecurityController::deleteUserJson'], null, null, null, false, false, null]],
         '/roleJson' => [[['_route' => 'roleJson', '_controller' => 'App\\Controller\\SecurityController::ModifierUser'], null, null, null, false, false, null]],
+        '/updatePassJson' => [[['_route' => 'updatePassJson', '_controller' => 'App\\Controller\\SecurityController::updatePass'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

@@ -269,11 +269,13 @@ class SecurityController extends AbstractController
      */
     public function editUser(Request $request,UserPasswordEncoderInterface $encoder){
         $id=$request->get('id');
-        $username=$request->get("username");
-        $password=$request->get("password");
+        //$username=$request->get("username");
+        //$password=$request->get("password");
         $email=$request->get("email");
-        $nom = $request->get("prenom");
+        $nom = $request->get("nom");
         $prenom = $request->get("prenom");
+        $adresse = $request->get("adresse");
+        $telephone = $request->get("telephone");
 
         $em=$this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->find($id);
@@ -284,13 +286,14 @@ class SecurityController extends AbstractController
             $file->move($fileName);
             $user->setPhoto($fileName);
         }
-        $user->setUsername($username);
-        $hash = $encoder->encodePassword($user, $user->getPassword());
-        $user->setPassword($hash);
+        //$user->setUsername($username);
+        //$hash = $encoder->encodePassword($user, $user->getPassword());
+        //$user->setPassword($hash);
         $user->setNom($nom);
-        $user->setUsername($username);
         $user->setPrenom($prenom);
         $user->setEmail($email);
+        $user->setAddress($adresse);
+        $user->setPhone($telephone);
         $user->setEtat(1);
         $user->setCreatedAt(new \DateTime('now'));
         try {
@@ -303,6 +306,8 @@ class SecurityController extends AbstractController
         }
 
     }
+
+
 
     /**
      * @Route("/oubliPassJSON", name="oubliPassJSON")
@@ -446,6 +451,26 @@ class SecurityController extends AbstractController
 
     }
 
+    /**
+     * @Route("/updatePassJson", name="updatePassJson")
+     */
+
+    public function updatePass(Request $request,NormalizerInterface $Normalizer,UserPasswordEncoderInterface $encoder)
+    {
+        $id=$request->get("id");
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $password = $request->get("password");
+        $hash = $encoder->encodePassword($user, $password);
+        $user->setPassword($hash);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+        return new Response('Mot de passe modifié' . json_encode($jsonContent));
+
+
+    }
 
 
 

@@ -79,5 +79,6 @@ return [
     'unblockUserJson' => [['id'], ['_controller' => 'App\\Controller\\SecurityController::unblockUser'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/unblockUserJson']], [], []],
     'deleteUserJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::deleteUserJson'], [], [['text', '/deleteUserJson']], [], []],
     'roleJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::ModifierUser'], [], [['text', '/roleJson']], [], []],
+    'updatePassJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::updatePass'], [], [['text', '/updatePassJson']], [], []],
     'gregwar_captcha.generate_captcha' => [['key'], ['_controller' => 'Gregwar\\CaptchaBundle\\Controller\\CaptchaController::generateCaptchaAction'], [], [['variable', '/', '[^/]++', 'key'], ['text', '/_gcb/generate-captcha']], [], []],
 ];
