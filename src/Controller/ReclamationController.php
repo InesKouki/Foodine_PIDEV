@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Notification;
 use App\Entity\Reclamation;
 use App\Entity\Reponse;
+use App\Entity\User;
 use App\Form\AddReclamationType;
 use App\Form\ReponseType;
 use App\Repository\ReclamationRepository;
@@ -147,12 +148,13 @@ class ReclamationController extends AbstractController
         $description = $request->get("description");
         $type=$request->get("type");
 
-
+        $id=$request->get("user_id");
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
         $reclamation->setEtat(0);
         $reclamation->setType($type);
         $reclamation->setDescription($description);
         $reclamation->setCreatedAt(new \DateTime('now'));
-        $reclamation->setUser($this->getUser());
+        $reclamation->setUser($user);
 
         $em=$this->getDoctrine()->getManager();
         $em->persist($reclamation);
@@ -213,6 +215,35 @@ class ReclamationController extends AbstractController
         }
         return new Response('Error');
     }
+
+    /**
+     * @Route("/reponseJson", name="reponseJson")
+     */
+    public function reponseJson(Request $request, ReclamationRepository $repository, \Swift_Mailer $mailer)
+    {
+        $reponse = new Reponse();
+        $id= $request->get("id_rec");
+        $reclamation = $repository->find($id);
+
+
+        $user = $reclamation->getUser();
+        $msg = $request->get("message");
+            $reclamation->setEtat(1);
+            $reponse->setRecla($reclamation);
+            $reponse->setMessage($msg);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reponse);
+            $em->flush();
+            $message = (new \Swift_Message('Réponse à votre reclamation'))
+                ->setFrom('foodine01@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody($msg,'text/html');
+            $mailer->send($message);
+        return new Response("Un email vous a été envoyé");
+
+        }
+
+
 
 
 

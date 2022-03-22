@@ -18,10 +18,13 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Serializer\SerializerInterface;
+
 class SecurityController extends AbstractController
 {
     /**
@@ -240,7 +243,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("signInJson", name="signInJson")
      */
-    public function signInAction(Request $request,NormalizerInterface $Normalizer){
+    public function signInAction(Request $request,NormalizerInterface $Normalizer,SerializerInterface $serializer){
         $username = $request->get('username');
         $password = $request->get('password');
         $em=$this->getDoctrine()->getManager();
@@ -249,14 +252,14 @@ class SecurityController extends AbstractController
             if(password_verify($password,$user->getPassword())){
                 $serializer = new Serializer([new ObjectNormalizer()]);
                 $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
-                return new Response('Succes'.json_encode($jsonContent));
+                //$formatted =$serializer->serialize($user,'json',['groups'=>'post:read']);
+                return new Response(json_encode($jsonContent));
             }else {
                 return new Response("Mot de passe invalide");
             }
         }else {
-            return new Response("failed");
+            return new Response("Utilisteur invalide");
         }
-
     }
 
     /**
@@ -334,30 +337,25 @@ class SecurityController extends AbstractController
         }
 
     /**
-     * @Route("/resetPasswordJSON" , name="resetPasswordJSON")
+     * @Route("/resetPasswordJSON/{code}/{password}" , name="resetPasswordJSON")
      */
-    public function resetPassJSON(Request $request,UserPasswordEncoderInterface $encoder,UserRepository $userRepository){
+    public function resetPassJSON(Request $request,UserPasswordEncoderInterface $encoder,UserRepository $userRepository,NormalizerInterface $Normalizer,$code,$password){
 
-        $reset_token=$request->get('code');
-        $password=$request->get('password');
-        $user=$userRepository->findOneBy(['reset_token'=>$reset_token]);
+        //$reset_token=$request->get('code');
+        //$password=$request->get('password');
+        $user=$userRepository->findOneBy(['reset_token'=>$code]);
 
         if(!$user){
             return new Response("Code incorrecte");
         }
-
             $user->setResetToken(null);
-            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $hash = $encoder->encodePassword($user,$password);
             $user->setPassword($hash);
-
-        try {
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return new Response("Mot de passe modifié avec success",200);
-        }catch(\Exception $ex){
-            return new Response("Exception".$ex->getMessage());
-        }
+            $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+            return new Response('Mot de passe modifié avec succes'.json_encode($jsonContent));
 
         }
 
@@ -400,13 +398,14 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/deleteUserJson/{id}", name="deleteUserJson")
+     * @Route("/deleteUserJson", name="deleteUserJson")
      * @Method ("POST")
      */
-    public function deleteUserJson(Request $request,NormalizerInterface $Normalizer,$id){
+    public function deleteUserJson(Request $request,NormalizerInterface $Normalizer){
 
 
         $em=$this->getDoctrine()->getManager();
+        $id=$request->get("id");
         $user = $em->getRepository(User::class)->find($id);
         if($user != null){
             $em->remove($user);
@@ -424,25 +423,27 @@ class SecurityController extends AbstractController
     /**
      * @param Request $request
      * @param $id
-     * @Route("/roleJson/{id}", name="roleJson")
+     * @Route("/roleJson", name="roleJson")
      */
 
-    public function ModifierUser(Request $request,$id,NormalizerInterface $Normalizer)
+    public function ModifierUser(Request $request,NormalizerInterface $Normalizer)
     {
+        $id=$request->get("id");
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
         $role = $request->get("Role");
-        if ($user != null) {
-            if ($role == "Chef")
-                $user->setRole("ROLE_CHEF");
-            else
-                $user->setRole("ROLE_LIVREUR");
+            if($role=="Chef"){
+                $user->setRoles(["ROLE_CHEF"]);
+            }else if($role=="Livreur")
+                $user->setRoles(["ROLE_LIVREUR"]);
+             else
+                 $user->setRoles([""]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
-            return new Response('Suppression effectué avec success' . json_encode($jsonContent));
-        }
-        return new Response('Error');
+            return new Response('Role Attribué  avec success' . json_encode($jsonContent));
+
+
     }
 
 
