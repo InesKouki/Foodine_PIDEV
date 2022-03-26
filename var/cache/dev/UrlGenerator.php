@@ -75,6 +75,8 @@ return [
     'oubliPassJSON' => [[], ['_controller' => 'App\\Controller\\SecurityController::forgottenPassJSON'], [], [['text', '/oubliPassJSON']], [], []],
     'resetPasswordJSON' => [['code', 'password'], ['_controller' => 'App\\Controller\\SecurityController::resetPassJSON'], [], [['variable', '/', '[^/]++', 'password'], ['variable', '/', '[^/]++', 'code'], ['text', '/resetPasswordJSON']], [], []],
     'showUserJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::allUsersJson'], [], [['text', '/showUserJson']], [], []],
+    'showUserTriNomJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::allUsersTriNomJson'], [], [['text', '/showUserTriNomJson']], [], []],
+    'showUserTriEmailJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::allUsersTriEmailJson'], [], [['text', '/showUserTriEmailJson']], [], []],
     'blockUserJson' => [['id'], ['_controller' => 'App\\Controller\\SecurityController::blockUser'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/blockUserJson']], [], []],
     'unblockUserJson' => [['id'], ['_controller' => 'App\\Controller\\SecurityController::unblockUser'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/unblockUserJson']], [], []],
     'deleteUserJson' => [[], ['_controller' => 'App\\Controller\\SecurityController::deleteUserJson'], [], [['text', '/deleteUserJson']], [], []],

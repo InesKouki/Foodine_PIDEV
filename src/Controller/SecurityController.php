@@ -375,6 +375,25 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/showUserTriNomJson" , name="showUserTriNomJson")
+     */
+    public function allUsersTriNomJson(NormalizerInterface $Normalizer){
+        $user =$this->getDoctrine()->getManager()->getRepository(User::class)->findByNomASC();
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/showUserTriEmailJson" , name="showUserTriEmailJson")
+     */
+    public function allUsersTriEmailJson(NormalizerInterface $Normalizer){
+        $user =$this->getDoctrine()->getManager()->getRepository(User::class)->findByEmailASC();
+        $jsonContent=$Normalizer->normalize($user,'json',['groups'=>'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
      * @Route("/blockUserJson/{id}", name="blockUserJson")
      */
     public function blockUser($id,NormalizerInterface $Normalizer) {

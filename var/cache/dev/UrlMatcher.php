@@ -60,6 +60,8 @@ return [
         '/editUserJson' => [[['_route' => 'editUserJson', '_controller' => 'App\\Controller\\SecurityController::editUser'], null, null, null, false, false, null]],
         '/oubliPassJSON' => [[['_route' => 'oubliPassJSON', '_controller' => 'App\\Controller\\SecurityController::forgottenPassJSON'], null, null, null, false, false, null]],
         '/showUserJson' => [[['_route' => 'showUserJson', '_controller' => 'App\\Controller\\SecurityController::allUsersJson'], null, null, null, false, false, null]],
+        '/showUserTriNomJson' => [[['_route' => 'showUserTriNomJson', '_controller' => 'App\\Controller\\SecurityController::allUsersTriNomJson'], null, null, null, false, false, null]],
+        '/showUserTriEmailJson' => [[['_route' => 'showUserTriEmailJson', '_controller' => 'App\\Controller\\SecurityController::allUsersTriEmailJson'], null, null, null, false, false, null]],
         '/deleteUserJson' => [[['_route' => 'deleteUserJson', '_controller' => 'App\\Controller\\SecurityController::deleteUserJson'], null, null, null, false, false, null]],
         '/roleJson' => [[['_route' => 'roleJson', '_controller' => 'App\\Controller\\SecurityController::ModifierUser'], null, null, null, false, false, null]],
         '/updatePassJson' => [[['_route' => 'updatePassJson', '_controller' => 'App\\Controller\\SecurityController::updatePass'], null, null, null, false, false, null]],
