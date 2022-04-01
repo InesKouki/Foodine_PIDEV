@@ -4,11 +4,6 @@
 {% endblock %}
 {% block content %}
 
-{#    <tr>#}
-{#        <td>{{ p.evenement.name }}</td>#}
-{#        <td>{{ p.pourcentage }}</td>#}
-{#    </tr>#}
-
 <!--start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">
@@ -70,7 +65,7 @@
             {% for p in backPromotions %}
             <div class="col">
                 <div class="card">
-                    <img src="Back/assets/images/products/download.jpg" class="card-img-top">
+                    <img width="300" height="168" src="{{asset('uploads/' ~ p.produit.image)}}" class="card-img-top">
                         <div class="position-absolute top-0 end-0 m-3 product-discount">
                             <span class="">-{{ p.pourcentage * 100}}%</span>
                         </div>

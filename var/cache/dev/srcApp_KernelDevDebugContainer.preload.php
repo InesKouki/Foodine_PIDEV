@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerKBT6yAX/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/Container1QbJLIG/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -228,6 +228,7 @@ $classes[] = 'Doctrine\Bundle\DoctrineBundle\ConnectionFactory';
 $classes[] = 'Doctrine\DBAL\Configuration';
 $classes[] = 'Doctrine\DBAL\Logging\LoggerChain';
 $classes[] = 'Symfony\Bridge\Doctrine\Logger\DbalLogger';
+$classes[] = 'Doctrine\DBAL\Logging\Middleware';
 $classes[] = 'Symfony\Bridge\Doctrine\ContainerAwareEventManager';
 $classes[] = 'Doctrine\DBAL\Logging\DebugStack';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\EnsureProductionSettingsDoctrineCommand';
@@ -244,8 +245,6 @@ $classes[] = 'Doctrine\Migrations\Configuration\EntityManager\ManagerRegistryEnt
 $classes[] = 'Doctrine\ORM\Mapping\Driver\AnnotationDriver';
 $classes[] = 'Doctrine\ORM\EntityManager';
 $classes[] = 'Doctrine\ORM\Configuration';
-$classes[] = 'Doctrine\Common\Cache\CacheProvider';
-$classes[] = 'Doctrine\Common\Cache\Psr6\DoctrineProvider';
 $classes[] = 'Doctrine\Persistence\Mapping\Driver\MappingDriverChain';
 $classes[] = 'Doctrine\ORM\Mapping\UnderscoreNamingStrategy';
 $classes[] = 'Doctrine\ORM\Mapping\DefaultQuoteStrategy';

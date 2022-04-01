@@ -35,7 +35,6 @@ class UserRepository extends ServiceEntityRepository
     }
 
     */
-
     public function findOnlyUsers()
     {
         return $this->createQueryBuilder('u')
@@ -46,7 +45,6 @@ class UserRepository extends ServiceEntityRepository
 
         ;
     }
-
 
     public function findUsers()
     {
@@ -94,7 +92,7 @@ class UserRepository extends ServiceEntityRepository
 
     public function trierNomASC(){
        $em=$this->getEntityManager();
-       $query=$em->createQueryBuilder('SELECT u FROM App\Entity\User u WHERE u.nom ASC');
+       $query=$em->createQueryBuilder('SELECT u FROM App\Entity\User u ORDER BY u.nom ASC');
        return $query->getQuery();
     }
 
@@ -149,6 +147,29 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function findByNomASC()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.Roles NOT LIKE :val')
+            ->setParameter('val','["ROLE_ADMIN"]')
+            ->orderBy('u.Nom', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByEmailASC()
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.Roles NOT LIKE :val')
+            ->setParameter('val','["ROLE_ADMIN"]')
+            ->orderBy('u.email', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
 
 

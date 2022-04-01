@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Evenement;
 use App\Entity\Product;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\EvenementRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class CategorieController extends AbstractController
 {
@@ -160,70 +164,82 @@ class CategorieController extends AbstractController
         ]);
     }
 
+    //  --------- ROUTES MOBILE ----------
+
     /**
-     * @Route ("/Ajoutercategorie")
+     * @Route("/category", name="displayCategories")
+     */
+    public function displayCategs(CategoryRepository $repo,SerializerInterface $serializer)
+    {
+        $events = $repo->findAll();
+        $formatted = $serializer->normalize($events,'json',['groups' => 'events']);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/addCategory", name="addCategory")
      * @Method ("POST")
      */
-    public function ajoutermobile(Request $request){
+    public function addcateg(Request $request)
+    {
+        $categ = new Category();
+        $name = $request->query->get("name");
 
-        $categorie = new Category();
+        $em = $this->getDoctrine()->getManager();
+        $categ->setName($name);
+        $categ->setImage("37c45fdde5409e050464ffdf711db5ef.png");
 
-        $em=$this->getDoctrine()->getManager();
-
-        $image=$request->query->get("image");
-        $categorie->setImage($image);
-
-        $name=$request->query->get("name");
-        $categorie->setName($name);
-
-        $products=$request->query->get("products");
-        $categorie->set($products);
-
-        $em->persist($categorie);
+        $em->persist($categ);
         $em->flush();
 
-
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($categorie);
-        return new JsonResponse($aj);
-
+        $formatted = $serializer->normalize("categorie ajoutee");
+        return new JsonResponse($formatted);
     }
 
-
-
     /**
-     * @param CategoryRepository $repository
-     * @return Response
-     * @Route("/categoriess")
+     * @Route("/updateCateg", name="updateCateg")
+     * @Method("PUT")
      */
-    public function indexmobile()
-    {
-        $categorie =$this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
+    public function modifierCategAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Category::class)
+            ->find($request->get("id"));
 
+        $event->setName($request->get("name"));
+
+        $em->persist($event);
+        $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($categorie);
-        return new JsonResponse($aj);
+        $formatted = $serializer->normalize("Catégorie a ete modifiee avec success.");
+        return new JsonResponse($formatted);
 
     }
 
-
     /**
-     * @Route ("/Deletecategorie")
+     * @Route("/deleteCateg", name="deleteCateg")
      * @Method("DELETE")
      */
-    function SupprimerFrontmoibile(Request $request , CategoryRepository $repository){
-        $id=$request->get("id");
-        $em=$this->getDoctrine()->getManager();
 
-        $categorie =$em->getRepository(Category::class)->find($id);
-        $em->remove($categorie);
-        $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($categorie);
-        return new JsonResponse($aj);
+    public function deleteEventAction(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Category::class)->find($id);
+        if($event!=null ) {
+            $em->remove($event);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("Categorie a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id categorie invalide.");
+
+
     }
-
-
 
 
 }

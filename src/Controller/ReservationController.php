@@ -23,6 +23,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 //use Symfony\Component\Serializer\Serializer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 
@@ -82,7 +83,7 @@ class ReservationController extends AbstractController
                 //->setBody($this->renderView('front/reservation/qrcode.html.twig',['qrcode'=>$qrcode]),'image','utf-8');
 
             $mailer->send($message);
-          // return $this->redirectToRoute("reservation");
+           //return $this->redirectToRoute("reservation");
 
 
 
@@ -148,8 +149,6 @@ class ReservationController extends AbstractController
 
 ////////////////////////////////////////////////* mobile */////////////////////////////////////////////////////
     /**
-     * @param ReservationRepository $rep
-     * @param SerializerInterface $serializerinterface
      * @Route("/rr",name="rr")
      */
     public function getreservation(ReservationRepository $rep,SerializerInterface $serializerinterface )
@@ -158,5 +157,56 @@ class ReservationController extends AbstractController
         $json=$serializerinterface->normalize($reservation,'json',['groups'=>'reservation']);
         return new JsonResponse($json);
     }
+
+    /**
+     * @route("/hh",name="createe")
+     * @Method ("POST")
+     */
+    public function addreservationn(Request $request, TableRepository $repo){
+
+        $reservation = new Reservation();
+        $table = $repo->find(3);
+        $nom = $request->query->get("nom");
+        $datereservation = new \DateTime('now tomorrow ');
+        $mobile = $request->query->get("mobile");
+        $email = $request->query->get("email");
+
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $reservation->setNom($nom);
+        $reservation->setDatereservation($datereservation);
+        $reservation->setMobile($mobile);
+        $reservation->setEmail($email);
+        $reservation->setTableid($table);
+        $em->persist($reservation);
+        $em->flush();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("res ajoutee");
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * @param Request $request
+     * @param ReservationRepository $repository
+     * @return JsonResponse
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     * @Route ("/deletereservationnnn")
+     * @Method("DELETE")
+     */
+    function Supprimerreservationn(Request $request , ReservationRepository $repository){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $livraison =$em->getRepository(Reservation::class)->find($id);
+        $em->remove($livraison);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("res supprimee");
+        return new JsonResponse($aj);
+    }
+
 
 }

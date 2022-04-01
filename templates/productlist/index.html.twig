@@ -35,27 +35,31 @@
                             <tr>
                                 <th>Nom Produit</th>
                                 <th>Nom catégorie</th>
+                                <th>Stock</th>
                                 <th>Prix</th>
                                 <th>Image</th>
-                                <th>Quantité</th>
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for a in prod %}
-
                             <tr>
                                 <td> {{ a.name }}</td>
                                 <td> {{ a.Category.name }}</td>
+                                <td>
+                                    {% if a.quantitie > 0 %}
+                                    <span class="badge bg-gradient-lush">En stock</span>
+                                    {% else %}
+                                        <span class="badge bg-gradient-burning">Hors stock</span>
+                                    {% endif %}
+                                </td>
                                 <td> {{ a.price }}</td>
-                                <td class="w60">
-                                    <img class="avatar" src="{{ asset('../uploads/')~a.image }}" >
-                                </td>                                <td> {{ a.quantitie }}</td>
-
+                                <td>
+                                    <img height="200px" width="300px" src="{{ asset('../uploads/')~a.image }}" >
+                                </td>
                                 <td><a href="{{ path('editproduct', {id : a.id }) }}" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit' ></i></a></td>
                                 <td><a href="{{ path('deleteprodcut', {id : a.id }) }}" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a></td>
-                                >
                             </tr>
                             {% endfor %}
 

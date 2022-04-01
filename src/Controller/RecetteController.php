@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Planning;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\PlanningRepository;
@@ -9,9 +10,14 @@ use App\Repository\RecetteRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class RecetteController extends AbstractController
 {
@@ -20,12 +26,12 @@ class RecetteController extends AbstractController
      */
     public function afficher(RecetteRepository  $rep): Response
     {   $recette=$rep->findAll();
-       $todayRecette=$rep->findrecette();
+        $todayRecette=$rep->findrecette();
 
         return $this->render('front/recette/AfficherRecette.html.twig', ['recette'=>$recette,'t'=>$todayRecette]);
     }
     /**
-     * @Route("/chef-Afficherrecette", name="AfficherRecette")
+     * @Route("/admin-Afficherrecette", name="AfficherRecette")
      */
     public function index(RecetteRepository  $rep): Response
     {   $Recette=$rep->findAll();
@@ -33,7 +39,7 @@ class RecetteController extends AbstractController
         return $this->render('back/recette/AfficheRecette.html.twig', ['recette'=>$Recette]);
     }
     /**
-     * @Route("/chef-Ajoutrecette", name="ajoutrecette")
+     * @Route("/admin-Ajoutrecette", name="ajoutrecette")
      * @param Request $request ;
      */
     public function AjouterRecette( Request $request): Response
@@ -61,7 +67,7 @@ class RecetteController extends AbstractController
             ]);
     }
     /**
-     * @Route("/chef-Modifierrecette-{id}", name="modifierrecette")
+     * @Route("/admin-Modifierrecette-{id}", name="modifierrecette")
      * @param Request $request ;
      */
     public function Modierrecette($id, Request $request,RecetteRepository $rep): Response
@@ -90,7 +96,7 @@ class RecetteController extends AbstractController
     }
     /**
      * @param RecetteRepository $rep
-     * @Route ("/chef-SupprimerRecette-{id}", name="supprimerrecette")
+     * @Route ("/admin-SupprimerRecette-{id}", name="supprimerrecette")
      */
     public function supprimerrecette(RecetteRepository $rep,$id){
         $recette=$rep->find($id);
@@ -101,7 +107,7 @@ class RecetteController extends AbstractController
     }
 
     /**
-     * @Route("/chef-Afficherrecette/searchAjax ", name="ajax_search")
+     * @Route("/admin-Afficherrecette/searchAjax ", name="ajax_search")
      */
 
     public function searchAction(Request $request,RecetteRepository $em)
@@ -157,6 +163,88 @@ class RecetteController extends AbstractController
         $dompdf->stream("BR.pdf", [
             "Attachment" => true ,'isRemoteEnabled' => true
         ]);
+    }
+
+    //-----------------------------
+
+    /**
+     * @Route("/rec", name="displayRecette")
+     */
+    public function displayEvents(RecetteRepository $repo,SerializerInterface $serializer)
+    {
+        $events = $repo->findAll();
+        $formatted = $serializer->normalize($events,'json',['groups' => 'event']);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route ("/AjouterRecetteMobile", name="adddRec")
+     * @Method ("POST")
+     */
+    public function ajouterrecmobile(Request $request, PlanningRepository $repo){
+
+        $planning = new Recette();
+
+        $pl = $repo->find(1);
+        $em=$this->getDoctrine()->getManager();
+
+        $nom=$request->query->get("nom");
+        $planning->setNom($nom);
+
+        $desc=$request->query->get("description");
+        $planning->setDescription($desc);
+
+        $ing=$request->query->get("ingredient");
+        $planning->setIngredient($ing);
+
+        $planning->setPlanningid($pl);
+        $planning->setImagerecette("bfc1a06111253f8306373bbb03d46595.png");
+
+        $em->persist($planning);
+        $em->flush();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("recette ajoutee" );
+        return new JsonResponse($aj);
+
+    }
+
+    /**
+     * @Route("/updateRec", name="updateRec")
+     * @Method("PUT")
+     */
+    public function modifierRecAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Recette::class)
+            ->find($request->get("id"));
+
+        $event->setNom($request->get("nom"));
+        $event->setDescription($request->get("description"));
+        $event->setIngredient($request->get("ingredient"));
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("Recette a ete modifiee avec success.");
+        return new JsonResponse($formatted);
+
+    }
+
+
+    /**
+     * @Route ("/DeleteRecette", name="delRecc")
+     * @Method("DELETE")
+     */
+    function SupRecettemobile(Request $request , RecetteRepository $repository){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $planning =$em->getRepository(Recette::class)->find($id);
+        $em->remove($planning);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("recette supprimee");
+        return new JsonResponse($aj);
     }
 
 }

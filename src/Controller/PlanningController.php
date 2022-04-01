@@ -95,60 +95,8 @@ class PlanningController extends AbstractController
         return $this->redirectToRoute('AffichePlanning');
     }
 
-    //-----------------------------
-
     /**
-     * @Route("/plan", name="displayPlan")
-     */
-    public function displayEvents(PlanningRepository $repo,SerializerInterface $serializer)
-    {
-        $events = $repo->findAll();
-        $formatted = $serializer->normalize($events,'json',['groups' => 'plan']);
-        return new JsonResponse($formatted);
-    }
-
-    /**
-     * @Route ("/AjouterPlanningMobile")
-     * @Method ("POST")
-     */
-    public function ajoutermobile(Request $request){
-
-        $planning = new Planning();
-
-        $em=$this->getDoctrine()->getManager();
-
-        $nom=$request->query->get("nom");
-        $planning->setNom($nom);
-
-        $date=$request->query->get("date");
-        $planning->setDate(new \DateTime($date));
-
-        $em->persist($planning);
-        $em->flush();
-
-
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($planning);
-        return new JsonResponse($aj);
-
-    }
-    /**
-     * @Route ("/DeletePlanning")
-     * @Method("DELETE")
-     */
-    function Supplanningmobile(Request $request , PlanningRepository $repository){
-        $id=$request->get("id");
-        $em=$this->getDoctrine()->getManager();
-
-        $planning =$em->getRepository(Planning::class)->find($id);
-        $em->remove($planning);
-        $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($planning);
-        return new JsonResponse($aj);
-    }
-    /**
-     * @Route("/chef-planning/searchResajax ", name="searchPlanResajax")
+     * @Route("/admin-planning/searchResajax ", name="searchResajax")
      */
     public function searchEventAjax(PlanningRepository $repo,Request $request)
     {
@@ -208,6 +156,83 @@ class PlanningController extends AbstractController
         );
         return $this->render('back/planning/AfficherPlanning.html.twig',['n'=>$n]);
     }
+
+    //-----------------------------
+
+    /**
+     * @Route("/plan", name="displayPlan")
+     */
+    public function displayEvents(PlanningRepository $repo,SerializerInterface $serializer)
+    {
+        $events = $repo->findAll();
+        $formatted = $serializer->normalize($events,'json',['groups' => 'event']);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route ("/AjouterPlanningMobile")
+     * @Method ("POST")
+     */
+    public function ajoutermobile(Request $request){
+
+        $planning = new Planning();
+
+        $em=$this->getDoctrine()->getManager();
+
+        $nom=$request->query->get("nom");
+        $planning->setNom($nom);
+
+        $date=$request->query->get("date");
+        $planning->setDate(new \DateTime($date));
+
+        $em->persist($planning);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("planning ajoutee");
+        return new JsonResponse($aj);
+
+    }
+
+    /**
+     * @Route("/updatePlan", name="updateplan")
+     * @Method("PUT")
+     */
+    public function modifierPlanAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Planning::class)
+            ->find($request->get("id"));
+
+        $event->setNom($request->get("nom"));
+        $event->setDate(new \DateTime($request->get("date")));
+
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("Planning a ete modifiee avec success.");
+        return new JsonResponse($formatted);
+
+    }
+
+
+    /**
+     * @Route ("/DeletePlanning")
+     * @Method("DELETE")
+     */
+    function Supplanningmobile(Request $request , PlanningRepository $repository){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+
+        $planning =$em->getRepository(Planning::class)->find($id);
+        $em->remove($planning);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("planning supprime");
+        return new JsonResponse($aj);
+    }
+
 
 
 

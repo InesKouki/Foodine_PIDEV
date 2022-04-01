@@ -251,7 +251,7 @@ class TableController extends AbstractController
         $em->flush();
 
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($table);
+        $formatted = $serializer->normalize("table ajoutee");
         return new JsonResponse($formatted);
 
     }
@@ -272,11 +272,11 @@ class TableController extends AbstractController
         $em->remove($livraison);
         $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($livraison);
+        $aj = $serializer->normalize("table supprimee");
         return new JsonResponse($aj);
     }
     /**
-     * @Route("/update ", name="updatetable")
+     * @Route("/updatemobil ", name="updatetable")
      * @Method("PUT")
      */
     public function modifiertablee(Request $request) {
@@ -293,7 +293,7 @@ class TableController extends AbstractController
         $em->persist($table);
         $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize("Evenement a ete modifiee avec success.");
+        $formatted = $serializer->normalize("table modifiee");
         return new JsonResponse($formatted);
 
     }

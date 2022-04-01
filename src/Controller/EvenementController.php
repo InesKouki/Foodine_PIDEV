@@ -188,7 +188,7 @@ class EvenementController extends AbstractController
      */
     public function displayEvents(EvenementRepository $repo,SerializerInterface $serializer)
     {
-        $events = $repo->findAll();
+        $events = $repo->orderByNameAscQB();
         $formatted = $serializer->normalize($events,'json',['groups' => 'events']);
         return new JsonResponse($formatted);
     }
@@ -197,44 +197,84 @@ class EvenementController extends AbstractController
      * @Route("/addEvent", name="addEvent")
      * @Method ("POST")
      */
-    public function addEvent(Request $request)
+    public function addEvent(Request $request, UserRepository $repo, \Swift_Mailer $mailer)
     {
-        $reclamation = new Evenement();
+        $event = new Evenement();
         $name = $request->query->get("name");
-        $date_deb = $request->query->get("dateDeb");
-        $date_fin = $request->query->get("dateFin");
-//        $date_deb = new \DateTime('yesterday');
-//        $date_fin = new \DateTime('now');
+        $date_deb = $request->query->get("date_deb");
+        $date_fin = $request->query->get("date_fin");
+//      $date_deb = new \DateTime('yesterday');
+//      $date_fin = new \DateTime('now');
         $description = $request->query->get("description");
-        $image = $request->query->get("image");
-        $em = $this->getDoctrine()->getManager();
-        $reclamation->setName($name);
-        $reclamation->setDescription($description);
-        $reclamation->setDateDeb($date_deb);
-        $reclamation->setDateFin($date_fin);
-        $reclamation->setImage($image);
 
-        $em->persist($reclamation);
+        $em = $this->getDoctrine()->getManager();
+        $event->setName($name);
+        $event->setDescription($description);
+        $event->setDateDeb(new \DateTime($date_deb));
+        $event->setDateFin(new \DateTime($date_fin));
+        $event->setImage("1c269da8883f356cca4d56392cd69d25.png");
+
+        $em->persist($event);
         $em->flush();
+
+        $users = $repo->findOnlyUsers();
+
+        foreach ($users as $user) {
+            $message = (new \Swift_Message('Foodine - ' . $name))
+                ->setFrom('foodine01@gmail.com')
+                ->setTo($user->getEmail())
+//                        ->setBody('Un nouvel événement plein de promotions vous attend!');
+                ->setBody($this->renderView(
+                    'back/evenement/email.html.twig', compact('event')
+                ),
+                    'text/html'
+                );
+
+            $mailer->send($message);
+        }
+
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($reclamation);
+        $formatted = $serializer->normalize("event a ete ajoute");
         return new JsonResponse($formatted);
 
 
     }
 
     /**
-     * @Route("/deleteEvent", name="delete_reclamation")
+     * @Route("/updateEvent", name="updateEvent")
+     * @Method("PUT")
+     */
+    public function modifierEventAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Evenement::class)
+            ->find($request->get("id"));
+
+        $event->setName($request->get("name"));
+        $event->setDescription($request->get("description"));
+        $event->setDateDeb(new \DateTime($request->get("date_deb")));
+        $event->setDateFin(new \DateTime($request->get("date_fin")));
+
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("Evenement a ete modifiee avec success.");
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/deleteEvent", name="deleteEvent")
      * @Method("DELETE")
      */
 
-    public function deleteReclamationAction(Request $request) {
+    public function deleteEventAction(Request $request) {
         $id = $request->get("id");
 
         $em = $this->getDoctrine()->getManager();
-        $reclamation = $em->getRepository(Evenement::class)->find($id);
-        if($reclamation!=null ) {
-            $em->remove($reclamation);
+        $event = $em->getRepository(Evenement::class)->find($id);
+        if($event!=null ) {
+            $em->remove($event);
             $em->flush();
 
             $serialize = new Serializer([new ObjectNormalizer()]);
@@ -247,26 +287,6 @@ class EvenementController extends AbstractController
 
     }
 
-    /**
-     * @Route("/updateEvent", name="update_reclamation")
-     * @Method("PUT")
-     */
-    public function modifierReclamationAction(Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $reclamation = $this->getDoctrine()->getManager()
-            ->getRepository(Evenement::class)
-            ->find($request->get("id"));
-
-        $reclamation->setName($request->get("name"));
-        $reclamation->setDescription($request->get("description"));
-
-        $em->persist($reclamation);
-        $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize("Evenement a ete modifiee avec success.");
-        return new JsonResponse($formatted);
-
-    }
 
 
 }

@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
@@ -16,18 +18,20 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("events")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
+     * @Groups("events")
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Merci de saisir le nom")
-
+     * @Groups("events")
      */
     private $name;
 

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Notification;
 use App\Entity\Reclamation;
 use App\Entity\Reponse;
+use App\Entity\Review;
+use App\Entity\User;
 use App\Form\AddReclamationType;
 use App\Form\ReponseType;
 use App\Repository\ReclamationRepository;
@@ -147,12 +149,13 @@ class ReclamationController extends AbstractController
         $description = $request->get("description");
         $type=$request->get("type");
 
-
+        $id=$request->get("user_id");
+        $user=$this->getDoctrine()->getRepository(User::class)->find($id);
         $reclamation->setEtat(0);
         $reclamation->setType($type);
         $reclamation->setDescription($description);
         $reclamation->setCreatedAt(new \DateTime('now'));
-        $reclamation->setUser($this->getUser());
+        $reclamation->setUser($user);
 
         $em=$this->getDoctrine()->getManager();
         $em->persist($reclamation);
@@ -215,20 +218,90 @@ class ReclamationController extends AbstractController
     }
 
     /**
-     * @Route ("detailRecJson" , name="detailRecJson")
+     * @Route("/reponseJson", name="reponseJson")
+     */
+    public function reponseJson(Request $request, ReclamationRepository $repository, \Swift_Mailer $mailer)
+    {
+        $reponse = new Reponse();
+        $id= $request->get("id_rec");
+        $reclamation = $repository->find($id);
+
+
+        $user = $reclamation->getUser();
+        $msg = $request->get("message");
+            $reclamation->setEtat(1);
+            $reponse->setRecla($reclamation);
+            $reponse->setMessage($msg);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reponse);
+            $em->flush();
+            $message = (new \Swift_Message('Réponse à votre reclamation'))
+                ->setFrom('foodine01@gmail.com')
+                ->setTo($user->getEmail())
+                ->setBody($msg,'text/html');
+            $mailer->send($message);
+        return new Response("Un email vous a été envoyé");
+
+        }
+
+///////////////////////////MOBILE/////////////////////////
+    /**
+     * @Route("/addRevJson" ,name="addRevJson")
      * @Method ("POST")
      */
-    public function detailReclamationAction(Request $request){
-        $id=$request->get('id');
+    public function addRevJson(Request $request, NormalizerInterface $Normalizer){
+
+        $review =new Review();
+        $description = $request->get("description");
+        $username= $request->get("user_name");
+        $stars=$request->get("stars");
+
+        $review->setStars($stars);
+        $review->setDescription($description);
+        $review->setUserName($username);
+        $review->setPublishedAt(new \DateTime('now'));
+
+
+
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($review);
+        $em->flush();
+
+        $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+        return new Response('Ajout effectué avec success'.json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/deleteRevJson/{id}", name="deleteRevJson")
+     * @Method ("POST")
+     */
+    public function deleteReviewJson(Request $request,NormalizerInterface $Normalizer,$id){
+
+
         $em=$this->getDoctrine()->getManager();
 
-        $reclamation = $em->getRepository(Reclamation::class)->find($id);
-        $encoder= new JsonEncoder();
-        $normalizer= new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function($object){
-            return $object->getDescription();
-        });
+        $review = $em->getRepository(Review::class)->find($id);
+        if($review != null){
+            $em->remove( $review);
+            $em->flush();
+
+
+            $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+            return new Response('Suppression effectué avec success'.json_encode($jsonContent));
+        }
+        return new Response('Error');
     }
+
+    /**
+     * @Route("/showRevJson" , name="showRevJson")
+     */
+    public function allReviewsJson(NormalizerInterface $Normalizer){
+        $review =$this->getDoctrine()->getManager()->getRepository(Review::class)->findAll();
+        $jsonContent=$Normalizer->normalize($review,'json',['groups'=>'post:read']);
+
+        return new Response(json_encode($jsonContent));
+    }
+
 
 
 

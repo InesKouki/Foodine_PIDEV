@@ -5,12 +5,18 @@ namespace App\Controller;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
 use App\Repository\EvenementRepository;
+use App\Repository\ProductRepository;
 use App\Repository\PromotionRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class PromotionController extends AbstractController
 {
@@ -137,9 +143,78 @@ class PromotionController extends AbstractController
      */
     public function displayPromotions(PromotionRepository $repo,SerializerInterface $serializer)
     {
-        $promotions = $repo->findAll();
+        $promotions = $repo->orderByIDAsc();
         $formatted = $serializer->normalize($promotions,'json',['groups' => 'events']);
         return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/addPromotion", name="ajoutPromotion")
+     * @Method ("POST")
+     */
+    public function ajouterPromotion(Request $request, EvenementRepository $repo, ProductRepository $repoo)
+    {
+        $event = new Promotion();
+        $evenement=$repo->find(1);
+        $produit=$repoo->find(2);
+
+        $prc = $request->query->get("pourcentage")/100;
+
+        $em = $this->getDoctrine()->getManager();
+        $event->setEvenement($evenement);
+        $event->setProduit($produit);
+        $event->setPourcentage($prc);
+
+        $em->persist($event);
+        $em->flush();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("Promotion ajoutee");
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/updatePromotion", name="majPromotion")
+     * @Method("PUT")
+     */
+    public function modifierPromotionAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Promotion::class)
+            ->find($request->get("id"));
+
+        $event->setPourcentage($request->get("pourcentage")/100);
+
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("Promotion a ete modifiee avec success.");
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/deletePromotion", name="suppPromotion")
+     * @Method("DELETE")
+     */
+
+    public function deletePromotionAction(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Promotion::class)->find($id);
+        if($event!=null ) {
+            $em->remove($event);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("Promotion a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id Promotion invalide.");
+
+
     }
 
 }

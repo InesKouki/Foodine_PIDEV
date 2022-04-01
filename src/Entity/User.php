@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"Username"},message="Username déjà existant !")
@@ -19,12 +20,14 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Type(type={"alpha", "digit"}, message="Votre nom doit contenir seulement des lettres alphabétiques")
+     * @Groups("post:read")
      */
 
     private $Nom;
@@ -32,22 +35,26 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Type(type={"alpha", "digit"},message="Votre prénom doit contenir seulement des lettres alphabétiques" )
+     * @Groups("post:read")
      */
     private $Prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $Username;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(message=" Email n'est pas valide")
+     * @Groups("post:read")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("post:read")
      */
     private $Roles = [];
 
@@ -57,25 +64,30 @@ class User implements UserInterface
      * min = 8,
      * minMessage = "Votre mot de passe doit contenir au moins 8 caracteres",
      * allowEmptyString = false)
+     * @Groups("post:read")
      */
     private $Password;
 
     /**
      * @Assert\EqualTo(propertyPath ="Password",message="Vous n'avez pas saisi le même mot de passe." )
+
      */
 
     private $confirm_password;
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $file;
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("post:read")
      */
     private $Created_at;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+
      */
     private $activation_token;
 
@@ -87,44 +99,40 @@ class User implements UserInterface
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     * @Groups("post:read")
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("post:read")
      */
     private $Address;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups("post:read")
      */
     private $reset_token;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $Etat=0;
 
     /**
      * @ORM\OneToMany(targetEntity=Reclamation::class, mappedBy="user")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $reclamations;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="User_id")
-     */
-    private $reviews;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
-     */
-    private $commandes;
 
     public function __construct()
     {
         $this->reclamations = new ArrayCollection();
-        $this->reviews = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -340,64 +348,5 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Review>
-     */
-    public function getReviews(): Collection
-    {
-        return $this->reviews;
-    }
-
-    public function addReview(Review $review): self
-    {
-        if (!$this->reviews->contains($review)) {
-            $this->reviews[] = $review;
-            $review->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReview(Review $review): self
-    {
-        if ($this->reviews->removeElement($review)) {
-            // set the owning side to null (unless already changed)
-            if ($review->getUserId() === $this) {
-                $review->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Commande>
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUser() === $this) {
-                $commande->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
 }

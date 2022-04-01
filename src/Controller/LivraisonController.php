@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
 use App\Entity\Livraison;
 use App\Form\CommandeType;
 use App\Form\LivraisonType;
@@ -40,7 +41,7 @@ class LivraisonController extends AbstractController
     /**
      * @param LivraisonRepository $repository
      * @return Response
-     * @Route ("/admin-afficherlivraison", name="afficherlivraison")
+     * @Route ("/afficherlivraison", name="afficherlivraison")
      */
     function AfficheC(LivraisonRepository $repository){
         $Livraison =$repository->findAll();
@@ -49,7 +50,7 @@ class LivraisonController extends AbstractController
     }
 
     /**
-     * @Route("/afficherlivraison/searchResajax", name="searchLivrResajax")
+     * @Route("/afficherlivraison/searchResajax", name="searchResajax")
      */
     public function searchEventAjax(LivraisonRepository $repo,Request $request)
     {
@@ -114,7 +115,9 @@ class LivraisonController extends AbstractController
         foreach ($panierWithData as $item){
             $totalitem = $item['product']->getPrice() * $item['quantite'];
             $total += $totalitem;
+            $fees = 10;
             $totals=+$total;
+            $totals=+$fees;
 
         }
 
@@ -130,9 +133,9 @@ class LivraisonController extends AbstractController
 
             $em->persist($livraison);
             $em->flush();
-            $message = (new \Swift_Message('Hello Email'))
+            $message = (new \Swift_Message('Bienvenue a Foodine !'))
 
-                ->setFrom('foodine01@gmail.com')
+                ->setFrom('sitefoodine@gmail.com')
                 ->setTo($livraison->getEmail())
                 ->setBody('Merci pour passer une livraison !')
 
@@ -150,6 +153,7 @@ class LivraisonController extends AbstractController
         ), 'livraison' => $livraison,
             'liste1' => $panierWithData,
             'total' => $total,
+            'fees'=>$fees
         ]);
     }
 
@@ -220,6 +224,32 @@ class LivraisonController extends AbstractController
 
     }
 
+    /**
+     * @Route ("/updateLivr")
+     * @Method ("PUT")
+     */
+    public function upddmobile(Request $request){
+        $em = $this->getDoctrine()->getManager();
+
+        $livraison = $this->getDoctrine()->getManager()
+            ->getRepository(Livraison::class)
+            ->find($request->get("id"));
+
+        $livraison->setDetails($request->get("details"));
+        $livraison->setAddresse($request->get("addresse"));
+        $livraison->setCodepostal($request->get("codepostal"));
+        $livraison->setEmail($request->get("email"));
+        $livraison->setPhone($request->get("phone"));
+
+        $em->persist($livraison);
+        $em->flush();
+
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $aj = $serializer->normalize("livraison modifiee ");
+        return new JsonResponse($aj);
+
+    }
 
     /**
      * @param LivraisonRepository $repository
@@ -249,7 +279,7 @@ class LivraisonController extends AbstractController
         $em->remove($livraison);
         $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $aj = $serializer->normalize($livraison);
+        $aj = $serializer->normalize("livraison supprimee");
         return new JsonResponse($aj);
     }
 

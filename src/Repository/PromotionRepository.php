@@ -55,7 +55,11 @@ class PromotionRepository extends ServiceEntityRepository
             ->getQuery()->getResult();
     }
 
-
+    function orderByIDAsc(){
+        return $this->createQueryBuilder('pr')
+            -> orderBy('pr.id','ASC')
+            -> getQuery()->getResult();
+    }
 
     // /**
     //  * @return Promotion[] Returns an array of Promotion objects

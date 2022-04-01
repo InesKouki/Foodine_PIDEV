@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Commande;
+use App\Entity\Product;
+use App\Entity\Recette;
 use App\Entity\Reclamation;
 use App\Entity\Notification;
 use App\Entity\Review;
@@ -47,6 +51,15 @@ class AdminController extends AbstractController
         $repository=$this->getDoctrine()->getRepository(Reclamation::class);
         $rec=$repository->findAll();
         $ntot=$nbchef+$nblivreur;
+        $categs = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $nbcategs = count($categs);
+        $prods = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        $nbprods = count($prods);
+        $comms = $this->getDoctrine()->getRepository(Commande::class)->findAll();
+        $nbcomms = count($prods);
+        $recs = $this->getDoctrine()->getRepository(Recette::class)->findAll();
+        $nbrecs = count($prods);
+
 
         foreach ($events as $e){
             $eventName[] = $e->getName();
@@ -100,6 +113,8 @@ class AdminController extends AbstractController
             ],
         ]);
 
+
+
         return $this->render('/back/homeBack.html.twig', [
             'chart' => $chart,
             'controller_name' => 'AdminController',
@@ -110,6 +125,10 @@ class AdminController extends AbstractController
             'nbNotif'=>$count,
             'rev'=>$rev,
             'revCount'=>$revCount,
+            'nbCategs' => $nbcategs,
+            'nbProds' => $nbprods,
+            'nbComms' => $nbcomms,
+            'nbRec' => $nbrecs
         ]);
     }
     /**

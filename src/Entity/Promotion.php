@@ -38,6 +38,8 @@ class Promotion
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="promotion")
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
+     * @Groups("events")
      */
     private $produit;
 

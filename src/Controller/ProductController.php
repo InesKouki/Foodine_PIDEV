@@ -13,11 +13,16 @@ use App\Repository\ProduitLikeRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 class ProductController extends AbstractController
@@ -208,6 +213,105 @@ class ProductController extends AbstractController
     public function orderByPriceDescQB(ProductRepository $rep,Request $request){
         $x=$rep->orderByPriceDescQB();
         return $this->render('back/productlist/index.html.twig',['produits1'=>$x]);
+    }
+
+    //  --------- ROUTES MOBILE ----------
+
+    /**
+     * @Route("/produits", name="displayProds")
+     */
+    public function displayProds(ProductRepository $repo,SerializerInterface $serializer)
+    {
+        $events = $repo->findAll();
+        $formatted = $serializer->normalize($events,'json',['groups' => 'events']);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/addProd", name="addProd")
+     * @Method ("POST")
+     */
+    public function addProduct(Request $request,MailerInterface $mailer,UserRepository $repository, CategoryRepository $rep)
+    {
+        $categ = new Product();
+        $cat = $rep->find(1);
+        $name = $request->query->get("name");
+        $price = $request->query->get("price");
+        $quantitie = $request->query->get("quantitie");
+        $categ->setCategory($cat);
+
+        $em = $this->getDoctrine()->getManager();
+        $categ->setName($name);
+        $categ->setPrice($price);
+        $categ->setQuantitie($quantitie);
+        $categ->setImage("d3ab957c3dba53164f74da0674bbdc53.png");
+
+        $em->persist($categ);
+        $em->flush();
+
+        $Users = $repository->findOnlyUsers();
+
+        foreach ($Users as $User) {
+            $to = $User->getEmail();
+
+            /** sending mail to the new all Users **/
+            $message = (new Email())
+                ->From('foodine01@gmail.com')
+                ->To($to)
+                ->subject('Il y a un nouveau Produit!')
+                ->text("Voici notre dernier produit: " . $categ->getName());
+            $mailer->send($message);
+        }
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("produit ajoute");
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/updateProd", name="updateProd")
+     * @Method("PUT")
+     */
+    public function modifierProductAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $event = $this->getDoctrine()->getManager()
+            ->getRepository(Product::class)
+            ->find($request->get("id"));
+
+        $event->setName($request->get("name"));
+        $event->setPrice($request->get("price"));
+        $event->setQuantitie($request->get("quantitie"));
+
+        $em->persist($event);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize("produit a ete modifiee avec success.");
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/deleteProd", name="deleteProd")
+     * @Method("DELETE")
+     */
+
+    public function deleteProductAction(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository(Product::class)->find($id);
+        if($event!=null ) {
+            $em->remove($event);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("produit a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id produit invalide.");
+
+
     }
 
 

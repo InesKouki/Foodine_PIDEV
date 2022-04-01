@@ -4481,7 +4481,7 @@
     <service id="doctrine.dbal.logger.backtrace" class="Doctrine\Bundle\DoctrineBundle\Dbal\Logging\BacktraceLogger" public="false" abstract="true"/>
     <service id="doctrine.dbal.logger" class="Symfony\Bridge\Doctrine\Logger\DbalLogger" public="false">
       <tag name="monolog.logger" channel="doctrine"/>
-      <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
+      <argument>null</argument>
       <argument type="service" id="debug.stopwatch" on-invalid="null"/>
     </service>
     <service id="data_collector.doctrine" class="Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector" public="false">
@@ -4550,6 +4550,15 @@
       <call method="setSQLLogger">
         <argument type="service" id="doctrine.dbal.logger.chain.default"/>
       </call>
+      <call method="setMiddlewares">
+        <argument type="collection">
+          <argument type="service">
+            <service class="Doctrine\DBAL\Logging\Middleware">
+              <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
+            </service>
+          </argument>
+        </argument>
+      </call>
     </service>
     <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
     <service id="doctrine.dbal.logger.chain.default" class="Doctrine\DBAL\Logging\LoggerChain">
@@ -4594,6 +4603,12 @@
           <argument>default</argument>
         </service>
       </argument>
+    </service>
+    <service id="doctrine.dbal.logging_middleware" class="Doctrine\DBAL\Logging\Middleware" abstract="true">
+      <tag name="monolog.logger" channel="doctrine"/>
+      <tag name="doctrine.middleware"/>
+      <tag name="doctrine.middleware" connection="default"/>
+      <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
     </service>
     <service id=".1_ServiceLocator~oQ8S8M." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument type="collection"/>
@@ -4751,11 +4766,11 @@
       <call method="setMetadataCache">
         <argument type="service" id="cache.doctrine.orm.default.metadata"/>
       </call>
-      <call method="setQueryCacheImpl">
-        <argument type="service" id="cache.doctrine.orm.default.query.compatibility_layer"/>
+      <call method="setQueryCache">
+        <argument type="service" id="cache.doctrine.orm.default.query"/>
       </call>
-      <call method="setResultCacheImpl">
-        <argument type="service" id="cache.doctrine.orm.default.result.compatibility_layer"/>
+      <call method="setResultCache">
+        <argument type="service" id="cache.doctrine.orm.default.result"/>
       </call>
       <call method="setMetadataDriverImpl">
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
@@ -7583,6 +7598,13 @@
         <argument key="productRepository" type="service_closure" id="App\Repository\ProductRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.EMEUK0F" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\CategoryRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.QrTfQmf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7688,6 +7710,12 @@
         <argument key="rep" type="service_closure" id="App\Repository\PlanningRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.22mKHwX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\PlanningRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.yvZGyzc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7699,12 +7727,6 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repository" type="service_closure" id="App\Repository\PlanningRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.22mKHwX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repo" type="service_closure" id="App\Repository\PlanningRepository"/>
       </argument>
     </service>
     <service id=".service_locator.jsZUmHE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7740,6 +7762,21 @@
         <argument key="rep" type="service_closure" id="App\Repository\ProductRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.g5PV4_R" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\ProductRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uOSUlSM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+        <argument key="rep" type="service_closure" id="App\Repository\CategoryRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator._7qJDNs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7759,6 +7796,13 @@
         <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
+    <service id=".service_locator.Yesxv_2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\EvenementRepository"/>
+        <argument key="repoo" type="service_closure" id="App\Repository\ProductRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.2Z1gB17" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7775,6 +7819,19 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repo" type="service_closure" id="App\Repository\RecetteRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.eZxFbmk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\RecetteRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.zPC1j87" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\RecetteRepository"/>
       </argument>
     </service>
     <service id=".service_locator.JjRAOhW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7830,6 +7887,12 @@
         <argument key="serializerinterface" type="service_closure" id="serializer"/>
       </argument>
     </service>
+    <service id=".service_locator.ls8A.mk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\TableRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.rpP4fMw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7864,10 +7927,32 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.IsBt6qd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Normalizer" type="service_closure" id="serializer"/>
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Em9LKse" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Normalizer" type="service_closure" id="serializer"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.jmvbEvf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.yOUOGuU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Normalizer" type="service_closure" id="serializer"/>
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.e65P6Zd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7902,7 +7987,7 @@
         <argument key="tab" type="service_closure" id="App\Repository\TableRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.NeajkKf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.shkK.1n" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.y3HPCYI"/>
@@ -7911,8 +7996,8 @@
         <argument key="App\Controller\AdminController::showNotification" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController::showUsers" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\CategorieController::Delete" type="service_closure" id=".service_locator.7ODBfgL"/>
-        <argument key="App\Controller\CategorieController::SupprimerFrontmoibile" type="service_closure" id=".service_locator.7ODBfgL"/>
         <argument key="App\Controller\CategorieController::categoyyy" type="service_closure" id=".service_locator.St5W7vO"/>
+        <argument key="App\Controller\CategorieController::displayCategs" type="service_closure" id=".service_locator.EMEUK0F"/>
         <argument key="App\Controller\CategorieController::edit" type="service_closure" id=".service_locator.7ODBfgL"/>
         <argument key="App\Controller\CategorieController::recherche" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\CategorylistController::Delete" type="service_closure" id=".service_locator.7ODBfgL"/>
@@ -7927,6 +8012,7 @@
         <argument key="App\Controller\CommandeController::Update" type="service_closure" id=".service_locator.QrTfQmf"/>
         <argument key="App\Controller\CommandeController::ajout" type="service_closure" id=".service_locator.l4UVmU0"/>
         <argument key="App\Controller\EvenementController::addEvenement" type="service_closure" id=".service_locator.eTCdelq"/>
+        <argument key="App\Controller\EvenementController::addEvent" type="service_closure" id=".service_locator.eTCdelq"/>
         <argument key="App\Controller\EvenementController::afficheBack" type="service_closure" id=".service_locator.pugCF3O"/>
         <argument key="App\Controller\EvenementController::afficheFront" type="service_closure" id=".service_locator.T6JpKpg"/>
         <argument key="App\Controller\EvenementController::deleteEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
@@ -7966,6 +8052,8 @@
         <argument key="App\Controller\PlanningController::trienomDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
         <argument key="App\Controller\ProductController::Delete" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\ProductController::addProd" type="service_closure" id=".service_locator.jsZUmHE"/>
+        <argument key="App\Controller\ProductController::addProduct" type="service_closure" id=".service_locator.uOSUlSM"/>
+        <argument key="App\Controller\ProductController::displayProds" type="service_closure" id=".service_locator.g5PV4_R"/>
         <argument key="App\Controller\ProductController::edit" type="service_closure" id=".service_locator.wWh9YTP"/>
         <argument key="App\Controller\ProductController::like" type="service_closure" id=".service_locator.bX42sow"/>
         <argument key="App\Controller\ProductController::orderByNomAscQB" type="service_closure" id=".service_locator.gXMalMC"/>
@@ -7976,6 +8064,7 @@
         <argument key="App\Controller\ProductlistController::Delete" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\ProductlistController::edit" type="service_closure" id=".service_locator.wWh9YTP"/>
         <argument key="App\Controller\PromotionController::afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController::ajouterPromotion" type="service_closure" id=".service_locator.Yesxv_2"/>
         <argument key="App\Controller\PromotionController::deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController::displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
         <argument key="App\Controller\PromotionController::searchC" type="service_closure" id=".service_locator._7qJDNs"/>
@@ -7985,30 +8074,50 @@
         <argument key="App\Controller\PromotionController::sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController::updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\RecetteController::Modierrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController::SupRecettemobile" type="service_closure" id=".service_locator.zPC1j87"/>
         <argument key="App\Controller\RecetteController::afficher" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController::ajouterrecmobile" type="service_closure" id=".service_locator.22mKHwX"/>
+        <argument key="App\Controller\RecetteController::displayEvents" type="service_closure" id=".service_locator.eZxFbmk"/>
         <argument key="App\Controller\RecetteController::imprimer" type="service_closure" id=".service_locator.dfiQDCL"/>
         <argument key="App\Controller\RecetteController::index" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\RecetteController::searchAction" type="service_closure" id=".service_locator.GGYBe0t"/>
         <argument key="App\Controller\RecetteController::supprimerrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\ReclamationController::addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController::addRevJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController::allReviewsJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController::deleteReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController::deleteReviewJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController::reponse" type="service_closure" id=".service_locator.DVfd__4"/>
+        <argument key="App\Controller\ReclamationController::reponseJson" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\ReclamationController::showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\ReservationController::Supprimerreservationn" type="service_closure" id=".service_locator.Jfpm0Lz"/>
+        <argument key="App\Controller\ReservationController::addreservationn" type="service_closure" id=".service_locator.ls8A.mk"/>
         <argument key="App\Controller\ReservationController::afficherreservation" type="service_closure" id=".service_locator.ie3Pbs8"/>
         <argument key="App\Controller\ReservationController::ajouterreservation" type="service_closure" id=".service_locator.rVwA5tG"/>
         <argument key="App\Controller\ReservationController::getreservation" type="service_closure" id=".service_locator.mJzkubv"/>
         <argument key="App\Controller\ReservationController::modifierreservation" type="service_closure" id=".service_locator.Jfpm0Lz"/>
         <argument key="App\Controller\ReservationController::supprimerreservation" type="service_closure" id=".service_locator.TbtqYtz"/>
+        <argument key="App\Controller\SecurityController::ModifierUser" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\SecurityController::activation" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\SecurityController::allUsersJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::allUsersTriEmailJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::allUsersTriNomJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::blockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::deleteUserJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\SecurityController::editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController::forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
+        <argument key="App\Controller\SecurityController::forgottenPassJSON" type="service_closure" id=".service_locator.s2ZdEbC"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
         <argument key="App\Controller\SecurityController::registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController::resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
-        <argument key="App\Controller\SecurityController::signUpAction" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\SecurityController::resetPassJSON" type="service_closure" id=".service_locator.yOUOGuU"/>
+        <argument key="App\Controller\SecurityController::signInAction" type="service_closure" id=".service_locator.Em9LKse"/>
+        <argument key="App\Controller\SecurityController::signUpAction" type="service_closure" id=".service_locator.IsBt6qd"/>
+        <argument key="App\Controller\SecurityController::unblockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController::updatePass" type="service_closure" id=".service_locator.IsBt6qd"/>
         <argument key="App\Controller\TableController::Supprimertablee" type="service_closure" id=".service_locator.uoFp6Rd"/>
         <argument key="App\Controller\TableController::affichertable" type="service_closure" id=".service_locator.e65P6Zd"/>
         <argument key="App\Controller\TableController::gettable" type="service_closure" id=".service_locator.7xxI7L1"/>
@@ -8023,8 +8132,8 @@
         <argument key="App\Controller\AdminController:showNotification" type="service_closure" id=".service_locator.F0UDtIE"/>
         <argument key="App\Controller\AdminController:showUsers" type="service_closure" id=".service_locator.n8gOTNr"/>
         <argument key="App\Controller\CategorieController:Delete" type="service_closure" id=".service_locator.7ODBfgL"/>
-        <argument key="App\Controller\CategorieController:SupprimerFrontmoibile" type="service_closure" id=".service_locator.7ODBfgL"/>
         <argument key="App\Controller\CategorieController:categoyyy" type="service_closure" id=".service_locator.St5W7vO"/>
+        <argument key="App\Controller\CategorieController:displayCategs" type="service_closure" id=".service_locator.EMEUK0F"/>
         <argument key="App\Controller\CategorieController:edit" type="service_closure" id=".service_locator.7ODBfgL"/>
         <argument key="App\Controller\CategorieController:recherche" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\CategorylistController:Delete" type="service_closure" id=".service_locator.7ODBfgL"/>
@@ -8039,6 +8148,7 @@
         <argument key="App\Controller\CommandeController:Update" type="service_closure" id=".service_locator.QrTfQmf"/>
         <argument key="App\Controller\CommandeController:ajout" type="service_closure" id=".service_locator.l4UVmU0"/>
         <argument key="App\Controller\EvenementController:addEvenement" type="service_closure" id=".service_locator.eTCdelq"/>
+        <argument key="App\Controller\EvenementController:addEvent" type="service_closure" id=".service_locator.eTCdelq"/>
         <argument key="App\Controller\EvenementController:afficheBack" type="service_closure" id=".service_locator.pugCF3O"/>
         <argument key="App\Controller\EvenementController:afficheFront" type="service_closure" id=".service_locator.T6JpKpg"/>
         <argument key="App\Controller\EvenementController:deleteEvenement" type="service_closure" id=".service_locator.T6JpKpg"/>
@@ -8078,6 +8188,8 @@
         <argument key="App\Controller\PlanningController:trienomDsc" type="service_closure" id=".service_locator.UXHyNHw"/>
         <argument key="App\Controller\ProductController:Delete" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\ProductController:addProd" type="service_closure" id=".service_locator.jsZUmHE"/>
+        <argument key="App\Controller\ProductController:addProduct" type="service_closure" id=".service_locator.uOSUlSM"/>
+        <argument key="App\Controller\ProductController:displayProds" type="service_closure" id=".service_locator.g5PV4_R"/>
         <argument key="App\Controller\ProductController:edit" type="service_closure" id=".service_locator.wWh9YTP"/>
         <argument key="App\Controller\ProductController:like" type="service_closure" id=".service_locator.bX42sow"/>
         <argument key="App\Controller\ProductController:orderByNomAscQB" type="service_closure" id=".service_locator.gXMalMC"/>
@@ -8088,6 +8200,7 @@
         <argument key="App\Controller\ProductlistController:Delete" type="service_closure" id=".service_locator.Sc3jFGY"/>
         <argument key="App\Controller\ProductlistController:edit" type="service_closure" id=".service_locator.wWh9YTP"/>
         <argument key="App\Controller\PromotionController:afficheBack" type="service_closure" id=".service_locator._7qJDNs"/>
+        <argument key="App\Controller\PromotionController:ajouterPromotion" type="service_closure" id=".service_locator.Yesxv_2"/>
         <argument key="App\Controller\PromotionController:deletePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController:displayPromotions" type="service_closure" id=".service_locator.QYVF7FC"/>
         <argument key="App\Controller\PromotionController:searchC" type="service_closure" id=".service_locator._7qJDNs"/>
@@ -8097,30 +8210,50 @@
         <argument key="App\Controller\PromotionController:sortBackByPrcDesc" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\PromotionController:updatePromotion" type="service_closure" id=".service_locator.UA5dx9Q"/>
         <argument key="App\Controller\RecetteController:Modierrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController:SupRecettemobile" type="service_closure" id=".service_locator.zPC1j87"/>
         <argument key="App\Controller\RecetteController:afficher" type="service_closure" id=".service_locator.2Z1gB17"/>
+        <argument key="App\Controller\RecetteController:ajouterrecmobile" type="service_closure" id=".service_locator.22mKHwX"/>
+        <argument key="App\Controller\RecetteController:displayEvents" type="service_closure" id=".service_locator.eZxFbmk"/>
         <argument key="App\Controller\RecetteController:imprimer" type="service_closure" id=".service_locator.dfiQDCL"/>
         <argument key="App\Controller\RecetteController:index" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\RecetteController:searchAction" type="service_closure" id=".service_locator.GGYBe0t"/>
         <argument key="App\Controller\RecetteController:supprimerrecette" type="service_closure" id=".service_locator.2Z1gB17"/>
         <argument key="App\Controller\ReclamationController:addRecJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController:addRevJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:allReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController:allReviewsJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:deleteRec" type="service_closure" id=".service_locator.JjRAOhW"/>
         <argument key="App\Controller\ReclamationController:deleteReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\ReclamationController:deleteReviewJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:modifierReclamationJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\ReclamationController:reponse" type="service_closure" id=".service_locator.DVfd__4"/>
+        <argument key="App\Controller\ReclamationController:reponseJson" type="service_closure" id=".service_locator.DVfd__4"/>
         <argument key="App\Controller\ReclamationController:showReclamation" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\ReservationController:Supprimerreservationn" type="service_closure" id=".service_locator.Jfpm0Lz"/>
+        <argument key="App\Controller\ReservationController:addreservationn" type="service_closure" id=".service_locator.ls8A.mk"/>
         <argument key="App\Controller\ReservationController:afficherreservation" type="service_closure" id=".service_locator.ie3Pbs8"/>
         <argument key="App\Controller\ReservationController:ajouterreservation" type="service_closure" id=".service_locator.rVwA5tG"/>
         <argument key="App\Controller\ReservationController:getreservation" type="service_closure" id=".service_locator.mJzkubv"/>
         <argument key="App\Controller\ReservationController:modifierreservation" type="service_closure" id=".service_locator.Jfpm0Lz"/>
         <argument key="App\Controller\ReservationController:supprimerreservation" type="service_closure" id=".service_locator.TbtqYtz"/>
+        <argument key="App\Controller\SecurityController:ModifierUser" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\SecurityController:activation" type="service_closure" id=".service_locator.1UuH9tO"/>
+        <argument key="App\Controller\SecurityController:allUsersJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:allUsersTriEmailJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:allUsersTriNomJson" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:blockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:deleteUserJson" type="service_closure" id=".service_locator.4wRfwhS"/>
         <argument key="App\Controller\SecurityController:editUser" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\SecurityController:forgottenPass" type="service_closure" id=".service_locator.s2ZdEbC"/>
+        <argument key="App\Controller\SecurityController:forgottenPassJSON" type="service_closure" id=".service_locator.s2ZdEbC"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
         <argument key="App\Controller\SecurityController:registration" type="service_closure" id=".service_locator.rpP4fMw"/>
         <argument key="App\Controller\SecurityController:resetPass" type="service_closure" id=".service_locator.kqVUBWb"/>
-        <argument key="App\Controller\SecurityController:signUpAction" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\SecurityController:resetPassJSON" type="service_closure" id=".service_locator.yOUOGuU"/>
+        <argument key="App\Controller\SecurityController:signInAction" type="service_closure" id=".service_locator.Em9LKse"/>
+        <argument key="App\Controller\SecurityController:signUpAction" type="service_closure" id=".service_locator.IsBt6qd"/>
+        <argument key="App\Controller\SecurityController:unblockUser" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\SecurityController:updatePass" type="service_closure" id=".service_locator.IsBt6qd"/>
         <argument key="App\Controller\TableController:Supprimertablee" type="service_closure" id=".service_locator.uoFp6Rd"/>
         <argument key="App\Controller\TableController:affichertable" type="service_closure" id=".service_locator.e65P6Zd"/>
         <argument key="App\Controller\TableController:gettable" type="service_closure" id=".service_locator.7xxI7L1"/>
@@ -8378,14 +8511,6 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id="cache.doctrine.orm.default.query.compatibility_layer" class="Doctrine\Common\Cache\CacheProvider">
-      <argument type="service" id="cache.doctrine.orm.default.query"/>
-      <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
-    </service>
-    <service id="cache.doctrine.orm.default.result.compatibility_layer" class="Doctrine\Common\Cache\CacheProvider">
-      <argument type="service" id="cache.doctrine.orm.default.result"/>
-      <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
-    </service>
     <service id=".service_locator.jMkHbcb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8407,6 +8532,9 @@
         <argument key="App\Repository\TableRepository" type="service_closure" id="App\Repository\TableRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
+    </service>
+    <service id="doctrine.dbal.logging_middleware.default" class="Doctrine\DBAL\Logging\Middleware">
+      <argument type="service" id="monolog.logger.doctrine" on-invalid="null"/>
     </service>
     <service id="debug.security.voter.security.access.authenticated_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
       <argument type="service" id="security.access.authenticated_voter"/>
@@ -8734,12 +8862,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.NeajkKf"/>
+      <argument type="service" id=".service_locator.shkK.1n"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.NeajkKf"/>
+      <argument type="service" id=".service_locator.shkK.1n"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -9133,8 +9261,8 @@
     <service id="doctrine.orm.metadata.annotation_reader" alias="annotations.cached_reader" public="false"/>
     <service id="doctrine.orm.entity_manager" alias="doctrine.orm.default_entity_manager" public="true"/>
     <service id="doctrine.orm.default_metadata_cache" alias="cache.doctrine.orm.default.metadata"/>
-    <service id="doctrine.orm.default_result_cache" alias="cache.doctrine.orm.default.result.compatibility_layer"/>
-    <service id="doctrine.orm.default_query_cache" alias="cache.doctrine.orm.default.query.compatibility_layer"/>
+    <service id="doctrine.orm.default_result_cache" alias="cache.doctrine.orm.default.result" public="false"/>
+    <service id="doctrine.orm.default_query_cache" alias="cache.doctrine.orm.default.query" public="false"/>
     <service id="Doctrine\ORM\EntityManagerInterface $defaultEntityManager" alias="doctrine.orm.default_entity_manager" public="false"/>
     <service id="doctrine.orm.default_entity_manager.event_manager" alias="doctrine.dbal.default_connection.event_manager" public="false"/>
     <service id="doctrine.migrations.metadata_storage" alias="doctrine.migrations.storage.table_storage"/>
@@ -9192,7 +9320,7 @@
     <service id="Endroid\QrCode\Builder\BuilderInterface $defaultQrCodeBuilder" alias="endroid_qr_code.default_builder" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.NeajkKf"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.shkK.1n"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

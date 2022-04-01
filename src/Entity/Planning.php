@@ -20,14 +20,14 @@ class Planning
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups ("plan")
+     * @Groups ("event")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date",nullable=false)
      * @Assert\NotBlank (message="Entrer la date")
-     * @Groups ("plan")
+     * @Groups ("event")
      */
     private $date;
 
@@ -35,7 +35,7 @@ class Planning
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Entrez le nom du planning ")
-     * @Groups ("plan")
+     * @Groups ("event")
      */
     private $nom;
 
@@ -48,9 +48,6 @@ class Planning
     {
         $this->recettes = new ArrayCollection();
     }
-
-
-
 
     public function getId(): ?int
     {
